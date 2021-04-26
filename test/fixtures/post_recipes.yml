@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: MyString
+  introduction: MyText
+  recipe_image_id: MyString
+  is_draft: false
+  created_at: 2021-04-26 06:13:58
+  updated_at: 2021-04-26 06:13:58
+
+two:
+  user_id: 1
+  title: MyString
+  introduction: MyText
+  recipe_image_id: MyString
+  is_draft: false
+  created_at: 2021-04-26 06:13:58
+  updated_at: 2021-04-26 06:13:58

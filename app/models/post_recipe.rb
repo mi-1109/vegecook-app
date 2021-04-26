@@ -1,0 +1,2 @@
+class PostRecipe < ApplicationRecord
+end

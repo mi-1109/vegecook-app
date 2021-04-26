@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post_recipe_id: 1
+  name: MyString
+  amount: MyString
+  created_at: 2021-04-26 06:16:43
+  updated_at: 2021-04-26 06:16:43
+
+two:
+  post_recipe_id: 1
+  name: MyString
+  amount: MyString
+  created_at: 2021-04-26 06:16:43
+  updated_at: 2021-04-26 06:16:43

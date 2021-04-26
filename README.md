@@ -1,24 +1,72 @@
-# README
+# VegeCook
+**ベジタリアン向けの料理レシピを提供するWebアプリケーションです！**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ゲストログイン機能をご用意してますので、お気軽にご覧ください。
+[デプロイ後、ここにリンクを貼る]()
 
-Things you may want to cover:
+## サイト概要
+**VegeCook** は、ベジタリアンや、これからベジタリアンを実践したい人が、手軽に安心してレシピを検索・共有できるサービスです。
 
-* Ruby version
+- ベジタリアン・レシピを検索、投稿、ランキング表示できる
+- コメントや"いいね"をしたり、気になるレシピの管理ができる
+- 無料会員・有料会員によって利用可能な機能が分かれる
 
-* System dependencies
+以上のようなことが行えるアプリです。
+実装機能の詳細は、[機能一覧](#チャレンジ要素一覧)をご確認ください。
 
-* Configuration
+### サイトテーマ
 
-* Database creation
+**Be the Veggie, Save the Lives**
+命を救う選択。ベジタリアンになろう。
 
-* Database initialization
+### テーマを選んだ理由と、開発背景
 
-* How to run the test suite
+「ベジタリアンという選択肢を通して、畜産物の消費を減らし、
+　動物福祉と環境問題にコミットする人を増やす」
 
-* Services (job queues, cache servers, search engines, etc.)
+これが、**VegeCook** に込めた想いです。
 
-* Deployment instructions
+>- 日本は、畜産動物福祉で世界最低のGランク評価（WAP：世界動物保護協会）
+- 家畜生産がもしなくなれば、世界の温室効果ガス排気量は現在より28％も減少する
 
-* ...
+この事実を知った時、私は一人の消費者として「**ベジタリアンという選択**」を取ろうと決めました。
+
+ところが日本のレシピサイトには、ベジタリアンのレシピがとても少なく、様々なサイトを何十分もかけて検索し、肉や魚、乳製品が使われていないか判断しなければなりませんでした。
+
+そこで**VegeCook**は、ベジタリアン・ビギナーのレシピ検索のハードルを下げると同時に、個々のベジタリアンが持つレシピの知見を投稿・共有し、和を広げていく料理レシピのコミュニティ・サイトとなることで、ベジタリアンやベジタリアンになりたいと願う人々を応援します。
+
+そして、その一人ひとりの選択と努力が、畜産動物福祉や環境問題の改善につながることと、信じています。
+
+### ターゲットユーザ（ペルソナ）
+![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1215197/d50b0439-e8ae-c5ae-957f-c41eb04184a8.png)
+
+### 主な利用シーン
+- ベジタリアン・レシピが思いつかないとき
+- 新しいベジタリアン・レシピに挑戦したいとき
+- 人気のベジタリアン・レシピを知りたいとき
+- 短時間で、おいしいベジタリアン・レシピにたどり着きたいとき
+- 家にある食材を使ってしまいたいとき
+
+## 設計書
+[作成できたら、ER図・テーブル定義書・アプリケーション詳細設計などの設計書のURLを記入]()
+
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/15LsSsn6OQFDi0CZb68MRvgI3Udyr9nYOGtesS61AhAY/edit#gid=0>
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails, Bootstrap
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+**【画像素材】**
+
+<https://o-dan.net/ja/>
+
+**【アイコン・ロゴ】**
+
+<https://logomakershop.com/>
+
+<https://ao-system.net/alphaicon/>
