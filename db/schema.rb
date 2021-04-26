@@ -10,88 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_072734) do
+ActiveRecord::Schema.define(version: 2021_04_26_075139) do
 
   create_table "chat_rooms", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer "chat_room_id"
-    t.integer "user_id"
-    t.text "message"
+    t.integer "chat_room_id", null: false
+    t.integer "user_id", null: false
+    t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "post_recipe_id"
-    t.integer "user_id"
-    t.text "comment"
+    t.integer "post_recipe_id", null: false
+    t.integer "user_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "form_inquiries", force: :cascade do |t|
-    t.integer "user_id"
-    t.text "content"
-    t.integer "response_status"
+    t.integer "user_id", null: false
+    t.text "content", null: false
+    t.integer "response_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "histories", force: :cascade do |t|
-    t.integer "post_recipe_id"
-    t.integer "user_id"
+    t.integer "post_recipe_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.integer "post_recipe_id"
-    t.string "name"
-    t.string "amount"
+    t.integer "post_recipe_id", null: false
+    t.string "name", null: false
+    t.string "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "post_recipe_id"
-    t.integer "user_id"
+    t.integer "post_recipe_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "post_recipes", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
-    t.text "introduction"
-    t.string "recipe_image_id"
-    t.boolean "is_draft"
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.text "introduction", null: false
+    t.string "recipe_image_id", null: false
+    t.boolean "is_draft", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "procedures", force: :cascade do |t|
-    t.integer "post_recipe_id"
-    t.text "body"
-    t.integer "step_num"
+    t.integer "post_recipe_id", null: false
+    t.text "body", null: false
+    t.integer "step_num", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "following_id"
+    t.integer "follower_id", null: false
+    t.integer "following_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "saved_recipes", force: :cascade do |t|
-    t.integer "post_recipe_id"
-    t.integer "user_id"
+    t.integer "post_recipe_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
