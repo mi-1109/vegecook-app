@@ -33,6 +33,18 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    activeadmin (1.4.3)
+      arbre (>= 1.1.1)
+      coffee-rails
+      formtastic (~> 3.1)
+      formtastic_i18n
+      inherited_resources (>= 1.9.0)
+      jquery-rails (>= 4.2.0)
+      kaminari (>= 0.15)
+      railties (>= 4.2, < 5.3)
+      ransack (>= 1.8.7)
+      sass (~> 3.1)
+      sprockets (< 4.1)
     activejob (5.2.5)
       activesupport (= 5.2.5)
       globalid (>= 0.3.6)
@@ -53,6 +65,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    arbre (1.4.0)
+      activesupport (>= 3.0.0, < 6.2)
+      ruby2_keywords (>= 0.0.2, < 1.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -69,6 +84,7 @@ GEM
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
+    cancancan (3.2.1)
     capybara (3.35.3)
       addressable
       mini_mime (>= 0.1.3)
@@ -81,6 +97,7 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    chronic (0.10.2)
     coderay (1.1.3)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -99,6 +116,10 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
@@ -106,13 +127,26 @@ GEM
     ffi (1.15.0)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    formtastic (3.1.5)
+      actionpack (>= 3.2.13)
+    formtastic_i18n (0.6.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    has_scope (0.8.0)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
+    inherited_resources (1.12.0)
+      actionpack (>= 5.2, < 6.2)
+      has_scope (~> 0.6)
+      railties (>= 5.2, < 6.2)
+      responders (>= 2, < 4)
     io-like (0.3.1)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
@@ -196,6 +230,10 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (13.0.3)
+    ransack (2.4.2)
+      activerecord (>= 5.2.4)
+      activesupport (>= 5.2.4)
+      i18n
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -300,6 +338,8 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -307,15 +347,19 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeadmin
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.5)
   byebug
+  cancancan
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  dotenv-rails
   enum_help
   font-awesome-sass (~> 5.13)
+  impressionist (~> 1.6.1)
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 0.17.0)
@@ -339,6 +383,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  whenever
 
 RUBY VERSION
    ruby 2.6.3p62
