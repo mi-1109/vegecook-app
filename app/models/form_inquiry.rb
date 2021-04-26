@@ -1,0 +1,2 @@
+class FormInquiry < ApplicationRecord
+end
