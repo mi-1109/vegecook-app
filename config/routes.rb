@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
- # ============== deviiseのルーティング ==================
+ # ============== deviseのルーティング ==================
   devise_for :admins,
     path: :admin,
     controllers: {
