@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_045307) do
+ActiveRecord::Schema.define(version: 2021_04_27_114006) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(version: 2021_04_27_045307) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "chat_room_id", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "admin_id"
   end
 
   create_table "comments", force: :cascade do |t|
