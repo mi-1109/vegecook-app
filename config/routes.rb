@@ -1,56 +1,55 @@
 Rails.application.routes.draw do
-  devise_for :admins
+
+ # ============== deviiseのルーティング ==================
+  devise_for :admins,
+    path: :admin,
+    controllers: {
+      sessions: 'admin/devise/sessions',
+      passwords: 'admin/devise/passwords',
+      registrations: 'admin/devise/registrations'
+    }
+  devise_for :users, controllers: {
+      sessions: 'public/devise/sessions',
+      passwords: 'public/devise/passwords',
+      registrations: 'public/devise/registrations'
+    }
+
+  # ========= ユーザー(public)のルーティング ================
+  scope module: :public do
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+    get 'premium' => 'homes#premium'
+
+    resources :inquiries, only: [:index, :new, :create]
+    resources :chats, only: [:show, :create]
+
+    resources :recipes do
+      resources :recipe_comments, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy]
+    end
+    get 'recipes/searches' => 'searches#index'
+    get 'recipes/rankings' => 'rankings#index'
+
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings'
+      get 'followers' => 'relationships#followers'
+    end
+    get 'users/quit_confirm' => 'users#quit_confirm'
+    patch 'users/quit' => 'users#quit'
+
+    resources :premiums, only: [:update]
+    get 'premiums/payment' => 'premiums#payment'
+    get 'premiums/complete' => 'premiums#complete'
+  end
+
+  # ========= 管理者(admin)のルーティング ================
   namespace :admin do
-    get 'chats/show'
+    root to: 'homes#top'
+    resources :recipes, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show, :destroy]
+    resources :inquiries, only: [:index, :show]
+    resources :chats, only: [:show, :create]
   end
-  namespace :admin do
-    get 'inquiries/index'
-    get 'inquiries/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-  end
-  namespace :admin do
-    get 'recipes/index'
-    get 'recipes/show'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'premiums/payment'
-    get 'premiums/complete'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/quit_confirm'
-  end
-  namespace :public do
-    get 'searches/index'
-  end
-  namespace :public do
-    get 'rankings/index'
-  end
-  namespace :public do
-    get 'recipes/index'
-    get 'recipes/new'
-    get 'recipes/show'
-    get 'recipes/edit'
-  end
-  namespace :public do
-    get 'chats/show'
-  end
-  namespace :public do
-    get 'inquiries/index'
-    get 'inquiries/new'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-    get 'homes/premium'
-  end
-  devise_for :users
-  root to: 'homes#top'
+
 end
