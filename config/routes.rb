@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'chats/show'
+  end
+  namespace :admin do
+    get 'inquiries/index'
+    get 'inquiries/show'
+  end
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+  end
+  namespace :admin do
+    get 'recipes/index'
+    get 'recipes/show'
+  end
+  namespace :admin do
+    get 'homes/top'
+  end
   namespace :public do
     get 'premiums/payment'
     get 'premiums/complete'
