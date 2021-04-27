@@ -1,6 +1,6 @@
 <h2>管理者ログイン</h2>
 
-<%= form_with model: @user, url: new_admin_session_path, local: true do |f| %>
+<%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
   <div class="field">
     <%= f.label :email, 'メールアドレス' %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
