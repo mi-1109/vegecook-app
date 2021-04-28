@@ -11,6 +11,8 @@
 
   <h4>材料</h4>
   <h5>材料・調味料</h5>
+  <!--<%= f.text_field :name, placeholder: "例" %>-->
+
   <%= f.fields_for :ingredients do |ingredient| %>
     <%= ingredient.text_field :name, placeholder: "例）にんじん" %></br>
     <%= ingredient.text_field :name, placeholder: "例）ジャガイモ" %></br>

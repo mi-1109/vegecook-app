@@ -17,6 +17,14 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:post_recipe).permit(:user_id, :title, :introduction, :recipe_image, :is_draft)
+    params.require(:post_recipe).permit(
+      :user_id,
+      :title,
+      :introduction,
+      :recipe_image,
+      :is_draft,
+      procedures_attributes: [:body, :step_num],
+      ingredients_attributes: [:name, :amount]
+    )
   end
 end
