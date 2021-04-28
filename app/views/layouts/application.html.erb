@@ -10,9 +10,14 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-      <p id="notice"><%= flash[:notice] %></p>
-      <p id="alert"><%= flash[:alert] %></p>
-    <%= yield %>
+    <div class="footer_posi">
+      <main>
+      <%= render 'layouts/header' %>
+        <p id="notice"><%= flash[:notice] %></p>
+        <p id="alert"><%= flash[:alert] %></p>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      </main>
+    </div>
   </body>
 </html>
