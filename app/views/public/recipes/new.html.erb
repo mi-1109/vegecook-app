@@ -1,2 +1,33 @@
-<h1>Public::Recipes#new</h1>
-<p>Find me in app/views/public/recipes/new.html.erb</p>
+<!---------- レシピ投稿フォーム --------->
+
+<%= form_with model: @post_recipe, url:'/recipes', local:true do |f| %>
+
+  <%= f.text_field :title, placeholder: "レシピ名", size: "40" %>
+
+  <h4>写真を載せる</h4>
+  <%= f.attachment_field :recipe_image %></br>
+
+  <%= f.text_area :introduction, placeholder: "料理の簡単な説明（キャプション）", size:"40 x 10" %>
+
+  <h4>材料</h4>
+  <h5>材料・調味料</h5>
+  <%= f.fields_for :ingredients do |ingredient| %>
+    <%= ingredient.text_field :name, placeholder: "例）にんじん" %></br>
+    <%= ingredient.text_field :name, placeholder: "例）ジャガイモ" %></br>
+    <%= ingredient.text_field :name, placeholder: "例）豆乳" %>
+  <% end %>
+  <h5>分量</h5>
+  <%= f.fields_for :ingredients do |ingredient| %>
+    <%= ingredient.text_field :amount, placeholder: "例）一本" %></br>
+    <%= ingredient.text_field :amount, placeholder: "例）三個" %></br>
+    <%= ingredient.text_field :amount, placeholder: "例）300ml" %>
+  <% end %>
+
+  <h4>つくり方</h4>
+  <h5>(1)</h5>
+  <%= f.fields_for :procedures do |procedure| %>
+    <%= procedure.text_area :body, placeholder: "例）つくり方を記入", size:"20 x 5" %></br>
+  <% end %>
+
+  <%= f.submit 'レシピを公開' %>
+<% end %>
