@@ -1,2 +1,68 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row d-flex">
+    <div class="col-md-2">
+    <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: 'no_profile_image.jpg', size:'100x75' %>
+    </div>
+    <div class="col-md-4">
+      <h3><%= @user.name %></h3>
+      <p><%= @user.introduction %></p>
+    </div>
+    <div class="col-md-3">
+      <p><%= @user.veg_type %></p>
+    </div>
+    <div class="col-md-2">
+      <% if @user.id == current_user.id %>
+      <%= link_to "", edit_user_path(current_user.id), class: 'fas fa-user-cog fa-lg text-secondary' %><br/>
+      <%= link_to "レシピ投稿", new_recipe_path, class: 'fas fa-edit btn btn-sm btn-success p-2' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <hr class="border-bottom"></hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-11 wrap">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a href="#tab1" class="nav-link" data-toggle="tab">投稿レシピ</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab2" class="nav-link" data-toggle="tab">いいね</a>
+        </li>
+        <% if @user.id == current_user.id %>
+        <li class="nav-item">
+          <a href="#tab3" class="nav-link" data-toggle="tab">保存レシピ</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab4" class="nav-link" data-toggle="tab">閲覧履歴</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab5" class="nav-link" data-toggle="tab">下書きレシピ</a>
+        </li>
+        <% end %>
+      </ul>
+      <div class="tab-content p-4">
+        <div id="tab1" class="tab-pane active">
+          <p>TAB1の投稿が入ります</p>
+        </div>
+        <div id="tab2" class="tab-pane">
+          <p>TAB2の投稿が入ります</p>
+        </div>
+        <div id="tab3" class="tab-pane">
+          <p>TAB3の投稿が入ります</p>
+        </div>
+        <div id="tab4" class="tab-pane">
+          <p>TAB4の投稿が入ります</p>
+        </div>
+        <div id="tab5" class="tab-pane">
+          <p>TAB5の投稿が入ります</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
