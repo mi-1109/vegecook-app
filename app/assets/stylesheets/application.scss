@@ -17,3 +17,57 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'ヒラギノ角ゴ ProN', 'メイリオ';
+ }
+
+ body {
+   font-size: 14px;
+   background-color: #fff;
+ }
+
+ .navbar {
+   background-color: #fff;
+ }
+
+ .navbar-toggler {
+   background-color: #fff;
+ }
+
+ .navbar-light .navbar-toggler {
+   border-color: #fff;
+ }
+
+ .nav-link {
+   position: relative;
+ }
+
+ .nav-link:after{
+    content: '';
+    position: absolute;
+    width: 0; height: 2px;
+    display: block;
+    margin-top: 4px;
+    right: 0;
+    background: #eabeaf;
+    transition: width .3s ease;
+    -webkit-transition: width .3s ease;
+ }
+
+ .nav-link:hover:after {
+  width: 100%;
+  left: 0;
+  background: #eabeaf;
+}
+
+.dropdown-toggle {
+  text-decoration: none;
+  color: #6c757d;
+  &:hover {
+    text-decoration: none;
+    color: #6c757d;
+  }
+}
