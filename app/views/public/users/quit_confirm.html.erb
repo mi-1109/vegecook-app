@@ -1,2 +1,28 @@
-<h1>Public::Customers#quit_confirm</h1>
-<p>Find me in app/views/public/customers/quit_confirm.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1 class="mx-auto">退会</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h3>本当に退会しますか？</h3></br>
+      <p>
+        退会すると、会員登録情報や</br>
+        これまで投稿・保存したレシピ等の閲覧ができなくなります。</br>
+      </p>
+      <p>
+        退会する場合は「退会する」をクリックしてください。
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7">
+      <%= link_to "退会しない", user_path(@user.id), class:'btn btn-sm btn-primary' %>
+      <%= link_to "退会する", users_quit_path, method: :PATCH, data: {confirm: "本当に退会しますか？"}, class:'btn btn-sm btn-danger' %>
+    </div>
+  </div>
+
+</div>
+
+

@@ -30,13 +30,14 @@ Rails.application.routes.draw do
     get 'recipes/searches' => 'searches#index'
     get 'recipes/rankings' => 'rankings#index'
 
+    get 'users/quit_confirm' => 'users#quit_confirm'
+    patch 'users/quit' => 'users#quit'
+
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings'
       get 'followers' => 'relationships#followers'
     end
-    get 'users/quit_confirm' => 'users#quit_confirm'
-    patch 'users/quit' => 'users#quit'
 
     resources :premiums, only: [:update]
     get 'premiums/payment' => 'premiums#payment'
