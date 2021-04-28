@@ -20,6 +20,11 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  # ======= 会員ステータスが有効の場合TRUEを返す =======
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
   enum veg_type: {
     ペスコ・ベジタリアン: 0,
     ラクト・オボ・ベジタリアン: 1,

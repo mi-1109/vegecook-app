@@ -17,6 +17,15 @@ class Public::UsersController < ApplicationController
   end
 
   def quit_confirm
+    @user = current_user
+  end
+
+  def quit
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "ご利用いただき、ありがとうございました。"
+    redirect_to root_path
   end
 
   private
