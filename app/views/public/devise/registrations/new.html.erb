@@ -14,6 +14,14 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+   <div class="form-group">
+     <p>プランを選択してください</p>
+     <%= f.radio_button :is_paid, :false %>
+     <%= f.label :is_paid, "スタンダード・プラン（無料）", {value: :false, style: "display: inline-block;"} %><br />
+     <%= f.radio_button :is_paid, :true %>
+     <%= f.label :is_paid, "プレミアム・プラン（有料）", {value: :true, style: "display: inline-block;"} %>
+  </div>
+
   <div class="field">
     <%= f.label :password, 'パスワード' %>
     <% if @minimum_password_length %>
@@ -28,7 +36,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "登録" %>
   </div>
 <% end %>
 

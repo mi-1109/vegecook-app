@@ -1,2 +1,47 @@
-<h1>Public::Homes#premium</h1>
-<p>Find me in app/views/public/homes/premium.html.erb</p>
+<div class="container">
+
+  <div class="row mx-auto">
+    <h1>PREMIUM PLAN</h1>
+    <h4>-プレミアム・プランのご案内-</h4>
+  </div>
+
+  <div class="row">
+    <h5 class="font-italic">ONE</h5>
+    <h5 class="無制限のレシピ保存"></h5>
+    <p>スタンダード・プランでは20件までのレシピ保存が、プレミアム・プランなら無制限！</p>
+  </div>
+
+  <div class="row">
+    <h5 class="font-italic">ONE</h5>
+    <h5>無制限のレシピ保存"></h5>
+    <p>スタンダード・プランでは20件までのレシピ保存が、プレミアム・プランなら無制限！</p>
+  </div>
+
+  <div class="row">
+    <h5 class="font-italic">TWO</h5>
+    <h5>ランキング</h5>
+    <p>検索結果をランキング表示したり、総合TOP20のレシピを閲覧できます！！</p>
+  </div>
+
+  <div class="row">
+    <h5 class="font-italic">THREE</h5>
+    <h5>無制限のフォロー</h5>
+    <p>スタンダード・プランでは3人までのところ、プレミアム・プランなら何人でも好きなユーザーをフォローできます！</p>
+  </div>
+
+  <div class="row">
+    <h6>
+      プレミアム・プラン会費の50％は<br/>
+      動物愛護団体に寄付されます
+    </h6>
+  </div>
+
+  <div class="row">
+    <% if user_signed_in? %>
+      <%= link_to "プレミアム・プランに加入する", premiums_payment_path, class:'btn btn-sm btn-success' %>
+    <% else %>
+      <%= link_to "プレミアム・プランに加入する", new_user_registration_path, class:'btn btn-sm btn-success' %>
+    <% end %>
+  </div>
+</div>
+

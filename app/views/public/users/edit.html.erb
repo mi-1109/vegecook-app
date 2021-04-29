@@ -6,26 +6,35 @@
   <%= form_with model: @user, local:true do |f| %>
   <div class="row">
     <div class="col-md-7">
+
       <div class="form-group form-inline">
         <p>ユーザー名</p></br>
         <%= f.text_field :name, class:'form-control' %>
         <%= f.attachment_field :profile_image %>
       </div>
+
       <div class="form-group">
         <p>自己紹介</p></br>
         <%= f.text_area :introduction, class:'form-control' %>
       </div>
+
       <div class="form-group">
         <p>メールアドレス</p></br>
         <%= f.text_field :email, class:'form-control' %>
       </div>
+
       <div class="form-group">
         <p>パスワード</p></br>
         <%= f.text_field :password, class:'form-control' %>
       </div>
+
+      <p>加入中のプラン</p>
+      <%= @user.is_paid_to_sring %>
+
       <div class="form-group">
         <%= f.submit '変更', class:"btn btn-sm btn-success" %>
       </div>
+
     </div>
   </div>
   <% end %>

@@ -32,4 +32,12 @@ class User < ApplicationRecord
     オボ・ベジタリアン:3,
     ヴィーガン:4
   }
+
+  def is_paid_to_sring
+    if is_paid == true
+      "プレミアム・プラン（有料会員）"
+    else is_paid == false
+      "スタンダード・プラン（無料会員）"
+    end
+  end
 end
