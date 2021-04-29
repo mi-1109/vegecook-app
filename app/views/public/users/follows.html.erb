@@ -2,7 +2,7 @@
 
   <div class="row d-flex">
     <div class="col-md-2">
-    <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: 'no_profile_image.jpg', size:'100x75' %>
+      <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: 'no_profile_image.jpg', size:'100x75' %>
     </div>
 
     <div class="col-md-4">
@@ -41,7 +41,18 @@
       </ul>
       <div class="tab-content p-4">
         <div id="tab1" class="tab-pane active">
-          <p>TAB1の投稿が入ります</p>
+          <% @users.each do |user| %>
+            <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'100x75' %>
+            <%= link_to user.name, user_path(user.id) %>
+            <%= user.introduction %>
+            <% if current_user != user %>
+              <% if user.followed_by?(current_user) %>
+                <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete %>
+              <% else %>
+                <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
         <div id="tab2" class="tab-pane">
           <p>TAB2の投稿が入ります</p>

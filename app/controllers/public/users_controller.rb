@@ -28,7 +28,7 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def follows
+  def follow_list
     @user = User.find(params[:id])
     @users = @user.followings
   end
