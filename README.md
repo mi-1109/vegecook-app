@@ -1,7 +1,7 @@
 # VegeCook
 **ベジタリアン向けの料理レシピを提供するWebアプリケーションです！**
 
-ゲストログイン機能をご用意してますので、お気軽にご覧ください。
+ゲストログイン機能をご用意してますので、お気軽にご覧ください。<br />
 [※デプロイ後、ここにリンクを貼る]()
 
 <br />
@@ -24,7 +24,7 @@
 <br />
 
 ### テーマを選んだ理由と、開発背景
-「ベジタリアンという選択肢を通して、畜産物の消費を減らし、動物福祉と環境問題にコミットする人を増やす」
+「ベジタリアンという選択肢を通して、畜産物の消費を減らし、動物福祉と環境問題にコミットする人を増やす」<br />
   これが、**VegeCook** に込めた想いです。
 
 >- 日本は、畜産動物福祉で世界最低のGランク評価（WAP：世界動物保護協会）
@@ -52,12 +52,13 @@
 
 ## 設計書
 ### 【画像設計】
-**UI Flow (会員側)**
+**UI Flow (会員側)** <br />
 <img src="https://user-images.githubusercontent.com/78330037/116507864-1bb47100-a8fb-11eb-9aa9-0f43cbd932e7.png" width="500">
 
-**UI Flow (管理者側)**
+**UI Flow (管理者側)** <br />
 <img src="https://user-images.githubusercontent.com/78330037/116507996-60400c80-a8fb-11eb-97b5-80e99630afdf.png" width="500">
 
+<br />
 **ワイヤーフレーム** 
 ※PF作成後、最終チェックが終わったらPDFを結合してリンクを掲載
 
@@ -74,6 +75,7 @@
 
 ## 機能一覧
 [チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/15LsSsn6OQFDi0CZb68MRvgI3Udyr9nYOGtesS61AhAY/edit#gid=0)（スプレッドシートが開きます）
+
 [機能一覧](https://docs.google.com/spreadsheets/d/1YTMjxS3oql9i0VyiOwwIBJ_1_Evw3lFVCbghlCkY53k/edit?usp=sharing)（スプレッドシートが開きます）
 
 <br />
@@ -95,4 +97,5 @@
 
 **【アイコン・ロゴ】**
 <https://www.adobe.com/jp/products/spark.html>
+
 <https://ao-system.net/alphaicon/>
