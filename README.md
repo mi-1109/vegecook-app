@@ -59,6 +59,7 @@
 <img src="https://user-images.githubusercontent.com/78330037/116507996-60400c80-a8fb-11eb-97b5-80e99630afdf.png" width="500">
 
 <br />
+
 **ワイヤーフレーム** 
 ※PF作成後、最終チェックが終わったらPDFを結合してリンクを掲載
 
@@ -95,7 +96,7 @@
 **【イラスト】**
 <https://www.ac-illust.com/>
 
-**【アイコン・ロゴ】**
+**【アイコン・ロゴ】** <br />
 <https://www.adobe.com/jp/products/spark.html>
 
 <https://ao-system.net/alphaicon/>
