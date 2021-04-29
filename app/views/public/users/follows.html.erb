@@ -1,64 +1,57 @@
 <div class="container">
+<%= render partial: 'mypage_header', locals: { user: @user } %>
 
-  <div class="row d-flex">
-    <div class="col-md-2">
-      <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: 'no_profile_image.jpg', size:'100x75' %>
-    </div>
+<div class="row">
+  <div class="col-md-11 wrap">
 
-    <div class="col-md-4">
-      <h3><%= @user.name %></h3>
-      <p><%= @user.veg_type %></p>
-      <p><%= @user.introduction %></p>
-    </div>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a href="#tab1" class="nav-link" data-toggle="tab">フォロー中</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab2" class="nav-link" data-toggle="tab">フォロワー</a>
+      </li>
+    </ul>
 
-    <div class="col-md-3">
-
-    </div>
-
-    <div class="col-md-2">
-      <% if @user.id == current_user.id %>
-      <%= link_to "", edit_user_path(current_user.id), class: 'fas fa-user-cog fa-lg text-secondary' %><br/>
-      <%= link_to "レシピ投稿", new_recipe_path, class: 'fas fa-edit btn btn-sm btn-success p-2' %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <hr class="border-bottom"></hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-11 wrap">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a href="#tab1" class="nav-link" data-toggle="tab">フォロー中</a>
-        </li>
-        <li class="nav-item">
-          <a href="#tab2" class="nav-link" data-toggle="tab">フォロワー</a>
-        </li>
-      </ul>
-      <div class="tab-content p-4">
-        <div id="tab1" class="tab-pane active">
+    <div class="tab-content p-4">
+      <div id="tab1" class="tab-pane active">
+        <table class="table table-borderless">
+          <thead>
+            <th></th>
+            <th></th>
+            <th></th>
+          </thead>
+          <tbody>
           <% @users.each do |user| %>
-            <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'100x75' %>
-            <%= link_to user.name, user_path(user.id) %>
-            <%= user.introduction %>
-            <% if current_user != user %>
-              <% if user.followed_by?(current_user) %>
-                <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete %>
-              <% else %>
-                <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
-              <% end %>
-            <% end %>
+            <tr>
+              <td>
+                <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
+              </td>
+              <td>
+                <%= link_to user.name, user_path(user.id) %>
+                <%= user.introduction %>
+              </td>
+              <td>
+                <% if current_user != user %>
+                  <% if user.followed_by?(current_user) %>
+                    <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, data: {confirm: "#{user.name}さんのフォローを解除しますか？"}, class:'btn btn-sm btn-info' %>
+                  <% else %>
+                    <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class:'btn btn-sm btn-secondary' %>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
-        </div>
-        <div id="tab2" class="tab-pane">
-          <p>TAB2の投稿が入ります</p>
-        </div>
+          </tbody>
+        </table>
       </div>
+
+      <div id="tab2" class="tab-pane">
+        <p>TAB2の投稿が入ります</p>
+      </div>
+
     </div>
   </div>
+</div>
 
 </div>
