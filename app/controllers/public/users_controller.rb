@@ -28,6 +28,13 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def follows
+    @user = User.find(params[:id])
+    @followings = @user.followings
+    @followers = @user.followers
+    render 'show_follow'
+  end
+
   private
 
   def user_params
