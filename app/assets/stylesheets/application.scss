@@ -21,7 +21,7 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'ヒラギノ角ゴ ProN', 'メイリオ';
+   font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'メイリオ', 'Sawarabi Mincho';
  }
 
  body {
@@ -92,4 +92,35 @@ footer {
   min-height: 100vh;
   position: relative;
   padding-bottom: 60px;
+}
+
+.admin_title {
+  width: 90%;
+  background-color: #e8ede1;
+  font-family: 'メイリオ';
+}
+
+.active_color {
+  color: #33CC00;
+  font-weight: bold;
+}
+
+.inactive_color {
+  color: gray;
+}
+
+// 日本語のフォントを指定
+.jp-font {
+  font-family: 'メイリオ';
+}
+
+// ページネーション全体のデザイン
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+//表示しているページ番号のデザイン
+.page-item.active .page-link {
+  background-color: #eabeaf;
 }
