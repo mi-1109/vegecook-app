@@ -1,3 +1,5 @@
+<!----------フォロー中の会員・フォロワーの会員一覧-------------->
+
 <div class="container">
 <%= render partial: 'mypage_header', locals: { user: @user } %>
 
@@ -21,24 +23,18 @@
             <th></th>
             <th></th>
           </thead>
-          <tbody>
-          <% @followings.each do |follow| %>
-            <tr>
+          <tbody class="add-following">
+          <% @followings.each do |following| %>
+            <tr id="following_<%= following.id %>">
               <td>
-                <%= attachment_image_tag follow, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
+                <%= attachment_image_tag following, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
               </td>
               <td>
-                <%= link_to follow.name, user_path(follow.id) %>
-                <%= follow.introduction %>
+                <%= link_to following.name, user_path(following.id) %>
+                <%= following.introduction %>
               </td>
               <td>
-                <% if current_user != follow %>
-                  <% if follow.followed_by?(current_user) %>
-                    <%= link_to "フォロー中", user_relationships_path(follow.id), method: :delete, data: {confirm: "#{follow.name}さんのフォローを解除しますか？"}, class:'btn btn-sm btn-info' %>
-                  <% else %>
-                    <%= link_to "フォローする", user_relationships_path(follow.id), method: :post, class:'btn btn-sm btn-secondary' %>
-                  <% end %>
-                <% end %>
+                <%= render partial: 'follow_button', locals: { user: following } %>
               </td>
             </tr>
           <% end %>
@@ -53,9 +49,9 @@
             <th></th>
             <th></th>
           </thead>
-          <tbody>
+          <tbody class="add-follower">
           <% @followers.each do |follower| %>
-            <tr>
+            <tr id="follower_<%= follower.id %>">
               <td>
                 <%= attachment_image_tag follower, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
               </td>
@@ -64,13 +60,7 @@
                 <%= follower.introduction %>
               </td>
               <td>
-                <% if current_user != follower %>
-                  <% if follower.followed_by?(current_user) %>
-                    <%= link_to "フォロー中", user_relationships_path(follower.id), method: :delete, data: {confirm: "#{follower.name}さんのフォローを解除しますか？"}, class:'btn btn-sm btn-info' %>
-                  <% else %>
-                    <%= link_to "フォローする", user_relationships_path(follower.id), method: :post, class:'btn btn-sm btn-secondary' %>
-                  <% end %>
-                <% end %>
+                <%= render partial: 'follow_button', locals: { user: follower } %>
               </td>
             </tr>
           <% end %>

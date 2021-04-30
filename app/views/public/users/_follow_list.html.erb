@@ -1,0 +1,10 @@
+<td>
+  <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
+</td>
+<td>
+  <%= link_to user.name, user_path(user.id) %>
+  <%= user.introduction %>
+</td>
+<td>
+  <%= render partial: 'public/users/follow_button', locals: { user: user } %>
+</td>

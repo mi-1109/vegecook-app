@@ -1,0 +1,2 @@
+$("#following_<%= @following.id %>").remove();
+$("#follower_<%= @follower.id %>").html("<%= j(render 'public/users/follow_list', user: @follower) %>");
