@@ -30,13 +30,13 @@ Rails.application.routes.draw do
     get 'recipes/searches' => 'searches#index'
     get 'recipes/rankings' => 'rankings#index'
 
-    resources :users, only: [:show, :edit, :update] do
-      resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships#followings'
-      get 'followers' => 'relationships#followers'
-    end
     get 'users/quit_confirm' => 'users#quit_confirm'
     patch 'users/quit' => 'users#quit'
+
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get :follows, on: :member
+    end
 
     resources :premiums, only: [:update]
     get 'premiums/payment' => 'premiums#payment'
@@ -47,9 +47,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :recipes, only: [:index, :show, :destroy]
-    resources :users, only: [:index, :show, :destroy]
     resources :inquiries, only: [:index, :show]
     resources :chats, only: [:show, :create]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
 end

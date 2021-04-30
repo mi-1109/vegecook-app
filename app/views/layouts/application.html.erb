@@ -4,13 +4,20 @@
     <title>Vegecook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/d64cb48cf6.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+    <div class="footer_position">
+      <main>
+      <%= render 'layouts/header' %>
+        <p id="notice"><%= flash[:notice] %></p>
+        <p id="alert"><%= flash[:alert] %></p>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      </main>
+    </div>
   </body>
 </html>

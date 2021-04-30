@@ -1,0 +1,126 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'メイリオ', 'Sawarabi Mincho';
+ }
+
+ body {
+   font-size: 14px;
+   background-color: #fff;
+ }
+
+ header {
+   font-size: 16px;
+ }
+
+ .navbar {
+   background-color: #fff;
+ }
+
+ .navbar-toggler {
+   background-color: #fff;
+ }
+
+ .navbar-light .navbar-toggler {
+   border-color: #fff;
+ }
+
+ .nav-link {
+   position: relative;
+ }
+
+ .nav-link:after{
+    content: '';
+    position: absolute;
+    width: 0; height: 2px;
+    display: block;
+    margin-top: 4px;
+    right: 0;
+    background: #eabeaf;
+    transition: width .3s ease;
+    -webkit-transition: width .3s ease;
+ }
+
+ .nav-link:hover:after {
+  width: 100%;
+  left: 0;
+  background: #eabeaf;
+}
+
+.dropdown-toggle {
+  text-decoration: none;
+  color: #6c757d;
+  &:hover {
+    text-decoration: none;
+    color: #6c757d;
+  }
+}
+
+footer {
+  background-color: #e8ede1;
+  color: #6c757d;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+#copyright {
+  font-size: 10px;
+}
+
+.footer_position {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.admin_title {
+  width: 90%;
+  background-color: #e8ede1;
+  font-family: 'メイリオ';
+}
+
+.active_color {
+  color: #33CC00;
+  font-weight: bold;
+}
+
+.inactive_color {
+  color: gray;
+}
+
+// 日本語のフォントを指定
+.jp-font {
+  font-family: 'メイリオ';
+}
+
+// ページネーション全体のデザイン
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+//表示しているページ番号のデザイン
+.page-item.active .page-link {
+  background-color: #eabeaf;
+}

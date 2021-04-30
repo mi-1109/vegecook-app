@@ -1,0 +1,48 @@
+<!---------------- 管理者：会員詳細 ------------------>
+
+<div class="container">
+  <div class="row">
+    <h1 class="mx-auto">会員情報の変更</h1>
+  </div>
+
+  <%= form_with model: @user, url: admin_user_path(@user.id), method: :PATCH, local:true do |f| %>
+  <div class="row">
+    <div class="col-md-7">
+      <p>ユーザー名</p>
+      <p><%= @user.name %></p>
+
+      <p>自己紹介</p>
+      <p><%= @user.introduction %></p>
+
+      <p>メールアドレス</p>
+      <p><%= @user.email %></p>
+
+      <div class="form-group">
+        <p>加入プラン</p>
+        <%= f.radio_button :is_paid, :false %>
+        <%= f.label :is_paid, "スタンダード・プラン（無料）" %><br />
+        <%= f.radio_button :is_paid, :true %>
+        <%= f.label :is_paid, "プレミアム・プラン（有料）" %>
+      </div>
+
+      <div class="form-group">
+        <p>会員ステータス</p>
+        <%= f.radio_button :is_deleted, :false %>
+        <%= f.label :is_deleted, "有効" %><br />
+        <%= f.radio_button :is_deleted, :true %>
+        <%= f.label :is_deleted, "退会済" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit '変更', class:"btn btn-sm btn-success" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="row">
+    <p><%= link_to "戻る", admin_user_path(@user.id) %></p>
+  </div>
+
+</div>
+

@@ -1,23 +1,58 @@
 <!---------------------- HEADER ----------------------->
 
-<!--エンドユーザーがログインしている場合 -->
-<% if user_signed_in? %>
-  <li class="nav-item"><%= link_to "ABOUT", about_path, class: 'nav-link' %></li>
-  <li class="nav-item ml-1"><%= link_to "MY PAGE", user_path(current_user.id), class: 'nav-link' %></li>
-  <li class="nav-item ml-1"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+<header class="sticky-top shadow-sm">
+  <nav class="navbar navbar-expand-md navbar-light py-3">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <h4 class="text-secondary align-center mb-0">VEGECOOK</h4>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navvbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-secondary" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
 
-<!-- 管理者がログインしている場合 -->
-<% elsif admin_signed_in? %>
-  <li class="nav-item"><%= link_to "レシピ一覧", admin_recipes_path, class: 'nav-link' %></li>
-  <li class="nav-item ml-1"><%= link_to "会員一覧", admin_users_path, class: 'nav-link' %></li>
-  <li class="nav-item ml-1"><%= link_to "フォーム", admin_inquiries_path , class: 'nav-link' %></li>
-  <li class="nav-item ml-1"><%= link_to "チャット", admin_chats_path, class: 'nav-link' %></li>
-  <li class="nav-item ml-1"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
+        <!-- 管理者がログインしている場合 -->
+        <% if admin_signed_in? %>
+          <li class="nav-item"><%= link_to "レシピ一覧", admin_recipes_path, class: 'nav-link text-secondary' %></li>
+          <li class="nav-item ml-4"><%= link_to "会員一覧", admin_users_path, class: 'nav-link text-secondary' %></li>
+          <li class="nav-item ml-4"><%= link_to "フォーム", admin_inquiries_path , class: 'nav-link text-secondary' %></li>
+          <li class="nav-item ml-4"><%= link_to "チャット", admin_chats_path, class: 'nav-link text-secondary' %></li>
+          <li class="nav-item ml-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-secondary' %></li>
 
-<!-- ログインしていない場合 -->
-<% else %>
-  <li class="nav-item"><%= link_to "ABOUT", about_path, class: 'nav-link' %></li>
-  <li class="nav-item ml-1"><%= link_to "SIGN UP", new_user_registration_path, class: 'nav-link' %></li>
-  <li class="nav-item ml-1"><%= link_to "LOG IN", new_user_session_path, class: 'nav-link' %></li>
+        <!--ユーザー（会員）がログインしている場合 -->
+        <% elsif user_signed_in? %>
+          <li class="nav-item dropdown nav-link">
+            <a class="dropdown-toggle" href="/about" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ABOUT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/about">VEGECOOKとは？</a>
+              <a class="dropdown-item" href="/premium">PREMIUMプラン</a>
+              <a class="dropdown-item" href="/inquiries">お問い合わせ</a>
+            </div>
+          </li>
+          <li class="nav-item ml-4"><%= link_to "MY PAGE", user_path(current_user.id), class: 'nav-link text-secondary' %></li>
+          <li class="nav-item ml-4"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: 'nav-link text-secondary' %></li>
 
-<% end %>
+        <!-- ログインしていない場合 -->
+        <% else %>
+          <li class="nav-item dropdown nav-link">
+            <a class="dropdown-toggle" href="/about" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ABOUT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/about">VEGECOOKとは？</a>
+              <a class="dropdown-item" href="/premium">PREMIUMプラン</a>
+              <a class="dropdown-item" href="/inquiries">お問い合わせ</a>
+            </div>
+          </li>
+          <li class="nav-item ml-4"><%= link_to "SIGN UP", new_user_registration_path, class: 'nav-link text-secondary' %></li>
+          <li class="nav-item ml-4"><%= link_to "LOG IN", new_user_session_path, class: 'nav-link text-secondary' %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+

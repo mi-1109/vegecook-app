@@ -1,0 +1,57 @@
+<!----------フォロー中の会員・フォロワーの会員一覧-------------->
+
+<div class="container">
+<%= render partial: 'mypage_header', locals: { user: @user } %>
+
+<div class="row">
+  <div class="col-md-11 wrap">
+
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a href="#tab1" class="nav-link" data-toggle="tab">フォロー中</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab2" class="nav-link" data-toggle="tab">フォロワー</a>
+      </li>
+    </ul>
+
+    <div class="tab-content p-4">
+      <div id="tab1" class="tab-pane active">
+        <table class="table table-borderless">
+          <thead>
+            <th></th>
+            <th></th>
+            <th></th>
+          </thead>
+          <tbody class="add-following">
+          <% @followings.each do |following| %>
+            <tr id="following_<%= following.id %>">
+              <%= render partial: 'follow_list', locals: { user: following } %>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="tab2" class="tab-pane">
+        <table class="table table-borderless">
+          <thead>
+            <th></th>
+            <th></th>
+            <th></th>
+          </thead>
+          <tbody class="add-follower">
+          <% @followers.each do |follower| %>
+            <tr id="follower_<%= follower.id %>">
+              <%= render partial: 'follow_list', locals: { user: follower } %>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>

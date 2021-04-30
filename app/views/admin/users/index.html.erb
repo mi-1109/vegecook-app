@@ -1,2 +1,52 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<div class="container">
+
+  <div class="row">
+    <h3 class="admin_title mx-auto mt-5 py-2 pl-4">会員一覧</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 offset-md-8">
+      <h6 class="text-right mr-5 jp-font">会員数：<%= @user_count %>名</h6>
+    </div>
+  </div>
+
+  <div class="row">
+    <table style="width: 80%" class="table table-borderless mx-auto">
+      <thead>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr class="mt-5 border-bottom">
+          <td style="width: 10%">
+            <%= link_to (attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60'), admin_user_path(user.id) %>
+          </td>
+          <td style="width: 35%">
+            <u><%= link_to user.name, admin_user_path(user.id) %><br /></u>
+            <p class="mt-2"><%= user.introduction %></p>
+          </td>
+          <td style="width: 15%" class="py-0 align-middle">
+            <%= user.is_paid_to_sring %>
+          </td>
+          <td style="width: 10%" class="py-0 align-middle text-center">
+            <% if user.is_deleted == false %>
+              <p class="active_color"><%= user.is_deleted_to_sring %></p>
+            <% else %>
+              <p class="inactive_color"><%= user.is_deleted_to_sring %></p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto mt-4 mb-5">
+    <%= paginate @users %>
+    </div>
+  </div>
+</div>
