@@ -39,9 +39,17 @@ class User < ApplicationRecord
 
   def is_paid_to_sring
     if is_paid == true
-      "プレミアム・プラン（有料会員）"
+      "プレミアム(有料)"
     else is_paid == false
-      "スタンダード・プラン（無料会員）"
+      "スタンダード（無料)"
+    end
+  end
+
+  def is_deleted_to_sring
+    if is_deleted == true
+      "有効"
+    else is_deleted == false
+      "退会済"
     end
   end
 end

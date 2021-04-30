@@ -21,7 +21,7 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'ヒラギノ角ゴ ProN', 'メイリオ';
+   font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'Sawarabi Mincho', 'メイリオ';
  }
 
  body {
@@ -92,4 +92,10 @@ footer {
   min-height: 100vh;
   position: relative;
   padding-bottom: 60px;
+}
+
+.admin_title {
+  width: 90%;
+  background-color: #e8ede1;
+  font-family: 'メイリオ';
 }
