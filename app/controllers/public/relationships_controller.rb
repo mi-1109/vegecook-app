@@ -5,6 +5,7 @@ class Public::RelationshipsController < ApplicationController
     follow.save
     @following = User.find(params[:user_id])
     @follower = User.find(params[:user_id])
+    @user = current_user
   end
 
   def destroy
@@ -12,6 +13,6 @@ class Public::RelationshipsController < ApplicationController
     follow.destroy
     @following = User.find(params[:user_id])
     @follower = User.find(params[:user_id])
+    @user = current_user
   end
-
 end

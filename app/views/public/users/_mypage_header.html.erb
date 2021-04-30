@@ -11,11 +11,8 @@
     <p><%= user.introduction %></p>
   </div>
 
-  <div class="col-md-3">
-    <span class="fas fa-user-friends mr-3"></span>
-    <u><%= link_to "#{user.followings.count} フォロー", follows_user_path(user.id) %></u><br />
-    <span class="fas fa-user-friends mr-3 mt-2"></span>
-    <u><%= link_to "#{user.followers.count} フォロワー", followers_user_path(user.id) %></u>
+  <div class="col-md-3" id="follow_count">
+    <%= render partial: 'follow_count', locals: { user: user } %>
   </div>
 
   <div class="col-md-3">
