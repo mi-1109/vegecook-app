@@ -26,16 +26,7 @@
           <tbody class="add-following">
           <% @followings.each do |following| %>
             <tr id="following_<%= following.id %>">
-              <td>
-                <%= attachment_image_tag following, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
-              </td>
-              <td>
-                <%= link_to following.name, user_path(following.id) %>
-                <%= following.introduction %>
-              </td>
-              <td>
-                <%= render partial: 'follow_button', locals: { user: following } %>
-              </td>
+              <%= render partial: 'follow_list', locals: { user: following } %>
             </tr>
           <% end %>
           </tbody>
@@ -52,16 +43,7 @@
           <tbody class="add-follower">
           <% @followers.each do |follower| %>
             <tr id="follower_<%= follower.id %>">
-              <td>
-                <%= attachment_image_tag follower, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
-              </td>
-              <td>
-                <%= link_to follower.name, user_path(follower.id) %>
-                <%= follower.introduction %>
-              </td>
-              <td>
-                <%= render partial: 'follow_button', locals: { user: follower } %>
-              </td>
+              <%= render partial: 'follow_list', locals: { user: follower } %>
             </tr>
           <% end %>
           </tbody>
