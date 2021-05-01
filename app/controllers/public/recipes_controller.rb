@@ -32,9 +32,8 @@ class Public::RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
-    @ingredients = @recipe.ingredient.all
-    @procedures = @recipe.procedure.all
+    @recipe = PostRecipe.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def edit

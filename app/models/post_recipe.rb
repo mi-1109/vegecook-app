@@ -11,4 +11,8 @@ class PostRecipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients
 
   attachment :recipe_image
+
+  def favorited_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 end
