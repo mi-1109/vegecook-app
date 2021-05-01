@@ -11,25 +11,21 @@
 
   <h4>材料</h4>
   <h5>材料・調味料</h5>
-  <!--<%= f.text_field :name, placeholder: "例" %>-->
-
   <%= f.fields_for :ingredients do |ingredient| %>
     <%= ingredient.text_field :name, placeholder: "例）にんじん" %></br>
-    <%= ingredient.text_field :name, placeholder: "例）ジャガイモ" %></br>
-    <%= ingredient.text_field :name, placeholder: "例）豆乳" %>
-  <% end %>
   <h5>分量</h5>
-  <%= f.fields_for :ingredients do |ingredient| %>
     <%= ingredient.text_field :amount, placeholder: "例）一本" %></br>
-    <%= ingredient.text_field :amount, placeholder: "例）三個" %></br>
-    <%= ingredient.text_field :amount, placeholder: "例）300ml" %>
   <% end %>
 
   <h4>つくり方</h4>
-  <h5>(1)</h5>
+  <% step_num = 0 %>
   <%= f.fields_for :procedures do |procedure| %>
+    <%= step_num += 1 %>
+    <%= procedure.hidden_field :step_num, :value => step_num %>
     <%= procedure.text_area :body, placeholder: "例）つくり方を記入", size:"20 x 5" %></br>
   <% end %>
 
-  <%= f.submit 'レシピを公開' %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.submit 'レシピを公開', :name => 'post' %>
+  <%= f.submit '下書きに保存', :name => 'update' %>
 <% end %>

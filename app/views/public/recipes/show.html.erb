@@ -1,1 +1,74 @@
-<h1><%= @recipe.title %></h1>
+<!---------- レシピ詳細 -------------->
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-8">
+      <h1><%= @recipe.title %></h1>
+    </div>
+    <div class="col-md-3">
+      <% if @user == current_user.id %>
+        <u><%= link_to "レシピを編集", edit_recipe_path(@recipe.id) %></u>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mx-auto">
+    <%= attachment_image_tag @recipe, :recipe_image, format: 'jpeg', fallback: 'no_recipe_image.jpg', size:'100x75' %>
+  </div>
+
+  <div class="row mx-auto">
+    <%= @recipe.introduction %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <% if @recipe.favorited_by?(current_user) %>
+        <%= link_to @recipe.favorites.count, recipe_likes_path(@recipe), method: :delete, remote: true, class: 'fas fa-heart' %>
+      <% else %>
+        <%= link_to @recipe.favorites.count, recipe_likes_path(@recipe), method: :post, remote: true, class: 'far fa-heart' %>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "保存する", class: 'far fa-bookmark' %>
+    </div>
+  </div>
+
+  <div class="row mx-auto">
+    <table class="table">
+      <thead>
+        <th>
+          <h5>材料</h5>
+          <p>(人前)</p>
+        </th>
+        <th></th>
+      </thead>
+      <tbody>
+        <%= @ingredients.each do |ingredient| %>
+        <tr>
+          <td><%= ingredient.name %></td>
+          <td><%= ingredient.amount %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row mx-auto">
+    <table class="table">
+      <thead>
+        <th>
+          <h5>つくり方</h5>
+        </th>
+        <th></th>
+      </thead>
+      <tbody>
+        <%= @procedures.each do |procedure| %>
+        <tr>
+          <td><%= procedure.step_num %></td>
+          <td><%= procedure.body %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
