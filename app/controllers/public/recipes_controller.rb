@@ -48,6 +48,7 @@ class Public::RecipesController < ApplicationController
       :introduction,
       :recipe_image,
       :is_draft,
+      :serving,
       procedures_attributes: [:body, :step_num],
       ingredients_attributes: [:name, :amount]
     )
