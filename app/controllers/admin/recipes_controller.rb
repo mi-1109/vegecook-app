@@ -5,5 +5,6 @@ class Admin::RecipesController < ApplicationController
   end
 
   def show
+    @recipe = PostRecipe.find(params[:id])
   end
 end

@@ -1,2 +1,10 @@
-<h1>Admin::Recipes#show</h1>
-<p>Find me in app/views/admin/recipes/show.html.erb</p>
+<!---------- 管理者側：レシピ詳細 -------------->
+<div class="container">
+  <%= render partial: 'shared/recipe_show', locals: { recipe: @recipe } %>
+
+  <div class="row">
+    <div class="mb-5 mx-auto">
+      <%= link_to "レシピを削除", admin_destroy_recipe_path(@recipe.id), class: 'btn- btn-sm btn-danger py-2' %>
+    </div>
+  </div>
+</div>

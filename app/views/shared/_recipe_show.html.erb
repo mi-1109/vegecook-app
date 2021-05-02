@@ -1,0 +1,81 @@
+<!---------- レシピ詳細 -------------->
+
+  <div class="row">
+    <div class="mx-auto mt-4">
+      <h2 class="jp-font"><%= recipe.title %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <p class="jp-font">by <%= link_to "#{recipe.user.name}", user_path(recipe.user.id), class:'text-success user-link' %></p>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <%= attachment_image_tag recipe, :recipe_image, :fill, 500, 400, format: 'jpeg', class:'mx-auto' %>
+  </div>
+
+  <div class="row mt-4 mb-3">
+    <p style="width: 450px" class="mx-auto text-wrap"><%= recipe.introduction %></p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1 offset-md-7 text-right">
+      <% if @recipe.favorited_by?(current_user) %>
+        <%= link_to recipe_likes_path(recipe), method: :delete, remote: true do %>
+          <span class="fas fa-heart"></span>
+          <%= recipe.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to recipe_likes_path(recipe), method: :post, remote: true, class:'text-danger like-button' do %>
+          <span class="far fa-heart like-button"></span>
+          <%= recipe.likes.count %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to " 保存", recipe_likes_path(recipe), class: 'far fa-bookmark text-secondary' %>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <table style="width: 45%" class="table table-borderless mx-auto">
+      <thead class="border-bottom">
+        <th class="d-flex pb-0 mb-2">
+          <h5 class="mb-0 jp-font font-weight-bold">材料</h5>
+          <p class="mb-0 ml-1 pt-1 jp-font">（<%= recipe.serving %>人前）</p>
+        </th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% recipe.ingredients.each do |ingredient| %>
+        <tr>
+          <td style="width: 50%"><%= ingredient.name %></td>
+          <td style="width: 10%"><%= ingredient.amount %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row mx-auto mt-3 mb-5">
+    <table style="width: 60%" class="table table-borderless mx-auto">
+      <thead class="border procedure">
+        <th class="d-flex pb-0 pt-2 mb-2 align-middle">
+          <h5 class="ml-0 py-0 mb-0 jp-font font-weight-bold">つくり方</h5>
+        </th>
+      </thead>
+      <tbody>
+        <% recipe.procedures.each do |procedure| %>
+        <tr>
+          <td class="pl-4 text-wrap">
+            <span class="mr-3"><%= procedure.step_num %> )</span>
+            <%= procedure.body %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
