@@ -3,9 +3,15 @@
 <header class="sticky-top shadow-sm">
   <nav class="navbar navbar-expand-md navbar-light py-3">
     <div class="container">
-      <a class="navbar-brand" href="/">
-        <h4 class="text-secondary align-center mb-0">VEGECOOK</h4>
-      </a>
+      <% if admin_signed_in? %>
+        <a class="navbar-brand" href="/admin">
+          <h4 class="text-secondary align-center mb-0">VEGECOOK</h4>
+        </a>
+      <% else %>
+        <a class="navbar-brand" href="/">
+          <h4 class="text-secondary align-center mb-0">VEGECOOK</h4>
+        </a>
+      <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navvbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
