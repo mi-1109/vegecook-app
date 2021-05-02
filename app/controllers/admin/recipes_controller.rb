@@ -7,4 +7,10 @@ class Admin::RecipesController < ApplicationController
   def show
     @recipe = PostRecipe.find(params[:id])
   end
+
+  def destroy
+    @recipe = PostRecipe.find(params[:id])
+    @recipe.destroy
+    redirect_to admin_recipes_path
+  end
 end

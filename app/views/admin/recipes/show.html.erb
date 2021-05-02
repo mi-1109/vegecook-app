@@ -4,7 +4,7 @@
 
   <div class="row">
     <div class="mb-5 mx-auto">
-      <%= link_to "レシピを削除", admin_destroy_recipe_path(@recipe.id), class: 'btn- btn-sm btn-danger py-2' %>
+      <%= link_to "レシピを削除", admin_destroy_recipe_path(@recipe.id), method: :delete, data: {confirm: "本当にレシピを削除しますか？"}, class: 'btn- btn-sm btn-danger py-2' %>
     </div>
   </div>
 </div>
