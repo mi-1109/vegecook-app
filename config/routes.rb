@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :recipes, only: [:index, :show, :destroy]
     resources :inquiries, only: [:index, :show]
-    resources :chats, only: [:show, :create]
+    resources :chats, only: [:index, :show, :create]
     resources :users, only: [:index, :show, :edit, :update]
   end
 
