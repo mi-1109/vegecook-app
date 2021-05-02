@@ -20,24 +20,8 @@
     <p style="width: 450px" class="mx-auto text-wrap"><%= recipe.introduction %></p>
   </div>
 
-  <div class="row">
-    <div class="col-md-1 offset-md-7 text-right">
-      <% if @recipe.favorited_by?(current_user) %>
-        <%= link_to recipe_likes_path(recipe), method: :delete, remote: true do %>
-          <span class="fas fa-heart"></span>
-          <%= recipe.likes.count %>
-        <% end %>
-      <% else %>
-        <%= link_to recipe_likes_path(recipe), method: :post, remote: true, class:'text-danger like-button' do %>
-          <span class="far fa-heart like-button"></span>
-          <%= recipe.likes.count %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="col-md-2">
-      <%= link_to " 保存", recipe_likes_path(recipe), class: 'far fa-bookmark text-secondary' %>
-    </div>
-  </div>
+  <!--いいねボタンとレシピ保存ボタンの部分テンプレートを表示する-->
+  <%= render partial: '/shared/like_save_buttons', locals: { recipe: @recipe } %>
 
   <div class="row mt-4">
     <table style="width: 45%" class="table table-borderless mx-auto">
