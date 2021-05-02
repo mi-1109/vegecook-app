@@ -141,3 +141,14 @@ footer {
 #post-recipe {
   min-height: 120vh;
 }
+
+.btn-color {
+  background-color: #eabeaf;
+  &:hover {
+    background-color: #a6c5ab;
+  }
+}
+
+.login-bg {
+  background-color: #e8ede1;
+}
