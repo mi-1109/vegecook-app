@@ -1,60 +1,81 @@
 <!---------- レシピ投稿フォーム --------->
 
-<div class="container">
+<div id="post-recipe" class="container">
   <%= form_with model: @post_recipe, url:'/recipes', local:true do |f| %>
 
   <div class="row">
-    <div class="form-group mt-5 ml-5">
-      <%= f.text_field :title, placeholder: "レシピ名", size: "40", class:'py-2' %>
+    <div class="form-group mt-5 mx-auto">
+      <%= f.text_field :title, placeholder: "レシピ名", size: "90", class:'py-2 px-2' %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-5">
-      <div class="from-group mt-3 ml-4">
-        <h4>写真を載せる</h4>
-        <%= f.attachment_field :recipe_image %></br>
+    <div class="col-md-5 mt-4 mr-4 pl-4">
+      <div class="form-group mt-4 ml-5">
+        <%= f.text_area :introduction, placeholder: "料理の簡単な説明（キャプション）", size:"52 x 5", class:'pl-2 pt-2' %>
+      </div>
+      <div class="from-group mt-3 ml-5 p-3 border">
+        <h5 class="mb-3">写真を載せる</h5>
+        <%= f.attachment_field :recipe_image %>
       </div>
     </div>
+
     <div class="col-md-6">
-      <div class="form-group">
-        <%= f.text_area :introduction, placeholder: "料理の簡単な説明（キャプション）", size:"40 x 10" %>
-      </div>
-      <div class="form-group">
-        <h4>材料</h4>
-        <%= f.text_field :serving, placeholder: "何人分" %>
-        <h5>材料・調味料</h5>
-        <%= f.fields_for :ingredients do |ingredient| %>
-          <%= ingredient.text_field :name, placeholder: "例）にんじん" %></br>
-        <h5>分量</h5>
-          <%= ingredient.text_field :amount, placeholder: "例）一本" %></br>
-        <% end %>
+      <div class="form-group mt-5 border px-3 pt-3 ml-5">
+        <div class="form-inline mb-2">
+          <h4 class="mb-0">材料</h4>
+          <%= f.text_field :serving, placeholder: "何人分", size:"10x3", class:'ml-4' %>
+        </div>
+        <table class="table table-borderless">
+          <thead>
+            <th class="pb-0"><h6 class="mb-0">材料・調味料</h6></th>
+            <th class="pb-0"><h6 class="mb-0">分量</h6></th>
+          </thead>
+          <tbody>
+          <%= f.fields_for :ingredients do |ingredient| %>
+            <tr>
+              <td><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
+              <td><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="from-group">
-      <h4>つくり方</h4>
+    <div class="from-group mt-3 ml-5">
+      <h4 class="ml-2">つくり方</h4>
       <% step_num = 0 %>
+      <table style="width:60%" class="table d-flex flex-wrap">
       <%= f.fields_for :procedures do |procedure| %>
-        <%= step_num += 1 %>
+        <thead>
+          <tr>
+            <th>
+              <%= step_num += 1 %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= procedure.text_area :body, placeholder: "例）つくり方を記入", size:"20 x 5" %>
+            </td>
+          </tr>
+        </tbody>
         <%= procedure.hidden_field :step_num, :value => step_num %>
-        <%= procedure.text_area :body, placeholder: "例）つくり方を記入", size:"20 x 5" %></br>
       <% end %>
+      </table>
     </div>
   </div>
 
-  <div class="row form-inline">
-    <%= f.submit 'レシピを公開', :name => 'post' %>
-    <%= f.submit '下書きに保存', :name => 'update' %>
+  <div class="row mt-4">
+    <div class="form-inline mx-auto">
+      <%= f.submit 'レシピを公開', :name => 'post', class:'mr-5 btn btn-sm btn-success' %>
+      <%= f.submit '下書きに保存', :name => 'update', class:'mr-5 btn btn-sm btn-warning' %>
+    </div>
   </div>
   <%= f.hidden_field :user_id, :value => current_user.id %>
-
   <% end %>
 </div>
-
-
-
-
-
