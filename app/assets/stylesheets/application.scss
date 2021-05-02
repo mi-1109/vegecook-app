@@ -94,7 +94,7 @@ footer {
   padding-bottom: 60px;
 }
 
-.admin_title {
+.admin-page-title {
   width: 90%;
   background-color: #e8ede1;
   font-family: 'メイリオ';
@@ -134,11 +134,11 @@ footer {
   color: #eabeaf;
 }
 
-.fa-bookmark:hover, .like-button:hover, .user-link:hover {
+.fa-bookmark:hover, .like-btn:hover, .user-link:hover {
   text-decoration: none;
 }
 
-#post-recipe {
+.page-height {
   min-height: 120vh;
 }
 

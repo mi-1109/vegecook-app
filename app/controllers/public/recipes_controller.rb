@@ -33,7 +33,6 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = PostRecipe.find(params[:id])
-    @user = User.find(params[:id])
   end
 
   def edit
