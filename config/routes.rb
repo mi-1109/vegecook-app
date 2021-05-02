@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     resources :recipes, only: [:index, :show]
     delete 'recipes/:id' => 'recipes#destroy', as: 'destroy_recipe'
     resources :inquiries, only: [:index, :show]
-    resources :chats, only: [:show, :create]
+    resources :chats, only: [:index, :show, :create]
     resources :users, only: [:index, :show, :edit, :update]
   end
 
