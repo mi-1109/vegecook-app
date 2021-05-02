@@ -142,8 +142,13 @@ footer {
   min-height: 120vh;
 }
 
+.btn-color {
+  background-color: #eabeaf;
+  &:hover {
+    background-color: #a6c5ab;
+  }
+}
+
 .login-bg {
-  height: 100%;
-  width: 30%;
-  background-color: #6c757d ;
+  background-color: #e8ede1;
 }
