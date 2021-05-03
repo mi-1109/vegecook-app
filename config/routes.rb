@@ -23,16 +23,12 @@ Rails.application.routes.draw do
     resources :inquiries, only: [:index, :new, :create]
     resources :chats, only: [:show, :create]
 
-    resources :recipes, only: [:index, :new, :show, :edit]  do
+    resources :post_recipes do
       resources :recipe_comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
-    get 'recipes/searches' => 'searches#index'
-    get 'recipes/rankings' => 'rankings#index'
-    post 'recipes' => 'recipes#create', as: 'post_recipes'
-    patch 'recipes/:id' => 'recipes#update', as: 'post_recipe'
-    delete 'recipes/:id' => 'recipes#destroy', as: 'destroy_recipe'
-
+    get 'post_recipes/searches' => 'searches#index'
+    get 'post_recipes/rankings' => 'rankings#index'
     get 'users/quit_confirm' => 'users#quit_confirm'
     patch 'users/quit' => 'users#quit'
 
@@ -49,8 +45,7 @@ Rails.application.routes.draw do
   # ========= 管理者(admin)のルーティング ================
   namespace :admin do
     root to: 'homes#top'
-    resources :recipes, only: [:index, :show]
-    delete 'recipes/:id' => 'recipes#destroy', as: 'destroy_recipe'
+    resources :post_recipes, only: [:index, :show, :destroy]
     resources :inquiries, only: [:index, :show]
     resources :chats, only: [:index, :show, :create]
     resources :users, only: [:index, :show, :edit, :update]

@@ -1,4 +1,4 @@
-class Public::RecipesController < ApplicationController
+class Public::PostRecipesController < ApplicationController
 
   def index
   end
@@ -16,13 +16,13 @@ class Public::RecipesController < ApplicationController
   end
 
   def create
-    @recipe = PostRecipe.new(recipe_params)
+    @post_recipe = PostRecipe.new(post_recipe_params)
     if params[:post]
-      @recipe.save
+      @post_recipe.save
       flash[:notice] = "レシピを投稿しました！"
       redirect_to user_path(current_user)
     elsif params[:update]
-      @recipe.update(is_draft: true)
+      @post_recipe.update(is_draft: true)
       flash[:notice] = "レシピを下書きに保存しました！"
       redirect_to user_path(current_user)
     else
@@ -32,7 +32,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def show
-    @recipe = PostRecipe.find(params[:id])
+    @post_recipe = PostRecipe.find(params[:id])
   end
 
   def edit
@@ -41,8 +41,8 @@ class Public::RecipesController < ApplicationController
 
   def update
     @post_recipe = PostRecipe.find(params[:id])
-    if @post_recipe.update(recipe_params)
-      redirect_to recipe_path(@post_recipe.id), notice: "レシピを更新しました！"
+    if @post_recipe.update(post_recipe_params)
+      redirect_to post_recipe_path(@post_recipe.id), notice: "レシピを更新しました！"
     else
       render action: :edit, notice: "レシピを更新できませんでした。お手数ですが、再度お試しください。"
     end
@@ -56,7 +56,7 @@ class Public::RecipesController < ApplicationController
 
   private
 
-  def recipe_params
+  def post_recipe_params
     params.require(:post_recipe).permit(
       :user_id,
       :title,
