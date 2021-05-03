@@ -45,8 +45,7 @@ Rails.application.routes.draw do
   # ========= 管理者(admin)のルーティング ================
   namespace :admin do
     root to: 'homes#top'
-    resources :post_recipes, only: [:index, :show]
-    delete 'post_recipes/:id' => 'post_recipes#destroy', as: 'destroy_recipe'
+    resources :post_recipes, only: [:index, :show, :destroy]
     resources :inquiries, only: [:index, :show]
     resources :chats, only: [:index, :show, :create]
     resources :users, only: [:index, :show, :edit, :update]
