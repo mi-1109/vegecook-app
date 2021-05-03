@@ -23,12 +23,14 @@ Rails.application.routes.draw do
     resources :inquiries, only: [:index, :new, :create]
     resources :chats, only: [:show, :create]
 
-    resources :recipes do
+    resources :recipes, only: [:index, :create, :new, :show, :edit]  do
       resources :recipe_comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
     get 'recipes/searches' => 'searches#index'
     get 'recipes/rankings' => 'rankings#index'
+    patch 'recipes/:id' => 'recipes#update', as: 'post_recipe'
+    delete 'recipes/:id' => 'recipes#destroy', as: 'destroy_recipe'
 
     get 'users/quit_confirm' => 'users#quit_confirm'
     patch 'users/quit' => 'users#quit'
