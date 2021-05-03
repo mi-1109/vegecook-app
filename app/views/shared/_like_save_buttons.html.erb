@@ -3,21 +3,21 @@
 <div class="row">
   <div class="col-md-3 offset-md-7 text-right d-flex">
   <% if user_signed_in? %>
-    <% if @recipe.favorited_by?(current_user) %>
-      <%= link_to recipe_likes_path(recipe), method: :delete, remote: true, class:'text-danger like-btn ml-5' do %>
+    <% if @post_recipe.favorited_by?(current_user) %>
+      <%= link_to post_recipe_likes_path(recipe), method: :delete, remote: true, class:'text-danger like-btn ml-5' do %>
         <span class="fas fa-heart"></span>
-        <%= recipe.likes.count %>
+        <%= post_recipe.likes.count %>
       <% end %>
     <% else %>
-      <%= link_to recipe_likes_path(recipe), method: :post, remote: true, class:'text-danger like-btn ml-5' do %>
+      <%= link_to post_recipe_likes_path(post_recipe), method: :post, remote: true, class:'text-danger like-btn ml-5' do %>
         <span class="far fa-heart like-button"></span>
-        <%= recipe.likes.count %>
+        <%= post_recipe.likes.count %>
       <% end %>
     <% end %>
-      <%= link_to " 保存", recipe_likes_path(recipe), class: 'far fa-bookmark text-secondary ml-4 pt-1' %>
+      <%= link_to " 保存", post_recipe_likes_path(post_recipe), class: 'far fa-bookmark text-secondary ml-4 pt-1' %>
   <% else %>
       <span class="far fa-heart text-danger pt-1 ml-5"></span>
-      <p class="text-danger"><%= recipe.likes.count %></p>
+      <p class="text-danger"><%= post_recipe.likes.count %></p>
       <p class="far fa-bookmark text-secondary ml-4 pt-1">保存</p>
   <% end %>
   </div>

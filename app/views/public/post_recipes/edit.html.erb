@@ -1,4 +1,4 @@
-<!---------- レシピ投稿フォーム -------------->
+<!---------- レシピ編集画面 -------------->
 
 <div style="height: 120vh", class="container">
   <%= form_with model: @post_recipe, local:true do |f| %>
@@ -36,6 +36,7 @@
               <tr>
                 <td><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
                 <td><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
+                <%= ingredient.hidden_field :id %>
               </tr>
             <% end %>
             </tbody>
@@ -65,6 +66,7 @@
             </tr>
           </tbody>
           <%= procedure.hidden_field :step_num, :value => step_num %>
+          <%= procedure.hidden_field :id %>
         <% end %>
         </table>
       </div>
@@ -72,16 +74,13 @@
 
     <div class="row mt-4">
       <div class="form-inline mx-auto">
-        <% if current_page?(new_recipe_path) %>
-          <%= f.submit 'レシピを公開', :name => 'post', class:'mr-5 btn btn-sm btn-success' %>
-          <%= f.submit '下書きに保存', :name => 'update', class:'mr-5 btn btn-sm btn-warning' %>
-        <% else %>
-          <%= f.submit 'レシピを更新', class:'mr-5 btn btn-sm btn-success' %>
-          <u><%= link_to 'レシピを削除', "/recipes/:id", method: :delete, data: {confirm: "このレシピを削除しますか？"}, class:'mr-5 text-secondary' %></u>
-        <% end %>
+        <%= f.submit 'レシピを更新', class:'mr-5 btn btn-sm btn-success' %>
+        <u><%= link_to 'レシピを削除', "/post_recipes/#{@post_recipe.id}", method: :delete, data: {confirm: "このレシピを削除しますか？"}, class:'mr-5 text-secondary' %></u>
       </div>
     </div>
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
+
   <% end %>
 </div>
+
