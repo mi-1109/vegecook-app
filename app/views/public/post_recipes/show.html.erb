@@ -1,4 +1,12 @@
 <!---------- 顧客側：レシピ詳細 -------------->
-<div class="container">
+<div class="container mb-5">
   <%= render partial: '/shared/recipe_show', locals: { post_recipe: @post_recipe } %>
+
+  <div class="row">
+    <div class="mx-auto">
+      <% if @post_recipe.user_id == current_user.id %>
+        <u><%= link_to "レシピを編集する", edit_post_recipe_path(@post_recipe.id), class: 'btn btn-sm btn-warning text-white mb-4' %></u>
+      <% end %>
+    </div>
+  </div>
 </div>
