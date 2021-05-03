@@ -36,6 +36,22 @@ class Public::RecipesController < ApplicationController
   end
 
   def edit
+    @post_recipe = PostRecipe.find(params[:id])
+  end
+
+  def update
+    @post_recipe = PostRecipe.find(params[:id])
+    if @post_recipe.update(recipe_params)
+      redirect_to recipe_path(@post_recipe.id), notice: "レシピを更新しました！"
+    else
+      render action: :edit, notice: "レシピを更新できませんでした。お手数ですが、再度お試しください。"
+    end
+  end
+
+  def destroy
+    @post_recipe = PostRecipe.find(params[:id])
+    @post_recipe.destroy
+    redirect_to root_path
   end
 
   private
@@ -48,8 +64,8 @@ class Public::RecipesController < ApplicationController
       :recipe_image,
       :is_draft,
       :serving,
-      procedures_attributes: [:body, :step_num],
-      ingredients_attributes: [:name, :amount]
+      procedures_attributes: [:body, :step_num, :id],
+      ingredients_attributes: [:name, :amount, :id]
     )
   end
 end
