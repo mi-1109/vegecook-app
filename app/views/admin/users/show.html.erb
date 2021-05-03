@@ -1,9 +1,8 @@
 <!---------------- 管理者：会員詳細 ------------------>
 
-<div class="container">
-  <div class="row mt-5">
-    <h3 class="jp-font"><%= @user.name %>さんの会員情報の変更</h3>
-  </div>
+<div style="height: 70vh", class="d-flex align-items-center">
+  <div class="container">
+    <h3 class="jp-font"><%= @user.name %>さんの会員情報</h3>
 
     <table class="table table-borderless mt-4">
       <tr>
@@ -32,10 +31,11 @@
       </tr>
     </table>
 
-  <div class="d-flex mt-4 ml-2">
-    <%= link_to "編集する", edit_admin_user_path(@user.id), class: 'btn btn-sm btn-success' %>
-    <%= link_to "戻る", admin_users_path, class: 'btn btn-sm btn-secondary ml-4' %>
-  </div>
+    <div class="d-flex mt-4 ml-2">
+      <%= link_to "編集する", edit_admin_user_path(@user.id), class: 'btn btn-sm btn-success' %>
+      <%= link_to "戻る", admin_users_path, class: 'btn btn-sm btn-secondary ml-4' %>
+    </div>
 
+  </div>
 </div>
 
