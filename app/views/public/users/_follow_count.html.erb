@@ -1,6 +1,6 @@
 <!-------- フォロー・フォロワー数を表示する部分テンプレート ---------->
 
 <span class="fas fa-user-friends mr-3"></span>
-<u><%= link_to "#{user.followings.count} フォロー", follows_user_path(user.id) %></u><br />
+<u><%= link_to "#{user.followings.count} フォロー", follows_user_path(user.id), class: 'text-secondary' %></u><br />
 <span class="fas fa-user-friends mr-3 mt-2"></span>
-<u><%= link_to "#{user.followers.count} フォロワー", follows_user_path(user.id) %></u>
+<u><%= link_to "#{user.followers.count} フォロワー", follows_user_path(user.id), class: 'text-secondary'%></u>
