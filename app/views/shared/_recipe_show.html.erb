@@ -17,10 +17,10 @@
   </div>
 
   <div class="row mt-4 mb-3">
-    <p style="width: 450px" class="mx-auto text-wrap"><%= post_recipe.introduction %></p>
+    <p style="width: 450px" class="mx-auto text-wrap text-center"><%= post_recipe.introduction %></p>
   </div>
 
-  <!--いいねボタンとレシピ保存ボタンの部分テンプレートを表示する-->
+  <!--いいねボタンとレシピ保存ボタンの部分テンプレートを表示-->
   <%= render partial: '/shared/like_save_buttons', locals: { post_recipe: @post_recipe } %>
 
   <div class="row mt-4">
