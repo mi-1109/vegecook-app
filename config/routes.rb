@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :post_recipes do
       resources :recipe_comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
+      resource :saved_recipes, only: [:create, :destroy]
     end
     get 'post_recipes/searches' => 'searches#index'
     get 'post_recipes/rankings' => 'rankings#index'

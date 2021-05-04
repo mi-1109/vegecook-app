@@ -1,1 +1,1 @@
-$('#like_button_<%= @post_recipe.id %>').html("<%= j(render partial: 'shared/like_save_buttons', locals: {post_recipe: @post_recipe}) %>");
+$('#like-save-buttons').html("<%= j(render partial: 'shared/like_save_buttons', locals: {post_recipe: @post_recipe}) %>");
