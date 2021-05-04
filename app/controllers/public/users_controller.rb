@@ -1,6 +1,8 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @user_posts = PostRecipe.where(user_id: @user)
+    @liked_posts = Like.where(user_id: @user)
   end
 
   def edit

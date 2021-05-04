@@ -1,34 +1,43 @@
 <div class="container">
 <%= render partial: 'mypage_header', locals: { user: @user } %>
 
-  <div class="row">
+  <div class="row mt-3 mb-5">
     <div class="col-md-11 wrap">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a href="#tab1" class="nav-link" data-toggle="tab">投稿レシピ</a>
+          <a href="#tab-posted-recipe" class="nav-link tab-style" data-toggle="tab">投稿レシピ</a>
         </li>
         <li class="nav-item">
-          <a href="#tab2" class="nav-link" data-toggle="tab">いいね</a>
+          <a href="#tab2" class="nav-link tab-style" data-toggle="tab">いいね</a>
         </li>
         <% if @user.id == current_user.id %>
         <li class="nav-item">
-          <a href="#tab3" class="nav-link" data-toggle="tab">保存レシピ</a>
+          <a href="#tab3" class="nav-link tab-style" data-toggle="tab">保存レシピ</a>
         </li>
         <li class="nav-item">
-          <a href="#tab4" class="nav-link" data-toggle="tab">閲覧履歴</a>
+          <a href="#tab4" class="nav-link tab-style" data-toggle="tab">閲覧履歴</a>
         </li>
         <li class="nav-item">
-          <a href="#tab5" class="nav-link" data-toggle="tab">下書きレシピ</a>
+          <a href="#tab5" class="nav-link tab-style" data-toggle="tab">下書きレシピ</a>
         </li>
         <% end %>
       </ul>
-      <div class="tab-content p-4">
-        <div id="tab1" class="tab-pane active">
-          <p>TAB1の投稿が入ります</p>
+
+      <div class="tab-content px-4 pb-4 border rounded-bottom">
+        <div id="tab-posted-recipe" class="tab-pane active d-flex flex-wrap row-cols-5">
+          <% @user_posts.each do |user_post| %>
+            <div class="card text-center mt-3 pt-3 ml-4">
+              <%= link_to (attachment_image_tag user_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(user_post.id), class:'card-img-top' %>
+              <%= link_to user_post.title, post_recipe_path(user_post), class:'card-text text-wrap' %>
+            </div>
+          <% end %>
         </div>
+
         <div id="tab2" class="tab-pane">
-          <p>TAB2の投稿が入ります</p>
+
         </div>
+
+
         <div id="tab3" class="tab-pane">
           <p>TAB3の投稿が入ります</p>
         </div>
