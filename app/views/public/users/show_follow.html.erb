@@ -1,7 +1,7 @@
 <!----------フォロー中の会員・フォロワーの会員一覧-------------->
 
 <div class="container">
-<%= render partial: 'mypage_header', locals: { user: @user } %>
+<%= render partial: 'mypage_header', locals: { user: @user, index_user: @user } %>
 
 <div class="row">
   <div class="col-md-11 wrap">
@@ -17,27 +17,11 @@
 
     <div class="tab-content p-4">
       <div id="tab1" class="tab-pane active">
-        <table class="table table-borderless">
-          <tbody class="add-following">
-          <% @followings.each do |following| %>
-            <tr id="following_<%= following.id %>">
-              <%= render partial: 'follow_list', locals: { user: following } %>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+        <%= render partial: 'following_table', locals: { followings: @followings, index_user: @user } %>
       </div>
 
       <div id="tab2" class="tab-pane">
-        <table class="table table-borderless">
-          <tbody class="add-follower">
-          <% @followers.each do |follower| %>
-            <tr id="follower_<%= follower.id %>">
-              <%= render partial: 'follow_list', locals: { user: follower } %>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+        <%= render partial: 'follower_table', locals: { followers: @followers, index_user: @user } %>
       </div>
     </div>
 

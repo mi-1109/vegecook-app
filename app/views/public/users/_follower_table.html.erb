@@ -1,0 +1,17 @@
+
+<table id="follower-table" class="table table-borderless">
+  <% followers.each do |follower| %>
+    <tr>
+      <td>
+        <%= attachment_image_tag follower, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
+      </td>
+      <td>
+        <%= link_to follower.name, user_path(follower.id) %>
+        <%= follower.introduction %>
+      </td>
+      <td>
+        <%= render partial: 'public/users/follow_button', locals: { user: follower, index_user: index_user } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

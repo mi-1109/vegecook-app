@@ -1,3 +1,9 @@
-$('#follower_<%= @follower.id %>').html('<%= j(render 'public/users/follow_list', user: @follower) %>');
-$('.add-following').append('<tr id="following_<%= @following.id %>"><td><%= attachment_image_tag @following, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %></td><td><%= link_to @following.name, user_path(@following.id) %></td><td><%= link_to "フォロー中", user_relationships_path(@following.id), method: :delete, remote: true, data: {confirm: "#{@following.name}さんのフォローを解除しますか？"}, class:'btn btn-sm btn-info' %></td></tr>');
+<!--会員詳細ヘッダーのフォローボタンを非同期通信で更新-->
+$('#header-follow-btn').html('<%= j(render 'public/users/follow_button', user: @user, index_user: @user) %>');
+
+<!--フォロー一覧・フォロワー一覧のテーブルを非同期通信で更新-->
+$('#following-table').html('<%= j(render 'public/users/following_table', followings: @followings, index_user: @user) %>');
+$('#follower-table').html('<%= j(render 'public/users/follower_table', followers: @followers, index_user: @user) %>');
+
+<!--会員詳細ヘッダーのフォロー・フォロワー数を非同期通信で更新-->
 $('#follow_count').html('<%= j(render 'public/users/follow_count', user: @user) %>');
