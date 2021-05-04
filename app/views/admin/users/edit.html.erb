@@ -1,48 +1,48 @@
-<!---------------- 管理者：会員詳細 ------------------>
+<!---------------- 管理者：会員編集 ------------------>
+<div style="height: 70vh", class="d-flex align-items-center">
+  <div class="container">
 
-<div class="container">
-  <div class="row">
-    <h1 class="mx-auto">会員情報の変更</h1>
-  </div>
+    <h3 class="jp-font">会員情報の編集</h3>
 
-  <%= form_with model: @user, url: admin_user_path(@user.id), method: :PATCH, local:true do |f| %>
-  <div class="row">
-    <div class="col-md-7">
-      <p>ユーザー名</p>
-      <p><%= @user.name %></p>
+    <%= form_with model: @user, url: admin_user_path(@user.id), method: :PATCH, local:true do |f| %>
+    <table class="table table-borderless mt-4 pt-3">
+      <tr>
+        <td style="width:25%">ユーザー名</td>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <td style="width:25%">自己紹介</td>
+        <td><%= @user.introduction %></td>
+      </tr>
+      <tr>
+        <td style="width:25%">メールアドレス</td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr class="form-group">
+        <td style="width:25%">加入プラン</td>
+        <td>
+          <%= f.radio_button :is_paid, :false %>
+          <%= f.label :is_paid, "スタンダード・プラン（無料）" %><br />
+          <%= f.radio_button :is_paid, :true %>
+          <%= f.label :is_paid, "プレミアム・プラン（有料）" %>
+        </td>
+      </tr>
+      <tr class="form-group">
+        <td style="width:25%">会員ステータス</td>
+        <td>
+          <%= f.radio_button :is_deleted, :false %>
+          <%= f.label :is_deleted, "有効" %><br />
+          <%= f.radio_button :is_deleted, :true %>
+          <%= f.label :is_deleted, "退会済" %>
+        </td>
+      </tr>
+    </table>
 
-      <p>自己紹介</p>
-      <p><%= @user.introduction %></p>
-
-      <p>メールアドレス</p>
-      <p><%= @user.email %></p>
-
-      <div class="form-group">
-        <p>加入プラン</p>
-        <%= f.radio_button :is_paid, :false %>
-        <%= f.label :is_paid, "スタンダード・プラン（無料）" %><br />
-        <%= f.radio_button :is_paid, :true %>
-        <%= f.label :is_paid, "プレミアム・プラン（有料）" %>
-      </div>
-
-      <div class="form-group">
-        <p>会員ステータス</p>
-        <%= f.radio_button :is_deleted, :false %>
-        <%= f.label :is_deleted, "有効" %><br />
-        <%= f.radio_button :is_deleted, :true %>
-        <%= f.label :is_deleted, "退会済" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.submit '変更', class:"btn btn-sm btn-success" %>
-      </div>
+    <div class="d-flex mt-4 ml-2">
+      <%= f.submit '変更する', class: 'btn btn-sm btn-success' %>
+      <%= link_to "戻る", admin_user_path(@user.id), class: 'btn btn-sm btn-secondary ml-4' %>
     </div>
-  </div>
-  <% end %>
+    <% end %>
 
-  <div class="row">
-    <p><%= link_to "戻る", admin_user_path(@user.id) %></p>
   </div>
-
 </div>
-

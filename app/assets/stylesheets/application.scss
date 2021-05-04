@@ -22,6 +22,7 @@
    padding: 0;
    box-sizing: border-box;
    font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'メイリオ', 'Sawarabi Mincho';
+   color: #6c757d;
  }
 
  body {
@@ -137,10 +138,6 @@ footer {
 .fa-bookmark:hover, .like-btn:hover, .user-link:hover {
   text-decoration: none;
 }
-
-// .page-height {
-//   min-height: 120vh;
-// }
 
 .btn-color {
   background-color: #eabeaf;
