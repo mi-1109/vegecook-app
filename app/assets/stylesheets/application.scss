@@ -25,6 +25,13 @@
    color: #6c757d;
  }
 
+ a {
+   color: #6c757d;
+   &:hover {
+     color: #eabeaf;
+   }
+ }
+
  body {
    font-size: 14px;
    background-color: #fff;
@@ -148,4 +155,18 @@ footer {
 
 .login-bg {
   background-color: #e8ede1;
+}
+
+// 会員詳細のタブ
+.nav-item >.tab-style{
+  background-color: #e8ede1;
+  margin-right: 2px;
+  &:hover {
+    color: #fff;
+  }
+  &:hover:after {
+    width: initial;
+    left: initial;
+    background: initial;
+  }
 }

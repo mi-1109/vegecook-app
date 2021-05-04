@@ -18,7 +18,7 @@ class PostRecipe < ApplicationRecord
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
-  
+
   def saved_by?(user)
     saved_recipes.where(user_id: user.id).exists?
   end

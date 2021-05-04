@@ -1,6 +1,11 @@
 class Public::UsersController < ApplicationController
+
   def show
     @user = User.find(params[:id])
+    @user_posts = PostRecipe.where(user_id: @user)
+    @liked_posts = @user.liked_posts
+    @saved_posts = @user.saved_posts
+    @draft_posts = PostRecipe.where(user_id: @user, is_draft: true)
   end
 
   def edit
@@ -40,4 +45,5 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :name, :profile_image, :is_paid, :is_deleted, :veg_type, :introduction)
   end
+
 end
