@@ -1,21 +1,27 @@
 <!------------ いいねボタンとレシピ保存ボタンの部分テンプレート ---------->
 
-<div id="like_button_<%= post_recipe.id %>">
+<div id="like-save-buttons">
   <div class="row">
     <div class="col-md-3 offset-md-7 text-right d-flex">
     <% if user_signed_in? %>
-        <% if post_recipe.liked_by?(current_user) %>
-          <%= link_to post_recipe_likes_path(post_recipe), method: :delete, remote: true, class:'text-danger like-btn ml-5' do %>
-            <span class="fas fa-heart text-danger"></span>
-            <%= post_recipe.likes.count %>
-          <% end %>
-        <% else %>
-          <%= link_to post_recipe_likes_path(post_recipe), method: :post, remote: true, class:'text-danger like-btn ml-5' do %>
-            <span class="far fa-heart like-button text-danger"></span>
-            <%= post_recipe.likes.count %>
-          <% end %>
+      <!--いいねボタン-->
+      <% if post_recipe.liked_by?(current_user) %>
+        <%= link_to post_recipe_likes_path(post_recipe), method: :delete, remote: true, class:'text-danger like-btn ml-5' do %>
+          <span class="fas fa-heart text-danger"></span>
+          <%= post_recipe.likes.count %>
         <% end %>
-      <%= link_to " 保存", post_recipe_likes_path(post_recipe), class: 'far fa-bookmark text-secondary ml-4 pt-1' %>
+      <% else %>
+        <%= link_to post_recipe_likes_path(post_recipe), method: :post, remote: true, class:'text-danger like-btn ml-5' do %>
+          <span class="far fa-heart like-button text-danger"></span>
+          <%= post_recipe.likes.count %>
+        <% end %>
+      <% end %>
+      <!--レシピお気に入り保存ボタン-->
+      <% if post_recipe.saved_by?(current_user) %>
+        <%= link_to " SAVED", post_recipe_saved_recipes_path(post_recipe), method: :delete, remote: true, class:'text-secondary ml-3 pt-1 fas fa-bookmark' %>
+      <% else %>
+        <%= link_to " SAVE", post_recipe_saved_recipes_path(post_recipe), method: :post, remote: true, class:'text-secondary ml-3 pt-1 far fa-bookmark' %>
+      <% end %>
 
     <!--非ログインユーザー及び管理者用の非活性ボタン-->
     <% else %>
