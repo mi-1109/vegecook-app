@@ -1,2 +1,27 @@
-<h1>Public::Rankings#index</h1>
-<p>Find me in app/views/public/rankings/index.html.erb</p>
+<!--------- TOP20（ランキング）レシピ画面 ------------>
+
+<div class="container">
+  <h3 class="mt-4 pl-3 fas fa-crown font-space"> TOP20</h3>
+
+  <div class="row">
+    <div class="col-md-12">
+      <hr class="border-bottom"></hr>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="d-flex flex-wrap row-cols-5">
+    <% @recipe_ranks.each.with_index(1) do |recipe_rank, i| %>
+      <div class="card text-center mt-3 p-3 ml-4 mb-3">
+        <div class="card-header p-1 font-weight-bold bg-color">
+          NO. <%= i %>
+        </div>
+        <%= link_to (attachment_image_tag recipe_rank, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(recipe_rank.id), class:'card-img-top' %>
+        <%= link_to recipe_rank.title, post_recipe_path(recipe_rank), class:'card-text text-wrap mt-1' %>
+        <%= link_to recipe_rank.user.name, user_path(recipe_rank.user), class:'card-text text-wrap font-color' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
+</div>

@@ -23,15 +23,16 @@ Rails.application.routes.draw do
     resources :inquiries, only: [:index, :new, :create]
     resources :chats, only: [:show, :create]
 
+    get 'post_recipes/searches' => 'searches#index'
+    get 'post_recipes/rankings' => 'rankings#index'
+    get 'users/quit_confirm' => 'users#quit_confirm'
+    patch 'users/quit' => 'users#quit'
+
     resources :post_recipes do
       resources :recipe_comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
       resource :saved_recipes, only: [:create, :destroy]
     end
-    get 'post_recipes/searches' => 'searches#index'
-    get 'post_recipes/rankings' => 'rankings#index'
-    get 'users/quit_confirm' => 'users#quit_confirm'
-    patch 'users/quit' => 'users#quit'
 
     resources :users, only: [:show, :edit, :update] do
       post 'relationships/:page_user_id' => 'relationships#create', as:'add_follow'
