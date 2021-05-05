@@ -22,4 +22,8 @@ class PostRecipe < ApplicationRecord
   def saved_by?(user)
     saved_recipes.where(user_id: user.id).exists?
   end
+
+  def self.create_recipe_ranks
+    PostRecipe.find(Like.group(:post_recipe_id).order('count(post_recipe_id) desc').limit(20).pluck(:post_recipe_id))
+  end
 end
