@@ -1,15 +1,15 @@
-
-<table id="following-table" class="table table-borderless">
+<!--表示されているユーザー詳細のフォロー一覧-->
+<table id="following-table" class="table table-borderless mt-4">
   <% followings.each do |following| %>
     <tr>
-      <td>
+      <td class="text-center">
         <%= attachment_image_tag following, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
       </td>
-      <td>
-        <%= link_to following.name, user_path(following.id) %>
+      <td class="align-middle">
+        <u><%= link_to following.name, user_path(following.id), class: 'font-color' %></u><br />
         <%= following.introduction %>
       </td>
-      <td>
+      <td class="align-middle">
         <%= render partial: 'public/users/follow_button', locals: { user: following, page_user: page_user } %>
       </td>
     </tr>
