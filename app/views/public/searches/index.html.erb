@@ -13,23 +13,56 @@
     </div>
   </div>
 
-  <div class="row mb-5">
-    <% if params[:q].present? && params[:q][:title_cont].present? %>
-      <div class="d-flex flex-wrap">
-      <% @new_recipes.each do |new_recipe| %>
-        <div class="card text-center mt-3 p-3 ml-4 mb-3">
-          <%= link_to (attachment_image_tag new_recipe, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(new_recipe.id), class:'card-img-top' %>
-          <%= link_to new_recipe.title, post_recipe_path(new_recipe), class:'card-text text-wrap mt-1' %>
-          <%= link_to new_recipe.user.name, user_path(new_recipe.user), class:'card-text text-wrap font-color' %>
-        </div>
-      <% end %>
-      </div>
-      <div class="mx-auto mt-4 mb-5">
-        <%= paginate @new_recipes %>
-      </div>
-    <% else %>
-      <p class="mt-5 mx-auto">検索窓より検索をお試しください</p>
-    <% end %>
-  </div>
+  <div class="row mt-3 mb-5">
+    <div class="col-md-11 wrap">
 
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a href="#tab1" class="nav-link" data-toggle="tab">新着順</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab2" class="nav-link" data-toggle="tab">人気順</a>
+        </li>
+      </ul>
+
+      <!--タブ：新着順の検索結果-->
+      <div class="tab-content px-4 pb-4">
+        <div id="tab1" class="tab-pane active">
+          <div class="d-flex flex-wrap">
+            <% @latest_recipes.each do |latest_recipe| %>
+              <div class="card text-center mt-3 p-3 ml-4 mb-3">
+                <%= link_to (attachment_image_tag latest_recipe, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(latest_recipe.id), class:'card-img-top' %>
+                <%= link_to latest_recipe.title, post_recipe_path(latest_recipe), class:'card-text text-wrap mt-3' %>
+                <p class="mr-2">by
+                  <%= link_to latest_recipe.user.name, user_path(latest_recipe.user), class:'card-text text-wrap font-color' %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+        <%= paginate @latest_recipes %>
+        </div>
+
+      <!--タブ：人気順の検索結果-->
+        <div id="tab2" class="tab-pane">
+          <% if current_user.is_paid == true %>
+            <div class="d-flex flex-wrap">
+              <% @popular_recipes.each do |popular_recipe| %>
+                <div class="card text-center mt-3 p-3 ml-4 mb-3">
+                  <%= link_to (attachment_image_tag popular_recipe, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(popular_recipe.id), class:'card-img-top' %>
+                  <%= link_to popular_recipe.title, post_recipe_path(popular_recipe), class:'card-text text-wrap mt-3' %>
+                  <p class="mr-2">by
+                    <%= link_to popular_recipe.user.name, user_path(popular_recipe.user), class:'card-text text-wrap font-color' %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+            <%= paginate @popular_recipes %>
+          <% else %>
+            <p class="mt-4">有料会員の機能です。<%= link_to "こちら", premiums_payment_path, class:"font-color" %>より有料会員登録をお願いいたします。</p>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
