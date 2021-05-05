@@ -1,9 +1,9 @@
 <!--会員詳細ヘッダーのフォローボタンを非同期通信で更新-->
-$('#header-follow-btn').html('<%= j(render 'public/users/follow_button', user: @user, index_user: @user) %>');
+$('#header-follow-btn').html('<%= j(render 'public/users/follow_button', user: @user, page_user: @user) %>');
 
 <!--フォロー一覧・フォロワー一覧のテーブルを非同期通信で更新-->
-$('#following-table').html('<%= j(render 'public/users/following_table', followings: @followings, index_user: @user) %>');
-$('#follower-table').html('<%= j(render 'public/users/follower_table', followers: @followers, index_user: @user) %>');
+$('#following-table').html('<%= j(render 'public/users/following_table', followings: @followings, page_user: @user) %>');
+$('#follower-table').html('<%= j(render 'public/users/follower_table', followers: @followers, page_user: @user) %>');
 
 <!--会員詳細ヘッダーのフォロー・フォロワー数を非同期通信で更新-->
 $('#follow_count').html('<%= j(render 'public/users/follow_count', user: @user) %>');

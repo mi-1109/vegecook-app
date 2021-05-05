@@ -1,7 +1,7 @@
 <!----------フォロー中の会員・フォロワーの会員一覧-------------->
 
 <div class="container">
-<%= render partial: 'mypage_header', locals: { user: @user, index_user: @user } %>
+<%= render partial: 'mypage_header', locals: { user: @user, page_user: @user } %>
 
 <div class="row">
   <div class="col-md-11 wrap">
@@ -17,11 +17,11 @@
 
     <div class="tab-content p-4">
       <div id="tab1" class="tab-pane active">
-        <%= render partial: 'following_table', locals: { followings: @followings, index_user: @user } %>
+        <%= render partial: 'following_table', locals: { followings: @followings, page_user: @user } %>
       </div>
 
       <div id="tab2" class="tab-pane">
-        <%= render partial: 'follower_table', locals: { followers: @followers, index_user: @user } %>
+        <%= render partial: 'follower_table', locals: { followers: @followers, page_user: @user } %>
       </div>
     </div>
 

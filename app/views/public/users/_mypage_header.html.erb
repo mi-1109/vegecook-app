@@ -13,7 +13,7 @@
     <p><%= user.introduction %></p>
   </div>
 
-  <div class="col-md-2 offset-md-2 mt-3">
+  <div id="follow_count" class="col-md-2 offset-md-2 mt-3">
     <%= render partial: 'follow_count', locals: { user: user } %>
   </div>
 
@@ -23,7 +23,7 @@
       <%= link_to "", edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-sm fas fa-user-cog px-4 mt-3' %><br/>
     <% else %>
       <div id="header-follow-btn" class="mt-3 text-left">
-        <%= render partial: 'follow_button', locals: { user: user,index_user: index_user } %>
+        <%= render partial: 'follow_button', locals: { user: user, page_user: page_user } %>
       </div>
     <% end %>
   </div>
