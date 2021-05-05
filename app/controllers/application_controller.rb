@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :recipe_search
+
+  def recipe_search
+    @search = PostRecipe.ransack(params[:q])
+    @new_recipes = @search.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(10)
+  end
 
   # ====== ログイン・ログアウト後の遷移先 ==========
   private
@@ -19,7 +25,6 @@ class ApplicationController < ActionController::Base
       new_admin_session_path
     end
   end
-
 
   protected
 
