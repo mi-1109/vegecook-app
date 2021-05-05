@@ -34,10 +34,9 @@ class Public::UsersController < ApplicationController
   end
 
   def follows
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) #page_user_idと同じuserのidを取得
     @followings = @user.followings
     @followers = @user.followers
-    render 'show_follow'
   end
 
   private

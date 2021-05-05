@@ -34,7 +34,8 @@ Rails.application.routes.draw do
     patch 'users/quit' => 'users#quit'
 
     resources :users, only: [:show, :edit, :update] do
-      resource :relationships, only: [:create, :destroy]
+      post 'relationships/:page_user_id' => 'relationships#create', as:'add_follow'
+      delete 'relationships/:page_user_id' => 'relationships#destroy', as:'remove_follow'
       get :follows, on: :member
     end
 
