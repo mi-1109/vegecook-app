@@ -15,10 +15,12 @@
       <% end %>
 
       <!------ 検索窓 -------->
+      <div class="search-window">
       <%= search_form_for @search, url: post_recipes_searches_path do |f| %>
-        <%= f.search_field :title_cont, placeholder: 'レシピを検索' %>
-        <%= f.submit "検索", class:'fas fa-search' %>
+        <%= f.search_field :title_cont, placeholder: 'レシピを検索', class: 'input ml-4', size: '30' %>
+        <%= f.submit "GO!", class:'search-btn rounded-pill' %>
       <% end %>
+      </div>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navvbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
