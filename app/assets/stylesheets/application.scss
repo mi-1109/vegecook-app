@@ -215,3 +215,18 @@ footer {
     font-weight: bold;
   }
 }
+
+// 検索結果一覧のタブのスタイル
+.clear-tab-style > .nav-link {
+  border: none;
+    &:hover:after {
+    width: initial;
+    left: initial;
+    background: initial;
+  }
+    &:focus {
+      text-decoration: underline;
+      color: #eabeaf;
+      font-weight: bold;
+    }
+}
