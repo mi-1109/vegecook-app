@@ -186,3 +186,48 @@ footer {
 .bg-color {
   background-color: #e8ede1;
 }
+
+// 検索関連
+@mixin input{
+  border: none;
+  border-radius: 50px;
+  background: #F8F8F8;
+  height: 35px;
+  padding: 10px 20px;
+}
+
+.search-window{
+  position: relative;
+  .input{
+    @include input;
+    margin-top: 6px;
+  }
+  .search-btn{
+    background-color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: 8px;
+    top: 11px;
+    height: 25px;
+    width: 40px;
+    border-style: none;
+    color: #eabeaf;
+    font-weight: bold;
+  }
+}
+
+// 検索結果一覧のタブのスタイル
+.clear-tab-style > .nav-link {
+  border: none;
+    &:hover:after {
+    width: initial;
+    left: initial;
+    background: initial;
+  }
+    &:focus {
+      text-decoration: underline;
+      color: #eabeaf;
+      font-weight: bold;
+    }
+}
+

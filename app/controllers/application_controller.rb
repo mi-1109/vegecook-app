@@ -1,5 +1,23 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :recipe_search
+
+  def recipe_search
+    @search = PostRecipe.joins(%|
+      INNER JOIN (
+        SELECT
+          "likes"."post_recipe_id" AS post_recipe_id,
+          COUNT(*) AS like_count
+        FROM
+          "likes"
+        GROUP BY
+          "likes"."post_recipe_id"
+      ) AS post_recipe_like_count
+      ON post_recipes.id = post_recipe_like_count.post_recipe_id
+    |).ransack(params[:q])
+    @latest_recipes = @search.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(12)
+    @popular_recipes = @search.result(distinct: true).order(like_count: "DESC").page(params[:page]).per(12)
+  end
 
   # ====== ログイン・ログアウト後の遷移先 ==========
   private
@@ -19,7 +37,6 @@ class ApplicationController < ActionController::Base
       new_admin_session_path
     end
   end
-
 
   protected
 
