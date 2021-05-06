@@ -5,11 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :post_recipes, dependent: :destroy
-  has_many :histories, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :form_inquiries, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_one :chat_room, dependent: :destroy
+
+  has_many :histories, dependent: :destroy
+  has_many :browsed_posts, through: :histories, source: :post_recipe
 
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post_recipe

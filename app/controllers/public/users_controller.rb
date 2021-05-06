@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
     @user_posts = PostRecipe.where(user_id: @user)
     @liked_posts = @user.liked_posts
     @saved_posts = @user.saved_posts
+    @browsed_posts = @user.browsed_posts
     @draft_posts = PostRecipe.where(user_id: @user, is_draft: true)
   end
 

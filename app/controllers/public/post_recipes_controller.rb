@@ -6,11 +6,9 @@ class Public::PostRecipesController < ApplicationController
 
   def new
     @post_recipe = PostRecipe.new
-
     for i in 1..4 do
       @post_recipe.ingredients.build
     end
-
     for i in 1..6 do
       @post_recipe.procedures.build
     end
@@ -35,6 +33,7 @@ class Public::PostRecipesController < ApplicationController
   def show
     @post_recipe = PostRecipe.find(params[:id])
     @comment = Comment.new
+    @post_recipe.browsing_history(current_user)
   end
 
   def edit
