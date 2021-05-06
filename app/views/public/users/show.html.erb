@@ -64,7 +64,15 @@
 
         <!--タブ：閲覧履歴-->
         <div id="tab4" class="tab-pane">
-          <p>TAB4の投稿が入ります</p>
+          <div class="d-flex flex-wrap row-cols-5">
+          <% @saved_posts.each do |saved_post| %>
+            <div class="card text-center mt-3 pt-3 ml-4">
+              <%= link_to (attachment_image_tag saved_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(saved_post.id), class:'card-img-top' %>
+              <%= link_to saved_post.title, post_recipe_path(saved_post), class:'card-text text-wrap' %>
+              <%= link_to saved_post.user.name, user_path(saved_post.user), class:'card-text text-wrap' %>
+            </div>
+          <% end %>
+          </div>
         </div>
 
         <!--タブ：下書き保存したレシピ-->

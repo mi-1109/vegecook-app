@@ -6,11 +6,9 @@ class Public::PostRecipesController < ApplicationController
 
   def new
     @post_recipe = PostRecipe.new
-
     for i in 1..4 do
       @post_recipe.ingredients.build
     end
-
     for i in 1..6 do
       @post_recipe.procedures.build
     end
@@ -35,6 +33,19 @@ class Public::PostRecipesController < ApplicationController
   def show
     @post_recipe = PostRecipe.find(params[:id])
     @comment = Comment.new
+    new_history = @post_recipe.histories.new
+    new_history.user_id = current_user.id
+    if current_user.histories.exists?(post_recipe_id: "#{params[:id]}")
+      visited_history = current_user.histories.find_by(post_recipe_id: "#{params[:id]}")
+      visited_history.destroy
+    end
+    new_history.save
+
+    histories_stock_limit = 5
+    histories = current_user.histories.all
+    if histories.count > histories_stock_limit
+      histories[0].destroy
+    end
   end
 
   def edit
