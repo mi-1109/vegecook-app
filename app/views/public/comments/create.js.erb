@@ -1,0 +1,2 @@
+$('#comments-list').html('<%= j(render partial: 'shared/comments', locals: { post_recipe: @post_recipe, comment: @comment}) %>');
+$('.comment-content').val('');
