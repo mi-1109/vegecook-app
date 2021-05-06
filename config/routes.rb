@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     patch 'users/quit' => 'users#quit'
 
     resources :post_recipes do
-      resources :recipe_comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
       resource :saved_recipes, only: [:create, :destroy]
     end
