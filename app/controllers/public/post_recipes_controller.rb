@@ -1,6 +1,7 @@
 class Public::PostRecipesController < ApplicationController
 
   def index
+    @latest_recipes = PostRecipe.all.order(created_at: "DESC").page(params[:page]).per(15)
   end
 
   def new
