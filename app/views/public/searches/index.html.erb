@@ -27,6 +27,7 @@
 
       <!--タブ：新着順の検索結果-->
       <div class="tab-content px-4 pb-4">
+
         <div id="tab1" class="tab-pane active">
           <div class="d-flex flex-wrap">
             <% @latest_recipes.each do |latest_recipe| %>
@@ -39,7 +40,9 @@
               </div>
             <% end %>
           </div>
-        <%= paginate @latest_recipes %>
+          <div class="mt-4 ml-4">
+            <%= paginate @latest_recipes %>
+          </div>
         </div>
 
       <!--タブ：人気順の検索結果-->
@@ -56,7 +59,9 @@
                 </div>
               <% end %>
             </div>
-            <%= paginate @popular_recipes %>
+            <div class="mt-4 ml-4">
+              <%= paginate @popular_recipes %>
+            </div>
           <% else %>
             <p class="mt-4">有料会員の機能です。<%= link_to "こちら", premiums_payment_path, class:"font-color" %>より有料会員登録をお願いいたします。</p>
           <% end %>
