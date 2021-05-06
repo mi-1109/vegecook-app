@@ -34,6 +34,7 @@ class Public::PostRecipesController < ApplicationController
 
   def show
     @post_recipe = PostRecipe.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
