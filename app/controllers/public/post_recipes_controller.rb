@@ -41,7 +41,7 @@ class Public::PostRecipesController < ApplicationController
     end
     new_history.save
 
-    histories_stock_limit = 5
+    histories_stock_limit = 20
     histories = current_user.histories.all
     if histories.count > histories_stock_limit
       histories[0].destroy
