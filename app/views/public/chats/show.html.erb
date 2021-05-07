@@ -21,12 +21,17 @@
   <% end %>
 
   <!--管理者(admin)のチャット内容-->
-  <div class="chat-area mx-auto">
-    <div class="chat-bubble admin-chat-bubble">
-      ふきだしだよ<br>
-      へへへ
+    <% @chats.each do |chat| %>
+    <% if chat.admin_id != nil %>
+    <div class="row">
+      <div class="chat-area mx-auto">
+        <div class="chat-bubble admin-chat-bubble">
+          <%= chat.message %>
+        </div>
+      </div>
     </div>
-  </div>
+    <% end %>
+  <% end %>
 
   <!--チャットメッセージ投稿フォーム-->
   <%= form_with model: @chat, local: true do |f| %>

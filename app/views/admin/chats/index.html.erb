@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h3 class="admin-page-title mx-auto mt-5 py-2 pl-4">お問い合わせ一覧（チャット）</h3>
+  </div>
+
+  <div class="row mt-3">
+    <table style="width: 80%" class="table table-borderless mx-auto">
+      <% @chats.each do |chat| %>
+        <tr class="mt-5 border-bottom">
+          <td style="width: 12%">
+            <%= l chat.created_at %>
+          </td>
+          <td style="width: 30%" class="py-0 align-middle text-left">
+            <u><%= link_to chat.user.name, admin_user_path(chat.user.id) %></u>
+          </td>
+          <td style="width: 15%" class="py-0 align-middle text-center">
+            <%= link_to "チャットへ", admin_chat_path(chat.user.id), class:'btn btn-sm btn-outline-warning' %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto mt-4 mb-5">
+    <%= paginate @chats %>
+    </div>
+  </div>
+</div>
