@@ -10,19 +10,31 @@
   <% @chats.each do |chat| %>
     <!--管理者(admin)のチャット内容-->
     <% if chat.admin_id != nil %>
-      <div class="row">
+      <div class="row mt-3">
         <div class="chat-area mx-auto text-right">
-          <div class="chat-bubble">
-            <%= chat.message %>
+          <div>
+            <p class="mb-0">
+              <%= l chat.created_at %>
+              <span class="ml-3 font-weight-bold">VEGECOOK事務局</span>
+            </p>
+            <div class="chat-bubble">
+              <%= chat.message %>
+            </div>
           </div>
         </div>
       </div>
     <!--顧客(user)のチャット内容-->
     <% elsif chat.user_id == @user.id %>
-      <div class="row">
+      <div class="row mt-3">
         <div class="chat-area mx-auto">
-          <div class="chat-bubble receiver-chat-bubble">
-            <%= chat.message %>
+          <div>
+            <p class="mb-0">
+              <span class="ml-3 font-weight-bold"><%= chat.user.name %></span>
+              <span class="ml-3"><%= l chat.created_at %></span>
+            </p>
+            <div class="chat-bubble receiver-chat-bubble">
+              <%= chat.message %>
+            </div>
           </div>
         </div>
       </div>
