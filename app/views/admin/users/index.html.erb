@@ -11,17 +11,10 @@
 
   <div class="row">
     <table style="width: 80%" class="table table-borderless mx-auto">
-      <thead>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </thead>
-      <tbody>
       <% @users.each do |user| %>
         <tr class="mt-5 border-bottom">
           <td style="width: 10%">
-            <%= link_to (attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60', class:'rounded-circle'), admin_user_path(user.id) %>
+            <%= link_to (attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpeg', fallback: "no_profile_image.jpg", size:'60x60', class:'rounded-circle'), admin_user_path(user.id) %>
           </td>
           <td style="width: 35%">
             <u><%= link_to user.name, admin_user_path(user.id) %><br /></u>
@@ -30,16 +23,18 @@
           <td style="width: 15%" class="py-0 align-middle">
             <%= user.is_paid_to_sring %>
           </td>
-          <td style="width: 10%" class="py-0 align-middle text-center">
+          <td style="width: 8%" class="py-0 align-middle text-center">
             <% if user.is_deleted == false %>
               <p class="active_color"><%= user.is_deleted_to_sring %></p>
             <% else %>
               <p class="inactive_color"><%= user.is_deleted_to_sring %></p>
             <% end %>
           </td>
+          <td style="width: 10%" class="py-0 align-middle text-center">
+            <%= link_to "チャット", admin_chat_path(user), class:'btn btn-sm btn-outline-secondary' %>
+          </td>
         </tr>
       <% end %>
-      </tbody>
     </table>
   </div>
 
