@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'premium' => 'homes#premium'
 
     resources :inquiries, only: [:index, :new, :create]
-    resources :chats, only: [:show, :create]
+    resource :chats, only: [:show, :create]
 
     get 'post_recipes/searches' => 'searches#index'
     get 'post_recipes/rankings' => 'rankings#index'
