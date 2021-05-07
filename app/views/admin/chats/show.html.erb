@@ -1,2 +1,47 @@
-<h1>Admin::Chats#show</h1>
-<p>Find me in app/views/admin/chats/show.html.erb</p>
+<div class="container">
+
+  <div class="row mt-5">
+    <div class="mx-auto">
+      <h3 class="jp-font text-center font-weight-bold">お問い合わせ</h3>
+      <p class="jp-font text-center font-weight-bold">チャット</p>
+    </div>
+  </div>
+
+  <% @chats.each do |chat| %>
+    <!--管理者(admin)のチャット内容-->
+    <% if chat.admin_id != nil %>
+      <div class="row">
+        <div class="chat-area mx-auto text-right">
+          <div class="chat-bubble">
+            <%= chat.message %>
+          </div>
+        </div>
+      </div>
+    <!--顧客(user)のチャット内容-->
+    <% elsif chat.user_id == @user.id %>
+      <div class="row">
+        <div class="chat-area mx-auto">
+          <div class="chat-bubble receiver-chat-bubble">
+            <%= chat.message %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <!--チャットメッセージ投稿フォーム-->
+  <%= form_with model: [:admin, @chat], local: true do |f| %>
+    <div class="row my-5">
+      <div class="form-group mb-1 mx-auto">
+        <%= f.text_area :message, size:'67x4', placeholder:"メッセージを入力", class: 'p-3' %>
+        <%= f.hidden_field :chat_room_id %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group offset-md-8">
+        <%= f.submit "送信", class:'btn btn-sm btn-outline-secondary ml-4'%>
+      </div>
+    </div>
+  <% end %>
+
+</div>
