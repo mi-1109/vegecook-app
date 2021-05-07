@@ -1,7 +1,7 @@
 class Admin::ChatsController < ApplicationController
 
   def index
-    @chats = Chat.all.order(created_at: "DESC").page(params[:page]).per(10)
+    @chats = Chat.all.group(:user_id).order(created_at: "DESC").page(params[:page]).per(10)
   end
 
   def show
