@@ -1,9 +1,9 @@
 <!----------- 顧客側：チャット内容の部分テンプレート -------------->
 
-<!--顧客(user)のチャット内容-->
 <div class="row mt-3">
   <div class="chat-area mx-auto">
-    <% @chats.each do |chat| %>
+    <% chats.each do |chat| %>
+      <!--顧客(user)のチャット内容-->
       <% if chat.user_id == current_user.id %>
         <div class="text-right mt-4">
           <p style="font-size: 11px" class="mb-0 mr-2">

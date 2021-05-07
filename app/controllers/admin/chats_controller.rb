@@ -20,7 +20,8 @@ class Admin::ChatsController < ApplicationController
   def create
     @chat = current_admin.chats.new(chat_params)
     @chat.save
-    redirect_to admin_chats_path
+    @chats = @chat.chat_room.chats
+    @user = @chat.chat_room.user
   end
 
   private

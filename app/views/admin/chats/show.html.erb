@@ -7,49 +7,19 @@
     </div>
   </div>
 
-  <% @chats.each do |chat| %>
-    <!--管理者(admin)のチャット内容-->
-    <% if chat.admin_id != nil %>
-      <div class="row mt-3">
-        <div class="chat-area mx-auto text-right">
-          <div>
-            <p class="mb-0">
-              <%= l chat.created_at %>
-              <span class="ml-3 font-weight-bold">VEGECOOK事務局</span>
-            </p>
-            <div class="chat-bubble">
-              <%= chat.message %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <!--顧客(user)のチャット内容-->
-    <% elsif chat.user_id == @user.id %>
-      <div class="row mt-3">
-        <div class="chat-area mx-auto">
-          <div>
-            <p class="mb-0">
-              <span class="ml-3 font-weight-bold"><%= chat.user.name %></span>
-              <span class="ml-3"><%= l chat.created_at %></span>
-            </p>
-            <div class="chat-bubble receiver-chat-bubble">
-              <%= chat.message %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+  <div class="add-chat-bubble">
+    <%= render partial: 'chat_bubbles', locals: { chats: @chats, user: @user  } %>
+  </div>
 
   <!--チャットメッセージ投稿フォーム-->
-  <%= form_with model: [:admin, @chat], local: true do |f| %>
-    <div class="row my-5">
+  <%= form_with model: [:admin, @chat], remote: true do |f| %>
+    <div class="row mt-5">
       <div class="form-group mb-1 mx-auto">
-        <%= f.text_area :message, size:'67x4', placeholder:"メッセージを入力", class: 'p-3' %>
+        <%= f.text_area :message, size:'67x4', placeholder:"メッセージを入力", class: 'p-3 clear-form' %>
         <%= f.hidden_field :chat_room_id %>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
       <div class="form-group offset-md-8">
         <%= f.submit "送信", class:'btn btn-sm btn-outline-secondary ml-4'%>
       </div>

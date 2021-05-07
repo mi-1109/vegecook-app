@@ -1,0 +1,31 @@
+<!----------- 管理者側：チャット内容の部分テンプレート -------------->
+
+  <div class="row mt-3">
+    <div class="chat-area mx-auto">
+      <% @chats.each do |chat| %>
+        <!--管理者(admin)のチャット内容-->
+        <% if chat.admin_id != nil %>
+          <div class="text-right mt-4">
+            <p style="font-size: 11px" class="mb-0 mr-2">
+              <%= l chat.created_at %>
+              <span class="ml-3 font-weight-bold">VEGECOOK事務局</span>
+            </p>
+            <div class="chat-bubble text-left">
+              <%= chat.message %>
+            </div>
+          </div>
+        <!--顧客(user)のチャット内容-->
+        <% elsif chat.user_id == user.id %>
+          <div class="mt-4">
+            <p style="font-size: 11px" class="mb-0 ml-2">
+              <span class="ml-3 font-weight-bold"><%= chat.user.name %></span>
+              <span class="ml-3"><%= l chat.created_at %></span>
+            </p>
+            <div class="chat-bubble receiver-chat-bubble">
+              <%= chat.message %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
