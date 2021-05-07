@@ -23,16 +23,19 @@
   <% end %>
 
   <!--管理者(admin)のチャット内容-->
-  <div class="row">
-    <div class="chat-box">
-      <div class="chat-area">
-        <div class="chat-hukidashi someone">
-          ふきだしだよ<br>
-          へへへ
+  <% @chats.each do |chat| %>
+    <% if chat.admin_id != nil %>
+    <div class="row">
+      <div class="chat-box">
+        <div class="chat-area">
+          <div class="chat-hukidashi someone">
+            <%= chat.message %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <% end %>
+  <% end %>
 
   <!--チャットメッセージ投稿フォーム-->
   <%= form_with model: @chat, local: true do |f| %>
