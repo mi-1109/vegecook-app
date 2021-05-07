@@ -1,2 +1,58 @@
-<h1>Public::Chats#show</h1>
-<p>Find me in app/views/public/chats/show.html.erb</p>
+<div class="container">
+
+  <div class="row mt-5">
+    <div class="mx-auto">
+      <h3 class="jp-font text-center font-weight-bold">お問い合わせ</h3>
+      <p class="jp-font text-center font-weight-bold">チャット</p>
+    </div>
+  </div>
+
+  <!--顧客(user)のチャット内容-->
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+    <div class="row">
+      <div class="chat-box text-right">
+        <div class="chat-area">
+          <div class="chat-hukidashi">
+            <%= chat.message %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+
+  <!--管理者(admin)のチャット内容-->
+  <div class="row">
+    <div class="chat-box">
+      <div class="chat-area">
+        <div class="chat-hukidashi someone">
+          ふきだしだよ<br>
+          へへへ
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--チャットメッセージ投稿フォーム-->
+  <%= form_with model: @chat, local: true do |f| %>
+  <div class="row mt-3">
+    <div class="form-group mb-1 mx-auto">
+      <%= f.text_area :message, size:'67x4', placeholder:"メッセージを入力してください", class: 'p-3' %>
+      <%= f.hidden_field :chat_room_id %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group offset-md-8">
+      <%= f.submit "送信", class:'btn btn-sm btn-outline-secondary ml-4'%>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="row">
+    <div class="offset-md-7 mt-3">
+      <u><%= link_to "フォームで問い合わせる", new_inquiry_path, class:'ml-3 font-color-green' %></u>
+    </div>
+  </div>
+
+</div>
