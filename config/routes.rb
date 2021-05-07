@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       get :follows, on: :member
     end
 
-    resources :premiums, only: [:update]
+    resource :premiums, only: [:update]
     get 'premiums/payment' => 'premiums#payment'
     get 'premiums/complete' => 'premiums#complete'
   end
