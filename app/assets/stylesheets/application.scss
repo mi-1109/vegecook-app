@@ -240,49 +240,37 @@ footer {
 }
 
 //チャット
-.chat-box {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-.chat-face {
-    float: left;
-    margin-right: -120px;
-}
-.chat-face img{
-    border-radius: 30px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 4px #ddd;
-}
 .chat-area {
-    width: 100%;
-    float: right;
+  width: 60%;
+  margin-bottom: 20px;
 }
-.chat-hukidashi {
-    display: inline-block; /*コメントの文字数に合わせて可変*/
-    padding: 15px 20px;
-    margin-left: 120px;
-    margin-top: 8px;
-    border-radius: 10px;
-    position: relative; 
-    background-color: #D9F0FF; 
-}
-.chat-hukidashi:after {
+
+.chat-bubble {
+  display: inline-block;
+  padding: 15px 20px;
+  margin-top: 8px;
+  border-radius: 10px;
+  position: relative;
+  background-color: #bcf5a9;
+  &:after{
     content: "";
     position: absolute;
-    top: 50%; left: -10px;
+    top: 50%;
+    right: -20px;
     margin-top: -10px;
     display: block;
     width: 0px;
     height: 0px;
     border-style: solid;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #D9F0FF transparent transparent;
+    border-width: 10px 10px 10px 10px;
+    border-color: transparent transparent transparent #bcf5a9;
+  }
 }
-.someone {
-    background-color: #BCF5A9;
-}
-.someone:after {
-    border-color: transparent #BCF5A9 transparent transparent;
+
+.admin-chat-bubble {
+  background-color: #f5f5f5;
+  &:after {
+    left: -19px;
+    border-color: transparent #f5f5f5 transparent transparent;
+  }
 }
