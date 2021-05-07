@@ -243,7 +243,7 @@ footer {
 .chat-box {
     width: 100%;
     height: auto;
-    overflow: hidden; /*floatの解除*/
+    overflow: hidden;
     margin-bottom: 20px;
 }
 .chat-face {
@@ -264,12 +264,10 @@ footer {
     padding: 15px 20px;
     margin-left: 120px;
     margin-top: 8px;
-    /* border: 1px solid gray; ←削除 */
     border-radius: 10px;
-    position: relative; /*追記*/
-    background-color: #D9F0FF; /*追記*/
+    position: relative; 
+    background-color: #D9F0FF; 
 }
-/* ↓追記↓ */
 .chat-hukidashi:after {
     content: "";
     position: absolute;
