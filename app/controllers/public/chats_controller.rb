@@ -15,7 +15,7 @@ class Public::ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
-    redirect_to chat_path(current_user.id)
+    @chats = @chat.chat_room.chats
   end
 
   private
