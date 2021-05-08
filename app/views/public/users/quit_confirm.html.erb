@@ -1,25 +1,25 @@
 <div class="container">
   <div class="row">
-    <h1 class="mx-auto">退会</h1>
+    <h3 class="heading-style text-center p-2 mt-5">退会</h3>
   </div>
 
-  <div class="row">
-    <div class="col-md-10">
-      <h3>本当に退会しますか？</h3></br>
-      <p>
+  <div class="row mt-5">
+    <div class="mx-auto">
+      <h4 class="text-center jp-font">本当に退会しますか？</h4><br />
+      <p class="text-center jp-font">
         退会すると、会員登録情報や</br>
         これまで投稿・保存したレシピ等の閲覧ができなくなります。</br>
       </p>
-      <p>
+      <p class="text-center jp-font">
         退会する場合は「退会する」をクリックしてください。
       </p>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-7">
-      <%= link_to "退会しない", user_path(@user.id), class:'btn btn-sm btn-primary' %>
-      <%= link_to "退会する", users_quit_path, method: :PATCH, data: {confirm: "本当に退会しますか？"}, class:'btn btn-sm btn-danger' %>
+  <div class="row mt-4">
+    <div class="mx-auto">
+      <%= link_to "退会しない", user_path(@user.id), class:'btn btn-sm btn-secondary' %>
+      <%= link_to "退会する", users_quit_path, method: :PATCH, data: {confirm: "本当に退会しますか？"}, class:'btn btn-sm btn-danger ml-4' %>
     </div>
   </div>
 
