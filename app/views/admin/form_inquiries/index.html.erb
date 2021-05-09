@@ -15,11 +15,17 @@
           </td>
 
           <td style="width: 15%" class="py-0 align-middle text-center">
-            <%= form_inquiry.response_status_i18n %>
+            <% if form_inquiry.response_status == 'outstanding' %>
+              <p class="text-danger font-weight-bold mb-0"><%= form_inquiry.response_status_i18n %></p>
+            <% elsif form_inquiry.response_status == 'in_progress' %>
+              <p class="text-primary mb-0"><%= form_inquiry.response_status_i18n %></p>
+            <% else %>
+              <%= form_inquiry.response_status_i18n %>
+            <% end %>
           </td>
 
           <td style="width: 15%" class="py-0 align-middle text-center">
-            <%= link_to "詳細", admin_form_inquiry_path(form_inquiry.id), class:'btn btn-sm btn-outline-secondary' %>
+            <%= link_to "詳細", admin_form_inquiry_path(form_inquiry.id), class:'btn btn-sm py-0 btn-outline-secondary' %>
           </td>
         </tr>
       <% end %>
