@@ -293,3 +293,19 @@ footer {
   margin: 0 auto;
   height: 270px;
 }
+
+.slick-container {
+  max-width: 1200px !important;
+  margin: 0 auto;
+}
+
+.slick-heading-img {
+  object-fit: cover;
+  height: 500px !important;
+  object-position: 50% 100%;
+}
+
+.top-menu-icons:hover {
+  text-decoration: none;
+  color: inherit;
+}

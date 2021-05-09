@@ -18,3 +18,15 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+    $('.slick-container').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear',
+      autoplay: true,
+      autoplaySpeed: 3500,
+    });
+});

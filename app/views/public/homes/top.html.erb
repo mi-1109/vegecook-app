@@ -1,1 +1,39 @@
-<h1>Customer's TOP</h1>
+
+  <div class="slick-container">
+    <% @heading_recipes.each do |heading_recipe| %>
+        <%= attachment_image_tag heading_recipe, :recipe_image, :fill, 800, 500, format: 'jpeg', class:'slick-heading-img', style:'object-fit: cover' %>
+    <% end %>
+  </div>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-2 offset-md-3 text-center">
+      <%= link_to "", user_path(current_user.id), class: 'fas fa-bookmark fa-5x font-color pt-5 top-menu-icons mb-2' %><br />
+      <%= link_to "BOOKMARK", user_path(current_user.id), style: 'font-size: 20px' %>
+    </div>
+    <div class="col-md-2 text-center">
+      <%= link_to "", new_post_recipe_path, class: 'fas fa-edit fa-5x font-color-green pt-5 top-menu-icons mb-2 ml-3' %><br />
+      <%= link_to "POST RECIPE", new_post_recipe_path, style: 'font-size: 20px' %>
+    </div>
+    <div class="col-md-2 text-center">
+      <%= link_to "", post_recipes_rankings_path, class: 'fas fa-crown fa-5x pt-5 top-menu-icons mb-2' %><br />
+      <%= link_to "TOP20!", post_recipes_rankings_path, style: 'font-size: 20px' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <p>~レシピ投稿~</p>
+  </div>
+
+  <% @random_recipes.each.with_index(1) do |random_recipe, i| %>
+    <div id="random-recipe-<%= i %>">
+      <%= attachment_image_tag random_recipe, :recipe_image, :fill, 150, 150, format: 'jpeg', size:'100x100' %>
+    </div>
+  <% end %>
+
+  <h5>新着レシピ</h5>
+    <% @latest_recipes.each do |latest_recipe| %>
+      <%= attachment_image_tag latest_recipe, :recipe_image, :fill, 500, 500, format: 'jpeg', size:'100' %>
+    <% end %>
+
+</div>
