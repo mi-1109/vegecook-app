@@ -1,4 +1,3 @@
-<%= flash[:error] %>
 <div style="height: 70vh", class="d-flex align-items-center">
   <div style="width: 30%", class="border mx-auto">
 
@@ -12,17 +11,17 @@
           <p class="jp-font text-center font-weight-bold mx-auto">フォーム</p>
         </div>
 
+        <div class="mt-4 d-flex">
+          <p class="font-weight-bold mr-1">ユーザー名：</p>
+          <%= current_user.name %>
+        </div>
+
+        <div class="mt-2 d-flex">
+          <p class="font-weight-bold mr-1">メールアドレス：</p>
+          <%= current_user.email %>
+          </div>
+
         <%= form_with model: @form_inquiry, local:true do |f| %>
-          <div class="mt-4 d-flex">
-            <p class="font-weight-bold mr-1">ユーザー名：</p>
-            <%= current_user.name %>
-          </div>
-
-          <div class="mt-2 d-flex">
-            <p class="font-weight-bold mr-1">メールアドレス：</p>
-            <%= current_user.email %>
-          </div>
-
           <div class="form-group mt-4">
             <%= f.label :content, 'お問い合わせ内容', class: 'mb-0 font-weight-bold' %>
             <%= f.text_area :content, size: "48x6", class: 'p-2' %>

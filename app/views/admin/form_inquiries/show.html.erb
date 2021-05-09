@@ -1,2 +1,31 @@
-<h1>Admin::Inquiries#show</h1>
-<p>Find me in app/views/admin/inquiries/show.html.erb</p>
+<div style="height: 70vh", class="d-flex align-items-center">
+  <div style="width: 30%", class="border mx-auto">
+
+    <div style="width: 100%", class="pt-4 px-3">
+      <div class="container">
+        <div class="row">
+          <h3 class="jp-font text-center mx-auto">お問い合わせ内容</h3>
+        </div>
+
+        <div class="mt-4 d-flex">
+          <p class="font-weight-bold mr-1">ユーザー名：</p>
+          <%= @user.name %>
+        </div>
+
+        <div class="mt-2 d-flex">
+          <p class="font-weight-bold mr-1">メールアドレス：</p>
+          <%= @user.email %>
+        </div>
+
+        <div class="mt-4">
+          <p class="font-weight-bold mb-1">問い合わせ内容：</p>
+          <p style="height: 150px" class="p-2 border rounded"><%= @form_inquiry.content %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions text-right mb-2 mr-2">
+      <u><%= link_to "一覧に戻る", admin_form_inquiries_path %></u>
+    </div>
+  </div>
+</div>
