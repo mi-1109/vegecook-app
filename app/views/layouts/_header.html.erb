@@ -35,7 +35,7 @@
         <% if admin_signed_in? %>
           <li class="nav-item"><%= link_to "レシピ一覧", admin_post_recipes_path, class: 'nav-link text-secondary' %></li>
           <li class="nav-item ml-4"><%= link_to "会員一覧", admin_users_path, class: 'nav-link text-secondary' %></li>
-          <li class="nav-item ml-4"><%= link_to "フォーム", admin_inquiries_path , class: 'nav-link text-secondary' %></li>
+          <li class="nav-item ml-4"><%= link_to "フォーム", admin_form_inquiries_path , class: 'nav-link text-secondary' %></li>
           <li class="nav-item ml-4"><%= link_to "チャット", admin_chats_path, class: 'nav-link text-secondary' %></li>
           <li class="nav-item ml-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-secondary' %></li>
 
@@ -48,7 +48,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/about">VEGECOOKとは？</a>
               <a class="dropdown-item" href="/premium">PREMIUMプラン</a>
-              <a class="dropdown-item" href="/inquiries">お問い合わせ</a>
+              <a class="dropdown-item" href="/form_inquiries">お問い合わせ</a>
             </div>
           </li>
           <li class="nav-item ml-4"><%= link_to "MY PAGE", user_path(current_user.id), class: 'nav-link text-secondary' %></li>

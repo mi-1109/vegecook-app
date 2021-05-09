@@ -2,3 +2,9 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+  enums:
+    form_inquiry:
+      response_status:
+        outstanding: "未対応"
+        in_progress: "対応中"
+        closed: "対応済"

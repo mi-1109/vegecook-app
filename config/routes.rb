@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get 'premium' => 'homes#premium'
 
-    resources :inquiries, only: [:index, :new, :create]
+    resources :form_inquiries, only: [:index, :new, :create]
+    get 'form_inquiries/complete' => 'form_inquiries#complete', as: 'form_inquiry_complete'
     resource :chats, only: [:show, :create]
 
     get 'post_recipes/searches' => 'searches#index'
@@ -49,7 +50,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :post_recipes, only: [:index, :show, :destroy]
-    resources :inquiries, only: [:index, :show]
+    resources :form_inquiries, only: [:index, :show, :update]
     resources :chats, only: [:index, :show, :create]
     resources :users, only: [:index, :show, :edit, :update]
   end

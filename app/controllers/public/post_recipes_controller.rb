@@ -25,7 +25,7 @@ class Public::PostRecipesController < ApplicationController
       flash[:notice] = "レシピを下書きに保存しました！"
       redirect_to user_path(current_user)
     else
-      flash[:alert] = "お手数ですが、再度お試しください。"
+      flash[:alert] = "投稿できませんでした。お手数ですが、再度お試しください。"
       render :edit
     end
   end
