@@ -12,7 +12,7 @@ class Admin::FormInquiriesController < ApplicationController
   def update
     @form_inquiry = FormInquiry.find(params[:id])
     @form_inquiry.update(form_inquiry_params)
-    redirect_to admin_form_inquiry_path(@form_inquiry), notice: "Successfully updated status!"
+    redirect_to admin_form_inquiry_path(@form_inquiry), notice: "対応ステータスを更新しました"
   end
 
   private

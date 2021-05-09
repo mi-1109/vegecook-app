@@ -1,34 +1,36 @@
-<div style="height: 70vh", class="d-flex align-items-center">
+<div style="height: 65vh", class="d-flex align-items-center">
+
   <div style="width: 30%", class="border mx-auto">
-
-    <div style="width: 100%", class="pt-4 px-3">
-      <div class="container">
-        <div class="row">
-          <h3 class="jp-font text-center mx-auto">お問い合わせ内容</h3>
-        </div>
-
-        <%= form_with model: [:admin, @form_inquiry], method: :patch, local: true do |f| %>
-          <%= f.select :response_status, FormInquiry.response_statuses.keys.map {|k| [I18n.t("enums.form_inquiry.response_status.#{k}"), k]} %>
-          <%= f.submit "変更", class: 'btn btn-sm btn-secondary ml-2' %>
-        <% end %>
-
-        <div class="mt-4 d-flex">
-          <p class="font-weight-bold mr-1">ユーザー名：</p>
-          <%= @user.name %>
-        </div>
-
-        <div class="mt-2 d-flex">
-          <p class="font-weight-bold mr-1">メールアドレス：</p>
-          <%= @user.email %>
-        </div>
-
-        <div class="mt-4">
-          <p class="font-weight-bold mb-1">問い合わせ内容：</p>
-          <p style="height: 150px" class="p-2 border rounded"><%= @form_inquiry.content %></p>
-        </div>
-      </div>
+    <div class="text-right m-2">
+      <%= form_with model: [:admin, @form_inquiry], method: :patch, local: true do |f| %>
+        <%= f.select :response_status, FormInquiry.response_statuses.keys.map {|k| [I18n.t("enums.form_inquiry.response_status.#{k}"), k]} %>
+        <%= f.submit "変更", class: 'btn btn-sm btn-warning py-0 text-white' %>
+      <% end %>
     </div>
+      <div style="width: 100%", class="pt-4 px-3">
 
+        <div class="container">
+          <div class="row">
+            <h3 class="jp-font text-center mx-auto">お問い合わせ内容</h3>
+          </div>
+
+          <div class="mt-4 d-flex">
+            <p class="font-weight-bold mr-1">ユーザー名：</p>
+            <%= @user.name %>
+          </div>
+
+          <div class="mt-2 d-flex">
+            <p class="font-weight-bold mr-1">メールアドレス：</p>
+            <%= @user.email %>
+          </div>
+
+          <div class="mt-4">
+            <p class="font-weight-bold mb-1">問い合わせ内容：</p>
+            <p style="height: 150px" class="p-2 border rounded"><%= @form_inquiry.content %></p>
+          </div>
+        </div>
+
+      </div>
     <div class="actions text-right mb-2 mr-2">
       <u><%= link_to "一覧に戻る", admin_form_inquiries_path %></u>
     </div>
