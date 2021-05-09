@@ -1,0 +1,36 @@
+<%= flash[:error] %>
+<div style="height: 70vh", class="d-flex align-items-center">
+  <div style="width: 30%", class="border mx-auto">
+
+    <div style="width: 70%", class="pt-4 px-3">
+      <div class="container">
+        <div class="row">
+          <h2 class="text-secondary jp-font">お問い合わせ</h2>
+          <p class="jp-font text-center font-weight-bold">チャット</p>
+        </div>
+
+        <div class="row mt-5">
+          <%= form_with model: @form_inquiry, local: true do |f| %>
+            <div class="field group">
+              <%= f.label :email, 'メールアドレス', class:'text-secondary' %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
+            </div>
+
+            <div class="field mt-4">
+              <%= f.label :password, 'パスワード', class:'text-secondary' %><br />
+              <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
+            </div>
+
+            <div class="actions mt-5">
+              <%= f.submit "ログイン", class: 'btn btn-sm btn-color text-white font-weight-bold' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-right pr-3">
+      <%= render "public/devise/shared/links" %>
+    </p>
+  </div>
+</div>
