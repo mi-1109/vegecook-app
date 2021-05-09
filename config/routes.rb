@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'premium' => 'homes#premium'
 
     resources :form_inquiries, only: [:index, :new, :create]
+    get 'form_inquiries/complete' => 'form_inquiries#complete', as: 'form_inquiry_complete'
     resource :chats, only: [:show, :create]
 
     get 'post_recipes/searches' => 'searches#index'

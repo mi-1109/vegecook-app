@@ -16,11 +16,10 @@ class Public::PremiumsController < ApplicationController
   end
 
   def complete
-    path = Rails.application.routes.recognize_path(request.referer)
-    if path[:controller] == "public/premiums" && path[:action] == "update"
+    if request.referer&.include?("/premiums")
       render :complete
     else
-      render template: 'public/homes/premium'
+      redirect_to premium_path
     end
   end
 
