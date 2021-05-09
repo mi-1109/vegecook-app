@@ -294,18 +294,25 @@ footer {
   height: 270px;
 }
 
-.slick-container {
+.slick-heading-container {
   max-width: 1200px !important;
   margin: 0 auto;
 }
 
 .slick-heading-img {
-  object-fit: cover;
   height: 500px !important;
+  object-fit: cover;
   object-position: 50% 100%;
 }
 
-.top-menu-icons:hover {
+.top-icons:hover {
   text-decoration: none;
   color: inherit;
+}
+
+.slick-latest-img {
+  height: 150px !important;
+  width: 150px !important;
+  object-fit: cover;
+  margin-right: 150px;
 }

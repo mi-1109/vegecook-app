@@ -20,7 +20,7 @@
 //= require_tree .
 
 $(function() {
-    $('.slick-container').slick({
+    $('.slick-heading-container').slick({
       dots: true,
       infinite: true,
       speed: 500,
@@ -29,4 +29,15 @@ $(function() {
       autoplay: true,
       autoplaySpeed: 3500,
     });
+});
+
+$(function() {
+    $('.slick-latest-container').slick({
+      dots: true,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3500,
+      slidesToShow: 1,
+      slidesToScroll: 2,
+     });
 });
