@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :post_recipes, only: [:index, :show, :destroy]
-    resources :form_inquiries, only: [:index, :show]
+    resources :form_inquiries, only: [:index, :show, :update]
     resources :chats, only: [:index, :show, :create]
     resources :users, only: [:index, :show, :edit, :update]
   end

@@ -47,7 +47,7 @@ class User < ApplicationRecord
   def is_paid_to_sring
     if is_paid == true
       "プレミアム（有料）"
-    else is_paid == false
+    elsif is_paid == false
       "スタンダード（無料）"
     end
   end
@@ -55,7 +55,7 @@ class User < ApplicationRecord
   def is_deleted_to_sring
     if is_deleted == true
       "退会済"
-    else is_deleted == false
+    elsif is_deleted == false
       "有効"
     end
   end

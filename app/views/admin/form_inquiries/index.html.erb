@@ -13,8 +13,13 @@
           <td style="width: 30%" class="py-0 align-middle text-left">
             <u><%= link_to form_inquiry.user.name, admin_user_path(form_inquiry.user.id) %></u>
           </td>
+
           <td style="width: 15%" class="py-0 align-middle text-center">
-            <%= link_to "詳細", admin_form_inquiry_path(form_inquiry.id), class:'btn btn-sm btn-outline-warning' %>
+            <%= form_inquiry.response_status_i18n %>
+          </td>
+
+          <td style="width: 15%" class="py-0 align-middle text-center">
+            <%= link_to "詳細", admin_form_inquiry_path(form_inquiry.id), class:'btn btn-sm btn-outline-secondary' %>
           </td>
         </tr>
       <% end %>

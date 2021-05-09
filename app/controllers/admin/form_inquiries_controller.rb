@@ -8,4 +8,17 @@ class Admin::FormInquiriesController < ApplicationController
     @form_inquiry = FormInquiry.find(params[:id])
     @user = User.find(@form_inquiry.user_id)
   end
+
+  def update
+    @form_inquiry = FormInquiry.find(params[:id])
+    @form_inquiry.update(form_inquiry_params)
+    redirect_to admin_form_inquiry_path(@form_inquiry), notice: "Successfully updated status!"
+  end
+
+  private
+
+  def form_inquiry_params
+    params.require(:form_inquiry).permit(:response_status)
+  end
+
 end

@@ -7,6 +7,11 @@
           <h3 class="jp-font text-center mx-auto">お問い合わせ内容</h3>
         </div>
 
+        <%= form_with model: [:admin, @form_inquiry], method: :patch, local: true do |f| %>
+          <%= f.select :response_status, FormInquiry.response_statuses.keys.map {|k| [I18n.t("enums.form_inquiry.response_status.#{k}"), k]} %>
+          <%= f.submit "変更", class: 'btn btn-sm btn-secondary ml-2' %>
+        <% end %>
+
         <div class="mt-4 d-flex">
           <p class="font-weight-bold mr-1">ユーザー名：</p>
           <%= @user.name %>
