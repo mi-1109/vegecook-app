@@ -1,7 +1,7 @@
 
-<div class="slick-heading-container">
+<div class="heading-slider">
   <% @heading_recipes.each do |heading_recipe| %>
-      <%= attachment_image_tag heading_recipe, :recipe_image, :fill, 800, 500, format: 'jpeg', class:'slick-heading-img' %>
+      <%= attachment_image_tag heading_recipe, :recipe_image, :fill, 800, 500, format: 'jpeg', class:'slider-heading-img' %>
   <% end %>
 </div>
 
@@ -40,10 +40,19 @@
       <h5 class="jp-font font-weight-bold">新着レシピ</h5>
     </div>
   </div>
-  <div class="slick-latest-container mb-5">
-    <% @latest_recipes.each do |latest_recipe| %>
-      <%= attachment_image_tag latest_recipe, :recipe_image, :fill, 150, 150, format: 'jpeg', size:'100', class:'slick-latest-img' %>
-    <% end %>
+
+  <div style='width: 100%' class="row my-3 mb-2">
+    <div class="latest-slider">
+      <% @latest_recipes.each do |latest_recipe| %>
+        <%= attachment_image_tag latest_recipe, :recipe_image, :fill, 150, 150, format: 'jpeg', class:'slider-latest-img' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="offset-md-9">
+      <u><%= link_to "VIEW MORE", post_recipes_path %></u>
+    </div>
   </div>
 
 </div>
