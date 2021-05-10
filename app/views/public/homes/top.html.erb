@@ -1,1 +1,58 @@
-<h1>Customer's TOP</h1>
+
+<div class="heading-slider">
+  <% @heading_recipes.each do |heading_recipe| %>
+      <%= attachment_image_tag heading_recipe, :recipe_image, :fill, 800, 500, format: 'jpeg', class:'slider-heading-img' %>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-2 offset-md-3 text-center">
+      <%= link_to "", user_path(current_user.id), class: 'fas fa-bookmark fa-5x font-color pt-5 top-icons mb-2' %><br />
+      <%= link_to "BOOKMARK", user_path(current_user.id), style: 'font-size: 20px', class:'top-icons' %>
+    </div>
+    <div class="col-md-2 text-center">
+      <%= link_to "", new_post_recipe_path, class: 'fas fa-edit fa-5x font-color-green pt-5 top-icons mb-2 ml-3' %><br />
+      <%= link_to "POST RECIPE", new_post_recipe_path, style: 'font-size: 20px', class:'top-icons' %><br />
+      <p>~レシピ投稿~</p>
+    </div>
+    <div class="col-md-2 text-center">
+      <%= link_to "", post_recipes_rankings_path, class: 'fas fa-crown fa-5x pt-5 top-icons mb-2' %><br />
+      <%= link_to "TOP20!", post_recipes_rankings_path, style: 'font-size: 20px', class:'top-icons' %>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div style='width: 80%' class='mb-5 mx-auto'>
+      <div class="d-flex flex-wrap row-cols-3">
+        <% @random_recipes.each do |random_recipe| %>
+          <div class="mb-5 text-center">
+            <%= link_to (attachment_image_tag random_recipe, :recipe_image, :fill, 200, 200, format: 'jpeg'), post_recipe_path(random_recipe.id), class:'card-img-top pb-4' %><br />
+            <%= link_to random_recipe.title, post_recipe_path(random_recipe), class:'card-text text-wrap jp-font' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="mx-auto">
+      <h5 class="jp-font font-weight-bold">新着レシピ</h5>
+    </div>
+  </div>
+
+  <div style='width: 100%' class="row my-3 mb-2">
+    <div class="latest-slider">
+      <% @latest_recipes.each do |latest_recipe| %>
+        <%= attachment_image_tag latest_recipe, :recipe_image, :fill, 150, 150, format: 'jpeg', class:'slider-latest-img' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="offset-md-9">
+      <u><%= link_to "VIEW MORE", post_recipes_path %></u>
+    </div>
+  </div>
+
+</div>

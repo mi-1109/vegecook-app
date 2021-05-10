@@ -293,3 +293,33 @@ footer {
   margin: 0 auto;
   height: 270px;
 }
+
+
+.top-icons:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bx-wrapper {
+  margin: 0 auto !important;
+  border :none !important;
+  box-shadow: none !important;
+}
+
+.bx-next .bex-prev {
+  padding: 0 20px;
+}
+
+.bx-viewport {
+  margin-bottom: 20px;
+}
+
+.slider-heading-img {
+  height: 550px !important;
+  object-fit: cover;
+  object-position: 50% 100%;
+}
+
+.slider-latest-img {
+  border-radius: 50%;
+}
