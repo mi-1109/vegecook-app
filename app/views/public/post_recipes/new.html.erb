@@ -1,8 +1,9 @@
 <!---------- レシピ投稿フォーム -------------->
 
-<div style="height: 120vh", class="container">
-  <%= form_with model: @post_recipe, local:true do |f| %>
+<div style="height: 110vh", class="container align-imtes-center">
+  <div style='width: 90%' class='login-bg mx-auto'>
 
+  <%= form_with model: @post_recipe, local:true do |f| %>
     <div class="row">
       <div class="form-group mt-5 mx-auto">
         <%= f.text_field :title, placeholder: "レシピ名", size: "90", class:'py-2 px-2' %>
@@ -79,4 +80,6 @@
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
   <% end %>
+
+  </div>
 </div>
