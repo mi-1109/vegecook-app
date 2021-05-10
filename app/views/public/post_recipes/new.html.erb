@@ -29,14 +29,14 @@
           </div>
           <table class="table table-borderless">
             <thead>
-              <th class="pb-0"><h6 class="mb-0">材料・調味料</h6></th>
-              <th class="pb-0"><h6 class="mb-0">分量</h6></th>
+              <th class="pb-1"><h6 class="mb-0">材料・調味料</h6></th>
+              <th class="pb-1"><h6 class="mb-0">分量</h6></th>
             </thead>
             <tbody>
             <%= f.fields_for :ingredients do |ingredient| %>
               <tr>
-                <td><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
-                <td><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
+                <td class="py-1"><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
+                <td class="py-1"><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
               </tr>
             <% end %>
             </tbody>

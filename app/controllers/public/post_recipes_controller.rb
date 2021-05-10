@@ -6,7 +6,7 @@ class Public::PostRecipesController < ApplicationController
 
   def new
     @post_recipe = PostRecipe.new
-    for i in 1..4 do
+    for i in 1..3 do
       @post_recipe.ingredients.build
     end
     for i in 1..6 do

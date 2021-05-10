@@ -7,8 +7,8 @@ class PostRecipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  accepts_nested_attributes_for :procedures
-  accepts_nested_attributes_for :ingredients
+  accepts_nested_attributes_for :procedures, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 
   attachment :recipe_image
 
