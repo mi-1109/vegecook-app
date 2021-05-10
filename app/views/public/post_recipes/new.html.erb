@@ -27,20 +27,22 @@
             <h4 class="mb-0">材料</h4>
             <%= f.text_field :serving, placeholder: "何人分", size:"10x3", class:'ml-4' %>
           </div>
-          <table class="table table-borderless">
+          <table class="table table-borderless mb-0">
             <thead>
               <th class="pb-1"><h6 class="mb-0">材料・調味料</h6></th>
               <th class="pb-1"><h6 class="mb-0">分量</h6></th>
             </thead>
             <tbody>
-            <%= f.fields_for :ingredients do |ingredient| %>
-              <tr>
-                <td class="py-1"><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
-                <td class="py-1"><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
-              </tr>
-            <% end %>
+              <div id="ingredients">
+                <%= f.fields_for :ingredients do |ingredient| %>
+                  <tr><%= render 'ingredient_fields', f: ingredient %></tr>
+                <% end %>
+              </div>
             </tbody>
           </table>
+          <div class='links my-3 ml-2 btn btn-sm btn-warning py-0'>
+            <%= link_to_add_association '材料を追加', f, :ingredients %>
+          </div>
         </div>
       </div>
     </div>

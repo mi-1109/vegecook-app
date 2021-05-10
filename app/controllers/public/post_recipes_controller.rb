@@ -65,8 +65,8 @@ class Public::PostRecipesController < ApplicationController
       :recipe_image,
       :is_draft,
       :serving,
-      procedures_attributes: [:body, :step_num, :id],
-      ingredients_attributes: [:name, :amount, :id]
+      procedures_attributes: [:body, :step_num, :id, :_destroy],
+      ingredients_attributes: [:name, :amount, :id, :_destroy]
     )
   end
 end
