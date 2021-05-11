@@ -9,7 +9,7 @@ class Public::PostRecipesController < ApplicationController
     for i in 1..3 do
       @post_recipe.ingredients.build
     end
-    for i in 1..6 do
+    for i in 1..3 do
       @post_recipe.procedures.build
     end
   end

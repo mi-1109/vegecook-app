@@ -1,7 +1,7 @@
 <!---------- レシピ投稿フォーム -------------->
 
-<div style="height: 110vh", class="container align-imtes-center">
-  <div style='width: 90%' class='login-bg mx-auto'>
+<div class="container align-imtes-center">
+  <div style='width: 90%' class='login-bg mx-auto mb-5'>
 
   <%= form_with model: @post_recipe, local:true do |f| %>
     <div class="row">
@@ -18,14 +18,14 @@
       </div>
       <div class="col-md-5 mt-4 pl-4 pt-2">
         <div class="from-group mt-3 ml-5 p-3 bg-white shadow-sm">
-          <h6 class="mb-3">写真を載せる</h6>
+          <h6 class="mb-3"><i class="fas fa-camera font-color mr-2"></i>写真をアップロード</h6>
           <%= f.attachment_field :recipe_image %>
         </div>
       </div>
     </div>
 
     <!------------ 材料登録蘭 -------------->
-    <div style='width: 45%' class="form-group mt-5 border px-5 pt-4 pb-3 bg-white mx-auto shadow-sm">
+    <div style='width: 45%' class="mt-4 border px-5 pt-4 pb-3 bg-white mx-auto shadow-sm">
       <div class="row">
         <div class="form-inline mb-2">
           <h4 class="mb-0">材料</h4>
@@ -42,7 +42,7 @@
           <tbody>
             <div id="ingredients">
               <%= f.fields_for :ingredients do |ingredient| %>
-                <tr><%= render 'ingredient_fields', f: ingredient %></tr>
+                <tr><%= render partial: 'ingredient_fields', locals: { f: ingredient } %></tr>
               <% end %>
             </div>
           </tbody>
@@ -54,40 +54,34 @@
     </div>
 
     <!------------ 作成手順登録蘭 -------------->
-    <div class="row">
-      <div class="from-group mt-3 ml-5">
-        <h4 class="ml-2">つくり方</h4>
-        <% step_num = 0 %>
-        <table style="width:60%" class="table d-flex flex-wrap">
-        <%= f.fields_for :procedures do |procedure| %>
-          <thead>
-            <tr>
-              <th>
-                <%= step_num += 1 %>
-              </th>
-            </tr>
-          </thead>
+    <div style='width: 70%' class="mt-3 px-5 pt-4 mx-auto border-0">
+      <div class="row">
+        <h4 class="text-center mx-auto mb-0">つくり方</h4>
+      </div>
+
+      <div class="row">
+      <% step_num = 0 %>
+        <table class="table table-borderless">
           <tbody>
-            <tr>
-              <td>
-                <%= procedure.text_area :body, placeholder: "例）つくり方を記入", size:"20 x 5" %>
-              </td>
-            </tr>
+            <%= f.fields_for :procedures do |procedure| %>
+              <%= render partial: 'procedure_fields', locals: { f: procedure, step_num: step_num } %>
+            <% end %>
           </tbody>
-          <%= procedure.hidden_field :step_num, :value => step_num %>
-        <% end %>
         </table>
+        <div class='links mb-3 btn btn-sm btn-warning py-0'>
+          <%= link_to_add_association 'ステップを追加', f, :procedures, render_options: {locals: { step_num: step_num }} %>
+        </div>
       </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-4 pb-5">
       <div class="form-inline mx-auto">
-        <%= f.submit 'レシピを公開', :name => 'post', class:'mr-5 btn btn-sm btn-success' %>
-        <%= f.submit '下書きに保存', :name => 'update', class:'mr-5 btn btn-sm btn-warning' %>
+        <%= f.submit 'レシピを公開', :name => 'post', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-success' %>
+        <%= f.submit '下書きに保存', :name => 'update', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-outline-secondary' %>
       </div>
     </div>
 
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <% end %>
 
   </div>
