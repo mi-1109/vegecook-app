@@ -11,12 +11,12 @@
     </div>
 
     <div class="row">
-      <div class="col-md-5 mt-4 offset-md-1">
+      <div class="col-md-5 mt-3 offset-md-1">
         <div class="form-group mt-4 ml-5">
           <%= f.text_area :introduction, placeholder: "料理の簡単な説明（キャプション）", size:"50 x 4", class:'p-2' %>
         </div>
       </div>
-      <div class="col-md-5 mt-4 pl-4 pt-2">
+      <div class="col-md-5 mt-3 pl-4 pt-2">
         <div class="from-group mt-3 ml-5 p-3 bg-white shadow-sm">
           <h6 class="mb-3"><i class="fas fa-camera font-color mr-2"></i>写真をアップロード</h6>
           <%= f.attachment_field :recipe_image %>
@@ -64,12 +64,13 @@
         <table class="table table-borderless">
           <tbody>
             <%= f.fields_for :procedures do |procedure| %>
+         　    <% step_num += 1 %>
               <%= render partial: 'procedure_fields', locals: { f: procedure, step_num: step_num } %>
             <% end %>
           </tbody>
         </table>
         <div class='links mb-3 btn btn-sm btn-warning py-0'>
-          <%= link_to_add_association 'ステップを追加', f, :procedures, render_options: {locals: { step_num: step_num }} %>
+          <%= link_to_add_association '手順を追加', f, :procedures, render_options: {locals: { step_num: step_num }} %>
         </div>
       </div>
     </div>
