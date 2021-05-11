@@ -64,13 +64,12 @@
         <table class="table table-borderless">
           <tbody>
             <%= f.fields_for :procedures do |procedure| %>
-         　    <% step_num += 1 %>
-              <%= render partial: 'procedure_fields', locals: { f: procedure, step_num: step_num } %>
+              <%= render partial: 'procedure_fields', locals: { f: procedure, step_num: step_num += 1 } %>
             <% end %>
           </tbody>
         </table>
         <div class='links mb-3 btn btn-sm btn-warning py-0'>
-          <%= link_to_add_association '手順を追加', f, :procedures, render_options: {locals: { step_num: step_num }} %>
+          <%= link_to_add_association '手順を追加', f, :procedures, render_options: {locals: { step_num: step_num += 1 }} %>
         </div>
       </div>
     </div>
