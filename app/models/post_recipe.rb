@@ -7,15 +7,15 @@ class PostRecipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  accepts_nested_attributes_for :procedures, allow_destroy: true, reject_if: :procedure_blank
+  accepts_nested_attributes_for :procedures, allow_destroy: true, reject_if: lambda {|attributes| attributes[:body].blank?}
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda {|attributes| attributes[:name].blank?}
 
-  def procedure_blank(attributes)
-    exists = attributes[:id].present?
-    empty = attributes[:body].blank?
-    attributes.merge!(_destroy:1)if exists && empty
-    !exists && empty
-  end
+  # def procedure_blank(attributes)
+  #   exists = attributes[:id].present?
+  #   empty = attributes[:body].blank?
+  #   attributes.merge!(_destroy:1)if exists && empty
+  #   !exists && empty
+  # end
 
   attachment :recipe_image
   validates :title, length: {maximum: 25}
