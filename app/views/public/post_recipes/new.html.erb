@@ -34,22 +34,22 @@
       </div>
 
       <div class="row">
-        <table class="table table-borderless mb-0">
+        <table class="table table-borderless mb-0" id="ingredient-table">
           <thead>
             <th class="pb-1"><h6 class="mb-0">材料・調味料</h6></th>
             <th class="pb-1"><h6 class="mb-0">分量</h6></th>
           </thead>
           <tbody>
-            <div id="ingredients">
-              <%= f.fields_for :ingredients do |ingredient| %>
-                <tr><%= render partial: 'ingredient_fields', locals: { f: ingredient } %></tr>
-              <% end %>
-            </div>
+            <%= f.fields_for :ingredients do |ingredient| %>
+              <tr>
+                <td style="width: 12%" class="py-1"><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
+                <td style="width: 10%" class="py-1"><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
+                <td class="align-middle p-0"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
-        <div class='links my-3 ml-2 btn btn-sm btn-warning py-0'>
-          <%= link_to_add_association '材料を追加', f, :ingredients %>
-        </div>
+        <input type="button" value="材料を追加" onclick="addRow('ingredient-table')" class="btn btn-sm btn-warning py-0 my-3 ml-2">
       </div>
     </div>
 
@@ -60,17 +60,15 @@
       </div>
 
       <div class="row">
-      <% step_num = 0 %>
-        <table class="table table-borderless">
-          <tbody>
-            <%= f.fields_for :procedures do |procedure| %>
-              <%= render partial: 'procedure_fields', locals: { f: procedure, step_num: step_num += 1 } %>
-            <% end %>
-          </tbody>
+        <table class="table table-borderless" id="procedure-table">
+          <%= f.fields_for :procedures do |procedure| %>
+          <tr>
+            <td style='width: 70%' class="px-0"><%= procedure.text_area :body, placeholder:"つくり方を記入", size:'80 x 3', class:'p-2' %> </td>
+            <td class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+          </tr>
+          <% end %>
         </table>
-        <div class='links mb-3 btn btn-sm btn-warning py-0'>
-          <%= link_to_add_association '手順を追加', f, :procedures, render_options: {locals: { step_num: step_num += 1 }} %>
-        </div>
+        <input type="button" value="手順を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-warning py-0 mb-3">
       </div>
     </div>
 
@@ -83,7 +81,7 @@
     <div class="row mt-4 pb-5">
       <div class="form-inline mx-auto">
         <%= f.submit 'レシピを公開', :name => 'post', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-success' %>
-        <%= f.submit '下書きに保存', :name => 'update', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-outline-secondary' %>
+        <%= f.submit '下書きに保存', :name => 'update', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-outline-secondary bg-light' %>
       </div>
     </div>
 

@@ -51,12 +51,11 @@
         </th>
       </thead>
       <tbody>
+        <% step_num = 0 %>
         <% post_recipe.procedures.each do |procedure| %>
         <tr>
-          <td class="pl-4 text-wrap">
-            <span class="mr-3"><%= procedure.step_num %> )</span>
-            <%= procedure.body %>
-          </td>
+          <td><%= step_num += 1 %></td>
+          <td class="pl-4 text-wrap"><%= procedure.body %></td>
         </tr>
         <% end %>
       </tbody>
