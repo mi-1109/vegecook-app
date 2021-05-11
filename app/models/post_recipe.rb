@@ -42,4 +42,12 @@ class PostRecipe < ApplicationRecord
     PostRecipe.find(Like.group(:post_recipe_id).order('count(post_recipe_id) desc').limit(20).pluck(:post_recipe_id))
   end
 
+  enum veg_type: {
+    pesco: 0,
+    lacto_ovo: 1,
+    lacto: 2,
+    ovo: 3,
+    vegan: 4,
+    beginner: 5
+  }
 end
