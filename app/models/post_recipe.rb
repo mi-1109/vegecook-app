@@ -10,7 +10,7 @@ class PostRecipe < ApplicationRecord
   accepts_nested_attributes_for :procedures, allow_destroy: true, reject_if: lambda {|attributes| attributes[:body].blank?}
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda {|attributes| attributes[:name].blank? && attributes[:amount].blank?}
 
-  with_options presence: true do
+  with_options presence: true, on: :publicize do
     validates :recipe_image
     validates :serving
     validates :veg_type
@@ -20,8 +20,8 @@ class PostRecipe < ApplicationRecord
     validates :procedures
   end
 
-  validates :title, length: {maximum: 25}
-  validates :introduction, length: {maximum: 50}
+  validates :title, length: {maximum: 25}, on: :publicize
+  validates :introduction, length: {maximum: 50}, on: :publicize
 
   attachment :recipe_image
 
