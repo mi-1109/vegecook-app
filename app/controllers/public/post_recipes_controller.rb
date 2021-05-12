@@ -34,7 +34,9 @@ class Public::PostRecipesController < ApplicationController
   def show
     @post_recipe = PostRecipe.find(params[:id])
     @comment = Comment.new
-    @post_recipe.browsing_history(current_user)
+    if user_signed_in?
+      @post_recipe.browsing_history(current_user) 
+    end
   end
 
   def edit
