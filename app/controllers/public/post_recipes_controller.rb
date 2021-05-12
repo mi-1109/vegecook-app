@@ -1,4 +1,5 @@
 class Public::PostRecipesController < ApplicationController
+  before_action :authenticate_user!, except:[:index, :show]
 
   def index
     @latest_recipes = PostRecipe.all.order(created_at: "DESC").page(params[:page]).per(15)
@@ -58,7 +59,7 @@ class Public::PostRecipesController < ApplicationController
     if @post_recipe.destroy
       redirect_to user_path(current_user), notice:"レシピを削除しました"
     else
-      render :edit, alert:"削除できませんでした。お手数ですが、再度お試しください"
+      render :edit, alert: "削除できませんでした。お手数ですが、再度お試しください"
     end
   end
 
