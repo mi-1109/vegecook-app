@@ -6,27 +6,30 @@ class Public::PostRecipesController < ApplicationController
 
   def new
     @post_recipe = PostRecipe.new
-    for i in 1..3 do
-      @post_recipe.ingredients.build
-    end
-    for i in 1..3 do
-      @post_recipe.procedures.build
-    end
+    @post_recipe.new_form_instance
   end
 
   def create
     @post_recipe = PostRecipe.new(post_recipe_params)
     if params[:post]
-      @post_recipe.save
-      flash[:notice] = "レシピを投稿しました！"
-      redirect_to user_path(current_user)
-    elsif params[:update]
-      @post_recipe.update(is_draft: true)
-      flash[:notice] = "レシピを下書きに保存しました！"
-      redirect_to user_path(current_user)
+      if @post_recipe.save
+        flash[:notice] = "レシピを投稿しました！"
+        redirect_to post_recipe_path(@post_recipe)
+      else
+        flash[:alert] = "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+        @post_recipe.new_form_instance
+        logger.debug(@post_recipe.errors.messages)
+        render :new
+      end
     else
-      flash[:alert] = "投稿できませんでした。お手数ですが、再度お試しください。"
-      render :edit
+      if @post_recipe.update(is_draft: true)
+        flash[:notice] = "レシピを下書きに保存しました！"
+        redirect_to user_path(current_user)
+      else
+        flash[:alert] = "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+        @post_recipe.new_form_instance
+        render :new
+      end
     end
   end
 
@@ -47,7 +50,9 @@ class Public::PostRecipesController < ApplicationController
     if @post_recipe.update(post_recipe_params)
       redirect_to post_recipe_path(@post_recipe.id), notice: "レシピを更新しました！"
     else
-      render action: :edit, notice: "レシピを更新できませんでした。お手数ですが、再度お試しください。"
+      flash[:notice] = "更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+      @post_recipe.new_form_instance
+      render action: :edit
     end
   end
 
