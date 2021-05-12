@@ -48,11 +48,11 @@
       controls: false
     });
   });
-var count = 100;
+  
+// 行挿入時のインデックス作成のためのグローバル変数
+var count = 10;
   function addRow(table_id) {
     var table = document.getElementById(table_id)
-
-    // var row_count = table.rows.length;
     window.count += 1;
 
     // tr(行)を末尾に追加

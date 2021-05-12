@@ -35,27 +35,27 @@
       <tbody>
         <% post_recipe.ingredients.each do |ingredient| %>
         <tr>
-          <td style="width: 50%"><%= ingredient.name %></td>
-          <td style="width: 10%"><%= ingredient.amount %></td>
+          <td style="width: 45%" class='pt-4 pl-4'><%= ingredient.name %></td>
+          <td style="width: 10%" class='pt-4'><%= ingredient.amount %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 
-  <div class="row mx-auto mt-3">
+  <div class="row mx-auto mt-5">
     <table style="width: 60%" class="table table-borderless mx-auto">
       <thead class="border procedure">
-        <th class="d-flex pb-0 pt-2 mb-2 align-middle">
-          <h5 class="ml-0 py-0 mb-0 jp-font font-weight-bold">つくり方</h5>
+        <th colspan="2" class="py-1">
+          <h5 class="jp-font font-weight-bold text-center mb-0">つくり方</h5>
         </th>
       </thead>
       <tbody>
         <% step_num = 0 %>
         <% post_recipe.procedures.each do |procedure| %>
-        <tr>
-          <td><%= step_num += 1 %></td>
-          <td class="pl-4 text-wrap"><%= procedure.body %></td>
+        <tr class="ml-2">
+          <td style='width: 5%' class='text-center font-weight-bold pt-3'><%= step_num += 1 %>)</td>
+          <td style='width: 50%' class="text-wrap pt-3"><%= procedure.body %></td>
         </tr>
         <% end %>
       </tbody>

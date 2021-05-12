@@ -42,6 +42,8 @@ class Public::PostRecipesController < ApplicationController
 
   def update
     @post_recipe = PostRecipe.find(params[:id])
+    @post_recipe.procedures.destroy_all
+    @post_recipe.ingredients.destroy_all
     if @post_recipe.update(post_recipe_params)
       redirect_to post_recipe_path(@post_recipe.id), notice: "レシピを更新しました！"
     else
@@ -66,8 +68,8 @@ class Public::PostRecipesController < ApplicationController
       :is_draft,
       :serving,
       :veg_type,
-      procedures_attributes: [:body, :id, :_destroy],
-      ingredients_attributes: [:name, :amount, :id, :_destroy]
+      procedures_attributes: [:body, :_destroy],
+      ingredients_attributes: [:name, :amount, :_destroy]
     )
   end
 end
