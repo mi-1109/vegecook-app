@@ -1,0 +1,7 @@
+<% if obj.errors.include?(column) %>
+  <ul>
+    <% obj.errors.full_messages_for(column).each do |message| %>
+      <li class="text-danger small mt-1 ml-4"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

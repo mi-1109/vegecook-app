@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_031959) do
+ActiveRecord::Schema.define(version: 2021_05_11_072827) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -86,12 +86,12 @@ ActiveRecord::Schema.define(version: 2021_05_04_031959) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "serving", null: false
+    t.integer "veg_type", null: false
   end
 
   create_table "procedures", force: :cascade do |t|
     t.integer "post_recipe_id", null: false
     t.text "body", null: false
-    t.integer "step_num", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

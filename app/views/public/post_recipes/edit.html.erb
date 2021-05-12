@@ -1,86 +1,101 @@
 <!---------- レシピ編集画面 -------------->
 
-<div style="height: 120vh", class="container">
-  <%= form_with model: @post_recipe, local:true do |f| %>
+<div class="container align-imtes-center">
+  <div style='width: 90%' class='login-bg mx-auto mb-5'>
 
+  <%= form_with model: @post_recipe, local:true do |f| %>
     <div class="row">
       <div class="form-group mt-5 mx-auto">
         <%= f.text_field :title, placeholder: "レシピ名", size: "90", class:'py-2 px-2' %>
+        <%= render 'layouts/error_messages', obj: @post_recipe, column: :title %>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-5 mt-4 mr-4 pl-4">
+      <div class="col-md-5 mt-3 offset-md-1">
         <div class="form-group mt-4 ml-5">
-          <%= f.text_area :introduction, placeholder: "料理の簡単な説明（キャプション）", size:"52 x 5", class:'pl-2 pt-2' %>
-        </div>
-        <div class="from-group mt-3 ml-5 p-3 border">
-          <h5 class="mb-3">写真を載せる</h5>
-          <%= f.attachment_field :recipe_image %>
+          <%= f.text_area :introduction, placeholder: "レシピの簡単な説明（キャプション）", size:"50 x 4", class:'p-2' %>
+          <%= render 'layouts/error_messages', obj: @post_recipe, column: :introduction %>
         </div>
       </div>
-
-      <div class="col-md-6">
-        <div class="form-group mt-5 border px-3 pt-3 ml-5">
-          <div class="form-inline mb-2">
-            <h4 class="mb-0">材料</h4>
-            <%= f.text_field :serving, placeholder: "何人分", size:"10x3", class:'ml-4' %>
-          </div>
-          <table class="table table-borderless">
-            <thead>
-              <th class="pb-0"><h6 class="mb-0">材料・調味料</h6></th>
-              <th class="pb-0"><h6 class="mb-0">分量</h6></th>
-            </thead>
-            <tbody>
-            <%= f.fields_for :ingredients do |ingredient| %>
-              <tr>
-                <td><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
-                <td><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
-                <%= ingredient.hidden_field :id %>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
+      <div class="col-md-5 mt-3 pl-4 pt-2">
+        <div class="from-group mt-3 ml-5 p-3 bg-white shadow-sm">
+          <h6 class="mb-3"><i class="fas fa-camera font-color mr-2"></i>写真をアップロード</h6>
+          <%= f.attachment_field :recipe_image %>
+          <%= render 'layouts/error_messages', obj: @post_recipe, column: :recipe_image %>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="from-group mt-3 ml-5">
-        <h4 class="ml-2">つくり方</h4>
-        <% step_num = 0 %>
-        <table style="width:60%" class="table d-flex flex-wrap">
-        <%= f.fields_for :procedures do |procedure| %>
+    <!------------ 材料登録欄 -------------->
+    <div style='width: 45%' class="mt-4 border px-5 pt-4 pb-3 bg-white mx-auto shadow-sm">
+      <div class="row">
+        <div class="form-inline mb-2">
+          <h4 class="mb-0">材料</h4>
+          <%= f.text_field :serving, placeholder: "何人分", size:"10x3", class:'ml-4' %>
+          <%= render 'layouts/error_messages', obj: @post_recipe, column: :serving %>
+        </div>
+      </div>
+
+      <div class="row">
+        <table class="table table-borderless mb-0" id="ingredient-table">
           <thead>
-            <tr>
-              <th>
-                <%= step_num += 1 %>
-              </th>
-            </tr>
+            <th class="pb-1"><h6 class="mb-0">材料・調味料</h6></th>
+            <th class="pb-1"><h6 class="mb-0">分量</h6></th>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <%= procedure.text_area :body, placeholder: "例）つくり方を記入", size:"20 x 5" %>
-              </td>
-            </tr>
+            <%= f.fields_for :ingredients do |ingredient| %>
+              <tr>
+                <td style="width: 12%" class="py-1"><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
+                <td style="width: 10%" class="py-1"><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
+                <td class="align-middle p-0"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+              </tr>
+            <% end %>
           </tbody>
-          <%= procedure.hidden_field :step_num, :value => step_num %>
-          <%= procedure.hidden_field :id %>
-        <% end %>
         </table>
+        <input type="button" value="材料を追加" onclick="addRow('ingredient-table')" class="btn btn-sm btn-warning py-0 my-3 ml-2">
+      </div>
+      <%= render 'layouts/error_messages', obj: @post_recipe, column: :ingredients %>
+      <%= render 'layouts/error_messages', obj: @post_recipe, column: :"ingredients.amount" %>
+      <%= render 'layouts/error_messages', obj: @post_recipe, column: :"ingredients.name" %>
+    </div>
+
+    <!------------ 作成手順登録欄 -------------->
+    <div style='width: 70%' class="mt-3 px-5 pt-4 mx-auto border-0">
+      <div class="row">
+        <h4 class="text-center mx-auto mb-0">つくり方</h4>
+      </div>
+
+      <div class="row">
+        <table class="table table-borderless" id="procedure-table">
+          <%= f.fields_for :procedures do |procedure| %>
+          <tr>
+            <td style='width: 70%' class="px-0"><%= procedure.text_area :body, placeholder:"手順を記入", size:'80 x 3', class:'p-2' %> </td>
+            <td class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+          </tr>
+          <% end %>
+        </table>
+        <input type="button" value="手順を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-warning py-0 mb-3">
+        <%= render 'layouts/error_messages', obj: @post_recipe, column: :procedures %>
       </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row my-4">
+      <div class="form-group mx-auto">
+        <%= f.select :veg_type, [["植物性食材のみ", "vegan"],["植物性食品＋卵", "ovo"],["植物性食品＋乳製品", "lacto"],["植物性食品＋乳製品＋卵", "lacto_ovo"],["植物性食品＋魚", "pesco"]], include_blank: "使用食材を選択してください" %>
+        <%= render 'layouts/error_messages', obj: @post_recipe, column: :veg_type %>
+      </div>
+    </div>
+
+    <div class="row mt-4 pb-5">
       <div class="form-inline mx-auto">
         <%= f.submit 'レシピを更新', class:'mr-5 btn btn-sm btn-success' %>
         <u><%= link_to 'レシピを削除', "/post_recipes/#{@post_recipe.id}", method: :delete, data: {confirm: "このレシピを削除しますか？"}, class:'mr-5 text-secondary' %></u>
       </div>
     </div>
 
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <% end %>
+  </div>
 </div>
 

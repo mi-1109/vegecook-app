@@ -1,3 +1,4 @@
+<!-------------- 顧客側：トップ画面 -------------------->
 
 <div class="heading-slider">
   <% @heading_recipes.each do |heading_recipe| %>
@@ -8,8 +9,13 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-md-2 offset-md-3 text-center">
-      <%= link_to "", user_path(current_user.id), class: 'fas fa-bookmark fa-5x font-color pt-5 top-icons mb-2' %><br />
-      <%= link_to "BOOKMARK", user_path(current_user.id), style: 'font-size: 20px', class:'top-icons' %>
+      <% if user_signed_in? %>
+        <%= link_to "", user_path(current_user.id), class: 'fas fa-bookmark fa-5x font-color pt-5 top-icons mb-2' %><br />
+        <%= link_to "BOOKMARK", user_path(current_user.id), style: 'font-size: 20px', class:'top-icons' %>
+      <% else %>
+        <%= link_to "", new_user_session_path, class: 'fas fa-bookmark fa-5x font-color pt-5 top-icons mb-2' %><br />
+        <%= link_to "BOOKMARK", new_user_session_path, style: 'font-size: 20px', class:'top-icons' %>
+      <% end %>
     </div>
     <div class="col-md-2 text-center">
       <%= link_to "", new_post_recipe_path, class: 'fas fa-edit fa-5x font-color-green pt-5 top-icons mb-2 ml-3' %><br />
