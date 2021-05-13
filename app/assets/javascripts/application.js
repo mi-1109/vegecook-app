@@ -48,7 +48,7 @@
       controls: false
     });
   });
-  
+
 // 行挿入時のインデックス作成のためのグローバル変数
 var count = 10;
   function addRow(table_id) {
