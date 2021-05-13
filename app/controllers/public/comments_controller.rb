@@ -1,10 +1,17 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @post_recipe = PostRecipe.find(params[:post_recipe_id])
-    @comment = current_user.comments.new(comment_params)
-    @comment.post_recipe_id = @post_recipe.id
-    @comment.save
+    if user_signed_in?
+      @comment = current_user.comments.new(comment_params)
+      @comment.post_recipe_id = @post_recipe.id
+      if @comment.save
+        flash[:notice] = "コメントを投稿しました！"
+      else
+        render template: "public/post_recipes/show", alert: "無料会員登録もしくはログインの上、コメントを投稿ください"
+      end
+    end
   end
 
   def destroy

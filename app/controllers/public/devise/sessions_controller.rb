@@ -37,8 +37,6 @@ class Public::Devise::SessionsController < Devise::SessionsController
         redirect_to new_user_session_path
         flash[:error] = "退会済みのアカウントです。お手数ですが、会員登録をお願いいたします。"
       end
-    else
-      flash[:error] = "入力内容が間違っています。再度お試しください。"
     end
   end
 

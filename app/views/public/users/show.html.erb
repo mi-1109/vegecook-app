@@ -10,7 +10,7 @@
         <li class="nav-item">
           <a href="#tab2" class="nav-link tab-style" data-toggle="tab">いいね</a>
         </li>
-        <% if @user.id == current_user.id %>
+        <% if user_signed_in? && @user.id == current_user.id %>
         <li class="nav-item">
           <a href="#tab3" class="nav-link tab-style" data-toggle="tab">保存レシピ</a>
         </li>
