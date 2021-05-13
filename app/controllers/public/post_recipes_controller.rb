@@ -21,7 +21,7 @@ class Public::PostRecipesController < ApplicationController
         logger.debug(@post_recipe.errors.messages)
         render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
-    # 下書きボタンを押下した場合  
+    # 下書きボタンを押下した場合
     else
       if @post_recipe.update(is_draft: true)
         redirect_to user_path(current_user), notice: "レシピを下書きに保存しました！"
