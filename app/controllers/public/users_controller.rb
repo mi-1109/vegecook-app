@@ -31,6 +31,16 @@ class Public::UsersController < ApplicationController
   def quit
     @user = current_user
     @user.update(is_deleted: true)
+    @user.post_recipes.destroy_all
+    @user.comments.destroy_all
+    @user.form_inquiries.destroy_all
+    @user.chats.destroy_all
+    @user.chat_room.destroy
+    @user.histories.destroy_all
+    @user.likes.destroy_all
+    @user.saved_recipes.destroy_all
+    @user.active_relationships.destroy_all
+    @user.passive_relationships.destroy_all
     reset_session
     flash[:notice] = "ご利用いただき、ありがとうございました。"
     redirect_to root_path

@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_many :post_recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
-
   has_many :form_inquiries, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_one :chat_room, dependent: :destroy
