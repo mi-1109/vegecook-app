@@ -30,7 +30,6 @@ class User < ApplicationRecord
     validates :name
     validates :veg_type
     validates :email
-    validates :introduction
   end
 
   def followed_by?(user)

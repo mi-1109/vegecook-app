@@ -61,6 +61,6 @@ ja:
   activerecord:
     attributes:
       user:
+        name: "ユーザー名"
         email: "メールアドレス"
         password: "パスワード"
-        name: "ユーザー名"
