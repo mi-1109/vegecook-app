@@ -25,6 +25,9 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
   has_many :followers, through: :passive_relationships, source: :following
 
+  validates :name, presence: true
+  validates :veg_type, presence: true
+
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end

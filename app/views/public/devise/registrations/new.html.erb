@@ -14,22 +14,22 @@
         <div class="row mt-4">
           <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
             <div class="form-group">
-              <%= f.label :name, 'ユーザー名', class:'text-secondary' %><br />
+              <%= f.label :name, 'ユーザー名', class:'text-secondary' %>
               <%= f.text_field :name, autofocus: true, autocomplete: "name", size: "40" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :email, 'メールアドレス', class:'text-secondary' %><br />
+              <%= f.label :email, 'メールアドレス', class:'text-secondary' %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :password, 'パスワード', class:'text-secondary' %><br />
+              <%= f.label :password, 'パスワード', class:'text-secondary' %>
               <%= f.password_field :password, autocomplete: "new-password", size: "40" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :password_confirmation, 'パスワード（確認）', class:'text-secondary' %><br />
+              <%= f.label :password_confirmation, 'パスワード（確認）', class:'text-secondary' %>
               <%= f.password_field :password_confirmation, autocomplete: "new-password", size: "40" %>
             </div>
 
