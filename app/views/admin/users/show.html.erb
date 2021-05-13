@@ -2,9 +2,9 @@
 
 <div style="height: 70vh", class="d-flex align-items-center">
   <div class="container">
-    <h3 class="jp-font"><%= @user.name %>さんの会員情報</h3>
+    <u><h3 class="jp-font"><%= @user.name %>さんの会員情報</h3></u>
 
-    <table class="table table-borderless mt-4">
+    <table class="table table-borderless mt-5">
       <tr>
         <td style="width:25%", class="font-weight-bold">ユーザー名</td>
         <td class="ml-3"><%= @user.name %></td>
@@ -31,7 +31,7 @@
       </tr>
     </table>
 
-    <div class="d-flex mt-4 ml-2">
+    <div class="d-flex mt-5 ml-2">
       <%= link_to "編集する", edit_admin_user_path(@user.id), class: 'btn btn-sm btn-success' %>
       <%= link_to "戻る", admin_users_path, class: 'btn btn-sm btn-secondary ml-4' %>
     </div>
