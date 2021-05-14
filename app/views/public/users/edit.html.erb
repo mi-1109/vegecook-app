@@ -1,4 +1,4 @@
-<div style="height: 80vh", class="d-flex align-items-center mt-4 mb-5">
+<div class="d-flex align-items-center mt-4 mb-5">
   <div style="width: 40%", class="login-bg mx-auto">
 
     <h4 class="jp-font text-center mt-4 font-weight-bold">プロフィール編集</h4>
@@ -15,16 +15,19 @@
             <div class="form-group mt-4">
               <%= f.label :name, 'ユーザー名:', class:'text-secondary font-weight-bold mb-1' %><br />
               <%= f.text_field :name, class:'form-control', size: "40" %>
+              <%= render 'layouts/error_messages', obj: @user, column: :name %>
             </div>
 
             <div class="form-group mt-4">
               <%= f.label :introduction, '自己紹介:', class:'text-secondary font-weight-bold mb-1' %><br />
               <%= f.text_area :introduction, class:'form-control', size: "40x3" %>
+              <%= render 'layouts/error_messages', obj: @user, column: :introduction %>
             </div>
 
             <div class="form-group mt-4">
               <%= f.label :email, 'メールアドレス:', class:'text-secondary font-weight-bold mb-1' %><br />
               <%= f.text_field :email, class:'form-control', size: "40" %>
+              <%= render 'layouts/error_messages', obj: @user, column: :email %>
             </div>
 
             <div class="form-group mt-4">
@@ -33,6 +36,7 @@
             　<%= f.label :is_paid, "スタンダード・プラン（無料）", {value: :false, style: "display: inline-block;"} %><br />
             　<%= f.radio_button :is_paid, :true %>
             　<%= f.label :is_paid, "プレミアム・プラン（有料）", {value: :true, style: "display: inline-block;"} %>
+              <%= render 'layouts/error_messages', obj: @user, column: :veg_type %>
             </div>
 
             <div class="form-group form-inline mt-2">

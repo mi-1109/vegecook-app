@@ -1,4 +1,5 @@
 class Public::SavedRecipesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @post_recipe =PostRecipe.find(params[:post_recipe_id])

@@ -3,18 +3,21 @@
   <%= render partial: '/shared/recipe_show', locals: { post_recipe: @post_recipe } %>
 
 <!--コメント投稿フォーム-->
+<% if user_signed_in? %>
   <%= form_with model:[@post_recipe, @comment], remote: true do |f| %>
-  <div class="row mt-3">
+  <div class="row">
+    <div class="error_explanation offset-md-3"></div>
+  </div>
+  <div class="row mt-1">
     <div class="form-group mb-1 mx-auto">
       <%= f.text_area :comment, size:'60x4', placeholder:"コメントを入力", class: 'p-3 comment-content' %>
     </div>
   </div>
-  <div class="row">
     <div class="form-group offset-md-8">
       <%= f.submit "送信", class:'btn btn-sm btn-outline-secondary'%>
     </div>
-  </div>
   <% end %>
+<% end %>
 
   <div class="row mt-4">
     <div class="mx-auto">

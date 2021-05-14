@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_072827) do
+ActiveRecord::Schema.define(version: 2021_05_14_012819) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 2021_05_11_072827) do
 
   create_table "ingredients", force: :cascade do |t|
     t.integer "post_recipe_id", null: false
-    t.string "name", null: false
-    t.string "amount", null: false
+    t.string "name"
+    t.string "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,19 +79,19 @@ ActiveRecord::Schema.define(version: 2021_05_11_072827) do
 
   create_table "post_recipes", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "title", null: false
-    t.text "introduction", null: false
-    t.string "recipe_image_id", null: false
+    t.string "title"
+    t.text "introduction"
+    t.string "recipe_image_id"
     t.boolean "is_draft", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "serving", null: false
-    t.integer "veg_type", null: false
+    t.string "serving"
+    t.integer "veg_type"
   end
 
   create_table "procedures", force: :cascade do |t|
     t.integer "post_recipe_id", null: false
-    t.text "body", null: false
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

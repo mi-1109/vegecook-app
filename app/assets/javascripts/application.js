@@ -20,7 +20,7 @@
 //= require turbolinks
 //= require_tree .
 
-  $(document).ready(function(){
+  $(document).on('turbolinks:load',function(){
     $('.heading-slider').bxSlider({
       mode: 'fade',
       slideWidth: 1200,
@@ -29,11 +29,11 @@
       speed: 800,
       auto: true,
       stopAutoOnClick: true,
-      autoHover: true,
+      autoHover: true
     });
   });
 
-  $(document).ready(function(){
+  $(document).on('turbolinks:load',function(){
     $('.latest-slider').bxSlider({
       mode: 'horizontal',
       easing: 'linear',
@@ -44,11 +44,11 @@
       maxSlides: 4,
       slideMargin: 60,
       pager: false,
-      speed: 900,
+      speed: 1500,
       controls: false
     });
   });
-  
+
 // 行挿入時のインデックス作成のためのグローバル変数
 var count = 10;
   function addRow(table_id) {

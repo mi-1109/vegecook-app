@@ -1,10 +1,11 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @post_recipe = PostRecipe.find(params[:post_recipe_id])
-    @comment = current_user.comments.new(comment_params)
-    @comment.post_recipe_id = @post_recipe.id
-    @comment.save
+      @comment = current_user.comments.new(comment_params)
+      @comment.post_recipe_id = @post_recipe.id
+      @comment.save
   end
 
   def destroy

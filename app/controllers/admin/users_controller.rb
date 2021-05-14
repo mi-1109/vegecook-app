@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @users = User.page(params[:page])
@@ -15,8 +16,11 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to admin_user_path(@user)
+    if @user.update(user_params)
+      redirect_to admin_user_path(@user), notice: "会員ステータスを更新しました"
+    else
+      render :edit, alert: "会員ステータスを更新できませんでした"
+    end
   end
 
   private

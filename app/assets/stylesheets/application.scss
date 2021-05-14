@@ -323,3 +323,25 @@ footer {
 .slider-latest-img {
   border-radius: 50%;
 }
+
+.field_with_errors {
+  display: contents;
+}
+
+#notice {
+  background-color: #EBF9F8;
+  color: #31B4AF;
+}
+
+.fa-check-circle {
+  color: #31B4AF;
+}
+
+#alert {
+  background-color: #E7CFCF;
+  color: #BF0000;
+}
+
+.fa-exclamation-triangle {
+  color: #BF0000;
+}

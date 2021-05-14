@@ -1,4 +1,5 @@
 class Admin::ChatsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @chats = Chat.all.group(:user_id).order(created_at: "DESC").page(params[:page]).per(10)

@@ -2,6 +2,14 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :recipe_search
 
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from ActionController::RoutingError, with: :render_404
+
+  def render_404(e = nil)
+    logger.info "Rendering 404 with exception: #{e.message}" if e
+    render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
+  end
+
   def recipe_search
     @search = PostRecipe.joins(%|
       INNER JOIN (

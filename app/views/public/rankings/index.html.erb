@@ -10,18 +10,22 @@
   </div>
 
   <div class="row mb-5">
-    <div class="d-flex flex-wrap">
-    <% @recipe_ranks.each.with_index(1) do |recipe_rank, i| %>
-      <div class="card text-center mt-3 p-3 ml-4 mb-3">
-        <div class="card-header p-1 font-weight-bold bg-color">
-          NO. <%= i %>
-        </div>
-        <%= link_to (attachment_image_tag recipe_rank, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(recipe_rank.id), class:'card-img-top' %>
-        <%= link_to recipe_rank.title, post_recipe_path(recipe_rank), class:'card-text text-wrap mt-1' %>
-        <%= link_to recipe_rank.user.name, user_path(recipe_rank.user), class:'card-text text-wrap font-color' %>
+    <% if user_signed_in? && current_user.is_paid == true %>
+      <div class="d-flex flex-wrap">
+        <% @recipe_ranks.each.with_index(1) do |recipe_rank, i| %>
+          <div class="card text-center mt-3 p-3 ml-4 mb-3">
+            <div class="card-header p-1 font-weight-bold bg-color">
+              NO. <%= i %>
+            </div>
+            <%= link_to (attachment_image_tag recipe_rank, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(recipe_rank.id), class:'card-img-top' %>
+            <%= link_to recipe_rank.title, post_recipe_path(recipe_rank), class:'card-text text-wrap mt-1' %>
+            <%= link_to recipe_rank.user.name, user_path(recipe_rank.user), class:'card-text text-wrap font-color' %>
+          </div>
+        <% end %>
       </div>
+    <% else %>
+      <p class="mt-4 ml-3">有料会員の機能です。<%= link_to "こちら", premiums_payment_path, class:"font-color" %>より有料会員登録をお願いいたします。</p>
     <% end %>
-    </div>
   </div>
 
 </div>

@@ -41,6 +41,17 @@ ja:
       ingredients:
         name: "材料名"
         amount: "分量"
+      form_inquiry:
+        content: "問い合わせ内容"
+      user:
+        name: "ユーザー名"
+        introduction: "自己紹介"
+        email: "メールアドレス"
+        veg_type: "ベジタリアン・ステータス"
+      comment:
+        comment: "コメント"
+      chat:
+        message: "問い合わせ内容"
     errors:
       format: "%{attribute}%{message}"
       messages:
