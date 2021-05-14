@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except:[:show, :follows]
-  before_action :deny_quitted_user, only:[:show, :follows]
+  before_action :deny_quitted_user, only:[:show]
 
   def show
     @user = User.find(params[:id])

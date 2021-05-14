@@ -2,44 +2,43 @@
 <div style="height: 70vh", class="d-flex align-items-center">
   <div class="container">
 
-    <h3 class="jp-font">会員情報の編集</h3>
+    <u><h3 class="jp-font">会員ステータスの変更</h3></u>
 
     <%= form_with model: @user, url: admin_user_path(@user.id), method: :PATCH, local:true do |f| %>
     <table class="table table-borderless mt-4 pt-3">
       <tr>
-        <td style="width:25%">ユーザー名</td>
+        <td style="width:25%" class="font-weight-bold">ユーザー名</td>
         <td><%= @user.name %></td>
       </tr>
       <tr>
-        <td style="width:25%">自己紹介</td>
+        <td style="width:25%" class="font-weight-bold">自己紹介</td>
         <td><%= @user.introduction %></td>
       </tr>
       <tr>
-        <td style="width:25%">メールアドレス</td>
+        <td style="width:25%" class="font-weight-bold">メールアドレス</td>
         <td><%= @user.email %></td>
       </tr>
-      <tr class="form-group">
-        <td style="width:25%">加入プラン</td>
-        <td>
-          <%= f.radio_button :is_paid, :false %>
-          <%= f.label :is_paid, "スタンダード・プラン（無料）" %><br />
-          <%= f.radio_button :is_paid, :true %>
-          <%= f.label :is_paid, "プレミアム・プラン（有料）" %>
-        </td>
+      <tr>
+        <td style="width:25%" class="font-weight-bold">ベジタリアン・ステータス</td>
+        <td><%= @user.veg_type %></td>
       </tr>
-      <tr class="form-group">
-        <td style="width:25%">会員ステータス</td>
+      <tr>
+        <td style="width:25%", class="font-weight-bold">加入プラン</td>
+        <td class="ml-3"><%= @user.is_paid_to_sring %></td>
+      </tr>
+      <tr class="form-group text-danger">
+        <td style="width:25%" class="font-weight-bold text-danger">会員ステータス</td>
         <td>
           <%= f.radio_button :is_deleted, :false %>
-          <%= f.label :is_deleted, "有効" %><br />
+          <%= f.label :is_deleted, "有効", class:' text-danger' %><br />
           <%= f.radio_button :is_deleted, :true %>
-          <%= f.label :is_deleted, "退会済" %>
+          <%= f.label :is_deleted, "退会済", class:' text-danger' %>
         </td>
       </tr>
     </table>
 
     <div class="d-flex mt-4 ml-2">
-      <%= f.submit '変更する', class: 'btn btn-sm btn-success' %>
+      <%= f.submit '会員ステータスを変更', class:'btn btn-sm btn-danger py-0', data: { confirm: "本当に#{@user.name}さんの会員ステータスを変更しますか？" } %>
       <%= link_to "戻る", admin_user_path(@user.id), class: 'btn btn-sm btn-secondary ml-4' %>
     </div>
     <% end %>
