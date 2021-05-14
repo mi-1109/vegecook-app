@@ -76,15 +76,22 @@
         </div>
 
         <!--タブ：下書き保存したレシピ-->
-        <div id="tab5" class="tab-pane">
-          <div class="d-flex flex-wrap row-cols-5">
+        <div id="tab5" class="tab-pane pt-5">
+          <table style='width: 60%' class="table ml-2">
           <% @draft_posts.each do |draft_post| %>
-            <div class="card text-center mt-3 pt-3 ml-4">
-              <%= link_to (attachment_image_tag draft_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(draft_post.id), class:'card-img-top' %>
-              <%= link_to draft_post.title, post_recipe_path(draft_post), class:'card-text text-wrap' %>
-            </div>
+            <tr class="border-bttom align-middle">
+              <td style='width: 10%' class="p-2 text-center">
+                <%= link_to (attachment_image_tag draft_post, :recipe_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_recipe_image.jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(draft_post.id) %>
+              </td>
+              <td class="p-2 align-middle">
+                <%= link_to draft_post.title, post_recipe_path(draft_post), class:'ml-3' %>
+              </td>
+              <td class="p-2 align-middle">
+                <%= link_to "編集する", edit_post_recipe_path(draft_post), class:'btn btn-sm btn-outline-warning py-0' %>
+              </td>
+            </tr>
           <% end %>
-          </div>
+          </table>
         </div>
 
       </div>
