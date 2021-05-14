@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :recipe_search
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from ActionController::RoutingError, with: :render_404
 
   def render_404(e = nil)
     logger.info "Rendering 404 with exception: #{e.message}" if e
