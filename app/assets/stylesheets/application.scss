@@ -16,6 +16,8 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Kiwi+Maru:wght@300&display=swap');
+
 
  * {
    margin: 0;
@@ -326,7 +328,7 @@ footer {
 .slider-heading-img {
   height: 550px !important;
   object-fit: cover;
-  object-position: 50% 100%;
+  object-position: 40% 100%;
 }
 
 .slider-latest-img {
@@ -343,4 +345,16 @@ footer {
 
 .slick-slide:not(.slick-center) {
   opacity: 0.5;
+}
+
+.top-menu-font {
+ font-family: 'Annie Use Your Telescope', cursive;
+ font-size: 30px;
+ font-weight: bold;
+}
+
+.jp-font-2 {
+  font-family: 'Kiwi Maru', serif;
+  font-size: 16px;
+  font-weight: bold;
 }
