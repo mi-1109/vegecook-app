@@ -19,33 +19,30 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+/*global $*/
 
   $(document).on('turbolinks:load',function(){
-    $('.heading-slider').bxSlider({
-      mode: 'fade',
-      slideWidth: 1200,
-      moveSlides: 1,
-      maxSlides: 1,
-      speed: 800,
-      auto: true,
-      stopAutoOnClick: true,
-      autoHover: true
+    $('.heading-slider').slick({
+      dots: true,
+      autoplay: true,
+      slidesToShow: 1,
+      slidesToScroll: 3,
+      speed: 2000,
+      autoplaySpeed: 3500,
+      centerMode: true,
+      fade: true
     });
   });
 
   $(document).on('turbolinks:load',function(){
-    $('.latest-slider').bxSlider({
-      mode: 'horizontal',
-      easing: 'linear',
-      captions: true,
-      slideWidth: 150,
-      auto: true,
-      stopAutoOnClick: true,
-      maxSlides: 4,
-      slideMargin: 60,
-      pager: false,
-      speed: 1500,
-      controls: false
+    $('.latest-slider').slick({
+      infinite: true,
+      autoplay: true,
+      slidesToShow: 5,
+      speed: 2000,
+      autoplaySpeed: 2000,
+      centerMode: true,
+      centerPadding: '20px'
     });
   });
 
