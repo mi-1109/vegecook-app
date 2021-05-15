@@ -2,7 +2,7 @@ class Admin::FormInquiriesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @form_inquiries = FormInquiry.all.order(created_at: "DESC").page(params[:page]).per(10)
+    @form_inquiries = FormInquiry.all.includes(:user).order(created_at: "DESC").page(params[:page]).per(10)
   end
 
   def show

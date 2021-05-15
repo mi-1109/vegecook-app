@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def recipe_search
-    @search = PostRecipe.joins(%|
+    @search = PostRecipe.includes(:user).joins(%|
       INNER JOIN (
         SELECT
           "likes"."post_recipe_id" AS post_recipe_id,

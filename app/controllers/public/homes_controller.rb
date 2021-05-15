@@ -1,10 +1,8 @@
 class Public::HomesController < ApplicationController
 
   def top
-    heading_recipes = PostRecipe.where(is_draft: false).pluck(:id).sample(3)
-    @heading_recipes = PostRecipe.find(heading_recipes)
-    random_recipes = PostRecipe.where(is_draft: false).pluck(:id).sample(9)
-    @random_recipes = PostRecipe.find(random_recipes)
+    @heading_recipes = PostRecipe.where(is_draft: false).sample(3)
+    @random_recipes = PostRecipe.includes(:user).where(is_draft: false).sample(9)
     @latest_recipes = PostRecipe.where(is_draft: false).order(created_at: "DESC").limit(12)
   end
 

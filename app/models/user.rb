@@ -27,7 +27,6 @@ class User < ApplicationRecord
   validates :introduction, length: {maximum: 40}
   with_options presence: true do
     validates :name
-    validates :veg_type
     validates :email
   end
 

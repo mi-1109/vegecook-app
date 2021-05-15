@@ -6,8 +6,8 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_posts = PostRecipe.where(user_id: @user, is_draft: false)
     @liked_posts = @user.liked_posts.where(is_draft: false)
-    @saved_posts = @user.saved_posts.where(is_draft: false)
-    @browsed_posts = @user.browsed_posts.where(is_draft: false)
+    @saved_posts = @user.saved_posts.includes(:user).where(is_draft: false)
+    @browsed_posts = @user.browsed_posts.includes(:user).where(is_draft: false)
     @draft_posts = PostRecipe.where(user_id: @user, is_draft: true)
   end
 
@@ -55,7 +55,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :name, :profile_image, :is_paid, :is_deleted, :veg_type, :introduction)
+    params.require(:user).permit(:email, :name, :profile_image, :is_paid, :is_deleted, :introduction)
   end
 
   def deny_quitted_user

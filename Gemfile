@@ -78,4 +78,3 @@ gem 'enum_help'
 gem 'whenever', require: false
 gem 'dotenv-rails'
 gem 'ransack'
-gem "cocoon"
