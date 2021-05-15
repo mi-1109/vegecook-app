@@ -5,9 +5,9 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_posts = PostRecipe.where(user_id: @user, is_draft: false)
-    @liked_posts = @user.liked_posts
-    @saved_posts = @user.saved_posts
-    @browsed_posts = @user.browsed_posts
+    @liked_posts = @user.liked_posts.where(is_draft: false)
+    @saved_posts = @user.saved_posts.where(is_draft: false)
+    @browsed_posts = @user.browsed_posts.where(is_draft: false)
     @draft_posts = PostRecipe.where(user_id: @user, is_draft: true)
   end
 

@@ -1,7 +1,7 @@
 <!---------- レシピ詳細 -------------->
 
   <div class="row">
-    <div class="mx-auto mt-4">
+    <div class="mx-auto mt-5">
       <h2 class="jp-font"><%= post_recipe.title %></h2>
     </div>
   </div>
@@ -16,12 +16,38 @@
     <%= attachment_image_tag post_recipe, :recipe_image, :fill, 500, 400, format: 'jpeg', class:'mx-auto' %>
   </div>
 
+  <div class="row my-4">
+    <div class="mx-auto d-flex">
+      <% case post_recipe.veg_type
+      when "pesco" %>
+        <i class="fas fa-seedling text-success"></i>
+        <i class="fas fa-fish pl-3 text-primary"></i>
+        <i class="fas fa-egg pl-3 text-outline-econdary"></i>
+        <i class="fas fa-cheese pl-3 text-warning"></i>
+      <% when "lacto_ovo" %>
+        <i class="fas fa-seedling text-success"></i>
+        <i class="fas fa-egg pl-3 text-outline-econdary"></i>
+        <i class="fas fa-cheese pl-3 text-warning"></i>
+      <% when "lacto" %>
+        <i class="fas fa-seedling text-success"></i>
+        <i class="fas fa-cheese pl-3 text-warning"></i>
+      <% when "ovo" %>
+        <i class="fas fa-seedling text-success"></i>
+        <i class="fas fa-egg pl-3 text-light"></i>
+      <% else %>
+        <i class="fas fa-seedling text-success"></i>
+      <% end %>
+    </div>
+  </div>
+
   <div class="row mt-4 mb-3">
     <p style="width: 450px" class="mx-auto text-wrap text-center"><%= post_recipe.introduction %></p>
   </div>
 
   <!--いいねボタンとレシピ保存ボタンの部分テンプレートを表示-->
-  <%= render partial: '/shared/like_save_buttons', locals: { post_recipe: post_recipe } %>
+  <% if post_recipe.is_draft == false %>
+    <%= render partial: '/shared/like_save_buttons', locals: { post_recipe: post_recipe } %>
+  <% end %>
 
   <div class="row mt-4">
     <table style="width: 45%" class="table table-borderless mx-auto">

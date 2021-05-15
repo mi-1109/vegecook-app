@@ -8,14 +8,6 @@ ja:
         outstanding: "未対応"
         in_progress: "対応中"
         closed: "対応済"
-    user:
-      veg_type:
-        pesco: "ペスコ・ベジタリアン"
-        lacto_ovo: "ラクト・オボ・ベジタリアン"
-        lacto: "ラクト・ベジタリアン"
-        ovo: "オボ・ベジタリアン"
-        vegan: "ヴィーガン"
-        beginner: "ビギナー"
     post_recipe:
       veg_type:
         pesco: "ペスコ・ベジタリアン"
@@ -23,7 +15,6 @@ ja:
         lacto: "ラクト・ベジタリアン"
         ovo: "オボ・ベジタリアン"
         vegan: "ヴィーガン"
-        beginner: "ビギナー"
   activerecord:
     models:
       post_recipe: "レシピ"

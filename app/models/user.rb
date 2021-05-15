@@ -42,14 +42,6 @@ class User < ApplicationRecord
     super && (self.is_deleted == false)
   end
 
-  enum veg_type: {
-    ペスコ・ベジタリアン: 0,
-    ラクト・オボ・ベジタリアン: 1,
-    ラクト・ベジタリアン:2,
-    オボ・ベジタリアン:3,
-    ヴィーガン:4
-  }
-
   def is_paid_to_sring
     if is_paid == true
       "プレミアム（有料）"
