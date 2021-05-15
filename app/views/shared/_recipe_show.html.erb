@@ -21,7 +21,9 @@
   </div>
 
   <!--いいねボタンとレシピ保存ボタンの部分テンプレートを表示-->
-  <%= render partial: '/shared/like_save_buttons', locals: { post_recipe: post_recipe } %>
+  <% if post_recipe.is_draft == false %>
+    <%= render partial: '/shared/like_save_buttons', locals: { post_recipe: post_recipe } %>
+  <% end %>
 
   <div class="row mt-4">
     <table style="width: 45%" class="table table-borderless mx-auto">

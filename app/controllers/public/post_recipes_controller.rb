@@ -2,7 +2,7 @@ class Public::PostRecipesController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
 
   def index
-    @latest_recipes = PostRecipe.all.order(created_at: "DESC").page(params[:page]).per(15)
+    @latest_recipes = PostRecipe.all.where(is_draft: false).order(created_at: "DESC").page(params[:page]).per(15)
   end
 
   def new
