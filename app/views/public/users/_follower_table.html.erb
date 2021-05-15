@@ -3,7 +3,7 @@
   <% followers.each do |follower| %>
     <tr>
       <td class="text-center">
-        <%= attachment_image_tag follower, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_profile_image.jpg", size:'80x60' %>
+        <%= attachment_image_tag follower, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_profile_image.jpg", size:'80x60' %>
       </td>
       <td class="align-middle">
         <u><%= link_to follower.name, user_path(follower.id), class: 'font-color' %></u><br />

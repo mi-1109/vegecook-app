@@ -29,7 +29,7 @@
           <div class="d-flex flex-wrap row-cols-5">
           <% @user_posts.each do |user_post| %>
             <div class="card text-center mt-3 pt-3 ml-4">
-              <%= link_to (attachment_image_tag user_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(user_post.id), class:'card-img-top' %>
+              <%= link_to (attachment_image_tag user_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(user_post.id), class:'card-img-top' %>
               <%= link_to user_post.title, post_recipe_path(user_post), class:'card-text font-weight-bold text-wrap py-2' %>
               <div class="d-flex pb-2 mx-auto">
                 <% case user_post.veg_type
@@ -62,7 +62,7 @@
           <div class="d-flex flex-wrap row-cols-5">
           <% @liked_posts.each do |liked_post| %>
             <div class="card text-center mt-3 pt-3 ml-4">
-              <%= link_to (attachment_image_tag liked_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(liked_post.id), class:'card-img-top' %>
+              <%= link_to (attachment_image_tag liked_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(liked_post.id), class:'card-img-top' %>
               <%= link_to liked_post.title, post_recipe_path(liked_post), class:'card-text text-wrap font-weight-bold pt-2' %>
               <div class="d-flex mx-auto">
                 <% case liked_post.veg_type
@@ -96,7 +96,7 @@
           <div class="d-flex flex-wrap row-cols-5">
           <% @saved_posts.each do |saved_post| %>
             <div class="card text-center mt-3 pt-3 ml-4">
-              <%= link_to (attachment_image_tag saved_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(saved_post.id), class:'card-img-top' %>
+              <%= link_to (attachment_image_tag saved_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(saved_post.id), class:'card-img-top' %>
               <%= link_to saved_post.title, post_recipe_path(saved_post), class:'card-text text-wrap font-weight-bold pt-2' %>
               <div class="d-flex mx-auto">
                 <% case saved_post.veg_type
@@ -131,7 +131,7 @@
           <% @browsed_posts.each do |browsed_post| %>
             <tr class="border-bttom align-middle">
               <td style='width: 20%' class="p-2 text-center">
-                <%= link_to (attachment_image_tag browsed_post, :recipe_image, :fill, 100, 100, format: 'jpeg', size:'60x60', class:'rounded-circle'), post_recipe_path(browsed_post.id) %>
+                <%= link_to (attachment_image_tag browsed_post, :recipe_image, :fill, 100, 100, format: 'jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(browsed_post.id) %>
               </td>
               <td class="p-2 align-middle">
                 <%= link_to browsed_post.title, post_recipe_path(browsed_post), class:'card-text text-wrap' %>
@@ -150,7 +150,7 @@
           <% @draft_posts.each do |draft_post| %>
             <tr class="border-bttom align-middle">
               <td style='width: 10%' class="p-2 text-center">
-                <%= link_to (attachment_image_tag draft_post, :recipe_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_recipe_image.jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(draft_post.id) %>
+                <%= link_to (attachment_image_tag draft_post, :recipe_image, :fill, 100, 100, format: 'jpg', fallback: 'no_recipe_image.jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(draft_post.id) %>
               </td>
               <td class="p-2 align-middle">
                 <%= link_to draft_post.title, post_recipe_path(draft_post), class:'ml-3' %>
