@@ -16,6 +16,8 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Kiwi+Maru:wght@300&display=swap');
+
 
  * {
    margin: 0;
@@ -294,34 +296,9 @@ footer {
   height: 270px;
 }
 
-
 .top-icons:hover {
   text-decoration: none;
   color: inherit;
-}
-
-.bx-wrapper {
-  margin: 0 auto !important;
-  border :none !important;
-  box-shadow: none !important;
-}
-
-.bx-next .bex-prev {
-  padding: 0 20px;
-}
-
-.bx-viewport {
-  margin-bottom: 20px;
-}
-
-.slider-heading-img {
-  height: 550px !important;
-  object-fit: cover;
-  object-position: 50% 100%;
-}
-
-.slider-latest-img {
-  border-radius: 50%;
 }
 
 .field_with_errors {
@@ -344,4 +321,39 @@ footer {
 
 .fa-exclamation-triangle {
   color: #BF0000;
+}
+
+//latest-slider
+
+.slider-heading-img {
+  height: 550px !important;
+  object-fit: cover;
+  object-position: 40% 100%;
+}
+
+.slider-latest-img {
+  border-radius: 50%;
+}
+
+.slick-slide img {
+  width: 100%;  /* widht100%を指定することにより、画像間の無駄な余白が消える */
+}
+
+.slick-slide {
+  margin: 0 20px 0;
+}
+
+.slick-slide:not(.slick-center) {
+  opacity: 0.5;
+}
+
+.top-menu-font {
+ font-family: 'Annie Use Your Telescope', cursive;
+ font-size: 30px;
+ font-weight: bold;
+}
+
+.jp-font-2 {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: bold;
 }
