@@ -1,0 +1,98 @@
+<!---------- レシピ詳細 -------------->
+
+  <div class="row">
+    <div class="mx-auto mt-5">
+      <h2 class="jp-font"><%= post_recipe.title %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <p class="jp-font">by <%= link_to "#{post_recipe.user.name}", user_path(post_recipe.user.id), class:'text-success user-link' %></p>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <%= attachment_image_tag post_recipe, :recipe_image, :fill, 500, 400, format: 'jpg', class:'mx-auto' %>
+  </div>
+
+  <div class="row my-4">
+    <div class="mx-auto d-flex">
+      <% case post_recipe.veg_type
+      when "pesco" %>
+        <i class="fas fa-seedling text-success"></i>
+        <i class="fas fa-fish pl-3 text-primary"></i>
+        <i class="fas fa-egg pl-3 text-outline-econdary"></i>
+        <i class="fas fa-cheese pl-3 text-warning"></i>
+      <% when "lacto_ovo" %>
+        <i class="fas fa-seedling text-success"></i>
+        <i class="fas fa-egg pl-3 text-outline-econdary"></i>
+        <i class="fas fa-cheese pl-3 text-warning"></i>
+      <% when "lacto" %>
+        <i class="fas fa-seedling text-success"></i>
+        <i class="fas fa-cheese pl-3 text-warning"></i>
+      <% when "ovo" %>
+        <i class="fas fa-seedling text-success"></i>
+        <i class="fas fa-egg pl-3 text-light"></i>
+      <% else %>
+        <i class="fas fa-seedling text-success"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-3">
+    <p style="width: 450px" class="mx-auto text-wrap text-center"><%= post_recipe.introduction %></p>
+  </div>
+
+  <!--いいねボタンとレシピ保存ボタンの部分テンプレートを表示-->
+  <% if post_recipe.is_draft == false %>
+    <%= render partial: '/shared/like_save_buttons', locals: { post_recipe: post_recipe } %>
+  <% end %>
+
+  <div class="row mt-4">
+    <table style="width: 45%" class="table table-borderless mx-auto">
+      <thead class="border-bottom">
+        <th class="d-flex pb-0 mb-2">
+          <h5 class="mb-0 jp-font font-weight-bold">材料</h5>
+          <p class="mb-0 ml-1 pt-1 jp-font">（<%= post_recipe.serving %>人前）</p>
+        </th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% post_recipe.ingredients.each do |ingredient| %>
+        <tr>
+          <td style="width: 45%" class='pt-4 pl-4'><%= ingredient.name %></td>
+          <td style="width: 10%" class='pt-4'><%= ingredient.amount %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row mx-auto mt-5">
+    <table style="width: 60%" class="table table-borderless mx-auto">
+      <thead class="border procedure">
+        <th colspan="2" class="py-1">
+          <h5 class="jp-font font-weight-bold text-center mb-0">つくり方</h5>
+        </th>
+      </thead>
+      <tbody>
+        <% step_num = 0 %>
+        <% post_recipe.procedures.each do |procedure| %>
+        <tr class="ml-2">
+          <td style='width: 5%' class='text-center font-weight-bold pt-3'><%= step_num += 1 %>)</td>
+          <td style='width: 50%' class="text-wrap pt-3"><%= procedure.body %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+<div class="row mt-5">
+  <div class="col-md-8 offset-md-2">
+    <h5 class="mb-0 ml-5 jp-font font-weight-bold">コメント</h5>
+    <%= render partial: '/shared/comments', locals: { post_recipe: post_recipe } %>
+  </div>
+</div>
+
+

@@ -4,12 +4,28 @@
     <title>Vegecook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/d64cb48cf6.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="footer_position">
+      <main>
+      <%= render 'layouts/header' %>
+        <% if flash[:notice] %>
+          <p id="notice" class="pl-4 py-1"><i class="far fa-check-circle pr-2"></i><%= flash[:notice] %></p>
+        <% elsif flash[:alert] %>
+          <p id="alert" class="pl-4 py-1"><i class="fas fa-exclamation-triangle pr-2"></i><%= flash[:alert] %></p>
+        <% end %>
+
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      </main>
+    </div>
   </body>
 </html>

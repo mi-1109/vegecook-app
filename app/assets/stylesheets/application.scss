@@ -1,0 +1,363 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Kiwi+Maru:wght@300&display=swap');
+
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'メイリオ', 'Sawarabi Mincho';
+   color: #6c757d;
+ }
+
+ a {
+   color: #6c757d;
+   &:hover {
+     color: #eabeaf;
+   }
+ }
+
+ body {
+   font-size: 14px;
+   background-color: #fff;
+ }
+
+ header {
+   font-size: 16px;
+ }
+
+ .navbar {
+   background-color: #fff;
+ }
+
+ .navbar-toggler {
+   background-color: #fff;
+ }
+
+ .navbar-light .navbar-toggler {
+   border-color: #fff;
+ }
+
+ .nav-link {
+   position: relative;
+ }
+
+ .nav-link:after{
+    content: '';
+    position: absolute;
+    width: 0; height: 2px;
+    display: block;
+    margin-top: 4px;
+    right: 0;
+    background: #eabeaf;
+    transition: width .3s ease;
+    -webkit-transition: width .3s ease;
+ }
+
+ .nav-link:hover:after {
+  width: 100%;
+  left: 0;
+  background: #eabeaf;
+}
+
+.dropdown-toggle {
+  text-decoration: none;
+  color: #6c757d;
+  &:hover {
+    text-decoration: none;
+    color: #6c757d;
+  }
+}
+
+footer {
+  background-color: #e8ede1;
+  color: #6c757d;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+#copyright {
+  font-size: 10px;
+}
+
+.footer_position {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.admin-page-title {
+  width: 90%;
+  background-color: #e8ede1;
+  font-family: 'メイリオ';
+}
+
+.active_color {
+  color: #33CC00;
+  font-weight: bold;
+}
+
+.inactive_color {
+  color: gray;
+}
+
+// 日本語のフォントを指定
+.jp-font {
+  font-family: 'メイリオ';
+}
+
+// ページネーション全体のデザイン
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+//表示しているページ番号のデザイン
+.page-item.active .page-link {
+  background-color: #eabeaf;
+}
+
+.procedure {
+  background-color: #eabeaf;
+  color: #fff;
+}
+
+.save-icon {
+  color: #eabeaf;
+}
+
+.fa-bookmark:hover, .like-btn:hover, .user-link:hover {
+  text-decoration: none;
+}
+
+.btn-color {
+  background-color: #eabeaf;
+  &:hover {
+    background-color: #a6c5ab;
+  }
+}
+
+.login-bg {
+  background-color: #e8ede1;
+}
+
+// 会員詳細のタブ
+.nav-item >.tab-style{
+  background-color: #e8ede1;
+  margin-right: 2px;
+  &:hover {
+    color: #fff;
+  }
+  &:hover:after {
+    width: initial;
+    left: initial;
+    background: initial;
+  }
+}
+
+.font-color {
+  color: #eabeaf;
+}
+
+.font-space {
+  letter-spacing: 0.07em
+}
+
+.fa-crown {
+  color: gold;
+}
+
+.bg-color {
+  background-color: #e8ede1;
+}
+
+// 検索関連
+@mixin input{
+  border: none;
+  border-radius: 50px;
+  background: #F8F8F8;
+  height: 35px;
+  padding: 10px 20px;
+}
+
+.search-window{
+  position: relative;
+  .input{
+    @include input;
+    margin-top: 6px;
+  }
+  .search-btn{
+    background-color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: 8px;
+    top: 11px;
+    height: 25px;
+    width: 40px;
+    border-style: none;
+    color: #eabeaf;
+    font-weight: bold;
+  }
+}
+
+// 検索結果一覧のタブのスタイル
+.clear-tab-style > .nav-link {
+  border: none;
+    &:hover:after {
+    width: initial;
+    left: initial;
+    background: initial;
+  }
+    &:focus {
+      text-decoration: underline;
+      color: #eabeaf;
+      font-weight: bold;
+    }
+}
+
+.font-color-green {
+  color: #a6c5ab;
+}
+
+.thanks-font {
+  font-family: 'Comic Sans MS';
+}
+
+//チャット
+.chat-area {
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+.chat-bubble {
+  display: inline-block;
+  width: 35%;
+  padding: 15px 20px;
+  margin-top: 2px;
+  border-radius: 10px;
+  position: relative;
+  background-color: #bcf5a9;
+  &:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    margin-top: -10px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 10px 10px 10px 10px;
+    border-color: transparent transparent transparent #bcf5a9;
+  }
+}
+
+.receiver-chat-bubble {
+  background-color: #f5f5f5;
+  &:after {
+    left: -19px;
+    border-color: transparent #f5f5f5 transparent transparent;
+  }
+}
+
+.heading-style {
+  background-color: #e8ede1;
+  font-family: 'メイリオ';
+  width: 55%;
+  margin: auto;
+}
+
+.about-heading-style {
+  width: 100%;
+  margin: 20px 0;
+  background-color: #eabeaf;
+}
+
+.cards {
+  margin: 0 auto;
+  height: 270px;
+}
+
+.top-icons:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+#notice {
+  background-color: #EBF9F8;
+  color: #31B4AF;
+}
+
+.fa-check-circle {
+  color: #31B4AF;
+}
+
+#alert {
+  background-color: #E7CFCF;
+  color: #BF0000;
+}
+
+.fa-exclamation-triangle {
+  color: #BF0000;
+}
+
+//latest-slider
+
+.slider-heading-img {
+  height: 550px !important;
+  object-fit: cover;
+  object-position: 40% 100%;
+}
+
+.slider-latest-img {
+  border-radius: 50%;
+}
+
+.slick-slide img {
+  width: 100%;  /* widht100%を指定することにより、画像間の無駄な余白が消える */
+}
+
+.slick-slide {
+  margin: 0 20px 0;
+}
+
+.slick-slide:not(.slick-center) {
+  opacity: 0.5;
+}
+
+.top-menu-font {
+ font-family: 'Annie Use Your Telescope', cursive;
+ font-size: 30px;
+ font-weight: bold;
+}
+
+.jp-font-2 {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: bold;
+}
+
+.fa-egg {
+  color: #EDE0CB;
+}

@@ -1,0 +1,34 @@
+<div class="container">
+
+  <div class="row">
+    <h3 class="admin-page-title mx-auto mt-5 py-2 pl-4">レシピ一覧</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 offset-md-8">
+      <h6 class="text-right mr-5 jp-font">レシピ数：<%= @post_recipe_count %>件</h6>
+    </div>
+  </div>
+
+  <div class="row">
+    <table style="width: 80%" class="table table-borderless mx-auto">
+      <% @post_recipes.each do |post_recipe| %>
+        <tr class="mt-5 border-bottom">
+          <td style="width: 5%" class="text-center">
+            <%= link_to (attachment_image_tag post_recipe, :recipe_image, :fill, 70, 70, format: 'jpg', class: 'rounded-circle'), admin_post_recipe_path(post_recipe.id) %>
+          </td>
+          <td style="width: 35%">
+            <u><%= link_to post_recipe.title, admin_post_recipe_path(post_recipe.id) %><br /></u>
+            <p class="mt-2"><%= post_recipe.introduction %></p>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto mt-4 mb-5">
+    <%= paginate @post_recipes %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<!--表示されているユーザー詳細のフォロワー一覧-->
+<table id="follower-table" class="table table-borderless mt-4">
+  <% followers.each do |follower| %>
+    <tr>
+      <td class="text-center">
+        <%= attachment_image_tag follower, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_profile_image.jpg", size:'80x60' %>
+      </td>
+      <td class="align-middle">
+        <u><%= link_to follower.name, user_path(follower.id), class: 'font-color' %></u><br />
+        <%= follower.introduction %>
+      </td>
+      <td class="align-middle">
+        <%= render partial: 'public/users/follow_button', locals: { user: follower, page_user: page_user } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,10 @@
+<!---------- 管理者側：レシピ詳細 -------------->
+<div class="container">
+  <%= render partial: 'shared/recipe_show', locals: { post_recipe: @post_recipe} %>
+
+  <div class="row">
+    <div class="mb-5 mx-auto">
+      <%= link_to "レシピを削除", "/admin/post_recipes/#{@post_recipe.id}", method: :delete, data: {confirm: "本当にレシピを削除しますか？"}, class: 'btn- btn-sm btn-danger py-2' %>
+    </div>
+  </div>
+</div>

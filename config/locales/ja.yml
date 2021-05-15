@@ -1,0 +1,57 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+  enums:
+    form_inquiry:
+      response_status:
+        outstanding: "未対応"
+        in_progress: "対応中"
+        closed: "対応済"
+    post_recipe:
+      veg_type:
+        pesco: "ペスコ・ベジタリアン"
+        lacto_ovo: "ラクト・オボ・ベジタリアン"
+        lacto: "ラクト・ベジタリアン"
+        ovo: "オボ・ベジタリアン"
+        vegan: "ヴィーガン"
+  activerecord:
+    models:
+      post_recipe: "レシピ"
+      ingredients: "材料"
+      procedures: "つくり方"
+    attributes:
+      post_recipe:
+        title: "レシピ名"
+        introduction: "レシピの説明"
+        recipe_image: "レシピの写真"
+        serving: "何人分のレシピか"
+        veg_type: "使用食材"
+        ingredients: "材料"
+        procedures: "つくり方"
+      ingredients:
+        name: "材料名"
+        amount: "分量"
+      form_inquiry:
+        content: "問い合わせ内容"
+      user:
+        name: "ユーザー名"
+        introduction: "自己紹介"
+        email: "メールアドレス"
+        veg_type: "ベジタリアン・ステータス"
+      comment:
+        comment: "コメント"
+      chat:
+        message: "問い合わせ内容"
+    errors:
+      format: "%{attribute}%{message}"
+      messages:
+        blank: "を登録してください"
+        confirmation: "と%{attribute}の入力が一致していません"
+        empty: "を登録してください"
+        invalid: "は不正な値です"
+        not_a_number: "は数値で入力してください"
+        required: "を登録してください"
+        taken: "はすでに使用されています"
+        unauthenticated: "ログインをお願いいたします"
+        too_long: "は%{count}文字以内で記入してください"

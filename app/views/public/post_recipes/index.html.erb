@@ -1,0 +1,29 @@
+<!--------- 新着レシピ一覧画面 ------------>
+
+<div class="container">
+  <h3 class="mt-5 pl-3 mb-0 jp-font font-weight-bold font-color-green"><span class="fas fa-utensils font-color-green"></span> 新着レシピ</h3>
+
+  <div class="row">
+    <div class="col-md-12">
+      <hr class="border-bottom"></hr>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="d-flex flex-wrap">
+    <% @latest_recipes.each do |latest_recipe| %>
+      <div class="card text-center mt-3 p-3 ml-4 mb-3">
+        <%= link_to (attachment_image_tag latest_recipe, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(latest_recipe.id), class:'card-img-top' %>
+        <%= link_to latest_recipe.title, post_recipe_path(latest_recipe), class:'card-text text-wrap mt-1' %>
+        <%= link_to latest_recipe.user.name, user_path(latest_recipe.user), class:'card-text text-wrap font-color' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto mb-5">
+      <%= paginate @latest_recipes %>
+    </div>
+  </div>
+</div>

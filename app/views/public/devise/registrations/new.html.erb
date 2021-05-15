@@ -1,0 +1,57 @@
+<!------------ 新規会員登録 -------------->
+
+<%= render "public/devise/shared/error_messages", resource: resource %>
+
+<div style='height: 80vh' class="d-flex align-items-center">
+  <div style="width: 40%", class="login-bg mx-auto mb-4">
+
+    <div style="width: 70%", class="pt-4 px-4">
+      <div class="container mx-auto">
+        <div class="row">
+          <h2 class="text-secondary">SIGN UP </h2>
+        </div>
+
+        <div class="row mt-4">
+          <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+            <div class="form-group">
+              <%= f.label :name, 'ユーザー名', class:'text-secondary' %><br />
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", size: "40" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :email, 'メールアドレス', class:'text-secondary' %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password, 'パスワード', class:'text-secondary' %><br />
+              <%= f.password_field :password, autocomplete: "new-password", size: "40" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation, 'パスワード（確認）', class:'text-secondary' %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", size: "40" %>
+            </div>
+
+            <div class="form-group">
+              <p class="text-secondary">プランをご選択ください</p>
+              <%= f.radio_button :is_paid, :false, class:'ml-3' %>
+              <%= f.label :is_paid, "スタンダード・プラン（無料）", class:'text-secondary' %><br />
+              <%= f.radio_button :is_paid, :true, class:'ml-3' %>
+              <%= f.label :is_paid, "プレミアム・プラン（有料）", class:'text-secondary' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.submit "会員登録", class: 'btn btn-sm btn-color text-white mt-3' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-right pr-3">
+      <%= render "public/devise/shared/links" %>
+    </p>
+  </div>
+</div>
+

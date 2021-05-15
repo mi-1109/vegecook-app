@@ -1,0 +1,3 @@
+$('.add-chat-bubble').html('<%= j(render partial: 'public/chats/chat_bubbles', locals: { chats: @chats }) %>');
+$('.error_explanation').html('<%= j(render partial: 'layouts/error_messages', locals: { obj: @chat, column: :message}) %>');
+$('.clear-form').val("")
