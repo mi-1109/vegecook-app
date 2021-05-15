@@ -11,20 +11,20 @@
     <div class="col-md-2 offset-md-3 text-center">
       <% if user_signed_in? %>
         <%= link_to "", user_path(current_user.id), class: 'fas fa-bookmark fa-5x font-color pt-5 top-icons mb-2' %><br />
-        <%= link_to "BOOKMARK", user_path(current_user.id), class:'top-icons top-menu-font' %>
+        <%= link_to "BOOKMARK", user_path(current_user.id), stlye:'font-size: 16px', class:'top-icons top-menu-font' %>
       <% else %>
         <%= link_to "", new_user_session_path, class: 'fas fa-bookmark fa-5x font-color pt-5 top-icons mb-2' %><br />
-        <%= link_to "BOOKMARK", new_user_session_path, class:'top-icons top-menu-font' %>
+        <%= link_to "BOOKMARK", new_user_session_path, stlye:'font-size: 16px', class:'top-icons top-menu-font' %>
       <% end %>
     </div>
     <div class="col-md-2 text-center">
       <%= link_to "", new_post_recipe_path, class: 'fas fa-edit fa-5x font-color-green pt-5 top-icons mb-2 ml-3' %><br />
-      <%= link_to "POST RECIPE", new_post_recipe_path, class:'top-icons top-menu-font' %><br />
+      <%= link_to "POST RECIPE", new_post_recipe_path, stlye:'font-size: 16px', class:'top-icons top-menu-font' %><br />
       <p class="jp-font-2">~レシピ投稿~</p>
     </div>
     <div class="col-md-2 text-center">
       <%= link_to "", post_recipes_rankings_path, class: 'fas fa-crown fa-5x pt-5 top-icons mb-2' %><br />
-      <%= link_to "TOP20", post_recipes_rankings_path, class:'top-icons top-menu-font' %>
+      <%= link_to "TOP20", post_recipes_rankings_path, stlye:'font-size: 16px', class:'top-icons top-menu-font' %>
     </div>
   </div>
 
@@ -45,7 +45,7 @@
 
   <div class="row mb-2">
     <div class="mx-auto">
-      <h5 class="jp-font font-weight-bold about-heading-style py-2 px-5 text-white">新着レシピ</h5>
+      <h4 class="py-2 px-5 top-menu-font">NEW RECIPES</h4>
     </div>
   </div>
   <div class="latest-slider my-4">
