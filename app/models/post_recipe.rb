@@ -21,7 +21,7 @@ class PostRecipe < ApplicationRecord
   end
 
   validates :title, length: {maximum: 25}, on: :publicize
-  validates :introduction, length: {maximum: 50}, on: :publicize
+  validates :introduction, length: {maximum: 80}, on: :publicize
 
   attachment :recipe_image
 
@@ -31,7 +31,6 @@ class PostRecipe < ApplicationRecord
     lacto: 2,
     ovo: 3,
     vegan: 4,
-    beginner: 5
   }
 
   def liked_by?(user)

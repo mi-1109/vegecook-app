@@ -30,7 +30,28 @@
           <% @user_posts.each do |user_post| %>
             <div class="card text-center mt-3 pt-3 ml-4">
               <%= link_to (attachment_image_tag user_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(user_post.id), class:'card-img-top' %>
-              <%= link_to user_post.title, post_recipe_path(user_post), class:'card-text text-wrap' %>
+              <%= link_to user_post.title, post_recipe_path(user_post), class:'card-text font-weight-bold text-wrap py-2' %>
+              <div class="d-flex pb-2 mx-auto">
+                <% case user_post.veg_type
+                when "pesco" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-fish pl-2 text-primary"></i>
+                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
+                  <i class="fas fa-cheese pl-2 text-warning"></i>
+                <% when "lacto_ovo" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
+                  <i class="fas fa-cheese pl-2 text-warning"></i>
+                <% when "lacto" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-cheese pl-2 text-warning"></i>
+                <% when "ovo" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-egg pl-2 text-light"></i>
+                <% else %>
+                  <i class="fas fa-seedling text-success"></i>
+                <% end %>
+              </div>
             </div>
           <% end %>
           </div>
@@ -41,9 +62,30 @@
           <div class="d-flex flex-wrap row-cols-5">
           <% @liked_posts.each do |liked_post| %>
             <div class="card text-center mt-3 pt-3 ml-4">
-            <%= link_to (attachment_image_tag liked_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(liked_post.id), class:'card-img-top' %>
-              <%= link_to liked_post.title, post_recipe_path(liked_post), class:'card-text text-wrap' %>
-              <%= link_to liked_post.user.name, user_path(liked_post.user), class:'card-text text-wrap' %>
+              <%= link_to (attachment_image_tag liked_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(liked_post.id), class:'card-img-top' %>
+              <%= link_to liked_post.title, post_recipe_path(liked_post), class:'card-text text-wrap font-weight-bold pt-2' %>
+              <div class="d-flex mx-auto">
+                <% case liked_post.veg_type
+                when "pesco" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-fish pl-2 text-primary"></i>
+                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
+                  <i class="fas fa-cheese pl-2 text-warning"></i>
+                <% when "lacto_ovo" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
+                  <i class="fas fa-cheese pl-2 text-warning"></i>
+                <% when "lacto" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-cheese pl-2 text-warning"></i>
+                <% when "ovo" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-egg pl-2 text-light"></i>
+                <% else %>
+                  <i class="fas fa-seedling text-success"></i>
+                <% end %>
+              </div>
+              <p class="mb-0 pt-1">by<%= link_to liked_post.user.name, user_path(liked_post.user), class:'card-text text-wrap ml-2' %></p>
             </div>
           <% end %>
           </div>
@@ -55,8 +97,29 @@
           <% @saved_posts.each do |saved_post| %>
             <div class="card text-center mt-3 pt-3 ml-4">
               <%= link_to (attachment_image_tag saved_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(saved_post.id), class:'card-img-top' %>
-              <%= link_to saved_post.title, post_recipe_path(saved_post), class:'card-text text-wrap' %>
-              <%= link_to saved_post.user.name, user_path(saved_post.user), class:'card-text text-wrap' %>
+              <%= link_to saved_post.title, post_recipe_path(saved_post), class:'card-text text-wrap font-weight-bold pt-2' %>
+              <div class="d-flex mx-auto">
+                <% case saved_post.veg_type
+                when "pesco" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-fish pl-2 text-primary"></i>
+                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
+                  <i class="fas fa-cheese pl-2 text-warning"></i>
+                <% when "lacto_ovo" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
+                  <i class="fas fa-cheese pl-2 text-warning"></i>
+                <% when "lacto" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-cheese pl-2 text-warning"></i>
+                <% when "ovo" %>
+                  <i class="fas fa-seedling text-success"></i>
+                  <i class="fas fa-egg pl-2 text-light"></i>
+                <% else %>
+                  <i class="fas fa-seedling text-success"></i>
+                <% end %>
+              </div>
+              <p class="mb-0 pt-1">by<%= link_to saved_post.user.name, user_path(saved_post.user), class:'card-text text-wrap ml-2 pt-1' %></p>
             </div>
           <% end %>
           </div>
@@ -64,15 +127,21 @@
 
         <!--タブ：閲覧履歴-->
         <div id="tab4" class="tab-pane">
-          <div class="d-flex flex-wrap row-cols-5">
+          <table style='width: 60%' class="table ml-2">
           <% @browsed_posts.each do |browsed_post| %>
-            <div class="card text-center mt-3 pt-3 ml-4">
-              <%= link_to (attachment_image_tag browsed_post, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(browsed_post.id), class:'card-img-top' %>
-              <%= link_to browsed_post.title, post_recipe_path(browsed_post), class:'card-text text-wrap' %>
-              <%= link_to browsed_post.user.name, user_path(browsed_post.user), class:'card-text text-wrap' %>
-            </div>
+            <tr class="border-bttom align-middle">
+              <td style='width: 20%' class="p-2 text-center">
+                <%= link_to (attachment_image_tag browsed_post, :recipe_image, :fill, 100, 100, format: 'jpeg', size:'60x60', class:'rounded-circle'), post_recipe_path(browsed_post.id) %>
+              </td>
+              <td class="p-2 align-middle">
+                <%= link_to browsed_post.title, post_recipe_path(browsed_post), class:'card-text text-wrap' %>
+              </td>
+              <td class="p-2 align-middle">
+              <p>by<%= link_to browsed_post.user.name, user_path(browsed_post.user), class:'card-text text-wrap ml-2' %></p>
+              </td>
+            </tr>
           <% end %>
-          </div>
+          </table>
         </div>
 
         <!--タブ：下書き保存したレシピ-->

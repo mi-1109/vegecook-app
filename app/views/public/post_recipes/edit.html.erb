@@ -93,12 +93,12 @@
           <%= f.submit "レシピを公開", :name => 'publicize_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-success' %>
           <%= f.submit "下書きを更新", :name => 'update_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-light' %>
         <% else %>
-          <%= f.submit "レシピを更新", :name => 'update_post', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-success' %>
+          <%= f.submit "レシピを更新", :name => 'update_post', style: 'font-size: 20px', class:'btn btn-sm btn-success' %>
         <% end %>
       </div>
     </div>
-    <div class="row mt-2 pb-5">
-      <u><%= link_to "レシピを削除", "/post_recipes/#{@post_recipe.id}", method: :delete, data: {confirm: "このレシピを削除しますか？"}, class:'mx-auto' %></u>
+    <div class="mt-4 pb-3 text-center">
+      <u><%= link_to "レシピを削除", "/post_recipes/#{@post_recipe.id}", method: :delete, data: {confirm: "このレシピを削除しますか？"} %></u>
     </div>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
