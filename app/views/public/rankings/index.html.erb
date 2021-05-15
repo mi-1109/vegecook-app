@@ -17,7 +17,7 @@
             <div class="card-header p-1 font-weight-bold bg-color">
               NO. <%= i %>
             </div>
-            <%= link_to (attachment_image_tag recipe_rank, :recipe_image, :fill, 150, 150, format: 'jpeg'), post_recipe_path(recipe_rank.id), class:'card-img-top' %>
+            <%= link_to (attachment_image_tag recipe_rank, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(recipe_rank.id), class:'card-img-top' %>
             <%= link_to recipe_rank.title, post_recipe_path(recipe_rank), class:'card-text text-wrap mt-1' %>
             <%= link_to recipe_rank.user.name, user_path(recipe_rank.user), class:'card-text text-wrap font-color' %>
           </div>
