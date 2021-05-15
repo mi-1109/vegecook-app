@@ -82,3 +82,9 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+group :tools do
+  gem 'squasher', '>= 0.6.0'
+  gem 'capistrano'
+  gem 'rubocop'
+end
