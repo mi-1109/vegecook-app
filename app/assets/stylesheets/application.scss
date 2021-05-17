@@ -16,7 +16,7 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Kiwi+Maru:wght@300&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Homemade+Apple&family=Kiwi+Maru:wght@300&display=swap');
 
 
  * {
@@ -360,4 +360,14 @@ footer {
 
 .fa-egg {
   color: #EDE0CB;
+}
+
+.header-logo {
+  width: 150px;
+  height: auto;
+}
+
+.logo-font {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 30px;
 }
