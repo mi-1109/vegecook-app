@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
  # ============== deviseのルーティング ==================
-  devise_for :admin,
+  devise_for :admins,
+    path: :admin,
     controllers: {
       sessions: 'admin/devise/sessions',
       passwords: 'admin/devise/passwords',
       registrations: 'admin/devise/registrations'
     }
-  devise_for :user,
+  devise_for :users,
     controllers: {
       sessions: 'public/devise/sessions',
       passwords: 'public/devise/passwords',
