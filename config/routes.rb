@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'public/devise/sessions#guest_sign_in'
   end
 
+  devise_scope :admin do
+    post 'admin/guest_sign_in', to: 'admin/devise/sessions#guest_sign_in'
+  end
+
   # ========= ユーザー(public)のルーティング ================
   scope module: :public do
     root to: 'homes#top'

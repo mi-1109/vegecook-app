@@ -31,7 +31,6 @@ class Public::Devise::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    logger.debug(current_user.id)
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
