@@ -24,4 +24,12 @@ class Admin::Devise::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+    # ======= ゲストログイン機能 =========
+  def guest_sign_in
+    admin = Admin.guest
+    sign_in admin
+    redirect_to admin_root_path, notice: 'ゲスト・アカウント（管理者）でログインしました。'
+  end
+
 end

@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except:[:show, :follows]
-  before_action :deny_quitted_user, only:[:show]
+  before_action :deny_quitted_user_signin, only:[:show]
+  before_action :prohibit_guest_quit, only:[:quit_confirm]
 
   def show
     @user = User.find(params[:id])
@@ -58,10 +59,17 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:email, :name, :profile_image, :is_paid, :is_deleted, :introduction)
   end
 
-  def deny_quitted_user
-    @user = User.find(params[:id])
-    if @user.is_deleted == true
+  def deny_quitted_user_signin
+    user = User.find(params[:id])
+    if user.is_deleted == true
       render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
+    end
+  end
+
+  def prohibit_guest_quit
+    @user = current_user
+    if @user.email == 'guest@example.com'
+      redirect_to root_path, alert: "恐れ入りますが、ゲスト・アカウントでは会員の変更・退会できません。"
     end
   end
 

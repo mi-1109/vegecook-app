@@ -8,11 +8,19 @@ Rails.application.routes.draw do
       passwords: 'admin/devise/passwords',
       registrations: 'admin/devise/registrations'
     }
-  devise_for :users, controllers: {
+  devise_for :users,
+    controllers: {
       sessions: 'public/devise/sessions',
       passwords: 'public/devise/passwords',
       registrations: 'public/devise/registrations'
     }
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/devise/sessions#guest_sign_in'
+  end
+  devise_scope :admin do
+    post 'admin/guest_sign_in', to: 'admin/devise/sessions#guest_sign_in'
+  end
 
   # ========= ユーザー(public)のルーティング ================
   scope module: :public do
