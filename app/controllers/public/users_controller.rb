@@ -69,7 +69,7 @@ class Public::UsersController < ApplicationController
   def prohibit_guest_quit
     @user = current_user
     if @user.email == 'guest@example.com'
-      redirect_to root_path, alert: "恐れ入りますが、ゲストユーザーは退会できません。"
+      redirect_to root_path, alert: "恐れ入りますが、ゲスト・アカウントでは会員の変更・退会できません。"
     end
   end
 

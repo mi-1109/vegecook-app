@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/devise/sessions#guest_sign_in'
   end
-
   devise_scope :admin do
     post 'admin/guest_sign_in', to: 'admin/devise/sessions#guest_sign_in'
   end
