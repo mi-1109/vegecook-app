@@ -7,19 +7,21 @@
       <!-------- ロゴ -------->
       <% if admin_signed_in? %>
         <a class="navbar-brand" href="/admin">
-          <h4 class="text-secondary align-center mb-0">VEGECOOK</h4>
+          <h4 class="logo-font align-center mb-0 pt-2">VegeCook</h4>
         </a>
       <% else %>
         <a class="navbar-brand" href="/">
-          <h4 class="text-secondary align-center mb-0">VEGECOOK</h4>
+          <h4 class="logo-font align-center mb-0 pt-2">VegeCook</h4>
         </a>
       <% end %>
 
       <!------ 検索窓 -------->
       <div class="search-window">
-      <%= search_form_for @search, url: post_recipes_searches_path do |f| %>
-        <%= f.search_field :title_cont, placeholder: 'レシピを検索', class: 'input ml-4', size: '30' %>
-        <%= f.submit "GO!", class:'search-btn rounded-pill' %>
+      <% if not admin_signed_in? %>
+        <%= search_form_for @search, url: post_recipes_searches_path do |f| %>
+          <%= f.search_field :title_cont, placeholder: 'レシピを検索', class: 'input ml-4', size: '30' %>
+          <%= f.submit "GO!", class:'search-btn rounded-pill' %>
+        <% end %>
       <% end %>
       </div>
 
@@ -33,11 +35,11 @@
 
         <!-- 管理者がログインしている場合-->
         <% if admin_signed_in? %>
-          <li class="nav-item"><%= link_to "レシピ一覧", admin_post_recipes_path, class: 'nav-link text-secondary' %></li>
-          <li class="nav-item ml-4"><%= link_to "会員一覧", admin_users_path, class: 'nav-link text-secondary' %></li>
-          <li class="nav-item ml-4"><%= link_to "フォーム", admin_form_inquiries_path , class: 'nav-link text-secondary' %></li>
-          <li class="nav-item ml-4"><%= link_to "チャット", admin_chats_path, class: 'nav-link text-secondary' %></li>
-          <li class="nav-item ml-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-secondary' %></li>
+          <li class="nav-item"><%= link_to "レシピ一覧", admin_post_recipes_path, class: 'nav-link' %></li>
+          <li class="nav-item ml-4"><%= link_to "会員一覧", admin_users_path, class: 'nav-link' %></li>
+          <li class="nav-item ml-4"><%= link_to "フォーム", admin_form_inquiries_path , class: 'nav-link' %></li>
+          <li class="nav-item ml-4"><%= link_to "チャット", admin_chats_path, class: 'nav-link' %></li>
+          <li class="nav-item ml-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
 
         <!--ユーザー（会員）がログインしている場合 -->
         <% elsif user_signed_in? %>
@@ -46,13 +48,16 @@
               ABOUT
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/about">VEGECOOKとは？</a>
-              <a class="dropdown-item" href="/premium">PREMIUMプラン</a>
-              <a class="dropdown-item" href="/form_inquiries">お問い合わせ</a>
+              <a class="dropdown-item" href="/about"><p class="jp-font-2 m-0">はじめての方</p></a>
+              <a class="dropdown-item" href="/premium"><p class="jp-font-2 m-0">プレミアム・プランのご案内</p></a>
+              <a class="dropdown-item" href="/form_inquiries"><p class="jp-font-2 m-0">お問い合わせ</p></a>
             </div>
           </li>
-          <li class="nav-item ml-4"><%= link_to "MY PAGE", user_path(current_user.id), class: 'nav-link text-secondary' %></li>
-          <li class="nav-item ml-4"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: 'nav-link text-secondary' %></li>
+          <li class="nav-item ml-4 d-flex">
+            <%= link_to (attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: 'no_profile_image.jpg', size:'25x25', class:'mt-2 rounded-circle'), user_path(current_user.id) %>
+            <%= link_to "MY PAGE", user_path(current_user.id), class: 'nav-link' %>
+          </li>
+          <li class="nav-item ml-4"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
 
         <!-- ログインしていない場合 -->
         <% else %>
@@ -61,13 +66,13 @@
               ABOUT
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/about">VEGECOOKとは？</a>
-              <a class="dropdown-item" href="/premium">PREMIUMプラン</a>
-              <a class="dropdown-item" href="/form_inquiries">お問い合わせ</a>
+              <a class="dropdown-item" href="/about"><p class="jp-font-2 m-0">VEGECOOKとは？</p></a>
+              <a class="dropdown-item" href="/premium"><p class="jp-font-2 m-0">PREMIUMプラン</p></a>
+              <a class="dropdown-item" href="/form_inquiries"><p class="jp-font-2 m-0">お問い合わせ</p></a>
             </div>
           </li>
-          <li class="nav-item ml-4"><%= link_to "SIGN UP", new_user_registration_path, class: 'nav-link text-secondary' %></li>
-          <li class="nav-item ml-4"><%= link_to "LOG IN", new_user_session_path, class: 'nav-link text-secondary' %></li>
+          <li class="nav-item ml-4"><%= link_to "SIGN UP", new_user_registration_path, class: 'nav-link' %></li>
+          <li class="nav-item ml-4"><%= link_to "LOG IN", new_user_session_path, class: 'nav-link' %></li>
         <% end %>
         </ul>
       </div>
