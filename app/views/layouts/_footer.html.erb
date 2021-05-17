@@ -1,10 +1,19 @@
 <footer>
   <div class="container">
+
     <div class="row">
-      <div class="mx-auto mt-3 text-center">
-        <p class="mb-2">Be the Veggie, Green your Life</p>
+      <div class="mx-auto mt-3 text-center d-flex">
+          <%= link_to "Be the Veggie, Green your Life", root_path, class:'mb-2' %>
+          <% if not admin_signed_in? %>
+            <%= link_to "", form_inquiries_path, class:'fas fa-envelope m-0 pl-2 pt-1' %>
+          <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mx-auto">
         <p id="copyright">Copyright © VEGECOOK All Rights Reserved</p>
       </div>
     </div>
-  </div>
+
 </footer>
