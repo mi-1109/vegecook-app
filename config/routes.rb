@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
 
  # ============== deviseのルーティング ==================
-  devise_for :admins,
-    path: :admin,
+  devise_for :admin,
     controllers: {
       sessions: 'admin/devise/sessions',
       passwords: 'admin/devise/passwords',
       registrations: 'admin/devise/registrations'
     }
-  devise_for :users, controllers: {
+  devise_for :user,
+    controllers: {
       sessions: 'public/devise/sessions',
       passwords: 'public/devise/passwords',
       registrations: 'public/devise/registrations'
     }
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/devise/sessions#guest_sign_in'
+  end
 
   # ========= ユーザー(public)のルーティング ================
   scope module: :public do
