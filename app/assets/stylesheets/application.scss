@@ -65,6 +65,10 @@
   font-weight: bold;
 }
 
+.thanks-font {
+  font-family: 'Comic Sans MS';
+}
+
 .font-color-green {
   color: $olive-green;
 }
@@ -102,6 +106,12 @@
     color: $gray;
   }
 }
+
+
+
+
+
+
 
 .heading-bar {
   background-color: $pistachio-green;
@@ -298,12 +308,6 @@ footer {
     }
 }
 
-.thanks-font {
-  font-family: 'Comic Sans MS';
-}
-
-
-
 .about-heading-style {
   width: 100%;
   margin: 20px 0;
@@ -313,11 +317,6 @@ footer {
 .cards {
   margin: 0 auto;
   height: 270px;
-}
-
-.top-icons:hover {
-  text-decoration: none;
-  color: inherit;
 }
 
 .field_with_errors {
@@ -342,38 +341,12 @@ footer {
   color: $danger-red;
 }
 
-//latest-slider
-
-.slider-heading-img {
-  height: 550px !important;
-  object-fit: cover;
-  object-position: 40% 100%;
-}
-
-.slider-latest-img {
-  border-radius: 50%;
-}
-
-.slick-slide img {
-  width: 100%;  /* widht100%を指定することにより、画像間の無駄な余白が消える */
-}
-
-.slick-slide {
-  margin: 0 20px 0;
-}
-
-.slick-slide:not(.slick-center) {
-  opacity: 0.5;
-}
-
-.top-menu-font {
- font-family: 'Annie Use Your Telescope', cursive;
- font-size: 30px;
- font-weight: bold;
-}
-
 .fa-egg {
   color: $baige;
+}
+
+.fa-bookmark {
+  color: $dusty-pink;
 }
 
 .header-logo {

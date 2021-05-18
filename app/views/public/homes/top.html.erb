@@ -1,4 +1,4 @@
-<!-------------- 顧客側：トップ画面 -------------------->
+<!-------------- 顧客側：トップ画面 ----------------->
 
 <div class="heading-slider">
   <% @heading_recipes.each do |heading_recipe| %>
@@ -8,32 +8,32 @@
 
 <div class="container">
   <div class="row mt-5">
-    <div class="col-md-2 offset-md-3 text-center">
+    <div class="col-3 offset-1 text-center">
       <% if user_signed_in? %>
-        <%= link_to "", user_path(current_user.id), class: 'fas fa-bookmark fa-5x font-color pt-5 top-icons mb-2' %><br />
+        <%= link_to "", user_path(current_user.id), class: 'fas fa-bookmark fa-5x pt-5 top-icons mb-2' %><br />
         <%= link_to "BOOKMARK", user_path(current_user.id), stlye:'font-size: 16px', class:'top-icons top-menu-font' %>
       <% else %>
-        <%= link_to "", new_user_session_path, class: 'fas fa-bookmark fa-5x font-color pt-5 top-icons mb-2' %><br />
+        <%= link_to "", new_user_session_path, class: 'fas fa-bookmark fa-5x pt-5 top-icons mb-2' %><br />
         <%= link_to "BOOKMARK", new_user_session_path, stlye:'font-size: 16px', class:'top-icons top-menu-font' %>
       <% end %>
     </div>
-    <div class="col-md-2 text-center">
+    <div class="col-4 text-center">
       <%= link_to "", new_post_recipe_path, class: 'fas fa-edit fa-5x font-color-green pt-5 top-icons mb-2 ml-3' %><br />
       <%= link_to "POST RECIPE", new_post_recipe_path, stlye:'font-size: 16px', class:'top-icons top-menu-font' %><br />
       <p class="jp-font-2">~レシピ投稿~</p>
     </div>
-    <div class="col-md-2 text-center">
+    <div class="col-3 text-center">
       <%= link_to "", post_recipes_rankings_path, class: 'fas fa-crown fa-5x pt-5 top-icons mb-2' %><br />
       <%= link_to "TOP20", post_recipes_rankings_path, stlye:'font-size: 16px', class:'top-icons top-menu-font' %>
     </div>
   </div>
 
   <div class="row my-5">
-    <div class="d-flex flex-wrap offset-md-1">
+    <div class="d-flex flex-wrap offset-sm-2 offset-md-1 offset-lg-2 offset-xl-1">
       <% @random_recipes.each do |random_recipe| %>
         <div class="mb-5 text-center card pb-3 p-2 mx-5 shadow">
           <%= link_to (attachment_image_tag random_recipe, :recipe_image, :fill, 200, 200, format: 'jpg'), post_recipe_path(random_recipe.id), style:'width: 90%', class:'card-img-top' %>
-          <%= link_to random_recipe.title, post_recipe_path(random_recipe), class:' card-title text-wrap jp-font font-weight-bold pt-2 mb-0' %>
+          <%= link_to random_recipe.title, post_recipe_path(random_recipe), class:' card-title text-wrap jp-font-pop pt-2 mb-0' %>
           <div class="d-flex mx-auto mt-1">
             <% case random_recipe.veg_type
             when "pesco" %>
@@ -57,7 +57,7 @@
           </div>
           <div class="d-flex mx-auto mt-2 card-text">
             <%= link_to (attachment_image_tag random_recipe.user, :profile_image, :fill, 25, 25, format: 'jpg', fallback:'no_profile_image.jpg', size: '25x25', class:'rounded-circle'), user_path(random_recipe.user.id) %>
-            <%= link_to random_recipe.user.name, user_path(random_recipe.user.id), class:'text-wrap jp-font ml-2 pt-1' %>
+            <%= link_to random_recipe.user.name, user_path(random_recipe.user.id), class:'text-wrap jp-font-pop ml-2 pt-1' %>
           </div>
         </div>
       <% end %>

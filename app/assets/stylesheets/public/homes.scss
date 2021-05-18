@@ -1,3 +1,38 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ $baige: #ede0cb;
+
+.top-icons:hover {
+  text-decoration: none;
+  color: $baige;
+}
+
+.top-menu-font {
+ font-family: 'Annie Use Your Telescope', cursive;
+ font-size: 30px;
+ font-weight: bold;
+}
+
+.slider-heading-img {
+  height: 550px !important;
+  object-fit: cover;
+  object-position: 40% 100%;
+}
+
+.slider-latest-img {
+  border-radius: 50%;
+}
+
+.slick-slide img {
+  width: 100%;  /* widht100%を指定することにより、画像間の無駄な余白が消える */
+}
+
+.slick-slide {
+  margin: 0 20px 0;
+}
+
+.slick-slide:not(.slick-center) {
+  opacity: 0.5;
+}
