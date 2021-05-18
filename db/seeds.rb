@@ -8,13 +8,13 @@
 
 Admin.create!(
   email: "vegecook-admin@example.com",
-  password: "testtest"
+  password: ENV['ADMIN_PASSWORD']
 )
 
 50.times do |n|
   User.create!(
     email: "veggie-life-#{n + 1}@example.com",
     name: "hana_#{n + 1}",
-    password: "testtest"
+    password: ENV['USER_PASSWORD']
   )
 end

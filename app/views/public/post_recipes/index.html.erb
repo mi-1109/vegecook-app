@@ -36,7 +36,9 @@
             <i class="fas fa-seedling text-success"></i>
           <% end %>
         </div>
-        <%= link_to latest_recipe.user.name, user_path(latest_recipe.user), class:'card-text text-wrap font-color-green jp-font-pop mt-2' %>
+        <p class='en-font-pop mr-1 mt-2 mb-0'>by
+          <%= link_to latest_recipe.user.name, user_path(latest_recipe.user), class:'card-text text-wrap font-color-green jp-font-pop' %>
+        </p>
       </div>
     <% end %>
     </div>
