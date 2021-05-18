@@ -46,6 +46,7 @@
    color: $gray;
    &:hover {
      color: $cherry-blossom;
+     text-decoration: none;
    }
  }
 
@@ -62,6 +63,14 @@
 .jp-font-pop {
   font-family: 'Kiwi Maru', serif;
   font-weight: bold;
+}
+
+.font-color-green {
+  color: $olive-green;
+}
+
+.font-color-pink {
+  color: $cherry-blossom;
 }
 
 .bg-box-container{
@@ -93,6 +102,16 @@
     color: $gray;
   }
 }
+
+.heading-bar {
+  background-color: $pistachio-green;
+  font-family: 'メイリオ';
+  font-weight: bold;
+  width: 55%;
+  margin: auto;
+}
+
+
 
 
 
@@ -223,10 +242,6 @@ footer {
   }
 }
 
-.font-color {
-  color: $cherry-blossom;
-}
-
 .font-space {
   letter-spacing: 0.07em
 }
@@ -283,20 +298,11 @@ footer {
     }
 }
 
-.font-color-green {
-  color: $olive-green;
-}
-
 .thanks-font {
   font-family: 'Comic Sans MS';
 }
 
-.heading-style {
-  background-color: $pistachio-green;
-  font-family: 'メイリオ';
-  width: 55%;
-  margin: auto;
-}
+
 
 .about-heading-style {
   width: 100%;
