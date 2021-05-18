@@ -6,14 +6,14 @@
 <% if user_signed_in? %>
   <%= form_with model:[@post_recipe, @comment], remote: true do |f| %>
   <div class="row">
-    <div class="error_explanation offset-md-3"></div>
+    <div class="error_explanation offset-4"></div>
   </div>
   <div class="row mt-1">
     <div class="form-group mb-1 mx-auto">
-      <%= f.text_area :comment, size:'60x4', placeholder:"コメントを入力", class: 'p-3 comment-content' %>
+      <%= f.text_area :comment, size:'50x3', placeholder:"コメントを入力", class: 'p-3 comment-content' %>
     </div>
   </div>
-    <div class="form-group offset-md-8">
+    <div class="form-group offset-8">
       <%= f.submit "送信", class:'btn btn-sm btn-outline-secondary'%>
     </div>
   <% end %>
@@ -22,7 +22,7 @@
   <div class="row mt-4">
     <div class="mx-auto">
       <% if user_signed_in? && @post_recipe.user_id == current_user.id %>
-        <u><%= link_to "レシピを編集する", edit_post_recipe_path(@post_recipe.id), class: 'btn btn-sm btn-warning text-white mb-4' %></u>
+        <u><%= link_to "レシピを編集", edit_post_recipe_path(@post_recipe.id), class: 'btn btn-sm btn-warning text-white mb-4' %></u>
       <% end %>
     </div>
   </div>
