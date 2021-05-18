@@ -19,24 +19,39 @@
  @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Homemade+Apple&family=Kiwi+Maru:wght@300&display=swap');
 
 
+ $pistachio-green: #e8ede1;
+ $vivid-green: #33cc00;
+ $olive-green: #a6c5ab;
+ $danger-red: #bf0000;
+ $cherry-blossom: #eabeaf;
+ $peach: #f69e9c;
+ $light-pink: #f5d4d3;
+ $dusty-pink: #e7cfcf;
+ $gray: #6c757d;
+ $white: #fff;
+ $dull-white: #f8f8f8;
+ $baige: #ede0cb;
+ $light-blue: #ebf9f8;
+ $turquoise-blue: #31b4af;
+
  * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
    font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'メイリオ', 'Sawarabi Mincho';
-   color: #6c757d;
+   color: $gray;
  }
 
  a {
-   color: #6c757d;
+   color: $gray;
    &:hover {
-     color: #eabeaf;
+     color: $cherry-blossom;
    }
  }
 
  body {
    font-size: 14px;
-   background-color: #fff;
+   background-color: $white;
  }
 
 .jp-font-classic {
@@ -49,21 +64,54 @@
   font-weight: bold;
 }
 
+.bg-box-container{
+  background-color: $pistachio-green;
+  max-width: 500px;
+}
+
+.btn-guest-admin {
+  font-size: 12px;
+  font-weight: bold;
+  color: $white;
+  border-radius: 25px;
+  background-image: linear-gradient(45deg, $peach 0%, $light-pink 80%);
+  &:hover {
+    text-decoration: none;
+    color: $gray;
+  }
+}
+
+.btn-guest-user {
+  font-size: 12px;
+  font-weight: bold;
+  color: $white;
+  border-radius: 25px;
+  border-color: $turquoise-blue;
+  background-image: linear-gradient(40deg, $light-blue 0%, $turquoise-blue 60%);
+  &:hover {
+    text-decoration: none;
+    color: $gray;
+  }
+}
+
+
+
+
 
  header {
    font-size: 16px;
  }
 
  .navbar {
-   background-color: #fff;
+   background-color: $white;
  }
 
  .navbar-toggler {
-   background-color: #fff;
+   background-color: $white;
  }
 
  .navbar-light .navbar-toggler {
-   border-color: #fff;
+   border-color: $white;
  }
 
  .nav-link {
@@ -77,7 +125,7 @@
     display: block;
     margin-top: 4px;
     right: 0;
-    background: #eabeaf;
+    background: $cherry-blossom;
     transition: width .3s ease;
     -webkit-transition: width .3s ease;
  }
@@ -85,21 +133,21 @@
  .nav-link:hover:after {
   width: 100%;
   left: 0;
-  background: #eabeaf;
+  background: $cherry-blossom;
 }
 
 .dropdown-toggle {
   text-decoration: none;
-  color: #6c757d;
+  color: $gray;
   &:hover {
     text-decoration: none;
-    color: #6c757d;
+    color: $gray;
   }
 }
 
 footer {
-  background-color: #e8ede1;
-  color: #6c757d;
+  background-color: $pistachio-green;
+  color: $gray;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -117,12 +165,12 @@ footer {
 
 .admin-page-title {
   width: 90%;
-  background-color: #e8ede1;
+  background-color: $pistachio-green;
   font-family: 'メイリオ';
 }
 
 .active_color {
-  color: #33CC00;
+  color: $vivid-green;
   font-weight: bold;
 }
 
@@ -133,21 +181,21 @@ footer {
 // ページネーション全体のデザイン
 .pagination>li>a {
   border: none;
-  color: #696969;
+  color: $gray;
 }
 
 //表示しているページ番号のデザイン
 .page-item.active .page-link {
-  background-color: #eabeaf;
+  background-color: $cherry-blossom;
 }
 
 .procedure {
-  background-color: #eabeaf;
-  color: #fff;
+  background-color: $cherry-blossom;
+  color: $white;
 }
 
 .save-icon {
-  color: #eabeaf;
+  color: $cherry-blossom;
 }
 
 .fa-bookmark:hover, .like-btn:hover, .user-link:hover {
@@ -155,22 +203,18 @@ footer {
 }
 
 .btn-color {
-  background-color: #eabeaf;
+  background-color: $cherry-blossom;
   &:hover {
-    background-color: #a6c5ab;
+    background-color: $olive-green;
   }
-}
-
-.login-bg {
-  background-color: #e8ede1;
 }
 
 // 会員詳細のタブ
 .nav-item >.tab-style{
-  background-color: #e8ede1;
+  background-color: $pistachio-green;
   margin-right: 2px;
   &:hover {
-    color: #fff;
+    color: $white;
   }
   &:hover:after {
     width: initial;
@@ -180,7 +224,7 @@ footer {
 }
 
 .font-color {
-  color: #eabeaf;
+  color: $cherry-blossom;
 }
 
 .font-space {
@@ -192,14 +236,14 @@ footer {
 }
 
 .bg-color {
-  background-color: #e8ede1;
+  background-color: $pistachio-green;
 }
 
 // 検索関連
 @mixin input{
   border: none;
   border-radius: 50px;
-  background: #F8F8F8;
+  background: $dull-white;
   height: 35px;
   padding: 10px 20px;
 }
@@ -211,7 +255,7 @@ footer {
     margin-top: 6px;
   }
   .search-btn{
-    background-color: #fff;
+    background-color: $white;
     cursor: pointer;
     position: absolute;
     right: 8px;
@@ -219,7 +263,7 @@ footer {
     height: 25px;
     width: 40px;
     border-style: none;
-    color: #eabeaf;
+    color: $cherry-blossom;
     font-weight: bold;
   }
 }
@@ -234,13 +278,13 @@ footer {
   }
     &:focus {
       text-decoration: underline;
-      color: #eabeaf;
+      color: $cherry-blossom;
       font-weight: bold;
     }
 }
 
 .font-color-green {
-  color: #a6c5ab;
+  color: $olive-green;
 }
 
 .thanks-font {
@@ -248,7 +292,7 @@ footer {
 }
 
 .heading-style {
-  background-color: #e8ede1;
+  background-color: $pistachio-green;
   font-family: 'メイリオ';
   width: 55%;
   margin: auto;
@@ -257,7 +301,7 @@ footer {
 .about-heading-style {
   width: 100%;
   margin: 20px 0;
-  background-color: #eabeaf;
+  background-color: $cherry-blossom;
 }
 
 .cards {
@@ -275,21 +319,21 @@ footer {
 }
 
 #notice {
-  background-color: #EBF9F8;
-  color: #31B4AF;
+  background-color: $light-blue;
+  color: $turquoise-blue;
 }
 
 .fa-check-circle {
-  color: #31B4AF;
+  color: $turquoise-blue;
 }
 
 #alert {
-  background-color: #E7CFCF;
-  color: #BF0000;
+  background-color: $dusty-pink;
+  color: $danger-red;
 }
 
 .fa-exclamation-triangle {
-  color: #BF0000;
+  color: $danger-red;
 }
 
 //latest-slider
@@ -323,7 +367,7 @@ footer {
 }
 
 .fa-egg {
-  color: #EDE0CB;
+  color: $baige;
 }
 
 .header-logo {
