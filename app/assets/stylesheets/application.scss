@@ -119,6 +119,12 @@
   }
 }
 
+.page-heading {
+  width: 90%;
+  background-color: $pistachio-green;
+  font-family: 'メイリオ';
+}
+
 .fa-crown {
   color: gold;
 }
@@ -199,12 +205,6 @@ footer {
   min-height: 100vh;
   position: relative;
   padding-bottom: 60px;
-}
-
-.admin-page-title {
-  width: 90%;
-  background-color: $pistachio-green;
-  font-family: 'メイリオ';
 }
 
 .active_color {
