@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
- $baige: #ede0cb;
+$baige: #ede0cb;
+$cherry-blossom: #eabeaf;
+$light-pink: #f5d4d3;
 
+//TOPページ
 .top-icons:hover {
   text-decoration: none;
   color: $baige;
@@ -35,4 +38,16 @@
 
 .slick-slide:not(.slick-center) {
   opacity: 0.5;
+}
+
+//PREMIUMプラン案内ページ
+#about-heading {
+  width: 100%;
+  margin: 20px 0;
+  background-image: linear-gradient(45deg, $cherry-blossom 0%, $light-pink 80%);
+  // background-color: $cherry-blossom;
+}
+
+#premium-card-position {
+  margin-top: 90px;
 }
