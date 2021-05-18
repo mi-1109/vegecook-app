@@ -77,6 +77,10 @@
   color: $cherry-blossom;
 }
 
+.bg-color-green {
+  background-color: $pistachio-green;
+}
+
 .bg-box-container{
   background-color: $pistachio-green;
   max-width: 500px;
@@ -115,8 +119,22 @@
   }
 }
 
+.fa-crown {
+  color: gold;
+}
 
+.fa-egg {
+  color: $baige;
+}
 
+.fa-bookmark {
+  color: $dusty-pink;
+}
+
+.cards {
+  margin: 0 auto;
+  height: 270px;
+}
 
 
 
@@ -249,17 +267,7 @@ footer {
   }
 }
 
-.font-space {
-  letter-spacing: 0.07em
-}
 
-.fa-crown {
-  color: gold;
-}
-
-.bg-color {
-  background-color: $pistachio-green;
-}
 
 // 検索関連
 @mixin input{
@@ -305,11 +313,6 @@ footer {
     }
 }
 
-.cards {
-  margin: 0 auto;
-  height: 270px;
-}
-
 .field_with_errors {
   display: contents;
 }
@@ -332,13 +335,6 @@ footer {
   color: $danger-red;
 }
 
-.fa-egg {
-  color: $baige;
-}
-
-.fa-bookmark {
-  color: $dusty-pink;
-}
 
 .header-logo {
   width: 150px;

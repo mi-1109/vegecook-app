@@ -1,7 +1,7 @@
-<!--------- TOP20（ランキング）レシピ画面 ------------>
+<!--------- TOP20（ランキング）レシピ ------------>
 
 <div class="container">
-  <h3 class="mt-4 pl-3 fas fa-crown font-space"> TOP20</h3>
+  <h3 style='letter-spacing: 0.07em' class="mt-4 pl-3 fas fa-crown"> TOP20</h3>
 
   <div class="row">
     <div class="col-md-12">
@@ -13,18 +13,39 @@
     <% if user_signed_in? && current_user.is_paid == true %>
       <div class="d-flex flex-wrap">
         <% @recipe_ranks.each.with_index(1) do |recipe_rank, i| %>
-          <div class="card text-center mt-3 p-3 ml-4 mb-3">
-            <div class="card-header p-1 font-weight-bold bg-color">
+          <div style='width: 220px' class="card text-center mt-3 p-3 ml-4 mb-3">
+            <div class="card-header p-1 en-font-pop bg-color-green">
               NO. <%= i %>
             </div>
             <%= link_to (attachment_image_tag recipe_rank, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(recipe_rank.id), class:'card-img-top' %>
-            <%= link_to recipe_rank.title, post_recipe_path(recipe_rank), class:'card-text text-wrap mt-1' %>
-            <%= link_to recipe_rank.user.name, user_path(recipe_rank.user), class:'card-text text-wrap font-color' %>
+            <%= link_to recipe_rank.title, post_recipe_path(recipe_rank), class:'card-text text-wrap mt-1 jp-font-pop' %>
+            <div class="d-flex mx-auto mt-1">
+              <% case recipe_rank.veg_type
+              when "pesco" %>
+                <i class="fas fa-seedling text-success"></i>
+                <i class="fas fa-fish pl-2 text-primary"></i>
+                <i class="fas fa-egg pl-2"></i>
+                <i class="fas fa-cheese pl-2 text-warning"></i>
+              <% when "lacto_ovo" %>
+                <i class="fas fa-seedling text-success"></i>
+                <i class="fas fa-egg pl-2"></i>
+                <i class="fas fa-cheese pl-2 text-warning"></i>
+              <% when "lacto" %>
+                <i class="fas fa-seedling text-success"></i>
+                <i class="fas fa-cheese pl-2 text-warning"></i>
+              <% when "ovo" %>
+                <i class="fas fa-seedling text-success"></i>
+                <i class="fas fa-egg pl-2"></i>
+              <% else %>
+                <i class="fas fa-seedling text-success"></i>
+              <% end %>
+            </div>
+            <%= link_to recipe_rank.user.name, user_path(recipe_rank.user), class:'card-text text-wrap font-color jp-font-pop font-color-green mt-2' %>
           </div>
         <% end %>
       </div>
     <% else %>
-      <p class="mt-4 ml-3">有料会員の機能です。<%= link_to "こちら", premiums_payment_path, class:"font-color" %>より有料会員登録をお願いいたします。</p>
+      <p class="mt-4 ml-3">有料会員の機能です。<u><%= link_to "こちら", premiums_payment_path, class:"font-color-pink" %></u>より有料会員登録をお願いいたします。</p>
     <% end %>
   </div>
 
