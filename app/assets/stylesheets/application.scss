@@ -119,9 +119,16 @@
   }
 }
 
-.page-heading {
+.page-heading-green {
   width: 90%;
   background-color: $pistachio-green;
+  font-family: 'メイリオ';
+  font-weight: bold;
+}
+
+.page-heading-pink {
+  background-color: $cherry-blossom;
+  color: $white;
   font-family: 'メイリオ';
 }
 
@@ -225,11 +232,6 @@ footer {
 //表示しているページ番号のデザイン
 .page-item.active .page-link {
   background-color: $cherry-blossom;
-}
-
-.procedure {
-  background-color: $cherry-blossom;
-  color: $white;
 }
 
 .save-icon {
