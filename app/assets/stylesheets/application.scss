@@ -208,15 +208,36 @@ footer {
   bottom: 0;
 }
 
-#copyright {
-  font-size: 10px;
-}
-
 .footer_position {
   min-height: 100vh;
   position: relative;
   padding-bottom: 60px;
 }
+
+#copyright {
+  font-size: 10px;
+}
+
+.move-top {
+  position: fixed;
+  bottom: 60px;
+}
+
+#move-top-arrow {
+  right: 20px;
+}
+
+#move-top-admin-btn {
+  right: 90px;
+  width: 120px;
+}
+
+#move-top-guest-btn {
+  right: 230px;
+  width: 120px;
+}
+
+
 
 .active_color {
   color: $vivid-green;
