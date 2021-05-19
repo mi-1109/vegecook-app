@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_user, only:[:show, :edit, :update]
+  before_action :prohibit_guest_quit, only:[:update]
 
   def index
     @users = User.page(params[:page])
@@ -15,8 +16,16 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      #会員を退会にする場合
       if @user.is_deleted == true
         @user.post_recipes.update(is_draft: true)
+        @user.comments.destroy_all
+        @user.histories.destroy_all
+        @user.likes.destroy_all
+        @user.saved_recipes.destroy_all
+        @user.active_relationships.destroy_all
+        @user.passive_relationships.destroy_all
+      #会員を有効にする場合
       else
         @user.post_recipes.update(is_draft: false)
       end
@@ -37,4 +46,9 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def prohibit_guest_quit
+    if @user.id == 1
+      redirect_to admin_users_path, alert: "ゲスト会員は退会できません。"
+    end
+  end
 end
