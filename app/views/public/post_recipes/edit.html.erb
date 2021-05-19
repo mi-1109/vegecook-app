@@ -90,8 +90,8 @@
     <div class="row mt-4">
       <div class="form-inline mx-auto">
         <% if @post_recipe.is_draft == true %>
-          <%= f.submit "レシピを公開", :name => 'publicize_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-success' %>
-          <%= f.submit "下書きを更新", :name => 'update_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-light' %>
+          <%= f.submit "レシピを公開", :name => 'publicize_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-warning' %>
+          <%= f.submit "下書きを更新", :name => 'update_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-outline-secondary' %>
         <% else %>
           <%= f.submit "レシピを更新", :name => 'update_post', style: 'font-size: 20px', class:'btn btn-sm btn-warning text-light' %>
         <% end %>

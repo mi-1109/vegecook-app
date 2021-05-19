@@ -52,11 +52,7 @@ class Public::Devise::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    if current_user.is_paid == true
-      premiums_payment_path
-    else
-      root_path
-    end
+    root_path
   end
 
   # The path used after sign up for inactive accounts.

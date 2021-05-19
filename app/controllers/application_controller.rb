@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
   def recipe_search
-    @search = PostRecipe.includes(:user).joins(%|
-      INNER JOIN (
+    @search = PostRecipe.includes(:user).where(is_draft: false).joins(%|
+      LEFT OUTER JOIN (
         SELECT
           "likes"."post_recipe_id" AS post_recipe_id,
           COUNT(*) AS like_count
