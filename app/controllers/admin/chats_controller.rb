@@ -19,8 +19,7 @@ class Admin::ChatsController < ApplicationController
   end
 
   def create
-    @chat = current_admin.chats.new(chat_params)
-    @chat.save
+    @chat = current_admin.chats.create(chat_params)
     @chats = @chat.chat_room.chats
     @user = @chat.chat_room.user
   end

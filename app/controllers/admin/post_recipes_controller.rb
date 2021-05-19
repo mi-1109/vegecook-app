@@ -1,5 +1,6 @@
 class Admin::PostRecipesController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_post_recipe, only:[:show, :destroy]
 
   def index
     @post_recipes = PostRecipe.page(params[:page])
@@ -7,16 +8,21 @@ class Admin::PostRecipesController < ApplicationController
   end
 
   def show
-    @post_recipe = PostRecipe.find(params[:id])
   end
 
   def destroy
-    @post_recipe = PostRecipe.find(params[:id])
     if @post_recipe.destroy
       redirect_to admin_post_recipes_path, notice: "レシピを削除しました"
     else
       render :show, alert: "レシピを削除できませんでした"
     end
+  end
+
+
+  private
+
+  def set_post_recipe
+     @post_recipe = PostRecipe.find(params[:id])
   end
 
 end

@@ -27,22 +27,21 @@ class ApplicationController < ActionController::Base
     @popular_recipes = @search.result(distinct: true).order(like_count: "DESC").page(params[:page]).per(12)
   end
 
-  # ====== ログイン・ログアウト後の遷移先 ==========
   private
 
-  def after_sign_in_path_for(resource_or_scope)
-    if resource_or_scope.is_a?(Admin)
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(Admin)
       admin_root_path
-    else resource_or_scope == :user
+    else resource == :user
       root_path
     end
   end
 
-  def after_sign_out_path_for(resource_or_scope)
-    if resource_or_scope == :user
-      new_user_session_path
-    else resource_or_scope == :admin
+  def after_sign_out_path_for(resource)
+    if resource == :admin
       new_admin_session_path
+    else resource == :user
+      new_user_session_path
     end
   end
 
