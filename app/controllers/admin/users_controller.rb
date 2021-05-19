@@ -15,6 +15,11 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      if @user.is_deleted == true
+        @user.post_recipes.update(is_draft: true)
+      else
+        @user.post_recipes.update(is_draft: false)
+      end
       redirect_to admin_user_path(@user), notice: "会員ステータスを更新しました"
     else
       render :edit, alert: "会員ステータスを更新できませんでした"
@@ -25,7 +30,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :introduction, :is_paid, :is_deleted)
+    params.require(:user).permit(:is_deleted)
   end
 
   def set_user
