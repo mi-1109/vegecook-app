@@ -19,7 +19,6 @@ class PostRecipe < ApplicationRecord
     validates :ingredients
     validates :procedures
   end
-
   validates :title, length: {maximum: 14}, on: :publicize
   validates :introduction, length: {maximum: 80}, on: :publicize
 
@@ -62,21 +61,17 @@ class PostRecipe < ApplicationRecord
   end
 
   def new_form_instance()
-    # 入力済みの材料の数
+    # 入力済みの材料・手順入力欄の数をカウント
     ingredient_filled_in_count = self.ingredients.length
-    # 入力済みの手順の数
     procedure_filled_in_count = self.procedures.length
-    # 3つより少なければ3つになるように空のインスタンスを作成する
+    # 入力欄がゼロになるのを防ぐため、入力済みの材料・手順入力欄が3つより少なければ、3つになるように空のインスタンスを作成する
     if ingredient_filled_in_count < 3
-      # 作成するインスタンスの数
       add_ingredient_form_count = 3 - ingredient_filled_in_count
       for i in 1..add_ingredient_form_count do
         self.ingredients.build
       end
     end
-    # 3つより少なければ3つになるように空のインスタンスを作成する
     if procedure_filled_in_count < 3
-      # 作成するインスタンスの数
       add_procedure_form_count = 3 - procedure_filled_in_count
       for i in 1..add_procedure_form_count do
         self.procedures.build

@@ -1,0 +1,20 @@
+// Place all the styles related to the public/users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$pistachio-green: #e8ede1;
+$white: #fff;
+
+// 会員詳細&フォロー一覧のタブ
+.nav-item >.tab-style{
+  background-color: $pistachio-green;
+  margin-right: 2px;
+  &:hover {
+    color: $white;
+  }
+  &:hover:after {
+    width: initial;
+    left: initial;
+    background: initial;
+  }
+}

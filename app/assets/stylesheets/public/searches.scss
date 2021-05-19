@@ -1,3 +1,20 @@
 // Place all the styles related to the public/searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$cherry-blossom: #eabeaf;
+
+// 検索結果一覧のタブのスタイル
+.clear-tab-style > .nav-link {
+  border: none;
+    &:hover:after {
+    width: initial;
+    left: initial;
+    background: initial;
+  }
+    &:focus {
+      text-decoration: underline;
+      color: $cherry-blossom;
+      font-weight: bold;
+    }
+}

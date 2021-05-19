@@ -16,11 +16,11 @@
       <% end %>
 
       <!------- 検索窓 -------->
-      <div class="search-window">
+      <div id="search-window">
       <% if not admin_signed_in? %>
         <%= search_form_for @search, url: post_recipes_searches_path do |f| %>
           <%= f.search_field :title_cont, placeholder: 'レシピを検索', class: 'input ml-4', size: '30' %>
-          <%= f.submit "GO!", class:'search-btn rounded-pill' %>
+          <%= f.submit "GO!", class:'rounded-pill', id:'search-btn' %>
         <% end %>
       <% end %>
       </div>

@@ -47,7 +47,7 @@
 
       <!--タブ：人気順の検索結果-->
         <div id="tab2" class="tab-pane">
-          <% if current_user.is_paid == true %>
+          <% if user_signed_in? && current_user.is_paid == true %>
             <div class="d-flex flex-wrap">
               <% @popular_recipes.each do |popular_recipe| %>
                 <div style='width: 220px' class="card text-center mt-3 p-3 ml-4 mb-3">

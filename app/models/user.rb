@@ -36,11 +36,6 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  # ======= 会員ステータスが有効の場合TRUEを返す =======
-  def active_for_authentication?
-    super && (self.is_deleted == false)
-  end
-
   def is_paid_to_sring
     if is_paid == true
       "プレミアム（有料）"
