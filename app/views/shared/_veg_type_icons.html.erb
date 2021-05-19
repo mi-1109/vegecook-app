@@ -1,0 +1,23 @@
+<!--レシピカードに表示する使用食材のアイコン -->
+
+ <div class="d-flex mx-auto pt-1">
+    <% case post_recipe.veg_type
+    when "pesco" %>
+      <i class="fas fa-seedling text-success"></i>
+      <i class="fas fa-fish pl-2 text-primary"></i>
+      <i class="fas fa-egg pl-2"></i>
+      <i class="fas fa-cheese pl-2 text-warning"></i>
+    <% when "lacto_ovo" %>
+      <i class="fas fa-seedling text-success"></i>
+      <i class="fas fa-egg pl-2"></i>
+      <i class="fas fa-cheese pl-2 text-warning"></i>
+    <% when "lacto" %>
+      <i class="fas fa-seedling text-success"></i>
+      <i class="fas fa-cheese pl-2 text-warning"></i>
+    <% when "ovo" %>
+      <i class="fas fa-seedling text-success"></i>
+      <i class="fas fa-egg pl-2"></i>
+    <% else %>
+      <i class="fas fa-seedling text-success"></i>
+    <% end %>
+  </div>
