@@ -1,7 +1,8 @@
 class Public::UsersController < ApplicationController
+
   before_action :authenticate_user!, except:[:show, :follows]
-  before_action :set_user, except:[:quit, :quit_confirm]
-  before_action :set_current_user, only:[:quit, :quit_confirm]
+  before_action :set_user, except:[:quit, :quit_confirm, :deny_quitted_user_signin]
+  before_action :set_current_user, only:[:quit, :quit_confirm, :prohibit_guest_quit]
   before_action :prohibit_guest_quit, only:[:quit_confirm]
   before_action :deny_quitted_user_signin, only:[:show]
 
@@ -29,10 +30,8 @@ class Public::UsersController < ApplicationController
 
   def quit
     @user.update(is_deleted: true)
-    @user.post_recipes.destroy_all
+    @user.post_recipes.update(is_draft: true)
     @user.comments.destroy_all
-    @user.form_inquiries.destroy_all
-    @user.chats.destroy_all
     @user.histories.destroy_all
     @user.likes.destroy_all
     @user.saved_recipes.destroy_all
@@ -64,16 +63,14 @@ class Public::UsersController < ApplicationController
   end
 
   def deny_quitted_user_signin
-    user = User.find(params[:id])
-    if user.is_deleted == true
+    if @user.is_deleted == true
       render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
     end
   end
 
   def prohibit_guest_quit
-    @user = current_user
-    if @user.email == 'guest@example.com'
-      redirect_to root_path, alert: "恐れ入りますが、ゲスト・アカウントでは会員の変更・退会できません。"
+    if @user.id == 1
+      redirect_to root_path, alert: "恐れ入りますが、ゲスト・アカウントでは退会できません。"
     end
   end
 
