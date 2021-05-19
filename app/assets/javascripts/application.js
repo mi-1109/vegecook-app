@@ -82,4 +82,12 @@ var count = 10;
     tr.parentNode.deleteRow(tr.sectionRowIndex);
   }
 
+  $(function() {
+  $('.move-top a').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 1000);
+    event.preventDefault();
+  });
+});
 

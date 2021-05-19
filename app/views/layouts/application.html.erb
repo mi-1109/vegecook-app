@@ -17,15 +17,10 @@
   <body>
     <div class="footer_position">
       <main>
-      <%= render 'layouts/header' %>
-        <% if flash[:notice] %>
-          <p id="notice" class="pl-4 py-1"><i class="far fa-check-circle pr-2"></i><%= flash[:notice] %></p>
-        <% elsif flash[:alert] %>
-          <p id="alert" class="pl-4 py-1"><i class="fas fa-exclamation-triangle pr-2"></i><%= flash[:alert] %></p>
-        <% end %>
-
-      <%= yield %>
-      <%= render 'layouts/footer' %>
+        <%= render 'layouts/header' %>
+        <%= render 'layouts/flash' %>
+        <%= yield %>
+        <%= render 'layouts/footer' %>
       </main>
     </div>
   </body>

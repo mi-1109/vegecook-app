@@ -1,11 +1,11 @@
 <!---------------- 管理者：会員編集 ------------------>
-<div style="height: 70vh", class="d-flex align-items-center">
+<div style="height: 650px", class="d-flex align-items-center">
   <div class="container">
 
-    <u><h3 class="jp-font">会員ステータスの変更</h3></u>
+    <u><h3 class="jp-font-classic">会員ステータスの変更</h3></u>
 
     <%= form_with model: @user, url: admin_user_path(@user.id), method: :PATCH, local:true do |f| %>
-    <table class="table table-borderless mt-4 pt-3">
+    <table style='width:75%' class="table mt-5">
       <tr>
         <td style="width:25%" class="font-weight-bold">ユーザー名</td>
         <td><%= @user.name %></td>

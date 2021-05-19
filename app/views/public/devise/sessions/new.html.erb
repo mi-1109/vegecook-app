@@ -1,36 +1,38 @@
-<div style="height: 70vh", class="d-flex align-items-center">
-  <div style="width: 30%", class="login-bg mx-auto">
+<div style="height: 650px" class="d-flex align-items-center">
+  <div class="bg-box-container mt-5 mx-auto pt-2">
 
-    <div style="width: 70%", class="pt-4 px-3">
+    <div class="pt-4 pl-4 pr-3">
       <div class="container">
         <div class="row">
-          <h2 class="text-secondary">LOG IN</h2>
+          <div class="col-6"><h2>LOG IN</h2></div>
+          <div class="offset-1 col-5">
+            <%= link_to "ゲストログイン（会員）", users_guest_sign_in_path, method: :post, class:'btn btn-guest-user py-1' %>
+          </div>
         </div>
 
         <div class="row">
+          <div class="col-12">
           <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-            <div class="field mt-5">
-              <%= f.label :email, 'メールアドレス', class:'text-secondary' %><br />
+            <div class="form-group mt-4">
+              <%= f.label :email, 'メールアドレス:' %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
             </div>
 
-            <div class="field mt-4">
-              <%= f.label :password, 'パスワード', class:'text-secondary' %><br />
-              <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
+            <div class="form-group mt-4">
+              <%= f.label :password, 'パスワード:' %><br />
+              <%= f.password_field :password, autocomplete: "current-password", size: "40", class:'mr-3' %>
             </div>
 
-            <div class="actions mt-5">
-              <%= f.submit "ログイン", class: 'btn btn-sm btn-color text-white font-weight-bold' %>
+            <div class="form-group mt-5">
+              <%= f.submit "ログイン", class: 'btn btn-sm btn-color font-weight-bold' %>
             </div>
           <% end %>
-          <%= link_to 'ゲスト・ログイン（会員）はこちら', users_guest_sign_in_path, method: :post %>
+          </div>
         </div>
       </div>
     </div>
+    <p class="text-right pr-3"><%= render "public/devise/shared/links" %></p>
 
-    <p class="text-right pr-3">
-      <%= render "public/devise/shared/links" %>
-    </p>
   </div>
 </div>
 

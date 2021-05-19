@@ -1,14 +1,16 @@
-<div style="height: 70vh", class="d-flex align-items-center">
-  <div style="width: 30%", class="border mx-auto">
+<!--------------問い合わせフォーム ---------------->
 
-    <div style="width: 100%", class="pt-4 px-3">
+<div style="height: 650px", class="d-flex align-items-center">
+  <div class="border mx-auto">
+
+    <div class="pt-4 px-3">
       <div class="container">
 
         <div class="row">
-          <h3 class="jp-font text-center mx-auto">お問い合わせ</h3>
+          <h4 class="jp-font-classic text-center mx-auto">お問い合わせ</h4>
         </div>
         <div class="row mb-2">
-          <p class="jp-font text-center font-weight-bold mx-auto">フォーム</p>
+          <h6 class="jp-font-classic text-center mx-auto">フォーム</h6>
         </div>
 
         <div class="mt-4 d-flex">
@@ -23,7 +25,7 @@
 
         <%= form_with model: @form_inquiry, local:true do |f| %>
           <div class="form-group mt-4">
-            <%= f.label :content, 'お問い合わせ内容', class: 'mb-0 font-weight-bold' %><br />
+            <%= f.label :content, 'お問い合わせ内容:', class: 'mb-0 font-weight-bold' %><br />
             <%= f.text_area :content, size: "48x6", class: 'p-2' %>
             <%= render 'layouts/error_messages', obj: @form_inquiry, column: :content %>
           </div>

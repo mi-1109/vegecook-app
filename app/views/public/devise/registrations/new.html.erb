@@ -2,47 +2,47 @@
 
 <%= render "public/devise/shared/error_messages", resource: resource %>
 
-<div style='height: 80vh' class="d-flex align-items-center">
-  <div style="width: 40%", class="login-bg mx-auto mb-4">
+<div style='height: 800px' class="d-flex align-items-center">
+  <div class="bg-box-container mx-auto mb-4 px-5">
 
-    <div style="width: 70%", class="pt-4 px-4">
-      <div class="container mx-auto">
+    <div class="pt-5 px-5">
+      <div class="container">
         <div class="row">
-          <h2 class="text-secondary">SIGN UP </h2>
+          <h2 class='mx-auto'>SIGN UP</h2>
         </div>
 
         <div class="row mt-4">
           <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
             <div class="form-group">
-              <%= f.label :name, 'ユーザー名', class:'text-secondary' %><br />
+              <%= f.label :name, 'ユーザー名:', class:'font-weight-bold' %><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "name", size: "40" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :email, 'メールアドレス', class:'text-secondary' %><br />
+              <%= f.label :email, 'メールアドレス:', class:'font-weight-bold' %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :password, 'パスワード', class:'text-secondary' %><br />
+              <%= f.label :password, 'パスワード:', class:'font-weight-bold' %><br />
               <%= f.password_field :password, autocomplete: "new-password", size: "40" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :password_confirmation, 'パスワード（確認）', class:'text-secondary' %><br />
+              <%= f.label :password_confirmation, 'パスワード（確認）:', class:'font-weight-bold' %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password", size: "40" %>
             </div>
 
             <div class="form-group">
-              <p class="text-secondary">プランをご選択ください</p>
+              <p class='font-weight-bold'>プランをご選択ください:</p>
               <%= f.radio_button :is_paid, :false, class:'ml-3' %>
-              <%= f.label :is_paid, "スタンダード・プラン（無料）", class:'text-secondary' %><br />
+              <%= f.label :is_paid, "スタンダード・プラン（無料）" %><br />
               <%= f.radio_button :is_paid, :true, class:'ml-3' %>
-              <%= f.label :is_paid, "プレミアム・プラン（有料）", class:'text-secondary' %>
+              <%= f.label :is_paid, "プレミアム・プラン（有料）" %>
             </div>
 
             <div class="form-group">
-              <%= f.submit "会員登録", class: 'btn btn-sm btn-color text-white mt-3' %>
+              <%= f.submit "会員登録", class: 'btn btn-sm btn-color mt-3' %>
             </div>
           <% end %>
         </div>

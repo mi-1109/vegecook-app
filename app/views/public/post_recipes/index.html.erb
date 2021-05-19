@@ -1,7 +1,7 @@
 <!--------- 新着レシピ一覧画面 ------------>
 
 <div class="container">
-  <h3 class="mt-5 pl-3 mb-0 jp-font font-weight-bold font-color-green"><span class="fas fa-utensils font-color-green"></span> 新着レシピ</h3>
+  <h3 class="mt-5 pl-3 mb-0 jp-font-classic font-weight-bold font-color-green"><span class="fas fa-utensils font-color-green"></span> 新着レシピ</h3>
 
   <div class="row">
     <div class="col-md-12">
@@ -12,10 +12,33 @@
   <div class="row mb-5">
     <div class="d-flex flex-wrap">
     <% @latest_recipes.each do |latest_recipe| %>
-      <div class="card text-center mt-3 p-3 ml-4 mb-3">
+      <div style='width: 220px' class="card text-center mt-3 p-3 ml-4 mb-3">
         <%= link_to (attachment_image_tag latest_recipe, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(latest_recipe.id), class:'card-img-top' %>
-        <%= link_to latest_recipe.title, post_recipe_path(latest_recipe), class:'card-text text-wrap mt-1' %>
-        <%= link_to latest_recipe.user.name, user_path(latest_recipe.user), class:'card-text text-wrap font-color' %>
+        <%= link_to latest_recipe.title, post_recipe_path(latest_recipe), class:'card-text text-wrap mt-1 jp-font-pop' %>
+        <div class="d-flex mx-auto mt-1">
+          <% case latest_recipe.veg_type
+          when "pesco" %>
+            <i class="fas fa-seedling text-success"></i>
+            <i class="fas fa-fish pl-2 text-primary"></i>
+            <i class="fas fa-egg pl-2"></i>
+            <i class="fas fa-cheese pl-2 text-warning"></i>
+          <% when "lacto_ovo" %>
+            <i class="fas fa-seedling text-success"></i>
+            <i class="fas fa-egg pl-2"></i>
+            <i class="fas fa-cheese pl-2 text-warning"></i>
+          <% when "lacto" %>
+            <i class="fas fa-seedling text-success"></i>
+            <i class="fas fa-cheese pl-2 text-warning"></i>
+          <% when "ovo" %>
+            <i class="fas fa-seedling text-success"></i>
+            <i class="fas fa-egg pl-2"></i>
+          <% else %>
+            <i class="fas fa-seedling text-success"></i>
+          <% end %>
+        </div>
+        <p class='en-font-pop mr-1 mt-2 mb-0'>by
+          <%= link_to latest_recipe.user.name, user_path(latest_recipe.user), class:'card-text text-wrap font-color-green jp-font-pop' %>
+        </p>
       </div>
     <% end %>
     </div>

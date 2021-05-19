@@ -20,7 +20,7 @@ class PostRecipe < ApplicationRecord
     validates :procedures
   end
 
-  validates :title, length: {maximum: 25}, on: :publicize
+  validates :title, length: {maximum: 14}, on: :publicize
   validates :introduction, length: {maximum: 80}, on: :publicize
 
   attachment :recipe_image

@@ -1,3 +1,53 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$baige: #ede0cb;
+$cherry-blossom: #eabeaf;
+$light-pink: #f5d4d3;
+
+//TOPページ
+.top-icons:hover {
+  text-decoration: none;
+  color: $baige;
+}
+
+.top-menu-font {
+ font-family: 'Annie Use Your Telescope', cursive;
+ font-size: 30px;
+ font-weight: bold;
+}
+
+//slickのスタイル
+.slider-heading-img {
+  height: 550px !important;
+  object-fit: cover;
+  object-position: 40% 100%;
+}
+
+.slider-latest-img {
+  border-radius: 50%;
+}
+
+.slick-slide img {
+  width: 100%;  /* widht100%を指定することにより、画像間の無駄な余白が消える */
+}
+
+.slick-slide {
+  margin: 0 20px 0;
+}
+
+.slick-slide:not(.slick-center) {
+  opacity: 0.5;
+}
+
+//PREMIUMプラン案内ページ
+#about-heading {
+  width: 100%;
+  margin: 20px 0;
+  background-image: linear-gradient(45deg, $cherry-blossom 0%, $light-pink 80%);
+}
+
+#premium-card-position {
+  margin-top: 90px;
+}
