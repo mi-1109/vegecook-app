@@ -10,5 +10,4 @@ class Public::PremiumsControllerTest < ActionDispatch::IntegrationTest
     get public_premiums_complete_url
     assert_response :success
   end
-
 end

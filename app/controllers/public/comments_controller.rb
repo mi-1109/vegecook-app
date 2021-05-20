@@ -1,6 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post_recipe, only:[:create, :destroy]
+  before_action :set_post_recipe, only: [:create, :destroy]
 
   def create
     @comment = current_user.comments.new(comment_params)

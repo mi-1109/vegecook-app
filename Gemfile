@@ -53,6 +53,7 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -86,5 +87,4 @@ end
 group :tools do
   gem 'squasher', '>= 0.6.0'
   gem 'capistrano'
-  gem 'rubocop'
 end

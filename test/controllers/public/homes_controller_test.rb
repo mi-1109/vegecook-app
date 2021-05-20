@@ -15,5 +15,4 @@ class Public::HomesControllerTest < ActionDispatch::IntegrationTest
     get public_homes_premium_url
     assert_response :success
   end
-
 end

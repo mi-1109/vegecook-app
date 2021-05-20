@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if resource.is_a?(Admin)
       admin_root_path
-    else resource == :user
+    elsif resource == :user
       root_path
     end
   end
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     if resource == :admin
       new_admin_session_path
-    else resource == :user
+    elsif resource == :user
       new_user_session_path
     end
   end
@@ -50,5 +50,4 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :is_paid])
   end
-
 end

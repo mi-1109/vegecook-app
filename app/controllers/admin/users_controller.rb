@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_user, only:[:show, :edit, :update]
-  before_action :prohibit_guest_quit, only:[:update]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :prohibit_guest_quit, only: [:update]
 
   def index
     @users = User.page(params[:page])
@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      #会員を退会にする場合
+      # 会員を退会にする場合
       if @user.is_deleted == true
         @user.post_recipes.update(is_draft: true)
         @user.comments.destroy_all
@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
         @user.saved_recipes.destroy_all
         @user.active_relationships.destroy_all
         @user.passive_relationships.destroy_all
-      #会員を有効にする場合
+      # 会員を有効にする場合
       else
         @user.post_recipes.update(is_draft: false)
       end
@@ -34,7 +34,6 @@ class Admin::UsersController < ApplicationController
       render :edit, alert: "会員ステータスを更新できませんでした"
     end
   end
-
 
   private
 

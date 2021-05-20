@@ -1,6 +1,6 @@
 class Admin::PostRecipesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_post_recipe, only:[:show, :destroy]
+  before_action :set_post_recipe, only: [:show, :destroy]
 
   def index
     @post_recipes = PostRecipe.page(params[:page])
@@ -18,11 +18,9 @@ class Admin::PostRecipesController < ApplicationController
     end
   end
 
-
   private
 
   def set_post_recipe
-     @post_recipe = PostRecipe.find(params[:id])
+    @post_recipe = PostRecipe.find(params[:id])
   end
-
 end

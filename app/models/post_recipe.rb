@@ -7,8 +7,8 @@ class PostRecipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  accepts_nested_attributes_for :procedures, allow_destroy: true, reject_if: lambda {|attributes| attributes[:body].blank?}
-  accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda {|attributes| attributes[:name].blank? && attributes[:amount].blank?}
+  accepts_nested_attributes_for :procedures, allow_destroy: true, reject_if: lambda { |attributes| attributes[:body].blank? }
+  accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda { |attributes| attributes[:name].blank? && attributes[:amount].blank? }
 
   with_options presence: true, on: :publicize do
     validates :recipe_image
@@ -19,8 +19,8 @@ class PostRecipe < ApplicationRecord
     validates :ingredients
     validates :procedures
   end
-  validates :title, length: {maximum: 14}, on: :publicize
-  validates :introduction, length: {maximum: 80}, on: :publicize
+  validates :title, length: { maximum: 14 }, on: :publicize
+  validates :introduction, length: { maximum: 80 }, on: :publicize
 
   attachment :recipe_image
 
@@ -41,10 +41,10 @@ class PostRecipe < ApplicationRecord
   end
 
   def browsing_history(current_user)
-    new_history = self.histories.new
+    new_history = histories.new
     new_history.user_id = current_user.id
-    if current_user.histories.exists?(post_recipe_id: self.id)
-      visited_history = current_user.histories.find_by(post_recipe_id: self.id)
+    if current_user.histories.exists?(post_recipe_id: id)
+      visited_history = current_user.histories.find_by(post_recipe_id: id)
       visited_history.destroy
     end
     new_history.save
@@ -62,19 +62,19 @@ class PostRecipe < ApplicationRecord
 
   def new_form_instance()
     # 入力済みの材料・手順入力欄の数をカウント
-    ingredient_filled_in_count = self.ingredients.length
-    procedure_filled_in_count = self.procedures.length
+    ingredient_filled_in_count = ingredients.length
+    procedure_filled_in_count = procedures.length
     # 入力欄がゼロになるのを防ぐため、入力済みの材料・手順入力欄が3つより少なければ、3つになるように空のインスタンスを作成する
     if ingredient_filled_in_count < 3
       add_ingredient_form_count = 3 - ingredient_filled_in_count
       for i in 1..add_ingredient_form_count do
-        self.ingredients.build
+        ingredients.build
       end
     end
     if procedure_filled_in_count < 3
       add_procedure_form_count = 3 - procedure_filled_in_count
       for i in 1..add_procedure_form_count do
-        self.procedures.build
+        procedures.build
       end
     end
   end

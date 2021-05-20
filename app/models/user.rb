@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
   has_many :followers, through: :passive_relationships, source: :following
 
-  validates :introduction, length: {maximum: 40}
+  validates :introduction, length: { maximum: 40 }
   with_options presence: true do
     validates :name
     validates :email
@@ -60,5 +60,4 @@ class User < ApplicationRecord
       user.id = 1
     end
   end
-
 end

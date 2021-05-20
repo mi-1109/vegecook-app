@@ -1,5 +1,5 @@
 class Public::PremiumsController < ApplicationController
-  before_action :authenticate_user!, except:[:payment]
+  before_action :authenticate_user!, except: [:payment]
 
   def payment
     if user_signed_in?
@@ -27,5 +27,4 @@ class Public::PremiumsController < ApplicationController
       redirect_to premium_path
     end
   end
-
 end

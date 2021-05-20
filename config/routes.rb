@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
-
- # ============== deviseのルーティング ==================
+  # ============== deviseのルーティング ==================
   devise_for :admins,
     path: :admin,
     controllers: {
       sessions: 'admin/devise/sessions',
       passwords: 'admin/devise/passwords',
-      registrations: 'admin/devise/registrations'
+      registrations: 'admin/devise/registrations',
     }
   devise_for :users,
     controllers: {
       sessions: 'public/devise/sessions',
       passwords: 'public/devise/passwords',
-      registrations: 'public/devise/registrations'
+      registrations: 'public/devise/registrations',
     }
 
   devise_scope :user do
@@ -44,8 +43,8 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:show, :edit, :update] do
-      post 'relationships/:page_user_id' => 'relationships#create', as:'add_follow'
-      delete 'relationships/:page_user_id' => 'relationships#destroy', as:'remove_follow'
+      post 'relationships/:page_user_id' => 'relationships#create', as: 'add_follow'
+      delete 'relationships/:page_user_id' => 'relationships#destroy', as: 'remove_follow'
       get :follows, on: :member
     end
 
@@ -64,5 +63,4 @@ Rails.application.routes.draw do
   end
 
   # get '*path', controller: 'application', action: 'render_404'
-
 end

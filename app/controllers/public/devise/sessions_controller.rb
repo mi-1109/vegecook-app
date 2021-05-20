@@ -42,5 +42,4 @@ class Public::Devise::SessionsController < Devise::SessionsController
       end
     end
   end
-
 end

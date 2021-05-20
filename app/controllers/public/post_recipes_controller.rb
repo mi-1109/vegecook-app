@@ -1,6 +1,6 @@
 class Public::PostRecipesController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_post_recipe, except:[:index, :new, :create]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_post_recipe, except: [:index, :new, :create]
 
   def index
     @latest_recipes = PostRecipe.all.where(is_draft: false).includes([:user]).order(created_at: "DESC").page(params[:page]).per(15)
@@ -45,7 +45,7 @@ class Public::PostRecipesController < ApplicationController
   end
 
   def update
-    #材料と作り方の更新は、レコードを削除した上で追加する（編集画面上で削除した入力欄を反映させるため）
+    # 材料と作り方の更新は、レコードを削除した上で追加する（編集画面上で削除した入力欄を反映させるため）
     @post_recipe.procedures.destroy_all
     @post_recipe.ingredients.destroy_all
 
@@ -83,12 +83,11 @@ class Public::PostRecipesController < ApplicationController
 
   def destroy
     if @post_recipe.destroy
-      redirect_to user_path(current_user), notice:"レシピを削除しました"
+      redirect_to user_path(current_user), notice: "レシピを削除しました"
     else
       render :edit, alert: "削除できませんでした。お手数ですが、再度お試しください"
     end
   end
-
 
   private
 
@@ -109,5 +108,4 @@ class Public::PostRecipesController < ApplicationController
   def set_post_recipe
     @post_recipe = PostRecipe.find(params[:id])
   end
-
 end

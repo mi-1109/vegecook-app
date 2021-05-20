@@ -12,10 +12,9 @@ class Public::SavedRecipesController < ApplicationController
     saved_recipe.destroy
   end
 
-
   private
 
   def set_post_recipe
-    @post_recipe =PostRecipe.find(params[:post_recipe_id])
+    @post_recipe = PostRecipe.find(params[:post_recipe_id])
   end
 end

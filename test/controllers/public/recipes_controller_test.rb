@@ -20,5 +20,4 @@ class Public::RecipesControllerTest < ActionDispatch::IntegrationTest
     get public_recipes_edit_url
     assert_response :success
   end
-
 end
