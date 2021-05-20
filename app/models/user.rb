@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
   has_many :followers, through: :passive_relationships, source: :following
 
-  validates :introduction, length: {maximum: 40}
+  validates :introduction, length: { maximum: 40 }
   with_options presence: true do
     validates :name
     validates :email
@@ -35,11 +35,6 @@ class User < ApplicationRecord
   end
 
   attachment :profile_image
-
-  # ======= 会員ステータスが有効の場合TRUEを返す =======
-  def active_for_authentication?
-    super && (self.is_deleted == false)
-  end
 
   def is_paid_to_sring
     if is_paid == true
@@ -65,5 +60,4 @@ class User < ApplicationRecord
       user.id = 1
     end
   end
-
 end

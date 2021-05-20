@@ -28,30 +28,10 @@
         <div id="tab1" class="tab-pane active">
           <div class="d-flex flex-wrap">
           <% @user_posts.each do |user_post| %>
-            <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
+            <div style='width: 210px' class="card text-center mt-3 py-3 px-2 ml-5">
               <%= link_to (attachment_image_tag user_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(user_post.id), class:'card-img-top' %>
               <%= link_to user_post.title, post_recipe_path(user_post), class:'card-text font-weight-bold text-wrap py-2 jp-font-pop' %>
-              <div class="d-flex pb-2 mx-auto mb-1">
-                <% case user_post.veg_type
-                when "pesco" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-fish pl-2 text-primary"></i>
-                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto_ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2 text-light"></i>
-                <% else %>
-                  <i class="fas fa-seedling text-success"></i>
-                <% end %>
-              </div>
+              <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: user_post} %>
             </div>
           <% end %>
           </div>
@@ -64,27 +44,7 @@
             <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
               <%= link_to (attachment_image_tag liked_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(liked_post.id), class:'card-img-top' %>
               <%= link_to liked_post.title, post_recipe_path(liked_post), class:'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
-              <div class="d-flex mx-auto">
-                <% case liked_post.veg_type
-                when "pesco" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-fish pl-2 text-primary"></i>
-                  <i class="fas fa-egg pl-2"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto_ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2"></i>
-                <% else %>
-                  <i class="fas fa-seedling text-success"></i>
-                <% end %>
-              </div>
+              <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: liked_post} %>
               <p class="mb-1 pt-1 en-font-pop">by<%= link_to liked_post.user.name, user_path(liked_post.user), class:'card-text text-wrap ml-2 font-color-green' %></p>
             </div>
           <% end %>
@@ -98,27 +58,7 @@
             <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
               <%= link_to (attachment_image_tag saved_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(saved_post.id), class:'card-img-top' %>
               <%= link_to saved_post.title, post_recipe_path(saved_post), class:'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
-              <div class="d-flex mx-auto">
-                <% case saved_post.veg_type
-                when "pesco" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-fish pl-2 text-primary"></i>
-                  <i class="fas fa-egg pl-2"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto_ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2"></i>
-                <% else %>
-                  <i class="fas fa-seedling text-success"></i>
-                <% end %>
-              </div>
+              <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: saved_post} %>
               <p class="mb-1 pt-1 en-font-pop">by<%= link_to saved_post.user.name, user_path(saved_post.user), class:'card-text text-wrap ml-2 pt-1 font-color-green' %></p>
             </div>
           <% end %>

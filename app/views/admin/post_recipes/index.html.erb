@@ -11,15 +11,24 @@
   </div>
 
   <div class="row">
-    <table style="width: 80%" class="table table-borderless mx-auto">
+    <table style="width: 90%" class="table table-borderless mx-auto">
       <% @post_recipes.each do |post_recipe| %>
         <tr class="mt-5 border-bottom">
           <td style="width: 5%" class="text-center">
-            <%= link_to (attachment_image_tag post_recipe, :recipe_image, :fill, 70, 70, format: 'jpg', class: 'rounded-circle'), admin_post_recipe_path(post_recipe.id) %>
+            <%= link_to (attachment_image_tag post_recipe, :recipe_image, :fill, 70, 70, format: 'jpg', fallback: "no_recipe_image.jpg",size:'60x60', class: 'rounded-circle'), admin_post_recipe_path(post_recipe.id) %>
           </td>
           <td style="width: 35%">
             <u><%= link_to post_recipe.title, admin_post_recipe_path(post_recipe.id) %><br /></u>
             <p class="mt-2"><%= post_recipe.introduction %></p>
+          </td>
+          <td style="width: 20%" class="p-0 align-middle">
+            <% if post_recipe.is_draft == true && post_recipe.user.is_deleted == true %>
+              <p class="inactive_color mb-0 text-center">非公開<br />（退会済）</p>
+            <% elsif post_recipe.is_draft == true %>
+              <p class="inactive_color mb-0 text-center">非公開<br />（下書き）</p>
+            <% else %>
+              <p class="active_color mb-0 text-center">公開</p>
+            <% end %>
           </td>
         </tr>
       <% end %>

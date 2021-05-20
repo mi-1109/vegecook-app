@@ -31,9 +31,10 @@
         <div id="tab1" class="tab-pane active">
           <div class="d-flex flex-wrap">
             <% @latest_recipes.each do |latest_recipe| %>
-              <div style='width: 220px' class="card text-center mt-3 p-3 ml-4 mb-3">
+              <div style='width: 210px' class="card text-center mt-3 p-2 ml-4 mb-3">
                 <%= link_to (attachment_image_tag latest_recipe, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(latest_recipe.id), class:'card-img-top' %>
                 <%= link_to latest_recipe.title, post_recipe_path(latest_recipe), class:'card-text text-wrap mt-3 jp-font-pop' %>
+                <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: latest_recipe} %>
                 <p class="mr-2 en-font-pop mt-2 mb-0">by
                   <%= link_to latest_recipe.user.name, user_path(latest_recipe.user), class:'card-text text-wrap font-color-green jp-font-pop' %>
                 </p>
@@ -47,10 +48,10 @@
 
       <!--タブ：人気順の検索結果-->
         <div id="tab2" class="tab-pane">
-          <% if current_user.is_paid == true %>
+          <% if user_signed_in? && current_user.is_paid == true %>
             <div class="d-flex flex-wrap">
               <% @popular_recipes.each do |popular_recipe| %>
-                <div style='width: 220px' class="card text-center mt-3 p-3 ml-4 mb-3">
+                <div style='width: 210px' class="card text-center mt-3 p-3 ml-4 mb-3">
                   <%= link_to (attachment_image_tag popular_recipe, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(popular_recipe.id), class:'card-img-top' %>
                   <%= link_to popular_recipe.title, post_recipe_path(popular_recipe), class:'card-text text-wrap mt-3' %>
                   <p class="mr-2 en-font-pop mt-2 mb-0">by

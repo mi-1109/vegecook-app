@@ -25,26 +25,21 @@ class Public::Devise::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  before_action :reject_user, only: [:create]
+  before_action :reject_deleted_user, only: [:create]
 
-  # ======= ゲストログイン機能 =========
   def guest_sign_in
     user = User.guest
     sign_in user
     redirect_to root_path, notice: 'ゲスト・アカウント（会員）でログインしました。'
   end
 
-  protected
-
-  # ======= 会員ステータスが退会の場合ログインを無効化 =======
-  def reject_user
-    @user = User.find_by(email: params[:user][:email].downcase)
-    if @user
-      if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
+  def reject_deleted_user
+    user = User.find_by(email: params[:user][:email])
+    if user
+      if user.valid_password?(params[:user][:password]) && user.is_deleted
         redirect_to new_user_session_path
-        flash[:alert] = "退会済みのアカウントです。お手数ですが、会員登録をお願いいたします。"
+        flash[:alert] = 'お客様は退会済みです。申し訳ございませんが、あらためて会員登録をお願いいたします。'
       end
     end
   end
-
 end

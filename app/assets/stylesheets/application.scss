@@ -144,60 +144,51 @@
   color: $dusty-pink;
 }
 
-.cards {
-  margin: 0 auto;
-  height: 270px;
-}
-
  header {
-   font-size: 16px;
- }
-
- .navbar {
-   background-color: $white;
- }
-
- .navbar-toggler {
-   background-color: $white;
- }
-
- .navbar-light .navbar-toggler {
-   border-color: $white;
- }
-
- .nav-link {
-   position: relative;
- }
-
- .nav-link:after{
-    content: '';
-    position: absolute;
-    width: 0; height: 2px;
-    display: block;
-    margin-top: 4px;
-    right: 0;
-    background: $cherry-blossom;
-    transition: width .3s ease;
-    -webkit-transition: width .3s ease;
- }
-
- .nav-link:hover:after {
-  width: 100%;
-  left: 0;
-  background: $cherry-blossom;
-}
-
-.dropdown-toggle {
-  text-decoration: none;
-  color: $gray;
-  &:hover {
+  font-size: 16px;
+  .logo-font {
+    font-family: 'Homemade Apple', cursive;
+    font-size: 30px;
+  }
+  .navbar {
+    background-color: $white;
+  }
+  .navbar-toggler {
+    background-color: $white;
+  }
+  .navbar-light .navbar-toggler {
+    border-color: $white;
+  }
+  .nav-link {
+    position: relative;
+  }
+    .nav-link:after{
+      content: '';
+      position: absolute;
+      width: 0; height: 2px;
+      display: block;
+      margin-top: 4px;
+      right: 0;
+      background: $cherry-blossom;
+      transition: width .3s ease;
+      -webkit-transition: width .3s ease;
+     }
+    .nav-link:hover:after {
+      width: 100%;
+      left: 0;
+      background: $cherry-blossom;
+     }
+  .dropdown-toggle {
     text-decoration: none;
     color: $gray;
+    &:hover {
+      text-decoration: none;
+      color: $gray;
+    }
   }
-}
-
-.dropdown-menu {
-  margin-left: 35px;
+  .dropdown-menu {
+    margin-left: 35px;
+  }
 }
 
 footer {
@@ -206,38 +197,31 @@ footer {
   width: 100%;
   position: absolute;
   bottom: 0;
+  #copyright {
+    font-size: 10px;
+  }
+  .move-top {
+    position: fixed;
+    bottom: 60px;
+  }
+  #move-top-arrow {
+    right: 20px;
+  }
+  #move-top-admin-btn {
+    right: 90px;
+    width: 120px;
+  }
+  #move-top-guest-btn {
+    right: 230px;
+    width: 120px;
+  }
 }
 
-.footer_position {
+#footer-position {
   min-height: 100vh;
   position: relative;
   padding-bottom: 60px;
 }
-
-#copyright {
-  font-size: 10px;
-}
-
-.move-top {
-  position: fixed;
-  bottom: 60px;
-}
-
-#move-top-arrow {
-  right: 20px;
-}
-
-#move-top-admin-btn {
-  right: 90px;
-  width: 120px;
-}
-
-#move-top-guest-btn {
-  right: 230px;
-  width: 120px;
-}
-
-
 
 .active_color {
   color: $vivid-green;
@@ -248,38 +232,19 @@ footer {
   color: gray;
 }
 
-// ページネーション全体のデザイン
+// ページネーション全体のレイアウト
 .pagination>li>a {
   border: none;
   color: $gray;
 }
 
-//表示しているページ番号のデザイン
+//表示しているページ番号のレイアウト
 .page-item.active .page-link {
   background-color: $cherry-blossom;
 }
 
-.save-icon {
-  color: $cherry-blossom;
-}
 
-// 会員詳細のタブ
-.nav-item >.tab-style{
-  background-color: $pistachio-green;
-  margin-right: 2px;
-  &:hover {
-    color: $white;
-  }
-  &:hover:after {
-    width: initial;
-    left: initial;
-    background: initial;
-  }
-}
-
-
-
-// 検索関連
+// 検索窓のスタイル
 @mixin input{
   border: none;
   border-radius: 50px;
@@ -288,13 +253,13 @@ footer {
   padding: 10px 20px;
 }
 
-.search-window{
+#search-window{
   position: relative;
   .input{
     @include input;
     margin-top: 6px;
   }
-  .search-btn{
+  #search-btn{
     background-color: $white;
     cursor: pointer;
     position: absolute;
@@ -308,21 +273,7 @@ footer {
   }
 }
 
-// 検索結果一覧のタブのスタイル
-.clear-tab-style > .nav-link {
-  border: none;
-    &:hover:after {
-    width: initial;
-    left: initial;
-    background: initial;
-  }
-    &:focus {
-      text-decoration: underline;
-      color: $cherry-blossom;
-      font-weight: bold;
-    }
-}
-
+//Flashメッセージのスタイル
 .field_with_errors {
   display: contents;
 }
@@ -343,15 +294,4 @@ footer {
 
 .fa-exclamation-triangle {
   color: $danger-red;
-}
-
-
-.header-logo {
-  width: 150px;
-  height: auto;
-}
-
-.logo-font {
-  font-family: 'Homemade Apple', cursive;
-  font-size: 30px;
 }

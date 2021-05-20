@@ -33,28 +33,8 @@
       <% @random_recipes.each do |random_recipe| %>
         <div class="mb-5 text-center card pb-3 p-2 mx-5 shadow">
           <%= link_to (attachment_image_tag random_recipe, :recipe_image, :fill, 200, 200, format: 'jpg'), post_recipe_path(random_recipe.id), style:'width: 90%', class:'card-img-top' %>
-          <%= link_to random_recipe.title, post_recipe_path(random_recipe), class:' card-title text-wrap jp-font-pop pt-2 mb-0' %>
-          <div class="d-flex mx-auto mt-1">
-            <% case random_recipe.veg_type
-            when "pesco" %>
-              <i class="fas fa-seedling text-success"></i>
-              <i class="fas fa-fish pl-2 text-primary"></i>
-              <i class="fas fa-egg pl-2"></i>
-              <i class="fas fa-cheese pl-2 text-warning"></i>
-            <% when "lacto_ovo" %>
-              <i class="fas fa-seedling text-success"></i>
-              <i class="fas fa-egg pl-2"></i>
-              <i class="fas fa-cheese pl-2 text-warning"></i>
-            <% when "lacto" %>
-              <i class="fas fa-seedling text-success"></i>
-              <i class="fas fa-cheese pl-2 text-warning"></i>
-            <% when "ovo" %>
-              <i class="fas fa-seedling text-success"></i>
-              <i class="fas fa-egg pl-2"></i>
-            <% else %>
-              <i class="fas fa-seedling text-success"></i>
-            <% end %>
-          </div>
+          <%= link_to random_recipe.title, post_recipe_path(random_recipe), class:' card-title text-wrap jp-font-pop pt-2 mb-1' %>
+          <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: random_recipe } %>
           <div class="d-flex mx-auto mt-2 card-text">
             <%= link_to (attachment_image_tag random_recipe.user, :profile_image, :fill, 25, 25, format: 'jpg', fallback:'no_profile_image.jpg', size: '25x25', class:'rounded-circle'), user_path(random_recipe.user.id) %>
             <%= link_to random_recipe.user.name, user_path(random_recipe.user.id), class:'text-wrap jp-font-pop ml-2 pt-1' %>
