@@ -1,0 +1,31 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div id='about-bg-img1' class='about-bg-style'></div>
+  </div>
+  <div class='row mb-4'>
+    <div id='about-bg-img2'></div>
+  </div>
+  <div class='row pt-4 mb-5'>
+    <div id='about-bg-img3' class='about-bg-style'></div>
+  </div>
+  <div class='row pt-5 mb-5'>
+    <div id='about-bg-img4' class='about-bg-style'></div>
+  </div>
+  <div class='row pt-3 mb-5'>
+    <div id='about-bg-img5' class='about-bg-style'></div>
+  </div>
+  <div class='row pt-3 mb-5'>
+    <div id='about-bg-img6' class='about-bg-style'></div>
+  </div>
+  <% if not user_signed_in? %>
+    <div class='row mb-5'>
+        <%= link_to "無料会員登録", new_user_registration_path, style: 'font-size: 24px', class: 'btn btn-sm btn-color pt-2 text-white mx-auto' %>
+    </div>
+  <% end %>
+  <div class='row mb-5'>
+    <h6 class='jp-font-classic text-center mx-auto'>ご不明点がございましたら、
+      <%= link_to "フォームもしくはチャットより", form_inquiries_path, class: 'jp-font-classic' %><br />
+      お問い合わせください
+    </h6>
+  </div>
+</div>

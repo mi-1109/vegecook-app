@@ -56,3 +56,45 @@ $light-pink: #f5d4d3;
   margin: 0 auto;
   height: 270px;
 }
+
+//ABOUTページ
+.about-bg-style {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
+
+#about-bg-img1 {
+  height: 48vw;
+  background-image: url(/assets/about-bg-1.jpg);
+}
+
+#about-bg-img2 {
+  height: 50vw;
+  width: 50%;
+  margin: 0 auto;
+  background-image: url(/assets/about-bg-2.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#about-bg-img3 {
+  height: 70vw;
+  background-image: url(/assets/about-bg-3.png);
+}
+
+#about-bg-img4 {
+  height: 70vw;
+  background-image: url(/assets/about-bg-4.png);
+}
+
+#about-bg-img5 {
+  height: 70vw;
+  background-image: url(/assets/about-bg-5.png);
+  background-sdosition: center;
+}
+
+#about-bg-img6 {
+  height: 70vw;
+  background-image: url(/assets/about-bg-6.png);
+}
