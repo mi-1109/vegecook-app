@@ -18,7 +18,6 @@
  @import 'font-awesome';
  @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Homemade+Apple&family=Kiwi+Maru:wght@300&display=swap');
 
-
  $pistachio-green: #e8ede1;
  $vivid-green: #33cc00;
  $olive-green: #a6c5ab;
@@ -56,17 +55,17 @@
  }
 
 .jp-font-classic {
-  font-family: 'メイリオ';
+  font-family: 'メイリオ', 'Kiwi Maru', serif,;
   font-weight: bold;
 }
 
 .jp-font-pop {
-  font-family: 'Kiwi Maru', serif;
+  font-family: 'Kiwi Maru', serif,  'メイリオ';
   font-weight: bold;
 }
 
 .en-font-pop {
-  font-family: 'Comic Sans MS';
+  font-family: 'Comic Sans MS', 'Annie Use Your Telescope', cursive;
 }
 
 .font-color-green {
