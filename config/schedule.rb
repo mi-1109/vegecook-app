@@ -7,7 +7,7 @@
 #
 env :PATH, ENV['PATH']
 set :output, 'log/cron.log'
-set :environment, :development
+set :environment, :production
 #
 # every 1.minutes do
   # command "/usr/bin/some_great_command"
