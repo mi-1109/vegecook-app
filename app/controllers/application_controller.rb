@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :recipe_search
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  rescue_from ActionController::RoutingError, with: :render_404
 
   def render_404(e = nil)
     logger.info "Rendering 404 with exception: #{e.message}" if e
@@ -14,17 +13,17 @@ class ApplicationController < ActionController::Base
     @search = PostRecipe.includes(:user).where(is_draft: false).joins(%|
       LEFT OUTER JOIN (
         SELECT
-          "likes"."post_recipe_id" AS post_recipe_id,
+          `likes`.`post_recipe_id` AS post_recipe_id,
           COUNT(*) AS like_count
         FROM
-          "likes"
+          `likes`
         GROUP BY
-          "likes"."post_recipe_id"
+          `likes`.`post_recipe_id`
       ) AS post_recipe_like_count
       ON post_recipes.id = post_recipe_like_count.post_recipe_id
     |).ransack(params[:q])
-    @latest_recipes = @search.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(12)
-    @popular_recipes = @search.result(distinct: true).order(like_count: "DESC").page(params[:page]).per(12)
+    @latest_recipes = @search.order(created_at: "DESC").page(params[:page]).per(12)
+    @popular_recipes = @search.order(like_count: "DESC").page(params[:page]).per(12)
   end
 
   private
