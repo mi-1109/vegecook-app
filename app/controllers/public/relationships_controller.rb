@@ -3,8 +3,13 @@ class Public::RelationshipsController < ApplicationController
   before_action :set_follow_user
 
   def create
-    follow = current_user.active_relationships.build(follower_id: params[:user_id])
-    follow.save
+    if current_user.is_paid == true || (current_user.followings.count < 5 && current_user.is_paid == false)
+      follow = current_user.active_relationships.build(follower_id: params[:user_id])
+      follow.save
+    else
+      redirect_to premium_path
+      flash[:alert] = "スタンダード・プランは5人までのフォローとなっています。プレミアム・プランをぜひご検討ください。"
+    end
   end
 
   def destroy

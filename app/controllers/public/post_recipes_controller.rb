@@ -1,6 +1,7 @@
 class Public::PostRecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post_recipe, except: [:index, :new, :create]
+  before_action :set_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @latest_recipes = PostRecipe.all.where(is_draft: false).includes([:user]).order(created_at: "DESC").page(params[:page]).per(15)
@@ -107,5 +108,9 @@ class Public::PostRecipesController < ApplicationController
 
   def set_post_recipe
     @post_recipe = PostRecipe.find(params[:id])
+  end
+
+  def set_correct_user
+    redirect_to root_path unless @post_recipe.user == current_user
   end
 end

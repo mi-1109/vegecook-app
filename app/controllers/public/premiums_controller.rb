@@ -15,7 +15,7 @@ class Public::PremiumsController < ApplicationController
       @user.update(is_paid: true)
       redirect_to premiums_complete_path
     else
-      flash[:error] = "お客様はすでにプレミアム・プランに加入されています。"
+      flash[:alert] = "お客様はすでにプレミアム・プランに加入されています。"
       render :payment
     end
   end
