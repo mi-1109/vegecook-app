@@ -14,12 +14,12 @@ class ApplicationController < ActionController::Base
     @search = PostRecipe.includes(:user).where(is_draft: false).joins(%|
       LEFT OUTER JOIN (
         SELECT
-          "likes"."post_recipe_id" AS post_recipe_id,
+          `likes`.`post_recipe_id` AS post_recipe_id,
           COUNT(*) AS like_count
         FROM
-          "likes"
+          `likes`
         GROUP BY
-          "likes"."post_recipe_id"
+          `likes`.`post_recipe_id`
       ) AS post_recipe_like_count
       ON post_recipes.id = post_recipe_like_count.post_recipe_id
     |).ransack(params[:q])
