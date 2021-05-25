@@ -93,6 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { protocol: 'https', host: 'vege-cook.net' }
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
@@ -101,6 +102,6 @@ Rails.application.configure do
     domain:               'gmail.com',
     user_name:            ENV['MAILER_EMAIL'],
     password:             ENV['MAILER_PASSWORD'],
-    authentication:       :plain
+    authentication:       'login'
   }
 end
