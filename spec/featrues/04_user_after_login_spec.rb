@@ -82,7 +82,6 @@ RSpec.feature 'ログイン後のテスト' do
 
   feature 'レシピ編集画面のテスト（公開済みレシピ）' do
     background do
-      # post_recipe.user != other_user
       post_recipe.ingredients.create(name: '材料名', amount: '3')
       post_recipe.procedures.create(body: '作り方')
       visit edit_post_recipe_path(post_recipe)
@@ -93,6 +92,45 @@ RSpec.feature 'ログイン後のテスト' do
       click_button 'レシピを更新'
       expect(page).to have_content 'レシピを更新しました！'
       expect(post_recipe.reload.title).not_to eq @old_title
+    end
+  end
+
+  feature '会員詳細画面のテスト（マイページ）' do
+    background do
+      visit user_path(user)
+    end
+    scenario '遷移先の会員の投稿レシピが表示される' do
+      expect(page).to have_content post_recipe.title
+    end
+    scenario '遷移先の会員の投稿レシピタブが表示される' do
+      expect(page).to have_content 'いいね'
+    end
+    scenario '遷移先の会員の投稿レシピタブが表示される' do
+      expect(page).to have_content '閲覧履歴'
+    end
+     scenario '遷移先の会員に対するフォローボタンが表示されない' do
+      expect(page).to_not have_button 'フォローする'
+    end
+    scenario '遷移先の会員に対するフォロー中タブが表示されない' do
+      expect(page).to_not have_button 'フォロー中'
+    end
+    scenario '会員編集ボタンが表示される' do
+      expect(page).to have_link nil, href: edit_user_path(user)
+    end
+    scenario '会員編集ボタンを押下し、会員編集画面に遷移する' do
+      find('.fa-user-cog').click
+      expect(current_path).to eq edit_user_path(user)
+    end
+  end
+
+  feature '会員情報編集画面のテスト' do
+    background do
+      visit edit_user_path(user)
+    end
+    scenario '会員情報が正常に更新される' do
+      fill_in 'user[introduction]', with: '編集済みの自己紹介'
+      click_on '変更'
+      expect(page).to have_content '編集済みの自己紹介'
     end
   end
 end

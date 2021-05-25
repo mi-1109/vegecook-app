@@ -75,16 +75,16 @@ RSpec.feature 'ログイン前のテスト' do
     scenario '遷移先の会員の投稿レシピタブが表示される' do
       expect(page).to have_content '投稿レシピ'
     end
-    scenario '遷移先の会員の投稿レシピタブが表示される' do
+    scenario '遷移先の会員のいいねタブが表示される' do
       expect(page).to have_content 'いいね'
     end
-    scenario '遷移先の会員の投稿レシピタブが表示される' do
+    scenario '遷移先の会員の閲覧履歴タブが表示されない' do
       expect(page).to_not have_content '閲覧履歴'
     end
-    scenario '遷移先の会員の投稿レシピタブが表示される' do
+    scenario '遷移先の会員に対するフォローボタンが表示されない' do
       expect(page).to_not have_button 'フォローする'
     end
-    scenario '遷移先の会員の投稿レシピタブが表示される' do
+    scenario '遷移先の会員に対するフォロー中タブが表示されない' do
       expect(page).to_not have_button 'フォロー中'
     end
     scenario '会員編集ボタンが表示されていない' do
@@ -149,7 +149,7 @@ RSpec.feature 'ログイン前のテスト' do
   feature '検索のテスト' do
     background do
       visit root_path
-      fill_in 'レシピ検索', with: post_recipe.title
+      fill_in 'q[title_cont]', with: post_recipe.title
       click_on 'GO'
     end
     scenario '検索ワードを入力し、GOを押下すると、検索結果が新着順で表示される' do
@@ -166,14 +166,14 @@ RSpec.feature 'ログイン前のテスト' do
     before do
       visit new_user_session_path
     end
-    scenario 'ログイン成功のテスト' do
+    scenario 'ログイン成功の場合' do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_on 'ログイン'
       expect(current_path).to eq root_path
       expect(page).to have_content 'ログインしました'
     end
-    scenario 'ログイン失敗のテスト' do
+    scenario 'ログイン失敗の場合' do
       fill_in 'user[email]', with: Faker::Internet.email
       fill_in 'user[password]', with: user.password
       click_on 'ログイン'
