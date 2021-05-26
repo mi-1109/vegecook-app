@@ -22,8 +22,8 @@ class ApplicationController < ActionController::Base
       ) AS post_recipe_like_count
       ON post_recipes.id = post_recipe_like_count.post_recipe_id
     |).ransack(params[:q])
-    @latest_recipes = @search.order(created_at: "DESC").page(params[:page]).per(12)
-    @popular_recipes = @search.order(like_count: "DESC").page(params[:page]).per(12)
+    @latest_recipes = @search.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(12)
+    @popular_recipes = @search.result(distinct: true).order(like_count: "DESC").page(params[:page]).per(12)
   end
 
   private

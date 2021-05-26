@@ -99,19 +99,19 @@ RSpec.feature 'ログイン後のテスト' do
     background do
       visit user_path(user)
     end
-    scenario '遷移先の会員の投稿レシピが表示される' do
+    scenario '投稿レシピが表示される' do
       expect(page).to have_content post_recipe.title
     end
-    scenario '遷移先の会員の投稿レシピタブが表示される' do
+    scenario 'いいねタブが表示される' do
       expect(page).to have_content 'いいね'
     end
-    scenario '遷移先の会員の投稿レシピタブが表示される' do
+    scenario '閲覧履歴タブが表示される' do
       expect(page).to have_content '閲覧履歴'
     end
-     scenario '遷移先の会員に対するフォローボタンが表示されない' do
+     scenario 'フォローボタンが表示されない' do
       expect(page).to_not have_button 'フォローする'
     end
-    scenario '遷移先の会員に対するフォロー中タブが表示されない' do
+    scenario 'フォロー中タブが表示されない' do
       expect(page).to_not have_button 'フォロー中'
     end
     scenario '会員編集ボタンが表示される' do
@@ -131,6 +131,23 @@ RSpec.feature 'ログイン後のテスト' do
       fill_in 'user[introduction]', with: '編集済みの自己紹介'
       click_on '変更'
       expect(page).to have_content '編集済みの自己紹介'
+    end
+    scenario '必須項目が空欄の場合、更新されない' do
+      fill_in 'user[name]', with: ''
+      click_on '変更'
+      expect(page).to have_content 'を登録してください'
+    end
+    scenario 'ゲスト会員は、退会するを押下するとトップ画面に遷移する' do
+      click_on '退会する'
+      expect(current_path).to eq root_path
+      expect(page).to have_content 'ゲスト・アカウントでは退会できません'
+    end
+  end
+
+  feature 'ログアウトのテスト' do
+    scenario '正常にログアウトされる' do
+      click_on 'LOG OUT'
+      expect(page).to have_content 'ログアウトしました'
     end
   end
 end
