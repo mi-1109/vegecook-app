@@ -5,5 +5,4 @@ class Ingredient < ApplicationRecord
     validates :name
     validates :amount
   end
-
 end

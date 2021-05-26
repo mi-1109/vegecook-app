@@ -39,6 +39,7 @@ ja:
         introduction: "自己紹介"
         email: "メールアドレス"
         veg_type: "ベジタリアン・ステータス"
+        password_confirmation: "確認用のパスワード"
       comment:
         comment: "コメント"
       chat:
@@ -55,3 +56,9 @@ ja:
         taken: "はすでに使用されています"
         unauthenticated: "ログインをお願いいたします"
         too_long: "は%{count}文字以内で記入してください"
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+      models:
+        user:
+          attributes:
+            password:
+              too_short: 'パスワードは6文字以上でご登録ください'

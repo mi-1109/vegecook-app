@@ -1,132 +1,84 @@
 <div class="container">
 <%= render partial: 'mypage_header', locals: { user: @user, page_user: @user} %>
 
-  <div class="row mt-3 mb-5">
+  <div class="row mt-4 mb-5">
     <div class="col-md-11 wrap">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a href="#tab1" class="nav-link tab-style" data-toggle="tab">投稿レシピ</a>
+          <a href="#tab1" class="nav-link tab-style jp-font-pop" data-toggle="tab"><i class="far fa-edit mr-1"></i>投稿レシピ</a>
         </li>
         <li class="nav-item">
-          <a href="#tab2" class="nav-link tab-style" data-toggle="tab">いいね</a>
+          <a href="#tab2" class="nav-link tab-style jp-font-pop" data-toggle="tab"><i class="far fa-heart mr-1"></i>いいね</a>
         </li>
         <% if user_signed_in? && @user.id == current_user.id %>
         <li class="nav-item">
-          <a href="#tab3" class="nav-link tab-style" data-toggle="tab">保存レシピ</a>
+          <a href="#tab3" class="nav-link tab-style jp-font-pop" data-toggle="tab"><i class="far fa-bookmark mr-1 text-secondary"></i>ブックマーク</a>
         </li>
         <li class="nav-item">
-          <a href="#tab4" class="nav-link tab-style" data-toggle="tab">閲覧履歴</a>
+          <a href="#tab4" class="nav-link tab-style jp-font-pop" data-toggle="tab"><i class="fas fa-history mr-1"></i>閲覧履歴</a>
         </li>
         <li class="nav-item">
-          <a href="#tab5" class="nav-link tab-style" data-toggle="tab">下書きレシピ</a>
+          <a href="#tab5" class="nav-link tab-style jp-font-pop" data-toggle="tab"><i class="far fa-hand-paper mr-1"></i>下書き</a>
         </li>
         <% end %>
       </ul>
 
-      <!--タブ：投稿したレシピ-->
       <div class="tab-content px-4 pb-4 border rounded-bottom">
+      <!--タブ：会員本人が投稿したレシピ-->
         <div id="tab1" class="tab-pane active">
-          <div class="d-flex flex-wrap row-cols-5">
-          <% @user_posts.each do |user_post| %>
-            <div class="card text-center mt-3 pt-3 ml-4">
-              <%= link_to (attachment_image_tag user_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(user_post.id), class:'card-img-top' %>
-              <%= link_to user_post.title, post_recipe_path(user_post), class:'card-text font-weight-bold text-wrap py-2' %>
-              <div class="d-flex pb-2 mx-auto">
-                <% case user_post.veg_type
-                when "pesco" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-fish pl-2 text-primary"></i>
-                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto_ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2 text-light"></i>
-                <% else %>
-                  <i class="fas fa-seedling text-success"></i>
-                <% end %>
-              </div>
+          <% if @user_posts.empty? %>
+            <h6 class='jp-font-pop mt-4'>投稿レシピはまだありません。</h6>
+          <% else %>
+            <div class="d-flex flex-wrap">
+              <% @user_posts.each do |user_post| %>
+                <div style='width: 210px' class="card text-center mt-3 py-3 px-2 ml-5">
+                  <%= link_to (attachment_image_tag user_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(user_post.id), class:'card-img-top' %>
+                  <%= link_to user_post.title, post_recipe_path(user_post), class:'card-text font-weight-bold text-wrap py-2 jp-font-pop' %>
+                  <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: user_post} %>
+                </div>
+              <% end %>
             </div>
           <% end %>
-          </div>
         </div>
 
         <!--タブ：「いいね」したレシピ-->
         <div id="tab2" class="tab-pane">
-          <div class="d-flex flex-wrap row-cols-5">
-          <% @liked_posts.each do |liked_post| %>
-            <div class="card text-center mt-3 pt-3 ml-4">
-              <%= link_to (attachment_image_tag liked_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(liked_post.id), class:'card-img-top' %>
-              <%= link_to liked_post.title, post_recipe_path(liked_post), class:'card-text text-wrap font-weight-bold pt-2' %>
-              <div class="d-flex mx-auto">
-                <% case liked_post.veg_type
-                when "pesco" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-fish pl-2 text-primary"></i>
-                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto_ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2 text-light"></i>
-                <% else %>
-                  <i class="fas fa-seedling text-success"></i>
-                <% end %>
-              </div>
-              <p class="mb-0 pt-1">by<%= link_to liked_post.user.name, user_path(liked_post.user), class:'card-text text-wrap ml-2' %></p>
+          <% if @liked_posts.empty? %>
+            <h6 class='jp-font-pop mt-4'>いいね！したレシピはまだありません。</h6>
+          <% else %>
+            <div class="d-flex flex-wrap">
+              <% @liked_posts.each do |liked_post| %>
+                <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
+                  <%= link_to (attachment_image_tag liked_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(liked_post.id), class:'card-img-top' %>
+                  <%= link_to liked_post.title, post_recipe_path(liked_post), class:'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
+                  <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: liked_post} %>
+                  <p class="mb-1 pt-1 en-font-pop">by<%= link_to liked_post.user.name, user_path(liked_post.user), class:'card-text text-wrap ml-2 font-color-green' %></p>
+                </div>
+              <% end %>
             </div>
           <% end %>
-          </div>
         </div>
 
         <!--タブ：保存（ブックマーク）したレシピ-->
         <div id="tab3" class="tab-pane">
-          <div class="d-flex flex-wrap row-cols-5">
-          <% @saved_posts.each do |saved_post| %>
-            <div class="card text-center mt-3 pt-3 ml-4">
-              <%= link_to (attachment_image_tag saved_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(saved_post.id), class:'card-img-top' %>
-              <%= link_to saved_post.title, post_recipe_path(saved_post), class:'card-text text-wrap font-weight-bold pt-2' %>
-              <div class="d-flex mx-auto">
-                <% case saved_post.veg_type
-                when "pesco" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-fish pl-2 text-primary"></i>
-                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto_ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2 text-outline-econdary"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "lacto" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-cheese pl-2 text-warning"></i>
-                <% when "ovo" %>
-                  <i class="fas fa-seedling text-success"></i>
-                  <i class="fas fa-egg pl-2 text-light"></i>
-                <% else %>
-                  <i class="fas fa-seedling text-success"></i>
-                <% end %>
-              </div>
-              <p class="mb-0 pt-1">by<%= link_to saved_post.user.name, user_path(saved_post.user), class:'card-text text-wrap ml-2 pt-1' %></p>
+          <% if @saved_posts.empty? %>
+            <h6 class='jp-font-pop mt-4'>ブックマーク保存したレシピはまだありません。</h6>
+          <% else %>
+            <div class="d-flex flex-wrap">
+              <% @saved_posts.each do |saved_post| %>
+                <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
+                  <%= link_to (attachment_image_tag saved_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(saved_post.id), class:'card-img-top' %>
+                  <%= link_to saved_post.title, post_recipe_path(saved_post), class:'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
+                  <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: saved_post} %>
+                  <p class="mb-1 pt-1 en-font-pop">by<%= link_to saved_post.user.name, user_path(saved_post.user), class:'card-text text-wrap ml-2 pt-1 font-color-green' %></p>
+                </div>
+              <% end %>
             </div>
           <% end %>
-          </div>
         </div>
 
         <!--タブ：閲覧履歴-->
-        <div id="tab4" class="tab-pane">
+        <div id="tab4" class="tab-pane pt-5">
           <table style='width: 60%' class="table ml-2">
           <% @browsed_posts.each do |browsed_post| %>
             <tr class="border-bttom align-middle">
@@ -134,10 +86,10 @@
                 <%= link_to (attachment_image_tag browsed_post, :recipe_image, :fill, 100, 100, format: 'jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(browsed_post.id) %>
               </td>
               <td class="p-2 align-middle">
-                <%= link_to browsed_post.title, post_recipe_path(browsed_post), class:'card-text text-wrap' %>
+                <%= link_to browsed_post.title, post_recipe_path(browsed_post), class:'card-text text-wrap jp-font-pop' %>
               </td>
               <td class="p-2 align-middle">
-              <p>by<%= link_to browsed_post.user.name, user_path(browsed_post.user), class:'card-text text-wrap ml-2' %></p>
+              <p class='en-font-pop'>by<%= link_to browsed_post.user.name, user_path(browsed_post.user), class:'card-text text-wrap ml-2 font-color-green' %></p>
               </td>
             </tr>
           <% end %>
@@ -146,21 +98,25 @@
 
         <!--タブ：下書き保存したレシピ-->
         <div id="tab5" class="tab-pane pt-5">
-          <table style='width: 60%' class="table ml-2">
-          <% @draft_posts.each do |draft_post| %>
-            <tr class="border-bttom align-middle">
-              <td style='width: 10%' class="p-2 text-center">
-                <%= link_to (attachment_image_tag draft_post, :recipe_image, :fill, 100, 100, format: 'jpg', fallback: 'no_recipe_image.jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(draft_post.id) %>
-              </td>
-              <td class="p-2 align-middle">
-                <%= link_to draft_post.title, post_recipe_path(draft_post), class:'ml-3' %>
-              </td>
-              <td class="p-2 align-middle">
-                <%= link_to "編集する", edit_post_recipe_path(draft_post), class:'btn btn-sm btn-outline-warning py-0' %>
-              </td>
-            </tr>
+          <% if @saved_posts.empty? %>
+            <h6 class='jp-font-pop'>下書き中のレシピはまだありません。</h6>
+          <% else %>
+            <table style='width: 60%' class="table ml-2">
+            <% @draft_posts.each do |draft_post| %>
+              <tr class="border-bttom align-middle">
+                <td style='width: 10%' class="p-2 text-center">
+                  <%= link_to (attachment_image_tag draft_post, :recipe_image, :fill, 100, 100, format: 'jpg', fallback: 'no_recipe_image.jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(draft_post.id) %>
+                </td>
+                <td class="p-2 align-middle">
+                  <%= link_to draft_post.title, post_recipe_path(draft_post), class:'ml-3 jp-font-pop' %>
+                </td>
+                <td class="p-2 align-middle">
+                  <%= link_to "編集する", edit_post_recipe_path(draft_post), class:'btn btn-sm btn-outline-warning py-0' %>
+                </td>
+              </tr>
+            <% end %>
+            </table>
           <% end %>
-          </table>
         </div>
 
       </div>

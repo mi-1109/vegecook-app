@@ -1,20 +1,20 @@
 <%= flash[:error] %>
 
-<div style="height: 70vh", class="d-flex align-items-center">
-  <div style="width: 30%", class="login-bg mx-auto p-4">
+<div style="height: 650px", class="d-flex align-items-center">
+  <div style="max-width: 650px", class="bg-box-container mx-auto p-4">
 
     <div class="container">
       <div class="row mb-3">
-        <h3 class="jp-font font-weight-bold mx-auto bg-white px-2 pt-1 font-color">プレミアム・プランの登録</h3>
+        <h3 class="jp-font-classic mx-auto bg-light px-2 pt-1 font-color-pink">プレミアム・プランのご登録</h3>
       </div>
 
       <div class="row mb-3 text-center">
-        <p class="mx-auto">
+        <p class="mx-auto jp-font-classic">
           プレミアム・プランでは、レシピの人気順表示など<br />
           様々な機能をご利用いただけます！<br />
-          詳細は、<%= link_to "こちら", premium_path, class:'font-color'%> よりご確認ください。
+          詳細は、<u><%= link_to "こちら", premium_path, class:'font-color-pink'%></u>よりご確認ください。
         </p>
-        <p class="mx-auto">
+        <p class="mx-auto jp-font-classic">
           会費として、330円/月（税込）を頂戴しております。<br />
           ご了承の上、支払い情報の入力にお進みください。
         </p>
@@ -24,7 +24,7 @@
         <%= link_to "クレジットカード登録", premiums_path, method: :patch, class: 'btn btn-sm btn-color text-white mx-auto' %>
       </div>
       <div class="row">
-        <p class="mx-auto mt-2 mb-0">（外部サイトへ）</p>
+        <p class="mx-auto mt-2 mb-0 jp-font-classic">（外部サイトへ）</p>
       </div>
     </div>
 

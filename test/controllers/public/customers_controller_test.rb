@@ -15,5 +15,4 @@ class Public::CustomersControllerTest < ActionDispatch::IntegrationTest
     get public_customers_quit_confirm_url
     assert_response :success
   end
-
 end

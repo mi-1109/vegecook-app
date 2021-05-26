@@ -1,7 +1,7 @@
-<!---------- レシピ編集画面 -------------->
+<!---------- レシピ編集フォーム -------------->
 
-<div class="container align-imtes-center">
-  <div style='width: 90%' class='login-bg mx-auto mb-5'>
+<div class="container mt-4 align-imtes-center">
+  <div class='bg-light mx-auto mb-5'>
 
   <%= form_with model: @post_recipe, local:true do |f| %>
     <div class="row">
@@ -12,15 +12,15 @@
     </div>
 
     <div class="row">
-      <div class="col-md-5 mt-3 offset-md-1">
-        <div class="form-group mt-4 ml-5">
+      <div class="col-md-6 col-lg-5 offset-lg-1 mt-3">
+        <div class="form-group mt-4 ml-md-2">
           <%= f.text_area :introduction, placeholder: "レシピの簡単な説明（キャプション）", size:"50 x 4", class:'p-2' %>
           <%= render 'layouts/error_messages', obj: @post_recipe, column: :introduction %>
         </div>
       </div>
-      <div class="col-md-5 mt-3 pl-4 pt-2">
-        <div class="from-group mt-3 ml-5 p-3 bg-white shadow-sm">
-          <h6 class="mb-3"><i class="fas fa-camera font-color mr-2"></i>写真をアップロード</h6>
+      <div class="col-md-6 col-lg-5 mt-3 pl-4 pt-2">
+        <div class="from-group mr-md-2 mt-3 ml-5 p-3 bg-white shadow-sm">
+          <h6 class="mb-3"><i class="fas fa-camera font-color-pink mr-2"></i>写真をアップロード</h6>
           <%= f.attachment_field :recipe_image %>
           <%= render 'layouts/error_messages', obj: @post_recipe, column: :recipe_image %>
         </div>
@@ -28,7 +28,7 @@
     </div>
 
     <!------------ 材料登録欄 -------------->
-    <div style='width: 45%' class="mt-4 border px-5 pt-4 pb-3 bg-white mx-auto shadow-sm">
+    <div style='max-width: 450px' class="mt-4 border px-5 pt-4 pb-3 bg-white mx-auto shadow-sm">
       <div class="row">
         <div class="form-inline mb-2">
           <h4 class="mb-0">材料</h4>
@@ -53,7 +53,7 @@
             <% end %>
           </tbody>
         </table>
-        <input type="button" value="材料を追加" onclick="addRow('ingredient-table')" class="btn btn-sm btn-warning py-0 my-3 ml-2">
+        <input type="button" value="材料を追加" onclick="addRow('ingredient-table')" class="btn btn-sm btn-color py-0 my-3 ml-2">
       </div>
       <%= render 'layouts/error_messages', obj: @post_recipe, column: :ingredients %>
       <%= render 'layouts/error_messages', obj: @post_recipe, column: :"ingredients.amount" %>
@@ -61,7 +61,7 @@
     </div>
 
     <!------------ 作成手順登録欄 -------------->
-    <div style='width: 70%' class="mt-3 px-5 pt-4 mx-auto border-0">
+    <div style='max-width: 680px' class="mt-3 px-5 pt-4 mx-auto border-0">
       <div class="row">
         <h4 class="text-center mx-auto mb-0">つくり方</h4>
       </div>
@@ -75,7 +75,7 @@
           </tr>
           <% end %>
         </table>
-        <input type="button" value="手順を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-warning py-0 mb-3">
+        <input type="button" value="手順を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-color py-0 mb-3">
         <%= render 'layouts/error_messages', obj: @post_recipe, column: :procedures %>
       </div>
     </div>
@@ -90,15 +90,15 @@
     <div class="row mt-4">
       <div class="form-inline mx-auto">
         <% if @post_recipe.is_draft == true %>
-          <%= f.submit "レシピを公開", :name => 'publicize_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-success' %>
-          <%= f.submit "下書きを更新", :name => 'update_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-light' %>
+          <%= f.submit "レシピを公開", :name => 'publicize_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-warning' %>
+          <%= f.submit "下書きを更新", :name => 'update_draft', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-outline-secondary' %>
         <% else %>
-          <%= f.submit "レシピを更新", :name => 'update_post', style: 'font-size: 20px', class:'btn btn-sm btn-success' %>
+          <%= f.submit "レシピを更新", :name => 'update_post', style: 'font-size: 20px', class:'btn btn-sm btn-warning text-light' %>
         <% end %>
       </div>
     </div>
     <div class="mt-4 pb-3 text-center">
-      <u><%= link_to "レシピを削除", "/post_recipes/#{@post_recipe.id}", method: :delete, data: {confirm: "このレシピを削除しますか？"} %></u>
+      <u><%= link_to "レシピを削除", "/post_recipes/#{@post_recipe.id}", method: :delete, data: {confirm: "このレシピを削除しますか？"}, class:'text-danger' %></u>
     </div>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>

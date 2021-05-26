@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3 class="admin-page-title mx-auto mt-5 py-2 pl-4">会員一覧</h3>
+    <h3 style='width: 100%' class="page-heading-pink mx-auto mt-5 py-1 text-center">会員一覧</h3>
   </div>
 
   <div class="row">
@@ -10,17 +10,17 @@
   </div>
 
   <div class="row">
-    <table style="width: 80%" class="table table-borderless mx-auto">
+    <table style="width: 90%" class="table table-borderless mx-auto">
       <% @users.each do |user| %>
         <tr class="mt-5 border-bottom">
           <td style="width: 10%">
             <%= link_to (attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: "no_profile_image.jpg", size:'60x60', class:'rounded-circle'), admin_user_path(user.id) %>
           </td>
-          <td style="width: 35%">
+          <td style="width: 30%">
             <u><%= link_to user.name, admin_user_path(user.id) %><br /></u>
             <p class="mt-2"><%= user.introduction %></p>
           </td>
-          <td style="width: 15%" class="py-0 align-middle">
+          <td style="width: 15%" class="py-0 align-middle text-center">
             <%= user.is_paid_to_sring %>
           </td>
           <td style="width: 8%" class="py-0 align-middle text-center">

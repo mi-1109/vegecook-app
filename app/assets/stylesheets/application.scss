@@ -16,102 +16,214 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Kiwi+Maru:wght@300&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Homemade+Apple&family=Kiwi+Maru:wght@300&display=swap');
 
+ $pistachio-green: #e8ede1;
+ $vivid-green: #33cc00;
+ $olive-green: #a6c5ab;
+ $danger-red: #bf0000;
+ $cherry-blossom: #eabeaf;
+ $peach: #f69e9c;
+ $light-pink: #f5d4d3;
+ $dusty-pink: #e7cfcf;
+ $gray: #6c757d;
+ $white: #fff;
+ $dull-white: #f8f8f8;
+ $baige: #ede0cb;
+ $light-blue: #ebf9f8;
+ $turquoise-blue: #31b4af;
 
  * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
    font-family: 'Montserrat', 'Roboto', 'sans-serif', 'arial', 'メイリオ', 'Sawarabi Mincho';
-   color: #6c757d;
+   color: $gray;
  }
 
  a {
-   color: #6c757d;
+   color: $gray;
    &:hover {
-     color: #eabeaf;
+     color: $cherry-blossom;
+     text-decoration: none;
    }
  }
 
  body {
    font-size: 14px;
-   background-color: #fff;
+   background-color: $white;
  }
 
- header {
-   font-size: 16px;
- }
-
- .navbar {
-   background-color: #fff;
- }
-
- .navbar-toggler {
-   background-color: #fff;
- }
-
- .navbar-light .navbar-toggler {
-   border-color: #fff;
- }
-
- .nav-link {
-   position: relative;
- }
-
- .nav-link:after{
-    content: '';
-    position: absolute;
-    width: 0; height: 2px;
-    display: block;
-    margin-top: 4px;
-    right: 0;
-    background: #eabeaf;
-    transition: width .3s ease;
-    -webkit-transition: width .3s ease;
- }
-
- .nav-link:hover:after {
-  width: 100%;
-  left: 0;
-  background: #eabeaf;
+.jp-font-classic {
+  font-family: 'メイリオ';
+  font-weight: bold;
 }
 
-.dropdown-toggle {
-  text-decoration: none;
-  color: #6c757d;
+.jp-font-pop {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: bold;
+}
+
+.en-font-pop {
+  font-family: 'Comic Sans MS', 'Annie Use Your Telescope', cursive;
+}
+
+.font-color-green {
+  color: $olive-green;
+}
+
+.font-color-pink {
+  color: $cherry-blossom;
+}
+
+.bg-color-green {
+  background-color: $pistachio-green;
+}
+
+.bg-box-container{
+  background-color: $pistachio-green;
+  max-width: 500px;
+}
+
+.btn-guest-admin {
+  font-size: 12px;
+  font-weight: bold;
+  color: $white;
+  border-radius: 25px;
+  background-image: linear-gradient(45deg, $peach 0%, $light-pink 80%);
   &:hover {
     text-decoration: none;
-    color: #6c757d;
+    color: $gray;
+  }
+}
+
+.btn-guest-user {
+  font-size: 12px;
+  font-weight: bold;
+  color: $white;
+  border-radius: 25px;
+  border-color: $turquoise-blue;
+  background-image: linear-gradient(40deg, $light-blue 0%, $turquoise-blue 60%);
+  &:hover {
+    text-decoration: none;
+    color: $gray;
+  }
+}
+
+.btn-color {
+  background-color: $cherry-blossom;
+  color: $white;
+  &:hover {
+    background-color: $olive-green;
+  }
+}
+
+.page-heading-green {
+  width: 90%;
+  background-color: $pistachio-green;
+  font-family: 'メイリオ';
+  font-weight: bold;
+}
+
+.page-heading-pink {
+  background-color: $cherry-blossom;
+  color: $white;
+  font-family: 'メイリオ';
+}
+
+.fa-crown {
+  color: gold;
+}
+
+.fa-egg {
+  color: $baige;
+}
+
+.fa-bookmark {
+  color: $dusty-pink;
+}
+
+ header {
+  font-size: 16px;
+  .logo-font {
+    font-family: 'Homemade Apple', cursive;
+    font-size: 30px;
+  }
+  .navbar {
+    background-color: $white;
+  }
+  .navbar-toggler {
+    background-color: $white;
+  }
+  .navbar-light .navbar-toggler {
+    border-color: $white;
+  }
+  .nav-link {
+    position: relative;
+  }
+    .nav-link:after{
+      content: '';
+      position: absolute;
+      width: 0; height: 2px;
+      display: block;
+      margin-top: 4px;
+      right: 0;
+      background: $cherry-blossom;
+      transition: width .3s ease;
+      -webkit-transition: width .3s ease;
+     }
+    .nav-link:hover:after {
+      width: 100%;
+      left: 0;
+      background: $cherry-blossom;
+     }
+  .dropdown-toggle {
+    text-decoration: none;
+    color: $gray;
+    &:hover {
+      text-decoration: none;
+      color: $gray;
+    }
+  }
+  .dropdown-menu {
+    margin-left: 35px;
   }
 }
 
 footer {
-  background-color: #e8ede1;
-  color: #6c757d;
+  background-color: $pistachio-green;
+  color: $gray;
   width: 100%;
   position: absolute;
   bottom: 0;
+  #copyright {
+    font-size: 10px;
+  }
+  .move-top {
+    position: fixed;
+    bottom: 60px;
+  }
+  #move-top-arrow {
+    right: 20px;
+  }
+  #move-top-admin-btn {
+    right: 90px;
+    width: 120px;
+  }
+  #move-top-guest-btn {
+    right: 230px;
+    width: 120px;
+  }
 }
 
-#copyright {
-  font-size: 10px;
-}
-
-.footer_position {
+#footer-position {
   min-height: 100vh;
   position: relative;
   padding-bottom: 60px;
 }
 
-.admin-page-title {
-  width: 90%;
-  background-color: #e8ede1;
-  font-family: 'メイリオ';
-}
-
 .active_color {
-  color: #33CC00;
+  color: $vivid-green;
   font-weight: bold;
 }
 
@@ -119,93 +231,35 @@ footer {
   color: gray;
 }
 
-// 日本語のフォントを指定
-.jp-font {
-  font-family: 'メイリオ';
-}
-
-// ページネーション全体のデザイン
+// ページネーション全体のレイアウト
 .pagination>li>a {
   border: none;
-  color: #696969;
+  color: $gray;
 }
 
-//表示しているページ番号のデザイン
+//表示しているページ番号のレイアウト
 .page-item.active .page-link {
-  background-color: #eabeaf;
+  background-color: $cherry-blossom;
 }
 
-.procedure {
-  background-color: #eabeaf;
-  color: #fff;
-}
 
-.save-icon {
-  color: #eabeaf;
-}
-
-.fa-bookmark:hover, .like-btn:hover, .user-link:hover {
-  text-decoration: none;
-}
-
-.btn-color {
-  background-color: #eabeaf;
-  &:hover {
-    background-color: #a6c5ab;
-  }
-}
-
-.login-bg {
-  background-color: #e8ede1;
-}
-
-// 会員詳細のタブ
-.nav-item >.tab-style{
-  background-color: #e8ede1;
-  margin-right: 2px;
-  &:hover {
-    color: #fff;
-  }
-  &:hover:after {
-    width: initial;
-    left: initial;
-    background: initial;
-  }
-}
-
-.font-color {
-  color: #eabeaf;
-}
-
-.font-space {
-  letter-spacing: 0.07em
-}
-
-.fa-crown {
-  color: gold;
-}
-
-.bg-color {
-  background-color: #e8ede1;
-}
-
-// 検索関連
+// 検索窓のスタイル
 @mixin input{
   border: none;
   border-radius: 50px;
-  background: #F8F8F8;
+  background: $dull-white;
   height: 35px;
   padding: 10px 20px;
 }
 
-.search-window{
+#search-window{
   position: relative;
   .input{
     @include input;
     margin-top: 6px;
   }
-  .search-btn{
-    background-color: #fff;
+  #search-btn{
+    background-color: $white;
     cursor: pointer;
     position: absolute;
     right: 8px;
@@ -213,151 +267,30 @@ footer {
     height: 25px;
     width: 40px;
     border-style: none;
-    color: #eabeaf;
+    color: $cherry-blossom;
     font-weight: bold;
   }
 }
 
-// 検索結果一覧のタブのスタイル
-.clear-tab-style > .nav-link {
-  border: none;
-    &:hover:after {
-    width: initial;
-    left: initial;
-    background: initial;
-  }
-    &:focus {
-      text-decoration: underline;
-      color: #eabeaf;
-      font-weight: bold;
-    }
-}
-
-.font-color-green {
-  color: #a6c5ab;
-}
-
-.thanks-font {
-  font-family: 'Comic Sans MS';
-}
-
-//チャット
-.chat-area {
-  width: 60%;
-  margin-bottom: 20px;
-}
-
-.chat-bubble {
-  display: inline-block;
-  width: 35%;
-  padding: 15px 20px;
-  margin-top: 2px;
-  border-radius: 10px;
-  position: relative;
-  background-color: #bcf5a9;
-  &:after{
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -20px;
-    margin-top: -10px;
-    display: block;
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-width: 10px 10px 10px 10px;
-    border-color: transparent transparent transparent #bcf5a9;
-  }
-}
-
-.receiver-chat-bubble {
-  background-color: #f5f5f5;
-  &:after {
-    left: -19px;
-    border-color: transparent #f5f5f5 transparent transparent;
-  }
-}
-
-.heading-style {
-  background-color: #e8ede1;
-  font-family: 'メイリオ';
-  width: 55%;
-  margin: auto;
-}
-
-.about-heading-style {
-  width: 100%;
-  margin: 20px 0;
-  background-color: #eabeaf;
-}
-
-.cards {
-  margin: 0 auto;
-  height: 270px;
-}
-
-.top-icons:hover {
-  text-decoration: none;
-  color: inherit;
-}
-
+//Flashメッセージのスタイル
 .field_with_errors {
   display: contents;
 }
 
 #notice {
-  background-color: #EBF9F8;
-  color: #31B4AF;
+  background-color: $light-blue;
+  color: $turquoise-blue;
 }
 
 .fa-check-circle {
-  color: #31B4AF;
+  color: $turquoise-blue;
 }
 
 #alert {
-  background-color: #E7CFCF;
-  color: #BF0000;
+  background-color: $dusty-pink;
+  color: $danger-red;
 }
 
 .fa-exclamation-triangle {
-  color: #BF0000;
-}
-
-//latest-slider
-
-.slider-heading-img {
-  height: 550px !important;
-  object-fit: cover;
-  object-position: 40% 100%;
-}
-
-.slider-latest-img {
-  border-radius: 50%;
-}
-
-.slick-slide img {
-  width: 100%;  /* widht100%を指定することにより、画像間の無駄な余白が消える */
-}
-
-.slick-slide {
-  margin: 0 20px 0;
-}
-
-.slick-slide:not(.slick-center) {
-  opacity: 0.5;
-}
-
-.top-menu-font {
- font-family: 'Annie Use Your Telescope', cursive;
- font-size: 30px;
- font-weight: bold;
-}
-
-.jp-font-2 {
-  font-family: 'Kiwi Maru', serif;
-  font-weight: bold;
-}
-
-.fa-egg {
-  color: #EDE0CB;
+  color: $danger-red;
 }

@@ -1,7 +1,7 @@
-<!--------- TOP20（ランキング）レシピ画面 ------------>
+<!--------- TOP20（ランキング）レシピ ------------>
 
 <div class="container">
-  <h3 class="mt-4 pl-3 fas fa-crown font-space"> TOP20</h3>
+  <h3 style='letter-spacing: 0.07em' class="mt-4 pl-3 fas fa-crown"> TOP20</h3>
 
   <div class="row">
     <div class="col-md-12">
@@ -13,18 +13,21 @@
     <% if user_signed_in? && current_user.is_paid == true %>
       <div class="d-flex flex-wrap">
         <% @recipe_ranks.each.with_index(1) do |recipe_rank, i| %>
-          <div class="card text-center mt-3 p-3 ml-4 mb-3">
-            <div class="card-header p-1 font-weight-bold bg-color">
+          <div style='width: 210px' class="card text-center p-3 mr-3 my-3">
+            <div class="card-header p-1 en-font-pop bg-color-green">
               NO. <%= i %>
             </div>
             <%= link_to (attachment_image_tag recipe_rank, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(recipe_rank.id), class:'card-img-top' %>
-            <%= link_to recipe_rank.title, post_recipe_path(recipe_rank), class:'card-text text-wrap mt-1' %>
-            <%= link_to recipe_rank.user.name, user_path(recipe_rank.user), class:'card-text text-wrap font-color' %>
+            <%= link_to recipe_rank.title, post_recipe_path(recipe_rank), class:'card-text text-wrap mt-1 jp-font-pop' %>
+            <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: recipe_rank } %>
+            <p class='en-font-pop mr-1 mt-2 mb-0'>by
+              <%= link_to recipe_rank.user.name, user_path(recipe_rank.user), class:'card-text text-wrap font-color jp-font-pop font-color-green mt-2' %>
+            </p>
           </div>
         <% end %>
       </div>
     <% else %>
-      <p class="mt-4 ml-3">有料会員の機能です。<%= link_to "こちら", premiums_payment_path, class:"font-color" %>より有料会員登録をお願いいたします。</p>
+      <p class="mt-4 ml-3">有料会員の機能です。<u><%= link_to "こちら", premiums_payment_path, class:"font-color-pink" %></u>より有料会員登録をお願いいたします。</p>
     <% end %>
   </div>
 

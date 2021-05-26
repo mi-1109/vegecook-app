@@ -2,13 +2,18 @@
 
   <div class="row">
     <div class="mx-auto mt-5">
-      <h2 class="jp-font"><%= post_recipe.title %></h2>
+      <h2 class="jp-font-classic"><%= post_recipe.title %></h2>
     </div>
   </div>
 
   <div class="row">
     <div class="mx-auto">
-      <p class="jp-font">by <%= link_to "#{post_recipe.user.name}", user_path(post_recipe.user.id), class:'text-success user-link' %></p>
+      <p class="jp-font-classic">by
+      <% if admin_signed_in? %>
+        <%= link_to "#{post_recipe.user.name}", admin_user_path(post_recipe.user.id), class:'font-color-green' %></p>
+      <% else %>
+        <%= link_to "#{post_recipe.user.name}", user_path(post_recipe.user.id), class:'font-color-green' %></p>
+      <% end %>
     </div>
   </div>
 
@@ -17,27 +22,7 @@
   </div>
 
   <div class="row my-4">
-    <div class="mx-auto d-flex">
-      <% case post_recipe.veg_type
-      when "pesco" %>
-        <i class="fas fa-seedling text-success"></i>
-        <i class="fas fa-fish pl-3 text-primary"></i>
-        <i class="fas fa-egg pl-3 text-outline-econdary"></i>
-        <i class="fas fa-cheese pl-3 text-warning"></i>
-      <% when "lacto_ovo" %>
-        <i class="fas fa-seedling text-success"></i>
-        <i class="fas fa-egg pl-3 text-outline-econdary"></i>
-        <i class="fas fa-cheese pl-3 text-warning"></i>
-      <% when "lacto" %>
-        <i class="fas fa-seedling text-success"></i>
-        <i class="fas fa-cheese pl-3 text-warning"></i>
-      <% when "ovo" %>
-        <i class="fas fa-seedling text-success"></i>
-        <i class="fas fa-egg pl-3 text-light"></i>
-      <% else %>
-        <i class="fas fa-seedling text-success"></i>
-      <% end %>
-    </div>
+    <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: post_recipe} %>
   </div>
 
   <div class="row mt-4 mb-3">
@@ -53,8 +38,8 @@
     <table style="width: 45%" class="table table-borderless mx-auto">
       <thead class="border-bottom">
         <th class="d-flex pb-0 mb-2">
-          <h5 class="mb-0 jp-font font-weight-bold">材料</h5>
-          <p class="mb-0 ml-1 pt-1 jp-font">（<%= post_recipe.serving %>人前）</p>
+          <h5 class="mb-0 jp-font-classic">材料</h5>
+          <p class="mb-0 ml-1 pt-1 jp-font-classic">（<%= post_recipe.serving %>人前）</p>
         </th>
         <th></th>
       </thead>
@@ -71,9 +56,9 @@
 
   <div class="row mx-auto mt-5">
     <table style="width: 60%" class="table table-borderless mx-auto">
-      <thead class="border procedure">
+      <thead class="page-heading-pink">
         <th colspan="2" class="py-1">
-          <h5 class="jp-font font-weight-bold text-center mb-0">つくり方</h5>
+          <h5 class="jp-font-classic text-white text-center mb-0">つくり方</h5>
         </th>
       </thead>
       <tbody>
@@ -89,8 +74,16 @@
   </div>
 
 <div class="row mt-5">
-  <div class="col-md-8 offset-md-2">
-    <h5 class="mb-0 ml-5 jp-font font-weight-bold">コメント</h5>
+  <div class="mx-auto">
+    <% if post_recipe.comments.empty? %>
+      <h5 class="mb-3 en-font-pop font-color-green">No Comments</h5>
+    <% else %>
+      <h5 class="mb-0 en-font-pop font-color-green">Comments</h5>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-8 offset-3 offset-sm-2">
     <%= render partial: '/shared/comments', locals: { post_recipe: post_recipe } %>
   </div>
 </div>

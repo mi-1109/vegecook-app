@@ -1,5 +1,5 @@
 class Public::FormInquiriesController < ApplicationController
-  before_action :authenticate_user!, except:[:index]
+  before_action :authenticate_user!, except: [:index]
 
   def index
   end
@@ -11,9 +11,10 @@ class Public::FormInquiriesController < ApplicationController
   def create
     @form_inquiry = current_user.form_inquiries.new(form_inquiry_params)
     if @form_inquiry.save
+      InquiryMailer.send_when_inquiry_received(current_user).deliver
       redirect_to form_inquiry_complete_path
     else
-      render :new
+      render :new, alert: "送信できませんでした。お手数ですが入力内容をご確認の上、再度お試しください。"
     end
   end
 
@@ -21,7 +22,7 @@ class Public::FormInquiriesController < ApplicationController
     if request.referer&.include?("/form_inquiries")
       render :complete
     else
-      redirect_to new_form_inquiry_path
+      redirect_to new_form_inquiry_path, alert: "不正なアクセスです。入力内容をご確認ください。"
     end
   end
 

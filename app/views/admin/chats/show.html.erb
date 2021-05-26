@@ -1,9 +1,11 @@
+<!----------- 管理者側：チャット問い合わせ -------------->
+
 <div class="container">
 
   <div class="row mt-5">
     <div class="mx-auto">
-      <h3 class="jp-font text-center font-weight-bold">お問い合わせ</h3>
-      <p class="jp-font text-center font-weight-bold">チャット</p>
+      <h3 class="jp-font-classic text-center">お問い合わせ</h3>
+      <p class="jp-font-classic text-center">チャット</p>
     </div>
   </div>
 
@@ -18,7 +20,7 @@
     </div>
     <div class="row mt-1">
       <div class="form-group mb-1 mx-auto">
-        <%= f.text_area :message, size:'67x4', placeholder:"メッセージを入力", class: 'p-3 clear-form' %>
+        <%= f.text_area :message, size:'50x4', placeholder:"メッセージを入力", class: 'p-3 clear-form' %>
         <%= f.hidden_field :chat_room_id %>
       </div>
     </div>

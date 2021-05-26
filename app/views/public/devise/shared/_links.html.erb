@@ -1,9 +1,13 @@
 <%- if controller_name != 'sessions' %>
-  <u><%= link_to "ログインはこちら", new_session_path(resource_name), class:'text-decoration-none text-secondary' %></u><br />
+  <u><%= link_to "ログインはこちら", new_session_path(resource_name) %></u><br />
+<% end %>
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <u><%= link_to "パスワードがわからない方", new_password_path(resource_name) %></u><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <u><%= link_to "会員登録はこちら", new_registration_path(resource_name), class:'text-decoration-none text-secondary' %></u><br />
+  <u><%= link_to "会員登録はこちら", new_registration_path(resource_name) %></u><br />
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>

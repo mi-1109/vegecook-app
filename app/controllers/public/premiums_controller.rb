@@ -1,5 +1,5 @@
 class Public::PremiumsController < ApplicationController
-  before_action :authenticate_user!, except:[:payment]
+  before_action :authenticate_user!, except: [:payment]
 
   def payment
     if user_signed_in?
@@ -15,7 +15,7 @@ class Public::PremiumsController < ApplicationController
       @user.update(is_paid: true)
       redirect_to premiums_complete_path
     else
-      flash[:error] = "お客様はすでにプレミアム・プランに加入されています。"
+      flash[:alert] = "お客様はすでにプレミアム・プランに加入されています。"
       render :payment
     end
   end
@@ -27,5 +27,4 @@ class Public::PremiumsController < ApplicationController
       redirect_to premium_path
     end
   end
-
 end

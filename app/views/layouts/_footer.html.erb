@@ -1,10 +1,33 @@
 <footer>
   <div class="container">
+
     <div class="row">
-      <div class="mx-auto mt-3 text-center">
-        <p class="mb-2">Be the Veggie, Save the Lives</p>
+      <% if not user_signed_in? || admin_signed_in? %>
+        <span class="move-top" id="move-top-guest-btn">
+          <%= link_to "ゲストログイン（会員）", users_guest_sign_in_path, method: :post, class:'btn btn-guest-user py-1' %>
+        </span>
+        <span class="move-top" id="move-top-admin-btn">
+          <%= link_to "ゲストログイン（管理者）", admin_guest_sign_in_path, method: :post, class:'btn btn-guest-admin py-1' %>
+        </span>
+      <% end %>
+      <span class="move-top" id="move-top-arrow">
+        <%= link_to (image_tag 'arrow.png', size:'50x50'), href:"#" %>
+      </span>
+    </div>
+
+    <div class="row">
+      <div class="mx-auto mt-3 text-center d-flex">
+          <%= link_to "Be the Veggie, Green your Life", root_path, class:'mb-2' %>
+          <% if not admin_signed_in? %>
+            <%= link_to "", form_inquiries_path, class:'fas fa-envelope m-0 pl-2 pt-1' %>
+          <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mx-auto">
         <p id="copyright">Copyright © VEGECOOK All Rights Reserved</p>
       </div>
     </div>
-  </div>
+
 </footer>

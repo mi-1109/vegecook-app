@@ -3,10 +3,10 @@
   <% followings.each do |following| %>
     <tr>
       <td class="text-center">
-        <%= attachment_image_tag following, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_profile_image.jpg", size:'80x60' %>
+        <%= attachment_image_tag following, :profile_image, :fill, 150, 150, format: 'jpg', fallback: "no_profile_image.jpg", size:'70x70', class:'rounded-circle' %>
       </td>
       <td class="align-middle">
-        <u><%= link_to following.name, user_path(following.id), class: 'font-color' %></u><br />
+        <u><%= link_to following.name, user_path(following.id), class: 'font-color-green jp-font-pop' %></u><br />
         <%= following.introduction %>
       </td>
       <td class="align-middle">

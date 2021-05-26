@@ -14,8 +14,7 @@ class Public::ChatsController < ApplicationController
   end
 
   def create
-    @chat = current_user.chats.new(chat_params)
-    @chat.save
+    @chat = current_user.chats.create(chat_params)
     @chats = @chat.chat_room.chats
   end
 
@@ -24,5 +23,4 @@ class Public::ChatsController < ApplicationController
   def chat_params
     params.require(:chat).permit(:message, :chat_room_id)
   end
-
 end
