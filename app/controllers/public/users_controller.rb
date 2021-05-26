@@ -1,17 +1,19 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show, :follows]
-  before_action :set_user, except: [:quit, :quit_confirm, :deny_quitted_user_signin]
-  before_action :set_current_user, only: [:quit, :quit_confirm, :prohibit_guest_quit]
-  before_action :prohibit_guest_quit, only: [:quit_confirm]
-  before_action :deny_quitted_user_signin, only: [:show]
+  before_action :set_user, except: [:quit, :quit_confirm]
+  before_action :set_current_user, only: [:quit, :quit_confirm]
+  before_action :set_correct_user, only: [:edit, :update]
 
   def show
-    @user_posts = PostRecipe.where(user_id: @user, is_draft: false).order(created_at: "DESC")
-    @liked_posts = @user.liked_posts.includes(:user).where(is_draft: false).order(created_at: "DESC")
-    # @liked_posts = @user.likes.join(:post_recipes).select("post_recipes.*,likes.created_at AS like_created_at").where(is_draft: false).order(like_created_at: "DESC")
-    @saved_posts = @user.saved_posts.includes(:user).where(is_draft: false).order(created_at: "DESC")
-    @browsed_posts = @user.browsed_posts.includes(:user).where(is_draft: false)
-    @draft_posts = PostRecipe.where(user_id: @user, is_draft: true)
+    if @user.is_deleted == true
+      render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
+    else
+      @user_posts = PostRecipe.where(user_id: @user, is_draft: false).order(created_at: "DESC")
+      @liked_posts = PostRecipe.includes(:user).joins(:likes).where(is_draft: false,'likes.user_id': @user.id).order('likes.created_at': "DESC")
+      @saved_posts = PostRecipe.includes(:user).joins(:saved_recipes).where(is_draft: false,'saved_recipes.user_id': @user.id).order('saved_recipes.created_at': "DESC")
+      @browsed_posts = PostRecipe.includes(:user).joins(:histories).where(is_draft: false,'histories.user_id': @user.id).order('histories.created_at': "DESC")
+      @draft_posts = PostRecipe.where(user_id: @user, is_draft: true).order(created_at: "DESC")
+    end
   end
 
   def edit
@@ -26,6 +28,11 @@ class Public::UsersController < ApplicationController
   end
 
   def quit_confirm
+    if @user.id == 1
+      redirect_to root_path, alert: "恐れ入りますが、ゲスト・アカウントでは退会できません。"
+    else
+      render :quit_confirm
+    end
   end
 
   def quit
@@ -61,15 +68,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
   end
 
-  def deny_quitted_user_signin
-    if @user.is_deleted == true
-      render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
-    end
-  end
-
-  def prohibit_guest_quit
-    if @user.id == 1
-      redirect_to root_path, alert: "恐れ入りますが、ゲスト・アカウントでは退会できません。"
-    end
+  def set_correct_user
+    redirect_to root_path unless @user == current_user
   end
 end
