@@ -33,15 +33,15 @@ Rails.application.routes.draw do
 
     get 'post_recipes/searches' => 'searches#index'
     get 'post_recipes/rankings' => 'rankings#index'
-    get 'users/quit_confirm' => 'users#quit_confirm'
-    patch 'users/quit' => 'users#quit'
-
     resources :post_recipes do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
       resource :saved_recipes, only: [:create, :destroy]
     end
 
+    get 'users/quit_confirm' => 'users#quit_confirm'
+    patch 'users/quit' => 'users#quit'
+    patch 'users/cancel_premium' => 'users#cancel_premium'
     resources :users, only: [:show, :edit, :update] do
       post 'relationships/:page_user_id' => 'relationships#create', as: 'add_follow'
       delete 'relationships/:page_user_id' => 'relationships#destroy', as: 'remove_follow'
@@ -62,4 +62,3 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
   end
 end
-

@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show, :follows]
-  before_action :set_user, except: [:quit, :quit_confirm]
-  before_action :set_current_user, only: [:quit, :quit_confirm]
+  before_action :set_user, except: [:quit, :quit_confirm, :cancel_premium]
+  before_action :set_current_user, only: [:quit, :quit_confirm, :cancel_premium]
   before_action :set_correct_user, only: [:edit, :update]
 
   def show
@@ -23,7 +23,15 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user.id), notice: "プロフィールを更新しました！"
     else
-      render action: :edit, alert: "プロフィールを更新できませんでした。"
+      render :edit, alert: "プロフィールを更新できませんでした。"
+    end
+  end
+
+  def cancel_premium
+    if @user.update(is_paid: false)
+      redirect_to user_path(@user.id), notice: "プレミアム・プランを解約しました。"
+    else
+      render :edit, alert: "プラン変更ができませんでした。お手数ですが、再度お試しください。"
     end
   end
 
