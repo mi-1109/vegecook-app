@@ -1,4 +1,6 @@
 <!---------- 顧客側：レシピ詳細 -------------->
+<% breadcrumb :post_recipe_show, @post_recipe %>
+
 <div class="container mb-5">
   <%= render partial: '/shared/recipe_show', locals: { post_recipe: @post_recipe } %>
 

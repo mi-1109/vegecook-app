@@ -19,6 +19,7 @@
       <main>
         <%= render 'layouts/header' %>
         <%= render 'layouts/flash' %>
+        <%= breadcrumbs separator: " &rsaquo; ", class:'text-warning', id:'breadcrumbs-style' %>
         <%= yield %>
         <%= render 'layouts/footer' %>
       </main>
