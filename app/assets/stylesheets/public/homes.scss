@@ -20,7 +20,7 @@ $light-pink: #f5d4d3;
 
 //slickのスタイル
 .slider-heading-img {
-  height: 550px !important;
+  max-height: 550px !important;
   object-fit: cover;
   object-position: 40% 100%;
 }
@@ -30,7 +30,7 @@ $light-pink: #f5d4d3;
 }
 
 .slick-slide img {
-  width: 100%;  /* widht100%を指定することにより、画像間の無駄な余白が消える */
+  width: 100%;
 }
 
 .slick-slide {
@@ -39,6 +39,10 @@ $light-pink: #f5d4d3;
 
 .slick-slide:not(.slick-center) {
   opacity: 0.5;
+}
+
+.heading-slider, .latest-slider {
+  overflow: hidden;
 }
 
 //PREMIUMプラン案内ページ

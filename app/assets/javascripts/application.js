@@ -41,7 +41,23 @@
       speed: 2000,
       autoplaySpeed: 2000,
       centerMode: true,
-      centerPadding: '20px'
+      centerPadding: '20px',
+      responsive: [
+        {
+          breakpoint: 770,
+          settings: {
+            slidesToShow: 4,
+            centerMode: false,
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+            centerMode: false,
+          }
+        }
+      ]
     });
   });
 

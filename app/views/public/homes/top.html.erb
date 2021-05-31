@@ -1,14 +1,16 @@
 <!-------------- 顧客側：トップ画面 ----------------->
 
-<div class="heading-slider">
-  <% @heading_recipes.each do |heading_recipe| %>
-    <%= link_to (attachment_image_tag heading_recipe, :recipe_image, :fill, 800, 500, format: 'jpg', class:'slider-heading-img'), post_recipe_path(heading_recipe.id) %>
-  <% end %>
+<div class='container-fluid'>
+  <div class="heading-slider">
+    <% @heading_recipes.each do |heading_recipe| %>
+      <%= link_to (attachment_image_tag heading_recipe, :recipe_image, :fill, 800, 500, format: 'jpg', class:'slider-heading-img h'), post_recipe_path(heading_recipe.id) %>
+    <% end %>
+  </div>
 </div>
 
 <div class="container">
   <div class="row mt-5">
-    <div class="col-3 offset-1 text-center">
+    <div class="col-md-3 offset-md-1 text-center">
       <% if user_signed_in? %>
         <%= link_to "", user_path(current_user.id), class: 'fas fa-bookmark fa-5x pt-5 top-icons mb-2' %><br />
         <%= link_to "BOOKMARK", user_path(current_user.id), stlye:'font-size: 16px', class:'top-icons top-menu-font' %>
@@ -17,19 +19,19 @@
         <%= link_to "BOOKMARK", new_user_session_path, stlye:'font-size: 16px', class:'top-icons top-menu-font' %>
       <% end %>
     </div>
-    <div class="col-4 text-center">
+    <div class="col-md-4 text-center">
       <%= link_to "", new_post_recipe_path, class: 'fas fa-edit fa-5x font-color-green pt-5 top-icons mb-2 ml-3' %><br />
       <%= link_to "POST RECIPE", new_post_recipe_path, stlye:'font-size: 16px', class:'top-icons top-menu-font' %><br />
       <p class="jp-font-2">~レシピ投稿~</p>
     </div>
-    <div class="col-3 text-center">
+    <div class="col-md-3 text-center">
       <%= link_to "", post_recipes_rankings_path, class: 'fas fa-crown fa-5x pt-5 top-icons mb-2' %><br />
       <%= link_to "TOP20", post_recipes_rankings_path, stlye:'font-size: 16px', class:'top-icons top-menu-font' %>
     </div>
   </div>
 
   <div class="row my-5">
-    <div class="d-flex flex-wrap offset-sm-2 offset-md-1 offset-lg-2 offset-xl-1">
+    <div class="d-flex flex-wrap offset-1 offset-sm-2 offset-md-1 offset-lg-2 offset-xl-1">
       <% @random_recipes.each do |random_recipe| %>
         <div class="mb-5 text-center card pb-3 p-2 mx-5 shadow">
           <%= link_to (attachment_image_tag random_recipe, :recipe_image, :fill, 200, 200, format: 'jpg'), post_recipe_path(random_recipe.id), style:'width: 90%', class:'card-img-top' %>
