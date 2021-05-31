@@ -77,14 +77,14 @@ var count = 10;
 
     //つくり方の場合
     if (table_id == "procedure-table"){
-      cell1.innerHTML = '<textarea name="post_recipe[procedures_attributes][' + window.count + '][body]" id="post_recipe_body" placeholder="つくり方を記入" class="p-2 " cols="80" rows="3"></textarea>';
+      cell1.innerHTML = '<textarea name="post_recipe[procedures_attributes][' + window.count + '][body]" id="post_recipe_body" placeholder="手順を記入" class="p-2 " cols="35" rows="4"></textarea>';
       cell1.classList.add('pl-0');
       cell2.innerHTML = '<input type="button" value="削除" onclick="deleteRow(this)">';
       cell2.classList.add('align-middle');
     } else {
-      cell1.innerHTML = '<input type="text" name="post_recipe[ingredients_attributes][' + window.count + '][name]" id="post_recipe_name" placeholder="例）にんじん" >';
+      cell1.innerHTML = '<input type="text" name="post_recipe[ingredients_attributes][' + window.count + '][name]" id="post_recipe_name" placeholder="例）にんじん" size="14">';
       cell1.classList.add('py-1');
-      cell2.innerHTML = '<input type="text" name="post_recipe[ingredients_attributes][' + window.count + '][amount]" id="post_recipe_amount" placeholder="例）一本" >';
+      cell2.innerHTML = '<input type="text" name="post_recipe[ingredients_attributes][' + window.count + '][amount]" id="post_recipe_amount" placeholder="例）一本" size="14">';
       cell2.classList.add('py-1');
       cell3.innerHTML = '<input type="button" value="削除" onclick="deleteRow(this)">';
       cell3.classList.add('p-0', 'align-middle');
