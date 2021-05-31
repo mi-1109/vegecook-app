@@ -17,8 +17,8 @@
     </div>
   </div>
 
-  <div class="row mt-2">
-    <%= attachment_image_tag post_recipe, :recipe_image, :fill, 500, 400, format: 'jpg', class:'mx-auto' %>
+  <div class="row mt-2 recipe-img">
+    <%= attachment_image_tag post_recipe, :recipe_image, :fill, 400, 400, format: 'jpg', class:'mx-auto' %>
   </div>
 
   <div class="row my-4">
@@ -26,7 +26,7 @@
   </div>
 
   <div class="row mt-4 mb-3">
-    <p style="width: 450px" class="mx-auto text-wrap text-center"><%= post_recipe.introduction %></p>
+    <p style="width: 450px" class="mx-auto text-wrap text-center px-3"><%= post_recipe.introduction %></p>
   </div>
 
   <!--いいねボタンとレシピ保存ボタンの部分テンプレートを表示-->
@@ -35,7 +35,7 @@
   <% end %>
 
   <div class="row mt-4">
-    <table style="width: 45%" class="table table-borderless mx-auto">
+    <table style="width: 60%" class="table table-borderless mx-auto">
       <thead class="border-bottom">
         <th class="d-flex pb-0 mb-2">
           <h5 class="mb-0 jp-font-classic">材料</h5>
@@ -55,7 +55,7 @@
   </div>
 
   <div class="row mx-auto mt-5">
-    <table style="width: 60%" class="table table-borderless mx-auto">
+    <table style="width: 65%" class="table table-borderless mx-auto">
       <thead class="page-heading-pink">
         <th colspan="2" class="py-1">
           <h5 class="jp-font-classic text-white text-center mb-0">つくり方</h5>
