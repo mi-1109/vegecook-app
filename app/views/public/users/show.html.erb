@@ -3,7 +3,7 @@
 <% breadcrumb :user_show, @user %>
 
   <div class="row mt-4 mb-5">
-    <div class="col-md-11 wrap">
+    <div class="col-11 wrap">
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a href="#tab1" class="nav-link tab-style jp-font-pop" data-toggle="tab"><i class="far fa-edit mr-1"></i>投稿レシピ</a>
@@ -80,10 +80,10 @@
 
         <!--タブ：閲覧履歴-->
         <div id="tab4" class="tab-pane pt-5">
-          <table style='width: 60%' class="table ml-2">
+          <table style='width: 90%' class="table ml-2">
           <% @browsed_posts.each do |browsed_post| %>
             <tr class="border-bttom align-middle">
-              <td style='width: 20%' class="p-2 text-center">
+              <td class="p-2 text-center">
                 <%= link_to (attachment_image_tag browsed_post, :recipe_image, :fill, 100, 100, format: 'jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(browsed_post.id) %>
               </td>
               <td class="p-2 align-middle">
@@ -102,10 +102,10 @@
           <% if @saved_posts.empty? %>
             <h6 class='jp-font-pop'>下書き中のレシピはまだありません。</h6>
           <% else %>
-            <table style='width: 60%' class="table ml-2">
+            <table style='width: 90%' class="table ml-2">
             <% @draft_posts.each do |draft_post| %>
               <tr class="border-bttom align-middle">
-                <td style='width: 10%' class="p-2 text-center">
+                <td class="p-2 text-center">
                   <%= link_to (attachment_image_tag draft_post, :recipe_image, :fill, 100, 100, format: 'jpg', fallback: 'no_recipe_image.jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(draft_post.id) %>
                 </td>
                 <td class="p-2 align-middle">

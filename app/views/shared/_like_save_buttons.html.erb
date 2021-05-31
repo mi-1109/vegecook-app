@@ -2,10 +2,9 @@
 
 <div id="like-save-buttons">
   <div class="row">
-    <div class="col-3 offset-7 col-sm-4 text-right d-flex">
+    <div class="col-6 offset-6 col-md-5 offset-md-7 text-right d-flex">
 
     <% if user_signed_in? %>
-
       <!--いいねボタン-->
       <% if post_recipe.liked_by?(current_user) %>
         <%= link_to post_recipe_likes_path(post_recipe), method: :delete, remote: true, class:'text-danger like-btn ml-5' do %>

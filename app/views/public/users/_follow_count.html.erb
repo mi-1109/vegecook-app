@@ -3,4 +3,4 @@
 <span class="fas fa-user-friends mr-3 font-color-pink"></span>
 <u><%= link_to "#{user.followings.count} フォロー", follows_user_path(user.id), class: 'text-secondary' %></u><br />
 <span class="fas fa-user-friends mr-3 mt-2 font-color-green"></span>
-<u><%= link_to "#{user.followers.count} フォロワー", follows_user_path(user.id), class: 'text-secondary'%></u>
+<u><%= link_to "#{user.followers.count} フォロワー", follows_user_path(user.id), class: 'text-secondary' %></u>
