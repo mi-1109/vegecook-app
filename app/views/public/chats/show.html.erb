@@ -21,19 +21,19 @@
   </div>
   <div class="row mt-1">
     <div class="form-group mb-1 mx-auto">
-      <%= f.text_area :message, size:'50x4', placeholder:"メッセージを入力してください", class: 'p-3 clear-form' %>
+      <%= f.text_area :message, size:'45x4', placeholder:"メッセージを入力してください", class: 'p-3 clear-form' %>
       <%= f.hidden_field :chat_room_id %>
     </div>
   </div>
   <div class="row">
-    <div class="form-group offset-md-8">
+    <div class="form-group offset-md-8 offset-lg-7">
       <%= f.submit "送信", class:'btn btn-sm btn-outline-secondary ml-4'%>
     </div>
   </div>
   <% end %>
 
   <div class="row mb-5">
-    <div class="offset-md-7 mt-3">
+    <div class="offset-md-8 mt-3">
       <u><%= link_to "フォームで問い合わせる", new_form_inquiry_path, class:'ml-3 font-color-green' %></u>
     </div>
   </div>

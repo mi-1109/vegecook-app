@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3 class="page-heading-green mx-auto mt-5 py-2 pl-4">お問い合わせ一覧（チャット）</h3>
+    <h4 class="page-heading-green mx-auto mt-5 py-2 pl-4">お問い合わせ一覧（チャット）</h4>
   </div>
 
   <div class="row mt-3">
@@ -14,7 +14,7 @@
           <td style="width: 30%" class="py-0 align-middle text-left">
             <u><%= link_to chat.user.name, admin_user_path(chat.user.id) %></u>
           </td>
-          <td style="width: 15%" class="pt-0 pb-1 align-middle text-center">
+          <td style="width: 35%" class="pt-0 pb-1 align-middle text-center">
             <%= link_to "チャットへ", admin_chat_path(chat.user.id), class:'btn btn-sm btn-outline-warning' %>
           </td>
         </tr>

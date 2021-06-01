@@ -8,7 +8,7 @@
           <div class="text-right mt-4">
             <p style="font-size: 11px" class="mb-0 mr-2">
               <%= l chat.created_at %>
-              <span class="ml-3 font-weight-bold">VEGECOOK事務局</span>
+              <span class="ml-2 font-weight-bold">VegeCook事務局</span>
             </p>
             <div class="chat-bubble text-left">
               <%= chat.message %>
@@ -17,8 +17,8 @@
         <!--顧客(user)のチャット内容-->
         <% elsif chat.user_id == user.id %>
           <div class="mt-4">
-            <p style="font-size: 11px" class="mb-0 ml-2">
-              <span class="ml-3 font-weight-bold"><%= chat.user.name %></span>
+            <p style="font-size: 11px" class="mb-0 ml-md-2 ml-sm-0">
+              <span class="ml-md-3 ml-sm-1 font-weight-bold"><%= chat.user.name %></span>
               <span class="ml-3"><%= l chat.created_at %></span>
             </p>
             <div class="chat-bubble receiver-chat-bubble">
