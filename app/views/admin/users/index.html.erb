@@ -3,35 +3,34 @@
     <h3 style='width: 100%' class="page-heading-pink mx-auto mt-5 py-1 text-center">会員一覧</h3>
   </div>
 
-  <div class="row">
-    <div class="col-md-4 offset-md-8">
+  <div class="row mb-3">
+    <div class="col-6 offset-6 text-right">
       <h6 class="text-right mr-5 jp-font">会員数：<%= @user_count %>名</h6>
     </div>
   </div>
 
   <div class="row">
-    <table style="width: 90%" class="table table-borderless mx-auto">
+    <table style="width: 95%" class="table table-borderless mx-auto">
       <% @users.each do |user| %>
         <tr class="mt-5 border-bottom">
-          <td style="width: 10%">
-            <%= link_to (attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: "no_profile_image.jpg", size:'60x60', class:'rounded-circle'), admin_user_path(user.id) %>
+          <td style="width: 5%" class='text-right'>
+            <%= link_to (attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: "no_profile_image.jpg", size:'40x40', class:'rounded-circle'), admin_user_path(user.id) %>
           </td>
-          <td style="width: 30%">
-            <u><%= link_to user.name, admin_user_path(user.id) %><br /></u>
-            <p class="mt-2"><%= user.introduction %></p>
+          <td style="width: 15%" class='px-1 py-4 text-center'>
+            <u><%= link_to user.name, admin_user_path(user.id) %></u>
           </td>
-          <td style="width: 15%" class="py-0 align-middle text-center">
+          <td style="width: 17%; font-size: 12px" class="py-0 px-1 align-middle text-center">
             <%= user.is_paid_to_sring %>
           </td>
-          <td style="width: 8%" class="py-0 align-middle text-center">
+          <td style="width: 8%" class="py-0 px-1 align-middle text-center">
             <% if user.is_deleted == false %>
               <p class="active_color mb-0"><%= user.is_deleted_to_sring %></p>
             <% else %>
               <p class="inactive_color mb-0"><%= user.is_deleted_to_sring %></p>
             <% end %>
           </td>
-          <td style="width: 10%" class="py-0 align-middle text-center">
-            <%= link_to "チャット", admin_chat_path(user), class:'btn btn-sm btn-outline-secondary' %>
+          <td style="width: 10%" class="py-0 px-1 align-middle text-center">
+            <%= link_to "CHAT", admin_chat_path(user), class: 'btn btn-sm btn-outline-secondary', style: 'font-size: 13px' %>
           </td>
         </tr>
       <% end %>
