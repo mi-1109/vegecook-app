@@ -78,6 +78,7 @@ gem 'kaminari', '~> 1.2.1'
 gem 'enum_help'
 gem 'whenever', require: false
 gem 'ransack'
+gem 'gretel'
 
 gem 'dotenv-rails'
 group :production do

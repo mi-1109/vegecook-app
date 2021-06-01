@@ -1,4 +1,5 @@
 <!---------- レシピ投稿フォーム -------------->
+<% breadcrumb :new_recipe %>
 
 <div class="container mt-4 align-imtes-center">
   <div class='bg-light mx-auto mb-5'>
@@ -6,7 +7,7 @@
   <%= form_with model: @post_recipe, local:true do |f| %>
     <div class="row">
       <div class="form-group mt-5 mx-auto">
-        <%= f.text_field :title, placeholder: "レシピ名", size: "90", class:'py-2 px-2' %>
+        <%= f.text_field :title, placeholder: "レシピ名", size: "45", class:'py-2 px-2' %>
         <%= render 'layouts/error_messages', obj: @post_recipe, column: :title %>
       </div>
     </div>
@@ -14,12 +15,12 @@
     <div class="row">
       <div class="col-md-6 col-lg-5 offset-lg-1 mt-3">
         <div class="form-group mt-4 ml-md-2">
-          <%= f.text_area :introduction, placeholder: "レシピの簡単な説明（キャプション）", size:"50 x 4", class:'p-2' %>
+          <%= f.text_area :introduction, placeholder: "レシピの簡単な説明（キャプション）", size:"45 x 4", class:'p-2' %>
           <%= render 'layouts/error_messages', obj: @post_recipe, column: :introduction %>
         </div>
       </div>
-      <div class="col-md-6 col-lg-5 mt-3 pl-4 pt-2">
-        <div class="from-group mr-md-2 mt-3 ml-5 p-3 bg-white shadow-sm">
+      <div class="col-md-6 col-lg-5 col-sm-4 mt-3 pl-4 pt-2">
+        <div class="from-group mr-md-2 mt-3 ml-md-5 p-3 bg-white shadow-sm">
           <h6 class="mb-3"><i class="fas fa-camera font-color-pink mr-2"></i>写真をアップロード</h6>
           <%= f.attachment_field :recipe_image %>
           <%= render 'layouts/error_messages', obj: @post_recipe, column: :recipe_image %>
@@ -46,8 +47,8 @@
           <tbody>
             <%= f.fields_for :ingredients do |ingredient| %>
               <tr>
-                <td style="width: 12%" class="py-1"><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
-                <td style="width: 10%" class="py-1"><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
+                <td class="py-1"><%= ingredient.text_field :name, size:"14", placeholder: "例）にんじん" %></td>
+                <td class="py-1"><%= ingredient.text_field :amount, size:"14", placeholder: "例）一本" %></td>
                 <td class="align-middle p-0"><input type="button" value="削除" onclick="deleteRow(this)"></td>
               </tr>
             <% end %>
@@ -67,17 +68,19 @@
       </div>
 
       <div class="row">
-        <table class="table table-borderless" id="procedure-table">
+        <div class='offset-md-3'>
+        <table style='width: 70%' class="table table-borderless" id="procedure-table">
           <%= f.fields_for :procedures do |procedure| %>
           <tr>
-            <td style='width: 70%' class="px-0"><%= procedure.text_area :body, placeholder:"手順を記入", size:'80 x 3', class:'p-2' %> </td>
-            <td class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+            <td style='width: 50%' class="px-0"><%= procedure.text_area :body, placeholder:"手順を記入", size:'35 x 4', class:'p-2' %> </td>
+            <td style='width: 10%' class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
           </tr>
           <% end %>
         </table>
-        <input type="button" value="手順を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-color py-0 mb-3">
         <%= render 'layouts/error_messages', obj: @post_recipe, column: :procedures %>
+        </div>
       </div>
+      <input type="button" value="手順を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-color py-0 mb-3" id='procedure-add-btn'>
     </div>
 
     <div class="row my-4">
@@ -89,8 +92,8 @@
 
     <div class="row mt-4 pb-5">
       <div class="form-inline mx-auto">
-        <%= f.submit 'レシピを公開', :name => 'post', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-warning text-white' %>
-        <%= f.submit '下書きに保存', :name => 'update', style: 'font-size: 20px', class:'mr-5 btn btn-sm btn-outline-secondary' %>
+        <%= f.submit 'レシピを公開', :name => 'post', style: 'font-size: 20px', class:'mr-md-5 btn btn-sm btn-warning text-white' %>
+        <%= f.submit '下書きに保存', :name => 'update', style: 'font-size: 20px', class:'mr-md-5 ml-1 btn btn-sm btn-outline-secondary' %>
       </div>
     </div>
 

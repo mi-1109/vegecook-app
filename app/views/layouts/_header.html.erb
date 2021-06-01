@@ -2,7 +2,8 @@
 
 <header class="sticky-top shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light py-3">
-    <div class="container-fluid px-5">
+    <div class="container-fluid px-2">
+      <!--<div class='row'>-->
 
       <!------ Navbar Brand ------>
       <% if admin_signed_in? %>
@@ -19,14 +20,14 @@
       <div id="search-window">
       <% if not admin_signed_in? %>
         <%= search_form_for @search, url: post_recipes_searches_path do |f| %>
-          <%= f.search_field :title_cont, placeholder: 'レシピを検索', class: 'input ml-4', size: '30' %>
+          <%= f.search_field :title_cont, placeholder: 'レシピを検索', class: 'input ml-4', size: '22' %>
           <%= f.submit "GO!", class:'rounded-pill', id:'search-btn' %>
         <% end %>
       <% end %>
       </div>
 
       <!----- Collapse Button ----->
-      <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarTabContent" aria-controls="navbarTabContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler toggler-example humberger" type="button" data-toggle="collapse" data-target="#navbarTabContent" aria-controls="navbarTabContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="dark-blue-text">
           <i class="fas fa-bars fa-1x"></i>
         </span>
@@ -34,11 +35,11 @@
 
       <!---- Collapsible Content ------->
       <div class="collapse navbar-collapse" id="navbarTabContent">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mt-3">
 
         <!-- 管理者がログインしている場合-->
         <% if admin_signed_in? %>
-          <li class="nav-item"><%= link_to "レシピ一覧", admin_post_recipes_path, class: 'nav-link' %></li>
+          <li class="nav-item ml-5"><%= link_to "レシピ一覧", admin_post_recipes_path, class: 'nav-link' %></li>
           <li class="nav-item ml-5"><%= link_to "会員一覧", admin_users_path, class: 'nav-link' %></li>
           <li class="nav-item ml-5"><%= link_to "フォーム", admin_form_inquiries_path , class: 'nav-link' %></li>
           <li class="nav-item ml-5"><%= link_to "チャット", admin_chats_path, class: 'nav-link' %></li>
@@ -79,6 +80,8 @@
         <% end %>
         </ul>
       </div>
+
+      <!--</div>-->
     </div>
   </nav>
 </header>

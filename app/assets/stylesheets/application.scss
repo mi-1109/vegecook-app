@@ -185,9 +185,6 @@
       color: $gray;
     }
   }
-  .dropdown-menu {
-    margin-left: 35px;
-  }
 }
 
 footer {
@@ -201,7 +198,7 @@ footer {
   }
   .move-top {
     position: fixed;
-    bottom: 60px;
+    bottom: 80px;
   }
   #move-top-arrow {
     right: 20px;
@@ -293,4 +290,10 @@ footer {
 
 .fa-exclamation-triangle {
   color: $danger-red;
+}
+
+#breadcrumbs-style {
+  margin: 20px 0 0 80px;
+  font-size: 11px;
+  padding-right: 10px;
 }

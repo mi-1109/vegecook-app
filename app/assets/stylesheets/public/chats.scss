@@ -9,7 +9,8 @@
 
 .chat-bubble {
   display: inline-block;
-  width: 40%;
+  width: 35%;
+  min-width: 170px;
   padding: 15px 20px;
   margin-top: 2px;
   border-radius: 10px;
