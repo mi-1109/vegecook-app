@@ -34,7 +34,6 @@
               <% @user_posts.each do |user_post| %>
                 <div style='width: 210px' class="card text-center mt-3 py-3 px-2 ml-5">
                   <%= link_to (image_tag user_post.post_recipe_image.url, size:'150'), post_recipe_path(user_post.id), class:'card-img-top' %>
-                  <!--<%= ix_image_tag(user_post.post_recipe_image.url, url_params: { w: 150, h: 150, fit: 'crop' }, tag_options: {class: 'card-img-top'}) %>-->
                   <%= link_to user_post.title, post_recipe_path(user_post), class:'card-text font-weight-bold text-wrap py-2 jp-font-pop' %>
                   <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: user_post} %>
                 </div>
@@ -86,7 +85,6 @@
             <tr class="border-bttom align-middle">
               <td class="p-2 text-center">
                 <%= image_tag(browsed_post.post_recipe_image.url, size: '70', class:'rounded-circle') %>
-                <!--<%= ix_image_tag(browsed_post.post_recipe_image.path, url_params: {w: 70, h: 70, fit: 'crop'}, tag_options: { class:'rounded-circle'}) %>-->
               </td>
               <td class="p-2 align-middle">
                 <%= link_to browsed_post.title, post_recipe_path(browsed_post), class:'card-text text-wrap jp-font-pop' %>
