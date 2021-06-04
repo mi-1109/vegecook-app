@@ -22,7 +22,7 @@
       <div class="col-md-6 col-lg-5 col-sm-4 mt-3 pl-4 pt-2">
         <div class="from-group mr-md-2 mt-3 ml-md-5 p-3 bg-white shadow-sm">
           <h6 class="mb-3"><i class="fas fa-camera font-color-pink mr-2"></i>写真をアップロード</h6>
-          <%= f.attachment_field :recipe_image %>
+          <%= f.file_field :post_recipe_image %>
           <%= render 'layouts/error_messages', obj: @post_recipe, column: :recipe_image %>
         </div>
       </div>

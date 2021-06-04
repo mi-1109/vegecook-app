@@ -89,3 +89,6 @@ group :tools do
   gem 'squasher', '>= 0.6.0'
   gem 'capistrano'
 end
+
+gem 'imgix-rails'
+gem 'carrierwave', '~> 2.0'
