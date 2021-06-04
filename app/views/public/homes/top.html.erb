@@ -34,7 +34,7 @@
     <div class="d-flex flex-wrap offset-1 offset-sm-2 offset-md-1 offset-lg-2 offset-xl-1">
       <% @random_recipes.each do |random_recipe| %>
         <div class="mb-5 text-center card pb-3 p-2 mx-5 shadow">
-          <%= link_to (image_tag random_recipe.post_recipe_image.url, size:'200'), post_recipe_path(random_recipe.id), style:'width: 90%', class:'card-img-top' %>
+          <%= link_to (attachment_image_tag random_recipe, :recipe_image, :fill, 200, 200, format: 'jpg'), post_recipe_path(random_recipe.id), style:'width: 90%', class:'card-img-top' %>
           <%= link_to random_recipe.title, post_recipe_path(random_recipe), class:' card-title text-wrap jp-font-pop pt-2 mb-1' %>
           <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: random_recipe } %>
           <div class="d-flex mx-auto mt-2 card-text">
