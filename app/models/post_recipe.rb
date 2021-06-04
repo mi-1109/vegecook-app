@@ -11,7 +11,7 @@ class PostRecipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda { |attributes| attributes[:name].blank? && attributes[:amount].blank? }
 
   with_options presence: true, on: :publicize do
-    validates :recipe_image
+    # validates :recipe_image
     validates :serving
     validates :veg_type
     validates :title
@@ -23,6 +23,7 @@ class PostRecipe < ApplicationRecord
   validates :introduction, length: { maximum: 80 }, on: :publicize
 
   attachment :recipe_image
+  mount_uploader :post_recipe_image, PostRecipeUploader
 
   enum veg_type: {
     pesco: 0,
