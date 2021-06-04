@@ -3,7 +3,7 @@
 <div class='container-fluid'>
   <div class="heading-slider">
     <% @heading_recipes.each do |heading_recipe| %>
-      <%= link_to (attachment_image_tag heading_recipe, :recipe_image, :fill, 800, 500, format: 'jpg', class:'slider-heading-img h'), post_recipe_path(heading_recipe.id) %>
+      <%= link_to (image_tag heading_recipe.post_recipe_image.url, size: '800x500'), post_recipe_path(heading_recipe.id), class:'slider-heading-img' %>
     <% end %>
   </div>
 </div>
@@ -34,7 +34,7 @@
     <div class="d-flex flex-wrap offset-1 offset-sm-2 offset-md-1 offset-lg-2 offset-xl-1">
       <% @random_recipes.each do |random_recipe| %>
         <div class="mb-5 text-center card pb-3 p-2 mx-5 shadow">
-          <%= link_to (attachment_image_tag random_recipe, :recipe_image, :fill, 200, 200, format: 'jpg'), post_recipe_path(random_recipe.id), style:'width: 90%', class:'card-img-top' %>
+          <%= link_to (image_tag random_recipe.post_recipe_image.url, size:'200'), post_recipe_path(random_recipe.id), style:'width: 90%', class:'card-img-top' %>
           <%= link_to random_recipe.title, post_recipe_path(random_recipe), class:' card-title text-wrap jp-font-pop pt-2 mb-1' %>
           <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: random_recipe } %>
           <div class="d-flex mx-auto mt-2 card-text">
@@ -53,7 +53,7 @@
   </div>
   <div class="latest-slider my-4">
     <% @latest_recipes.each do |latest_recipe| %>
-      <%= link_to (attachment_image_tag latest_recipe, :recipe_image, :fill, 150, 150, format: 'jpg', class:'slider-latest-img mx-auto'), post_recipe_path(latest_recipe.id) %>
+      <%= link_to (image_tag latest_recipe.post_recipe_image.url, size: '150'), post_recipe_path(latest_recipe.id), class:'slider-latest-img mx-auto' %>
     <% end %>
   </div>
   <div class="row my-5">
