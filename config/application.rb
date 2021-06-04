@@ -14,7 +14,7 @@ module Vegecook
 
     Rails.application.configure do
       config.imgix = {
-        source: "vegecook.imgix.net"
+        source: ENV['IMGIX_SOURCE']
       }
     end
 
