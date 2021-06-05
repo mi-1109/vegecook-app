@@ -33,7 +33,7 @@
             <div class="d-flex flex-wrap">
               <% @user_posts.each do |user_post| %>
                 <div style='width: 210px' class="card text-center mt-3 py-3 px-2 ml-5">
-                  <%= link_to (image_tag user_post.post_recipe_image.url, size:'150'), post_recipe_path(user_post.id), class:'card-img-top' %>
+                  <%= link_to ix_image_tag(user_post.post_recipe_image.path, url_params: { w: 150, h: 150, fit: 'crop' }, tag_options: {class: 'card-img-top'}), post_recipe_path(user_post.id) %>
                   <%= link_to user_post.title, post_recipe_path(user_post), class:'card-text font-weight-bold text-wrap py-2 jp-font-pop' %>
                   <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: user_post} %>
                 </div>
@@ -50,7 +50,7 @@
             <div class="d-flex flex-wrap">
               <% @liked_posts.each do |liked_post| %>
                 <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
-                  <%= link_to (attachment_image_tag liked_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(liked_post.id), class:'card-img-top' %>
+                  <%= link_to ix_image_tag(liked_post.post_recipe_image.path, url_params: { w: 150, h: 150, fit: 'crop' }, tag_options: {class: 'card-img-top'}), post_recipe_path(liked_post.id) %>
                   <%= link_to liked_post.title, post_recipe_path(liked_post), class:'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
                   <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: liked_post} %>
                   <p class="mb-1 pt-1 en-font-pop">by<%= link_to liked_post.user.name, user_path(liked_post.user), class:'card-text text-wrap ml-2 font-color-green' %></p>
@@ -68,7 +68,7 @@
             <div class="d-flex flex-wrap">
               <% @saved_posts.each do |saved_post| %>
                 <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
-                  <%= link_to (attachment_image_tag saved_post, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(saved_post.id), class:'card-img-top' %>
+                  <%= link_to ix_image_tag(saved_post.post_recipe_image.path, url_params: { w: 150, h: 150, fit: 'crop' }, tag_options: {class: 'card-img-top'}), post_recipe_path(saved_post.id) %>
                   <%= link_to saved_post.title, post_recipe_path(saved_post), class:'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
                   <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: saved_post} %>
                   <p class="mb-1 pt-1 en-font-pop">by<%= link_to saved_post.user.name, user_path(saved_post.user), class:'card-text text-wrap ml-2 pt-1 font-color-green' %></p>
@@ -84,7 +84,7 @@
           <% @browsed_posts.each do |browsed_post| %>
             <tr class="border-bttom align-middle">
               <td class="p-2 text-center">
-                <%= image_tag(browsed_post.post_recipe_image.url, size: '70', class:'rounded-circle') %>
+                <%= link_to ix_image_tag(browsed_post.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: {class: 'rounded-circle'}), post_recipe_path(browsed_post.id) %>
               </td>
               <td class="p-2 align-middle">
                 <%= link_to browsed_post.title, post_recipe_path(browsed_post), class:'card-text text-wrap jp-font-pop' %>
@@ -106,7 +106,11 @@
             <% @draft_posts.each do |draft_post| %>
               <tr class="border-bttom align-middle">
                 <td class="p-2 text-center">
-                  <%= link_to (attachment_image_tag draft_post, :recipe_image, :fill, 100, 100, format: 'jpg', fallback: 'no_recipe_image.jpg', size:'60x60', class:'rounded-circle'), post_recipe_path(draft_post.id) %>
+                  <% if draft_post.post_recipe_image? %>
+                    <%= link_to ix_image_tag(draft_post.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: {class: 'rounded-circle'}), post_recipe_path(draft_post.id) %>
+                  <% else %>
+                    <%= link_to ix_image_tag('/assets/images/no_recipe_image.jpg', url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: {class: 'rounded-circle'}), post_recipe_path(draft_post.id) %>
+                  <% end %>
                 </td>
                 <td class="p-2 align-middle">
                   <%= link_to draft_post.title, post_recipe_path(draft_post), class:'ml-3 jp-font-pop' %>
