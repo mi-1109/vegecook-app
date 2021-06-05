@@ -99,14 +99,14 @@
 
         <!--タブ：下書き保存したレシピ-->
         <div id="tab5" class="tab-pane pt-5">
-          <% if @saved_posts.empty? %>
+          <% if @draft_posts.empty? %>
             <h6 class='jp-font-pop'>下書き中のレシピはまだありません。</h6>
           <% else %>
             <table style='width: 90%' class="table ml-2">
             <% @draft_posts.each do |draft_post| %>
               <tr class="border-bttom align-middle">
                 <td class="p-2 text-center">
-                  <% if draft_post.post_recipe_image? %>
+                  <% if draft_post.post_recipe_image == nil %>
                     <%= link_to ix_image_tag(draft_post.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: {class: 'rounded-circle'}), post_recipe_path(draft_post.id) %>
                   <% else %>
                     <%= link_to ix_image_tag('/assets/images/no_recipe_image.jpg', url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: {class: 'rounded-circle'}), post_recipe_path(draft_post.id) %>
