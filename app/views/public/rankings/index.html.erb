@@ -18,7 +18,7 @@
             <div class="card-header p-1 en-font-pop bg-color-green">
               NO. <%= i %>
             </div>
-            <%= link_to (attachment_image_tag recipe_rank, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(recipe_rank.id), class:'card-img-top' %>
+            <%= link_to ix_image_tag(recipe_rank.post_recipe_image.path, url_params: { w: 150, h: 150, fit: 'crop' }, tag_options: {class: 'card-img-top'}), post_recipe_path(recipe_rank.id) %>
             <%= link_to recipe_rank.title, post_recipe_path(recipe_rank), class:'card-text text-wrap mt-1 jp-font-pop' %>
             <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: recipe_rank } %>
             <p class='en-font-pop mr-1 mt-2 mb-0'>by

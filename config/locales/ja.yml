@@ -24,7 +24,7 @@ ja:
       post_recipe:
         title: "レシピ名"
         introduction: "レシピの説明"
-        recipe_image: "レシピの写真"
+        post_recipe_image: "レシピの写真"
         serving: "何人分のレシピか"
         veg_type: "使用食材"
         ingredients: "材料"
