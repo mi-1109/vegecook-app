@@ -15,7 +15,11 @@
       <% @post_recipes.each do |post_recipe| %>
         <tr class="mt-5 border-bottom">
           <td style="width: 5%" class="text-center">
-            <%= link_to (attachment_image_tag post_recipe, :recipe_image, :fill, 70, 70, format: 'jpg', fallback: "no_recipe_image.jpg",size:'60x60', class: 'rounded-circle'), admin_post_recipe_path(post_recipe.id) %>
+            <% if post_recipe.post_recipe_image.blank? %>
+              <%= link_to image_tag('no_recipe_image.jpg', size: '70', class:'rounded-circle'), admin_post_recipe_path(post_recipe.id) %>
+            <% else %>
+              <%= link_to ix_image_tag(post_recipe.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: { class: 'rounded-circle' }), admin_post_recipe_path(post_recipe.id) %>
+            <% end %>
           </td>
           <td style="width: 35%">
             <u><%= link_to post_recipe.title, admin_post_recipe_path(post_recipe.id) %><br /></u>

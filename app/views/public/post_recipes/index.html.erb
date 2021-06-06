@@ -14,7 +14,7 @@
     <div class="d-flex flex-wrap">
     <% @latest_recipes.each do |latest_recipe| %>
       <div style='width: 220px' class="card text-center mt-3 p-3 ml-4 mb-3">
-        <%= link_to (attachment_image_tag latest_recipe, :recipe_image, :fill, 150, 150, format: 'jpg'), post_recipe_path(latest_recipe.id), class:'card-img-top' %>
+        <%= link_to ix_image_tag( latest_recipe.post_recipe_image.path, url_params: { w: 150, h: 150, fit: 'crop' }, tag_options: { class: 'card-img-top' }), post_recipe_path(latest_recipe.id) %>
         <%= link_to latest_recipe.title, post_recipe_path(latest_recipe), class:'card-text text-wrap mt-1 jp-font-pop' %>
         <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: latest_recipe} %>
         <p class='en-font-pop mr-1 mt-2 mb-0'>by

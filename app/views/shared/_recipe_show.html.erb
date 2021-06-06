@@ -18,7 +18,7 @@
   </div>
 
   <div class="row mt-2 recipe-img">
-    <%= attachment_image_tag post_recipe, :recipe_image, :fill, 400, 400, format: 'jpg', class:'mx-auto' %>
+    <%= ix_image_tag(post_recipe.post_recipe_image.path, url_params: { w: 550, h: 400, fit: 'crop' }, tag_options: { class: 'mx-auto' }) %>
   </div>
 
   <div class="row my-4">

@@ -33,8 +33,8 @@
   <div class="row my-5">
     <div class="d-flex flex-wrap offset-1 offset-sm-2 offset-md-1 offset-lg-2 offset-xl-1">
       <% @random_recipes.each do |random_recipe| %>
-        <div class="mb-5 text-center card pb-3 p-2 mx-5 shadow">
-          <%= link_to ix_image_tag(random_recipe.post_recipe_image.path, url_params: { w: 170, h: 170, fit: 'crop' }, tag_options: {style:'width: 90%', class:'card-img-top'}), post_recipe_path(random_recipe.id) %>
+        <div style='width: 210px' class="mb-5 text-center card pb-3 p-2 mx-5 shadow">
+          <%= link_to ix_image_tag(random_recipe.post_recipe_image.path, url_params: { w: 170, h: 170, fit: 'crop' }, tag_options: { class:'card-img-top'}), post_recipe_path(random_recipe.id) %>
           <%= link_to random_recipe.title, post_recipe_path(random_recipe), class:' card-title text-wrap jp-font-pop pt-2 mb-1' %>
           <%= render partial: 'shared/veg_type_icons', locals: { post_recipe: random_recipe } %>
           <div class="d-flex mx-auto mt-2 card-text">

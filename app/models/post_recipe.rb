@@ -11,13 +11,13 @@ class PostRecipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda { |attributes| attributes[:name].blank? && attributes[:amount].blank? }
 
   with_options presence: true, on: :publicize do
-    # validates :recipe_image
     validates :serving
     validates :veg_type
     validates :title
     validates :introduction
     validates :ingredients
     validates :procedures
+    validates :post_recipe_image
   end
   validates :title, length: { maximum: 14 }, on: :publicize
   validates :introduction, length: { maximum: 80 }, on: :publicize

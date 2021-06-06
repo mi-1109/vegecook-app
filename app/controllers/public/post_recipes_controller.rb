@@ -96,7 +96,6 @@ class Public::PostRecipesController < ApplicationController
       :user_id,
       :title,
       :introduction,
-      # :recipe_image,
       :post_recipe_image,
       :is_draft,
       :serving,
