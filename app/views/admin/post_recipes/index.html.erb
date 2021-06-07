@@ -16,13 +16,13 @@
         <tr class="mt-5 border-bottom">
           <td style="width: 5%" class="text-center">
             <% if post_recipe.post_recipe_image.blank? %>
-              <%= link_to image_tag('no_recipe_image.jpg', size: '70', class:'rounded-circle'), admin_post_recipe_path(post_recipe.id) %>
+              <%= image_tag('no_recipe_image.jpg', size: '70', class:'rounded-circle') %>
             <% else %>
-              <%= link_to ix_image_tag(post_recipe.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: { class: 'rounded-circle' }), admin_post_recipe_path(post_recipe.id) %>
+              <%= ix_image_tag(post_recipe.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: { class: 'rounded-circle' }) %>
             <% end %>
           </td>
           <td style="width: 35%">
-            <u><%= link_to post_recipe.title, admin_post_recipe_path(post_recipe.id) %><br /></u>
+            <u><%= post_recipe.title %><br /></u>
             <p class="mt-2"><%= post_recipe.introduction %></p>
           </td>
           <td style="width: 20%" class="p-0 align-middle">
