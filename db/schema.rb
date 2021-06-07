@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_061731) do
+ActiveRecord::Schema.define(version: 2021_06_07_005534) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 2021_06_04_061731) do
     t.integer "user_id", null: false
     t.string "title"
     t.text "introduction"
-    t.string "recipe_image_id"
     t.boolean "is_draft", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

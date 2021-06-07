@@ -107,13 +107,13 @@
               <tr class="border-bttom align-middle">
                 <td class="p-2 text-center">
                   <% if draft_post.post_recipe_image.blank? %>
-                    <%= link_to image_tag('no_recipe_image.jpg', size: '70', class:'rounded-circle'), post_recipe_path(draft_post.id) %>
+                    <%= image_tag('no_recipe_image.jpg', size: '70', class:'rounded-circle') %>
                   <% else %>
-                    <%= link_to ix_image_tag(draft_post.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: {class: 'rounded-circle'}), post_recipe_path(draft_post.id) %>
+                    <%= ix_image_tag(draft_post.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: {class: 'rounded-circle'}) %>
                   <% end %>
                 </td>
-                <td class="p-2 align-middle">
-                  <%= link_to draft_post.title, post_recipe_path(draft_post), class:'ml-3 jp-font-pop' %>
+                <td class="p-2 align-middle ml-3 jp-font-pop">
+                  <%= draft_post.title %>
                 </td>
                 <td class="p-2 align-middle">
                   <%= link_to "編集する", edit_post_recipe_path(draft_post), class:'btn btn-sm btn-outline-warning py-0' %>
