@@ -73,7 +73,7 @@ class Public::PostRecipesController < ApplicationController
     # 下書きレシピの更新（非公開）の場合
     else
       if @post_recipe.update(post_recipe_params)
-        redirect_to post_recipe_path(@post_recipe.id), notice: "下書きレシピを更新しました！"
+        redirect_to user_path(current_user), notice: "下書きレシピを更新しました！"
       else
         @post_recipe.new_form_instance
         render :edit, alert: "更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
