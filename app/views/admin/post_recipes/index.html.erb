@@ -18,7 +18,7 @@
             <% if post_recipe.post_recipe_image.blank? %>
               <%= image_tag('no_recipe_image.jpg', size: '70', class:'rounded-circle') %>
             <% else %>
-              <%= link_to ix_image_tag(post_recipe.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: { class: 'rounded-circle' }), post_recipe_path(post_recipe.id) %>
+              <%= link_to ix_image_tag(post_recipe.post_recipe_image.path, url_params: { w: 70, h: 70, fit: 'crop' }, tag_options: { class: 'rounded-circle' }), admin_post_recipe_path(post_recipe.id) %>
             <% end %>
           </td>
           <td style="width: 35%">
@@ -26,7 +26,7 @@
               <%= post_recipe.title %><br />
               <p class="mt-2"><%= post_recipe.introduction %></p>
             <% else %>
-              <u><%= link_to post_recipe.title, post_recipe_path(post_recipe.id) %></u><br />
+              <u><%= link_to post_recipe.title, admin_post_recipe_path(post_recipe.id) %></u><br />
               <p class="mt-2"><%= post_recipe.introduction %></p>
             <% end %>
           </td>
