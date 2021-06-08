@@ -22,7 +22,6 @@ class PostRecipe < ApplicationRecord
   validates :title, length: { maximum: 14 }, on: :publicize
   validates :introduction, length: { maximum: 80 }, on: :publicize
 
-  attachment :recipe_image
   mount_uploader :post_recipe_image, PostRecipeUploader
 
   enum veg_type: {
