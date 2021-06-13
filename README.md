@@ -195,6 +195,8 @@ VegeCookは個人開発ではありましたが、業務では常にチーム開
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+<br/>
+
 ## 使用素材
 **【画像素材】**　<br />
 - O-DAN (<https://o-dan.net/ja/>)
@@ -208,3 +210,6 @@ VegeCookは個人開発ではありましたが、業務では常にチーム開
 - Adobe Spark (<https://www.adobe.com/jp/products/spark.html>)
 - エーオーシステム (<https://ao-system.net/alphaicon/>)
 - ICOON MONO (<https://icooon-mono.com/>)
+
+## さいごに
+本アプリケーションの実装過程で学んだことについて、[Qiita](https://qiita.com/mi-1109)や[Twitter](https://twitter.com/mi_prog)でも発信しております。ぜひご覧いただければ幸いです。
