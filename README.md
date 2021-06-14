@@ -20,7 +20,7 @@ URL: https://vege-cook.net
 <br />
 お忙しい方にもご覧いただきやすいよう、動作デモ（４分間）を編集しました。ぜひご覧ください。
 
-[<img src="https://user-images.githubusercontent.com/78330037/121203540-24607580-c8b1-11eb-9fd7-dcc10c483cbd.png" width="400">](https://youtu.be/1dDTJvwODIg)
+[<img src="https://user-images.githubusercontent.com/78330037/121203540-24607580-c8b1-11eb-9fd7-dcc10c483cbd.png" width="400" target="_blank" rel="noopener noreferrer">](https://youtu.be/1dDTJvwODIg)
 <br />
 ※YouTubeが開きます<br />
 ※やや駆け足の編集ですので、速すぎる場合はYouTube上で再生スピードを0.75倍等にしてご覧ください
@@ -213,3 +213,11 @@ VegeCookは個人開発ではありましたが、業務では常にチーム開
 
 ## さいごに
 本アプリケーションの実装過程で学んだことについて、[Qiita](https://qiita.com/mi-1109)や[Twitter](https://twitter.com/mi_prog)でも発信しております。ぜひご覧いただければ幸いです。
+
+Qiitaに投稿した本アプリの関連記事：
+- [【図解】初心者が知っておきたいサーバ周りの仕組みの話](https://qiita.com/mi-1109/items/a8e5cfa0637ba2925b59)（2021年6月15日時点：694LGTM/797Stock）
+- [30秒かかった画像表示を1.7秒に改善した話（imgix + S3 + CarrierWave）](https://qiita.com/mi-1109/items/df493afb513c71a89b8a)
+- [【Rails】fields_forを使って同一フォームで別のモデルオブジェクトを編集する](https://qiita.com/mi-1109/items/82bde86493072e2dd2a4)
+- [【Rails】下書き機能を実装してみる](https://qiita.com/mi-1109/items/4d81992fbae6f2067a82)
+- [【Rails】閲覧履歴の降順表示＋定時削除を実装する](https://qiita.com/mi-1109/items/0ab14d40dd9e8fdb41c3)
+- [【Rails】enumで対応ステータスを更新する](https://qiita.com/mi-1109/items/65f8c87b9e9c3f4e2442)
