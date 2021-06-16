@@ -221,3 +221,4 @@ Qiitaに投稿した本アプリの関連記事：
 - [【Rails】下書き機能を実装してみる](https://qiita.com/mi-1109/items/4d81992fbae6f2067a82)
 - [【Rails】閲覧履歴の降順表示＋定時削除を実装する](https://qiita.com/mi-1109/items/0ab14d40dd9e8fdb41c3)
 - [【Rails】enumで対応ステータスを更新する](https://qiita.com/mi-1109/items/65f8c87b9e9c3f4e2442)
+- [【Rails x SQL】検索結果を人気順で表示する（左外部結合と副問い合わせ）](https://qiita.com/mi-1109/items/f59f053c9c9438359879)
