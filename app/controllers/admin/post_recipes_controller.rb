@@ -3,7 +3,7 @@ class Admin::PostRecipesController < ApplicationController
   before_action :set_post_recipe, only: [:show, :destroy]
 
   def index
-    @post_recipes = PostRecipe.page(params[:page]).per(16)
+    @post_recipes = PostRecipe.page(params[:page])
     @post_recipe_count = PostRecipe.count
   end
 
