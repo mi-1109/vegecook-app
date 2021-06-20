@@ -4,7 +4,7 @@ class Public::PostRecipesController < ApplicationController
   before_action :set_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @latest_recipes = PostRecipe.all.where(is_draft: false).includes([:user]).order(created_at: "DESC").page(params[:page]).per(15)
+    @latest_recipes = PostRecipe.all.where(is_draft: false).includes([:user]).order(created_at: "DESC").page(params[:page]).per(12)
   end
 
   def new
