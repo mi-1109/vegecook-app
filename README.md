@@ -104,8 +104,6 @@ VegeCookは個人開発ではありましたが、業務では常にチーム開
 <img src="https://user-images.githubusercontent.com/78330037/121101404-bd9e7600-c836-11eb-8f73-cd47651f360a.png" width="700">
 
 ## 機能一覧
-チャレンジ機能一覧：https://docs.google.com/spreadsheets/d/15LsSsn6OQFDi0CZb68MRvgI3Udyr9nYOGtesS61AhAY/edit?usp=sharing
-
 ### ◆顧客側の機能
 | 機能 | 非ログイン時利用可否 | 無料会員利用可否 | 有料会員利用可否 |
 | ------------- | :-------------: |:-------------: | :-------------: |
