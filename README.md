@@ -162,7 +162,7 @@ VegeCookは個人開発ではありましたが、業務では常にチーム開
 #### 使用ライブラリ
 - devise（ログイン認証）
 - refile, mini_magick, CarrierWave（画像投稿）
-- imgix-rails（画像変換）
+- imgix-rails（画像最適化）
 - fog_aws（S3への画像アップロード）
 - ransack （検索）
 - RuboCop（静的コード解析）
