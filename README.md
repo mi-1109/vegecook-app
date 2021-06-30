@@ -212,7 +212,8 @@ VegeCookは個人開発ではありましたが、業務では常にチーム開
 - ICOON MONO (<https://icooon-mono.com/>)
 
 ## さいごに
-本アプリケーションの実装過程で学んだことについて、[Qiita](https://qiita.com/mi-1109)や[Twitter](https://twitter.com/mi_prog)でも発信しております。ぜひご覧いただければ幸いです。
+本アプリケーションの実装過程で学んだことについて、[Qiita](https://qiita.com/mi-1109)や[Twitter](https://twitter.com/mi_prog)でも発信しております。<br />
+ぜひご覧いただければ幸いです。
 
 Qiitaに投稿した本アプリの関連記事：
 - [【図解】初心者が知っておきたいサーバ周りの仕組みの話](https://qiita.com/mi-1109/items/a8e5cfa0637ba2925b59)（2021年6月15日時点：694LGTM/797Stock）
