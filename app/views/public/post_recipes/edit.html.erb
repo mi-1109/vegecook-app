@@ -68,17 +68,19 @@
       </div>
 
       <div class="row">
-        <table class="table table-borderless" id="procedure-table">
+        <div class='offset-md-3'>
+        <table style='width: 70%' class="table table-borderless" id="procedure-table">
           <%= f.fields_for :procedures do |procedure| %>
           <tr>
-            <td style='width: 70%' class="px-0"><%= procedure.text_area :body, placeholder:"手順を記入", size:'35 x 4', class:'p-2' %> </td>
-            <td class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
+            <td style='width: 50%' class="px-0"><%= procedure.text_area :body, placeholder:"手順を記入", size:'35 x 4', class:'p-2' %> </td>
+            <td style='width: 10%' class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
           </tr>
           <% end %>
         </table>
-        <input type="button" value="手順を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-color py-0 mb-3">
         <%= render 'layouts/error_messages', obj: @post_recipe, column: :procedures %>
+        </div>
       </div>
+      <input type="button" value="手順を追加" onclick="addRow('procedure-table')" class="btn btn-sm btn-color py-0 mb-3 procedure-add-btn">
     </div>
 
     <div class="row my-4">
