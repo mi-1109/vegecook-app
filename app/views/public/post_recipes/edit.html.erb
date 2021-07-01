@@ -47,8 +47,8 @@
           <tbody>
             <%= f.fields_for :ingredients do |ingredient| %>
               <tr>
-                <td style="width: 12%" class="py-1"><%= ingredient.text_field :name, placeholder: "例）にんじん" %></td>
-                <td style="width: 10%" class="py-1"><%= ingredient.text_field :amount, placeholder: "例）一本" %></td>
+                <td class="py-1"><%= ingredient.text_field :name, size:"14", placeholder: "例）にんじん" %></td>
+                <td class="py-1"><%= ingredient.text_field :amount, size:"14", placeholder: "例）一本" %></td>
                 <td class="align-middle p-0"><input type="button" value="削除" onclick="deleteRow(this)"></td>
               </tr>
             <% end %>
@@ -71,7 +71,7 @@
         <table class="table table-borderless" id="procedure-table">
           <%= f.fields_for :procedures do |procedure| %>
           <tr>
-            <td style='width: 70%' class="px-0"><%= procedure.text_area :body, placeholder:"手順を記入", size:'80 x 3', class:'p-2' %> </td>
+            <td style='width: 70%' class="px-0"><%= procedure.text_area :body, placeholder:"手順を記入", size:'35 x 4', class:'p-2' %> </td>
             <td class="align-middle"><input type="button" value="削除" onclick="deleteRow(this)"></td>
           </tr>
           <% end %>

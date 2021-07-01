@@ -26,10 +26,9 @@
               <%= render 'layouts/error_messages', obj: @user, column: :introduction %>
             </div>
 
-            <div class="form-group mt-4">
-              <%= f.label :email, 'メールアドレス:', class:'mb-1 font-weight-bold' %><br />
-              <%= f.text_field :email, class:'form-control', size: "40" %>
-              <%= render 'layouts/error_messages', obj: @user, column: :email %>
+            <div>
+              <p class='mb-1 mr-1 pt-1 font-weight-bold'>メールアドレス:</p>
+              <%= @user.email %>
             </div>
 
             <div class="mt-4">
